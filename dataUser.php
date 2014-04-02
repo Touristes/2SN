@@ -2,11 +2,26 @@
 require_once "dataConnect.php";
 
 function addUser($login, $email, $password) {
-  $db =dbConnect();
+  $db = dbConnect();
   if ($db == FALSE)
     return (FALSE);
-  $query = "insert into USER (login, email, password, created, modified, connection) values \"".
-    $username."\",\"".$email."\",".md5($password)."\"\, Now(), Now(), Now());";
+  $query = "insert into USER (login, email, password, created, modified, type, last_connection) values \"".
+    $username."\",\"".$email."\",".md5($password)."\"\, date('now'), date('now'), \"user\", date('now'));";
+  $result = $db->query($query);
+  if ($result == FALSE)
+    {
+      dbClose($db);
+      return (FALSE);
+    }
+  dbClose($db);
+  return (TRUE);
+}
+function addAdmin($login, $email, $password) {
+  $db = dbConnect();
+  if ($db == FALSE)
+    return (FALSE);
+  $query = "insert into USER (login, email, password, created, modified, type, last_connection) values \"".
+    $username."\",\"".$email."\",".md5($password)."\"\, date('now'), date('now'), \"admin\", date('now'));";
   $result = $db->query($query);
   if ($result == FALSE)
     {
@@ -108,7 +123,7 @@ function userConnect($login, $password){
     }
   if ($i > 0)
     {
-      $query = "update USER set connection = Now() where id_user = \"".$id."\";";
+      $query = "update USER set last_connection = date('now') where id_user = \"".$id."\";";
       $result = $db->query($query);
       dbClose($db);
       return (TRUE);
@@ -127,10 +142,25 @@ function setUserField($id, $field, $newContent){
       dbClose($db);
       return (FALSE);
     }
-  $query = "update USER set modified = Now() where id_user = \"".$id."\";";
+  $query = "update USER set modified = date('now') where id_user = \"".$id."\";";
   $result = $db->query($query);
   dbClose($db);
   return (TRUE);
 }
-//function isUserAdmin($id);
+function isUserAdmin($id){
+  $db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  $query = "select id_user from USER where type = \"admin\" and id_user like \"".$id."\";";
+  $result = $db->query($query);
+  while ($row = $result->fetchArray())
+    {
+      for ($i = 0; isset($row[$i]); $i++)
+        $ID = $row[$i];
+    }
+  dbClose($db);
+  if ($i > 0)
+    return (TRUE);
+  return (FALSE);
+}
 ?>
