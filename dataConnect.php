@@ -1,12 +1,12 @@
 <?php
 function dbConnect() {
   $dbname = 'database.db';
-  $db = new SQLite3($dbname, 0666, $erreur);
-  if ($erreur != " ")
+  $db = new SQLite3($dbname);
+  if (isset($db))
     return ($db);
   else
     {
-      echo "SQL error :" . $erreur;
+      echo "SQL error";
       return (FALSE);
     }
 }

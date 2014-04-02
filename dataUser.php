@@ -5,8 +5,8 @@ function addUser($login, $email, $password) {
   $db =dbConnect();
   if ($db == FALSE)
     return (FALSE);
-  $query = "insert into USER (login, email, password, created, modified, connection) values \"".
-    $username."\",\"".$email."\",".md5($password)."\"\, Now(), Now(), Now());";
+	$date = date("Y-m-d-H-i-s");
+  $query = "INSERT INTO user (login, email, password, created, modified, last_connexion) values (\"".$login."\",\"".$email."\",\"".md5($password)."\",".$date.",".$date.",".$date.");";
   $result = $db->query($query);
   if ($result == FALSE)
     {
@@ -64,9 +64,10 @@ function delUser($id) {
 }
 function isUsernameExist($login){
   $db = dbConnect();
+  $i = 0;
   if ($db == FALSE)
     return (0);
-  $query = "select id_user from USER where login like \"".$login."\";";
+  $query = "select id_user from user where login like \"".$login."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
     {
@@ -75,14 +76,15 @@ function isUsernameExist($login){
     }
   dbClose($db);
   if ($i > 0)
-    return (TRUE);
-  return (FALSE);
+    return ("true");
+  return ("false");
 }
 function isEmailExist($email){
   $db = dbConnect();
+  $i = 0;
   if ($db == FALSE)
     return (0);
-  $query = "select id_user from USER where email like \"".$email."\";";
+  $query = "select id_user from user where email like \"".$email."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
     {
@@ -91,15 +93,15 @@ function isEmailExist($email){
     }
   dbClose($db);
   if ($i > 0)
-    return (TRUE);
-  return (FALSE);
+    return ("true");
+  return ("false");
 }
 function userConnect($login, $password){
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
   $id = getUserID($login);
-  $query = "select id_user from USER where id_user = \"".$id."\" and password = \"".md5($password)."\";";
+  $query = "select id_user from user where id_user = \"".$id."\" and password = \"".md5($password)."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
     {
