@@ -6,7 +6,7 @@ function addUser($login, $email, $password) {
   if ($db == FALSE)
     return (FALSE);
 	$date = date("Y-m-d-H-i-s");
-  $query = "INSERT INTO user (login, email, password, created, modified, last_connexion) values (\"".$login."\",\"".$email."\",\"".md5($password)."\",".$date.",".$date.",".$date.");";
+  $query = "INSERT INTO user (login, email, password, created, modified, last_connexion) values (\"".$login."\",\"".$email."\",\"".md5($password)."\",date('now'),date('now'),date('now'));";
   $result = $db->query($query);
   if ($result == FALSE)
     {
@@ -130,7 +130,7 @@ function setUserField($id, $field, $newContent){
       dbClose($db);
       return (FALSE);
     }
-  $query = "update USER set modified = date('now') where id_user = \"".$id."\";";
+  $query = "update user set modified = date('now') where id_user = \"".$id."\";";
   $result = $db->query($query);
   dbClose($db);
   return (TRUE);
