@@ -1,3 +1,32 @@
+
+<?php
+session_start();
+require_once "dataUser.php";
+if (isset($_POST['login']))
+{
+$password = $_POST['pass'];
+$login = $_POST['login'];
+
+$test = userConnect($login, $password);
+
+
+if ($test == "true")
+{
+	session_start();
+	$_SESSION['login'] = $login;
+	$_SESSION['check'] = "1";
+	echo "<script type=\"text/javascript\">alert(\"Connexion reussie !!\");location =\"acc.php\"</script>";
+
+}
+else if ($test == "false")
+{
+echo '<script language="Javascript">
+alert ("Login ou mot de passe inconnus !" )
+</script>';
+}
+}
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -24,7 +53,7 @@
    }
 </SCRIPT>
 <div id="connect">
-<form id="signup" name="formulaire1" method="post" action="traite.php">
+<form id="signup" name="formulaire1" method="post" action="">
     <input type="email" placeholder="Login" name="login" required>
     <input type="password" placeholder="Mot de passe" name="pass" required>
     <button type="button" onClick="ValiderMail1(this.form)">Connexion</button>    
@@ -39,8 +68,8 @@ Nouveau sur 2SN ?</br></br>
     <input type="password" placeholder="Choisis ton mot de passe !" name="pass" required>
     <button type="button" onClick="ValiderMail(this.form)">Inscris toi !</button>    
 </form>
-
 </div>
+
 
 <div id="presentation">
 </div>

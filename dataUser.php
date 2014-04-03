@@ -110,13 +110,14 @@ function userConnect($login, $password){
     }
   if ($i > 0)
     {
+		
       $query = "update USER set connection = Now() where id_user = \"".$id."\";";
       $result = $db->query($query);
       dbClose($db);
-      return (TRUE);
+      return ("true");
     }
   dbClose($db);
-  return (FALSE);
+  return ("false");
 }
 function setUserField($id, $field, $newContent){
   $db = dbConnect();

@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['check']))
+{
+		echo "<script type=\"text/javascript\">alert(\"Acces interdit !!\");location =\"co.php\"</script>";
+}
+else if ($_SESSION['check'] != "1")
+{
+		echo "<script type=\"text/javascript\">alert(\"Acces interdit !!\");location =\"co.php\"</script>";
+}
+
+?>
 <!doctype html>
 <html>
 <head>
@@ -43,6 +56,7 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
    </li>
    <li><a href='#'><span>About</span></a></li>
    <li class='last'><a href='#'><span>Contact</span></a></li>
+   <li class='last'><a href='deconnect.php'><span>Deconnexion</span></a></li>
 </ul>
 </div>
 <div id="post">
