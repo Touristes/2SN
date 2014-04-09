@@ -29,7 +29,9 @@ if(isset($_SESSION['login']))
     if (isset($_POST['login'])) {
       if (setUserField($id,"login",$_POST['login']) == false)
 	echo "Error on field login";
-	}
+      else
+          $login = $_POST['login'];
+    }
     if (isset($_POST['email'])) {
       if (setUserField($id,"email",$_POST['email']) == false)
         echo "Error on field email";
@@ -53,13 +55,12 @@ if(isset($_SESSION['login']))
 	    delUser($id);
 	    echo "Votre utilisateur a ete supprime.";
 	    include "sessionDestroy.php";
-	    exit;
 	  }
 	  else
 	    echo "Erreur de mot de passe.";
 	  }
 	else {
-	echo "Si vous souhaitez vraiment effacer votre utilisateur, merci de rettapper votre mot de passe :";
+	echo "Si vous souhaitez vraiment effacer votre utilisateur, merci de retaper votre mot de passe :";
 	echo "<form method=\"POST\" action=\"profil.php\"><input type=hidden name=deluser /><input type=password name=passwd />";
         echo "<input type=submit value=\"Valider\"></form>";}
       }
@@ -68,13 +69,12 @@ if(isset($_SESSION['login']))
           if (userConnect($id,$login) == true) {
             setUserField($id,"password",md5($_POST['newpasswd']));
             echo "Votre mot de passe a ete change.";
-            exit;
           }
           else
             echo "Erreur de mot de passe.";
 	}
         else {
-	  echo "Si vous souhaitez modifier votre mot de mot, merci de le taper une nouvelle fois :";
+	  echo "Si vous souhaitez modifier votre mot de passe, merci de le taper une nouvelle fois :";
 	  echo "<form method=\"POST\" action=\"profil.php\"><input type=hidden name=changepasswd /><input type=password name=passwd />";
 	  echo "<br>Veuillez taper votre nouveau mot de passe : ";
 	  echo "<input type=password name=newpasswd />";
