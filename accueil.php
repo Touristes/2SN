@@ -39,7 +39,7 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 <ul>
    <li class='active'><a href='acc.php'><span>Home</span></a></li>
    <li class='last'><a href='#'><span>Messages</span></a></li>    
-   <li><a href='#'><span>Mon Profil</span></a></li>
+   <li><a href='profil.php'><span>Mon Profil</span></a></li>
    <li class='last'><a href='deconnect.php'><span>Deconnexion</span></a></li>
 </ul>
 </div>
