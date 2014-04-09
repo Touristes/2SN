@@ -32,7 +32,7 @@ alert ("Login ou mot de passe inconnus !" )
 <head>
 <link rel="stylesheet" type="text/css" href="style.css" />
 <meta charset="UTF-8">
-<title>2SN</title>
+<title>2SN Connexion</title>
 </head>
 <body>
 <SCRIPT language="javascript">
