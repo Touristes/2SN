@@ -46,7 +46,7 @@ if ($test == "false" && $test1 == "false")
 	session_start();
 	$_SESSION['login'] = $login;
 	$_SESSION['check'] = "1";
-	echo "<script type=\"text/javascript\">alert(\"Compte cree avec succes !!\");location =\"acc.php\"</script>";
+	echo "<script type=\"text/javascript\">alert(\"Compte cree avec succes !!\");location =\"accueil.php\"</script>";
 
 }
 else if ($test == "true")

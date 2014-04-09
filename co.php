@@ -15,7 +15,7 @@ if ($test == "true")
 	session_start();
 	$_SESSION['login'] = $login;
 	$_SESSION['check'] = "1";
-	echo "<script type=\"text/javascript\">alert(\"Connexion reussie !!\");location =\"acc.php\"</script>";
+	echo "<script type=\"text/javascript\">alert(\"Connexion reussie !!\");location =\"accueil.php\"</script>";
 
 }
 else if ($test == "false")
