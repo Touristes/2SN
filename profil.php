@@ -29,8 +29,10 @@ if(isset($_SESSION['login']))
     if (isset($_POST['login'])) {
       if (setUserField($id,"login",$_POST['login']) == false)
 	echo "Error on field login";
-      else
+      else {
           $login = $_POST['login'];
+          $_SESSION['login'] = $login;
+      }
     }
     if (isset($_POST['email'])) {
       if (setUserField($id,"email",$_POST['email']) == false)
