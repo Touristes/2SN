@@ -13,7 +13,7 @@ require_once "dataSubscriber.php";
 ?>
 <div id='cssmenu'>
 <ul>
-   <li class='active'><a href='acc.php'><span>Home</span></a></li>
+   <li class='active'><a href='accueil.php'><span>Home</span></a></li>
    <li class='last'><a href='#'><span>Messages</span></a></li>    
    <li><a href='profil.php'><span>Mon Profil</span></a></li>
    <li class='last'><a href='deconnect.php'><span>Deconnexion</span></a></li>
@@ -93,9 +93,9 @@ if(isset($_SESSION['login']))
     echo "</br>Postal code : </br><input type=text name=postalcode value=\"".getUserInfo("postalcode",$id)."\" />";
     echo "</br><button type=submit value=\"Modifiez vos infos personnelles\"/>Modifiez vos infos personnelles</button>";
     echo "</form>";
-    echo "</br></br></br></br><form id=\"signup\" method=\"POST\" action=\"profil.php\"><button type=submit value =\"Changer le mot de passe\">Changer le mot de passe</button></form>";
+    echo "</br></br></br></br><form id=\"signup\" method=\"POST\" action=\"profil.php\"><button type=submit value =\"Changer le mot de passe\" name=changepasswd>Changer le mot de passe</button></form>";
     echo "</br><form id=\"signup\" method=\"POST\" action=\"profil.php\">
-</br>	</br></br><button type=submit value =\"Effacer le compte\">Effacer le compte</button></form>";}
+</br>	</br></br><button type=submit value =\"Effacer le compte\" name=deluser>Effacer le compte</button></form>";}
   }
 else
   header('Location: index.php');
