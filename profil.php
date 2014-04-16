@@ -56,7 +56,7 @@ if(isset($_SESSION['login']))
 	  if (userConnect($id,$login) == true) {
 	    delUser($id);
 	    echo "Votre utilisateur a ete supprime.";
-	    include "sessionDestroy.php";
+	    include "deconnect.php";
 	  }
 	  else
 	    echo "Erreur de mot de passe.";
