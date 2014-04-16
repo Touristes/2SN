@@ -6,7 +6,7 @@
 </head>
 
 <?php
-session_start();
+include "sessionInit.php";
 
 if (!isset($_SESSION['check']))
 {
