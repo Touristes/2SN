@@ -43,7 +43,7 @@ $test1 = isEmailExist($email);
 if ($test == "false" && $test1 == "false")
 {
 	addUser($login, $email, $password);
-	session_start();
+	include "sessionInit.php";
 	$_SESSION['login'] = $login;
 	$_SESSION['check'] = "1";
 	echo "<script type=\"text/javascript\">alert(\"Compte cree avec succes !!\");location =\"accueil.php\"</script>";
