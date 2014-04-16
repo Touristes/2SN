@@ -2,9 +2,31 @@
 require_once "dataConnect.php";
 require_once "dataUser.php";
 
-//addSubscriber($id_subscriber, $id_user);
-//delSubscriber($id_subscriber);
-//getSubscriberName($id_subscriber);
+function addSubscription($id_subscriber, $id_user) {
+  $db = dbConnect();
+  $i = 0;
+  if ($db == FALSE)
+    return (0);
+  $query = "INSERT INTO subscriber (id_user, id_subscriber) VALUES (\"".$id_user."\",\"".$id_subscriber."\");";
+  $result = $db->query($query);
+  if ($result == FALSE)
+    return (FALSE);
+  dbClose($db);
+  return (TRUE);
+}
+
+function delSubscription($id_subscriber, $id_user) {
+  $db = dbConnect();
+  $i = 0;
+  if ($db == FALSE)
+    return (0);
+  $query = "DELETE FROM subscriber WHERE id_user = \"".$id_user."\" AND id_subscriber = \"".$id_subscriber."\" LIMIT 1;";
+  $result = $db->query($query);
+  if ($result == FALSE)
+    return (FALSE);
+  dbClose($db);
+  return (TRUE);
+}
 
 function getSubscriberNumber($id_user){
   $db = dbConnect();
