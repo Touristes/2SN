@@ -1,6 +1,5 @@
-
 <?php
-session_start();
+include "sessionInit.php";
 require_once "dataUser.php";
 if (isset($_POST['login']))
 {
