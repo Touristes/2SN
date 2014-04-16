@@ -81,14 +81,21 @@ function delUser($id) {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "delete from user where id_user like \"".$id."\";";
+  $query = "delete from user where id_user = \"".$id."\";";
   $result = $db->query($query);
   if ($result == FALSE)
     {
       dbClose($db);
       return (FALSE);
     }
-  $query = "delete from groups where id_user like \"".$id."\";";
+  $query = "delete from groups where id_user = \"".$id."\";";
+  $result = $db->query($query);
+  if ($result == FALSE)
+    {
+      dbClose($db);
+      return (FALSE);
+    }
+  $query = "delete from subscriber where id_user = \"".$id."\" or id_subscriber = \"".$id."\";";
   $result = $db->query($query);
   if ($result == FALSE)
     {
