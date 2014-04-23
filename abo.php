@@ -58,13 +58,26 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 
 
 <?
+
+function SearchUser($search) {
+
+ $db = dbConnect();
+  $i = 0;
+  if ($db == FALSE)
+    return (0);
+  $query = "select login from user where login like ".$search.";";
+  $result = $db->query($query);
+  dbClose($db);
+    return ($result);
+
+}	
+
 if(isset($_POST['requete']) && $_POST['requete'] != NULL) // on vérifie d'abord l'existence du POST et aussi si la requete n'est pas vide.
 {
 
 $requete = htmlspecialchars($_POST['requete']); // on crée une variable $requete pour faciliter l'écriture de la requête SQL, mais aussi pour empêcher les éventuels malins qui utiliseraient du PHP ou du JS, avec la fonction htmlspecialchars().
 
 $result = SearchUser($requete);
-
 if($result != "false") // si le nombre de résultats est supérieur à 0, on continue
 {
 // maintenant, on va afficher les résultats et la page qui les donne ainsi que leur nombre, avec un peu de code HTML pour faciliter la tâche.
@@ -100,7 +113,7 @@ else
 ?>
 <p>Vous allez faire une recherche dans notre base de données concernant les fonctions PHP. Tapez une requête pour réaliser une recherche.</p>
  <form action="abo.php" method="Post">
-<input type="text" name="requete" size="10">
+<input type="text" name="requete" size="20">
 <input type="submit" value="Ok">
 </form>
 <?
