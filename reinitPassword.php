@@ -20,6 +20,6 @@ if (isset($_POST['reinitPassword'])) {
 Un mail sera envoye dans les prochaines minutes contenant votre nouveau mot de passe.<br />
 <form id="reinitPassword">
   <input type="text" name="email" />
-  <button type="submit" value="Reinitialiser le mot de passe" name="reinitPassword"></button>
+  <button type="submit" value="Reinitialiser le mot de passe" name="reinitPassword">Envoyer</button>
 </form>
 </html>
