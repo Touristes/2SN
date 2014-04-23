@@ -11,13 +11,19 @@ else if ($_SESSION['check'] != "1")
 }
 
 ?>
+<?php
+include "sessionInit.php";
+require_once "dataUser.php";
+require_once "dataConnect.php";
+require_once "dataSubscriber.php";
+?>
 <!doctype html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="style1.css" />
+<link rel="stylesheet" type="text/css" href="style3.css" />
 
 <meta charset="UTF-8">
-<title>2SN - Accueil</title>
+<title>2SN - Abo</title>
 </head>
 
 <body>
@@ -44,29 +50,17 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
    <li class='last'><a href='deconnect.php'><span>Deconnexion</span></a></li>
 </ul>
 </div>
-<div id="post">
-<form id="signup" name="monform" method="post" action="traite.php">
-    <textarea cols="60" rows="5" name="DescrPlat" ></textarea> 
-    <div id="post1">
-     <input type="text" placeholder="Ajoute un lien" name="mail"   required>
-     </div>
-       <button type="button" onClick="ValiderMail(this.form)">Post !</button> 
-     </form>
-</div>
 
 
 
 
 <div id="sidebarl">
 test
-
-
 </div>
-<div id="gen">
-test
-</div>
+
 <div id="sidebarr">
 test
+
 
 </div>
 
