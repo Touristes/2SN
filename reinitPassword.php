@@ -3,24 +3,34 @@ require_once "mail.php";
 require_once "dataUser.php";
 
 if (isset($_POST['reinitPassword'])) {
-    if ($_POST['email'] == "") {
-      echo "<br>Veuillez renseigner une adresse mail.<br>";
+    if ($_POST['mail'] == "") {
+      echo "<b>Veuillez renseigner une adresse mail.</b>";
     }
-    else if (isEmailExist($_POST['email']) == false) {
-      echo "<br>Veuillez renseigner une adresse mail valide.<br>";
+    else if (isEmailExist($_POST['mail']) == false) {
+      echo "<b>Veuillez renseigner une adresse mail valide.</b>";
       }
-    else if (isEmailExist($_POST['email']) == true) {
-      $id = getUserIDWithMail($_POST['email']);
+    else if (isEmailExist($_POST['mail']) == true) {
+      $id = getUserIDWithMail($_POST['mail']);
       renewPassword($id);
-      exit;
+      header('Refresh: 10; url=index.php');
     }
-  }
+}
 ?>
+<!doctype html>
 <html>
-<br>Si vous avez perdu votre mot de passe, veuillez entrer votre adresse si dessous.<br />
-Un mail sera envoye dans les prochaines minutes contenant votre nouveau mot de passe.<br />
-<form id="reinitPassword">
-  <input type="text" name="email" />
-  <button type="submit" value="Reinitialiser le mot de passe" name="reinitPassword">Envoyer</button>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<meta charset="UTF-8">
+  <title>2SN Reinitialisation de mot de passe</title>
+</head>
+<body>
+<div id="inscription">
+  Si vous avez perdu votre mot de passe, veuillez entrer votre adresse si dessous.
+  Un nouveau mot de passe sera envoye a votre adresse mail.
+<form id="signup" name="reinitPassword" method="POST" action="reinitPassword.php">
+<input type="email" placeholder="john.doe@email.com" name="mail" required>
+  <button type="submit" value="Reinitialiser le mot de passe" name="reinitPassword">Reinitialiser mon mot de passe</button>
 </form>
+</div>
+</body>
 </html>
