@@ -16,7 +16,7 @@ function SearchUser($search) {
     }
   dbClose($db);
   if ($i == 0)
-    return ("false");
+    return (FALSE);
   else
     return ($login);
 }
@@ -28,7 +28,7 @@ function addUser($login, $email, $password) {
   initDefaultUserGroups();
   $query = "INSERT INTO user (login, email, password, created, modified, last_connexion) values (\"".$login."\",\"".$email."\",\"".md5($password)."\",date('now'),date('now'),date('now'));";
   $result = $db->query($query);
-  if ($result == FALSE) 
+  if ($result == FALSE)
     {
       dbClose($db);
       return (FALSE);
@@ -124,10 +124,9 @@ function getUserList() {
     return (0);
   $query = "select login from user;";
   $result = $db->query($query);
-  $row = $result->fetchArray();
-  for ($i = 0 ;isset($row[$i]); $i++)
+  for ($i = 0 ;$row = $result->fetchArray(); $i++)
     {
-        $array[$i] = $row[$i];
+        $array[$i] = $row[0];
     }
   dbClose($db);
   return ($array);
@@ -198,8 +197,8 @@ function isEmailExist($email){
     }
   dbClose($db);
   if ($i > 0)
-    return ("true");
-  return ("false");
+    return (TRUE);
+  return (FALSE);
 }
 function userConnect($login, $password){
   $db = dbConnect();
