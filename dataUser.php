@@ -118,6 +118,19 @@ function getUserInfo($field, $ID) {
     return (FALSE);
   return ($info);
 }
+function getUserList() {
+  $db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  $query = "select login from user;";
+  $result = $db->query($query);
+  for ($i = 0 ;$row = $result->fetchArray(); $i++)
+    {
+        $array[$i] = $row[$i];
+    }
+  dbClose($db);
+  return ($array);
+}
 function delUser($id) {
   $db = dbConnect();
   if ($db == FALSE)
