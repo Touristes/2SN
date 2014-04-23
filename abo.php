@@ -97,10 +97,14 @@ else
 }
 // et voilà, c'est fini !
 ?>
-
-
-
-
+<p><h3>Liste de tous les Users :</h3></p>
+<?
+$tab = getUserList();
+foreach($tab as $val)
+{
+	echo $val . "</br>";
+}
+?>
 </div>
 
 <div id="sidebarr">

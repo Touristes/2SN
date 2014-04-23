@@ -21,6 +21,7 @@ else if ($_SESSION['check'] != "1")
 </head>
 
 <body>
+<div id="cadrage">
 <script>
 $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 	$('#cssmenu #menu-button').on('click', function(){
@@ -74,6 +75,6 @@ test
 
 
 </div>
-    
+ </div>
 </body>
 </html>

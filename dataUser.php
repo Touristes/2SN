@@ -124,7 +124,8 @@ function getUserList() {
     return (0);
   $query = "select login from user;";
   $result = $db->query($query);
-  for ($i = 0 ;$row = $result->fetchArray(); $i++)
+  $row = $result->fetchArray();
+  for ($i = 0 ;isset($row[$i]); $i++)
     {
         $array[$i] = $row[$i];
     }
