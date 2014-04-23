@@ -40,7 +40,7 @@ $login = $_POST['pseudo1'];
 $test = isUsernameExist($login);
 $test1 = isEmailExist($email);
 
-if ($test == "false" && $test1 == "false")
+if ($test == FALSE && $test1 == FALSE)
 {
 	addUser($login, $email, $password);
 	include "sessionInit.php";
@@ -49,13 +49,13 @@ if ($test == "false" && $test1 == "false")
 	echo "<script type=\"text/javascript\">alert(\"Compte cree avec succes !!\");location =\"accueil.php\"</script>";
 
 }
-else if ($test == "true")
+else if ($test == TRUE)
 {
 echo '<script language="Javascript">
 alert ("Ce pseudo existe deja !" )
 </script>';
 }
-else if ($test1 == "true")
+else if ($test1 == TRUE)
 {
 echo '<script language="Javascript">
 alert ("Cette email existe deja !" )
