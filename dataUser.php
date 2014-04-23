@@ -28,7 +28,7 @@ function addUser($login, $email, $password) {
   initDefaultUserGroups();
   $query = "INSERT INTO user (login, email, password, created, modified, last_connexion) values (\"".$login."\",\"".$email."\",\"".md5($password)."\",date('now'),date('now'),date('now'));";
   $result = $db->query($query);
-  if ($result == FALSE)
+  if ($result == FALSE) 
     {
       dbClose($db);
       return (FALSE);
