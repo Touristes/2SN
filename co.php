@@ -9,7 +9,7 @@ $login = $_POST['login'];
 $test = userConnect($login, $password);
 
 
-if ($test == "true")
+if ($test == TRUE)
 {
 	session_start();
 	$_SESSION['login'] = $login;
@@ -17,11 +17,12 @@ if ($test == "true")
 	echo "<script type=\"text/javascript\">alert(\"Connexion reussie !!\");location =\"accueil.php\"</script>";
 
 }
-else if ($test == "false")
+else if ($test == FALSE)
 {
 echo '<script language="Javascript">
 alert ("Login ou mot de passe inconnus !" )
 </script>';
+$_SESSION['fail'] = 1;
 }
 }
 ?>
@@ -57,8 +58,8 @@ alert ("Login ou mot de passe inconnus !" )
     <input type="password" placeholder="Mot de passe" name="pass" required>
     <button type="button" onClick="ValiderMail1(this.form)">Connexion</button>    
 </form>
-
 </div>
+<?php if ($_SESSION['fail'] == 1) echo "<a href=\"reinitPassword.php\">Vous avez oublie votre mot de passe ?</a>"; $_SESSION['fail'] = 0;?>
 <div id="inscription">
 Nouveau sur 2SN ?</br></br>
 <form id="signup" name="monform" method="post" action="traite.php">
