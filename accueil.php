@@ -37,7 +37,7 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
     
 <div id='cssmenu'>
 <ul>
-   <li class='active'><a href='acc.php'><span>Home</span></a></li>
+   <li class='active'><a href='accueil.php'><span>Home</span></a></li>
    <li class='last'><a href='#'><span>Messages</span></a></li>    
    <li><a href='profil.php'><span>Mon Profil</span></a></li>
    <li class='last'><a href='deconnect.php'><span>Deconnexion</span></a></li>
@@ -57,12 +57,15 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 
 
 <div id="sidebarl">
+test
+
 
 </div>
 <div id="gen">
-
+test
 </div>
 <div id="sidebarr">
+test
 
 </div>
 

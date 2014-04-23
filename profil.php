@@ -1,16 +1,46 @@
-<!doctype html>
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="style2.css" />
-<meta charset="UTF-8">
-<title>Profil</title>
-</head>
+<?php
+include "sessionInit.php";
+
+if (!isset($_SESSION['check']))
+{
+		echo "<script type=\"text/javascript\">alert(\"Acces interdit !!\");location =\"co.php\"</script>";
+}
+else if ($_SESSION['check'] != "1")
+{
+		echo "<script type=\"text/javascript\">alert(\"Acces interdit !!\");location =\"co.php\"</script>";
+}
+
+?>
 <?php
 include "sessionInit.php";
 require_once "dataUser.php";
 require_once "dataConnect.php";
 require_once "dataSubscriber.php";
 ?>
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style3.css" />
+
+<meta charset="UTF-8">
+<title>2SN - Accueil</title>
+</head>
+
+<body>
+<script>
+$('#cssmenu').prepend('<div id="menu-button">Menu</div>');
+	$('#cssmenu #menu-button').on('click', function(){
+		var menu = $(this).next('ul');
+		if (menu.hasClass('open')) {
+			menu.removeClass('open');
+		}
+		else {
+			menu.addClass('open');
+		}
+	});
+	</script>
+    
+    
 <div id='cssmenu'>
 <ul>
    <li class='active'><a href='accueil.php'><span>Home</span></a></li>
@@ -20,7 +50,10 @@ require_once "dataSubscriber.php";
 </ul>
 </div>
 
-<div id="infoprofil">
+
+
+
+<div id="sidebarl">
 <?php
 if(isset($_SESSION['login']))
   {
@@ -101,7 +134,23 @@ else
   header('Location: index.php');
 ?>
 
+
 </div>
-<body>
+
+<div id="sidebarr">
+test
+
+
+
+
+
+
+</div>
+
+<div id="footer">
+
+
+</div>
+    
 </body>
 </html>
