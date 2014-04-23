@@ -58,6 +58,32 @@ function getSubscriberNumber($id_user){
   dbClose($db);
   return ($i);
 }
+function getSubscriberList($id_user) {
+  $db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  $query = "select id_subscriber from subscribers where id_user = \"".$id_user."\";";
+  $result = $db->query($query);
+  for ($i = 0 ;$row = $result->fetchArray(); $i++)
+    {
+      $array[$i] = getUserInfo("login",$row[0]);
+    }
+  dbClose($db);
+  return ($array);
+}
+function getSubscriptionList($id_user) {
+  $db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  $query = "select id_user from subscribers where id_subscriber = \"".$id_user."\";";
+  $result = $db->query($query);
+  for ($i = 0 ;$row = $result->fetchArray(); $i++)
+    {
+      $array[$i] = getUserInfo("login",$row[0]);
+    }
+  dbClose($db);
+  return ($array);
+}
 function isSubrscriberOf($id_subscriber, $id_user) {
   $db = dbConnect();
   $i = 0;
