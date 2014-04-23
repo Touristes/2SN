@@ -1,6 +1,22 @@
 <?php
 require_once "dataConnect.php";
 
+function SearchUser($search) {
+
+ $db = dbConnect();
+  $i = 0;
+  if ($db == FALSE)
+    return (0);
+  $query = "select login from user where login like \"".$search."\";";
+  $result = $db->query($query);
+  dbClose($db);
+    return ($result);
+
+}	
+
+
+
+
 function addUser($login, $email, $password) {
   $db =dbConnect();
   if ($db == FALSE)
