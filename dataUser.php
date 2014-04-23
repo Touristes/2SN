@@ -1,37 +1,31 @@
 <?php
 require_once "dataConnect.php";
+require_once "dataGroups.php";
 
-<<<<<<< HEAD
 function SearchUser($search) {
-
- $db = dbConnect();
+  $db = dbConnect();
   $i = 0;
   if ($db == FALSE)
     return (0);
-  $query = "select login from user where login like \"".$search."\";";
+  $query = "select login from user where login like \"".$search."\" limit 1;";
   $result = $db->query($query);
+  while ($row = $result->fetchArray())
+    {
+      for ($i = 0; isset($row[$i]); $i++)
+        $login = $row[$i];
+    }
   dbClose($db);
-    return ($result);
-
-}	
-
-
-
-=======
-//getUserListToDisplay($limitNumber)
-//getUserListOrderByToDisplay($limitNumber, $orderBy)
-//getUserListToArray($limitNumber)
-//getUserListOrderByToArray($limitNumber, $orderBy)
-//getUserInactivityTime($id_user)
-//getUserCreationTime($id_user)
-//delUserByInactivityTime($month)
-//setUserToAdmin($id_user)
->>>>>>> FETCH_HEAD
+  if ($i == 0)
+    return (FALSE);
+  else
+    return ($login);
+}
 
 function addUser($login, $email, $password) {
   $db =dbConnect();
   if ($db == FALSE)
     return (FALSE);
+  initDefaultUserGroups();
   $query = "INSERT INTO user (login, email, password, created, modified, last_connexion) values (\"".$login."\",\"".$email."\",\"".md5($password)."\",date('now'),date('now'),date('now'));";
   $result = $db->query($query);
   if ($result == FALSE)
@@ -40,7 +34,8 @@ function addUser($login, $email, $password) {
       return (FALSE);
     }
   $ID = getUserID($login);
-  $query = "INSERT INTO groups (name, id_user, created) values (\"User\",\"".$ID."\",date('now'));";
+  $ID_groups = getGroupID("user");
+  $query = "INSERT INTO belong (id_groups, id_user) values (\"".$ID_groups."\",\"".$ID."\");";
   $result = $db->query($query);
   if ($result == FALSE)
     {
@@ -54,6 +49,7 @@ function addAdmin($login, $email, $password) {
   $db =dbConnect();
   if ($db == FALSE)
     return (FALSE);
+  initDefaultUserGroups();
   $query = "INSERT INTO user (login, email, password, created, modified, last_connexion) values (\"".$login."\",\"".$email."\",\"".md5($password)."\",date('now'),date('now'),date('now'));";
   $result = $db->query($query);
   if ($result == FALSE)
@@ -62,7 +58,8 @@ function addAdmin($login, $email, $password) {
       return (FALSE);
     }
   $ID = getUserID($login);
-  $query = "INSERT INTO groups (name, id_user, created) values (\"Admin\",\"".$ID."\",date('now'));";
+  $ID_groups = getGroupID("admin");
+  $query = "INSERT INTO belong (id_groups, id_user) values (\"".$ID_groups."\",\"".$ID."\");";
   $result = $db->query($query);
   if ($result == FALSE)
     {
@@ -133,6 +130,13 @@ function delUser($id) {
       return (FALSE);
     }
   $query = "delete from groups where id_user = \"".$id."\";";
+  $result = $db->query($query);
+  if ($result == FALSE)
+    {
+      dbClose($db);
+      return (FALSE);
+    }
+  $query = "delete from belong where id_user = \"".$id."\";";
   $result = $db->query($query);
   if ($result == FALSE)
     {
@@ -226,7 +230,8 @@ function isUserAdmin($id){
   $i = 0;
   if ($db == FALSE)
     return (0);
-  $query = "select id_user from groups where name = \"Admin\" and id_user = \"".$id."\";";
+  $id_groups = getGroupID("admin");
+  $query = "select id_user from belong where id_groups = \"".$id_groups."\" and id_user = \"".$id."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
     {
@@ -235,7 +240,7 @@ function isUserAdmin($id){
     }
   dbClose($db);
   if ($i > 0)
-    return ("true");
-  return ("false");
+    return (true);
+  return (false);
 }
 ?>
