@@ -16,7 +16,7 @@ function SearchUser($search) {
     }
   dbClose($db);
   if ($i == 0)
-    return (FALSE);
+    return ("false");
   else
     return ($login);
 }
