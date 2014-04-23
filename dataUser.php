@@ -217,10 +217,10 @@ function userConnect($login, $password){
       $query = "update user set last_connexion = date('now') where id_user = \"".$id."\";";
       $result = $db->query($query);
       dbClose($db);
-      return ("true");
+      return (TRUE);
     }
   dbClose($db);
-  return ("false");
+  return (FALSE);
 }
 function setUserField($id, $field, $newContent){
   $db = dbConnect();
@@ -253,7 +253,7 @@ function isUserAdmin($id){
     }
   dbClose($db);
   if ($i > 0)
-    return (true);
-  return (false);
+    return (TRUE);
+  return (FALSE);
 }
 ?>
