@@ -31,6 +31,7 @@ if (isset($_POST['reinitPassword'])) {
 <input type="email" placeholder="john.doe@email.com" name="mail" required>
   <button type="submit" value="Reinitialiser le mot de passe" name="reinitPassword">Reinitialiser mon mot de passe</button>
 </form>
+<br><a href="index.php">Retour vers la page de connexion.</a>
 </div>
 </body>
 </html>
