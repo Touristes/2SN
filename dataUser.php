@@ -1,6 +1,15 @@
 <?php
 require_once "dataConnect.php";
 
+//getUserListToDisplay($limitNumber)
+//getUserListOrderByToDisplay($limitNumber, $orderBy)
+//getUserListToArray($limitNumber)
+//getUserListOrderByToArray($limitNumber, $orderBy)
+//getUserInactivityTime($id_user)
+//getUserCreationTime($id_user)
+//delUserByInactivityTime($month)
+//setUserToAdmin($id_user)
+
 function addUser($login, $email, $password) {
   $db =dbConnect();
   if ($db == FALSE)
@@ -61,6 +70,23 @@ function getUserID($login) {
     return (FALSE);
   return ($ID);
 }
+function getUserIDWithMail($email) {
+  $db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  $query = "select id_user from user where email like \"".$email."\";";
+  $result = $db->query($query);
+  while ($row = $result->fetchArray())
+    {
+      for ($i = 0; isset($row[$i]); $i++)
+	$ID = $row[$i];
+    }
+  dbClose($db);
+  if ($i > 1)
+    return (FALSE);
+  return ($ID);
+}
+
 function getUserInfo($field, $ID) {
   $db = dbConnect();
   if ($db == FALSE)
