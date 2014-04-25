@@ -1,4 +1,3 @@
-
 <?php
 require_once "dataConnect.php";
 
@@ -30,7 +29,7 @@ function delMessage($id_message) {
   dbClose($db);
   return (TRUE);
 }
-function getMessageContent($id) {
+function getMessageContent($id_message) {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
@@ -46,11 +45,59 @@ function getMessageContent($id) {
     return (FALSE);
   return ($content);
 }
+function getMessageSender($id_message) {
+  $db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  $query = "select id_user from message where id_message = \"".$id_message."\";";
+  $result = $db->query($query);
+  while ($row = $result->fetchArray())
+    {
+      for ($i = 0; isset($row[$i]); $i++)
+		$id_user = $row[$i];
+    }
+  dbClose($db);
+  if ($i > 1)
+    return (FALSE);
+  return ($id_user);
+}
+function getMessageReceiver($id_message) {
+  $db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  $query = "select id_receiver from message where id_message = \"".$id_message."\";";
+  $result = $db->query($query);
+  while ($row = $result->fetchArray())
+    {
+      for ($i = 0; isset($row[$i]); $i++)
+		$id_receiver = $row[$i];
+    }
+  dbClose($db);
+  if ($i > 1)
+    return (FALSE);
+  return ($id_receiver);
+}
+function getMessageDate($id_message) {
+  $db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  $query = "select created from message where id_message = \"".$id_message."\";";
+  $result = $db->query($query);
+  while ($row = $result->fetchArray())
+    {
+      for ($i = 0; isset($row[$i]); $i++)
+		$created = $row[$i];
+    }
+  dbClose($db);
+  if ($i > 1)
+    return (FALSE);
+  return ($created);
+}
 function getMessageReceptionList($id_user){
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select id_message from message where id_receiver = \"".$id_user."\";";
+  $query = "select id_message from message where id_receiver = \"".$id_user."\" order by created;";
   $result = $db->query($query);
   for ($i = 0 ;$row = $result->fetchArray(); $i++)
     {
@@ -63,7 +110,7 @@ function getMessageReceptionListByDate($id_user, $date) {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select id_message from message where id_receiver = \"".$id_user."\" and created like \"".$date."\";";
+  $query = "select id_message from message where id_receiver = \"".$id_user."\" and created like \"".$date."\" order by created;";
   $result = $db->query($query);
   for ($i = 0 ;$row = $result->fetchArray(); $i++)
     {
@@ -76,7 +123,7 @@ function getMessageSendList($id_user) {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select id_message from message where id_user = \"".$id_user."\";";
+  $query = "select id_message from message where id_user = \"".$id_user."\" order by created;";
   $result = $db->query($query);
   for ($i = 0 ;$row = $result->fetchArray(); $i++)
     {
@@ -89,7 +136,7 @@ function getMessageSendListByDate($id_user, $date) {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select id_message from message where id_user = \"".$id_user."\" and created like \"".$date."\";";
+  $query = "select id_message from message where id_user = \"".$id_user."\" and created like \"".$date."\" order by created;";
   $result = $db->query($query);
   for ($i = 0 ;$row = $result->fetchArray(); $i++)
     {
