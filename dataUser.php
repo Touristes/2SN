@@ -180,8 +180,8 @@ function isUsernameExist($login){
     }
   dbClose($db);
   if ($i > 0)
-    return ("true");
-  return ("false");
+    return (TRUE);
+  return (FALSE);
 }
 function isEmailExist($email){
   $db = dbConnect();
