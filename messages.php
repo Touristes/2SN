@@ -60,7 +60,7 @@ $id = getUserID($login);
 <?php //contenu de la page
 //Bouton nouveau message
 if (isset($_POST['newMessage'])) {
-	echo "<form id=\"signup\" method=\"POST\" action=\"messages.php\" name=\"formNewMessage\">";
+	echo "<form id=\"fromNewMessage\" method=\"POST\" action=\"messages.php\" name=\"formNewMessage\">";
 	echo "<input type=text placeholder=\"login du destinataire\" name=messageReceiverLogin  required />";
 	echo "<input type=text placeholder=\"Contenu de votre message\" name=messageContent required />";
 	echo "<button type=\"submit\" value =\"newMessageSend\" name=\"newMessageSend\">Envoyer</button>";
@@ -103,8 +103,10 @@ else if (isset($_POST['newMessageSend']))
 		echo "<br>Le nom d'utilisateur ".$_POST['messageReceiverLogin']." n'existe pas.<br>";
 		header('Refresh: 10; url=messages.php');
 	}
-	else
-		addMessage($_POST['messageContent'], $id, getUserID($_POST['messageReceiverLogin']));
+	else {
+		 addMessage($_POST['messageContent'], $id, getUserID($_POST['messageReceiverLogin']));
+echo "Votre message a bien été envoyé.";
+}
 }
 //Contenu du message
 else if (isset($_POST['Message']))
