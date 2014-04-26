@@ -62,7 +62,7 @@ function getSubscriberList($id_user) {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select id_subscriber from subscribers where id_user = \"".$id_user."\";";
+  $query = "select id_subscriber from subscriber where id_user = \"".$id_user."\";";
   $result = $db->query($query);
   for ($i = 0 ;$row = $result->fetchArray(); $i++)
     {

@@ -67,12 +67,26 @@ if(isset($_POST['requete']) && $_POST['requete'] != NULL) // on vérifie d'abord
 $requete = htmlspecialchars($_POST['requete']); // on crée une variable $requete pour faciliter l'écriture de la requête SQL, mais aussi pour empêcher les éventuels malins qui utiliseraient du PHP ou du JS, avec la fonction htmlspecialchars().
 
 $result = SearchUser($requete);
-if($result != "false") // si le nombre de résultats est supérieur à 0, on continue
+if($result != FALSE) // si le nombre de résultats est supérieur à 0, on continue
 {
 	echo "<h3>Resultat de votre recherche :</h3></br>";
-echo $result;
-
+	
 ?>
+	<form name="abo" action="" method="POST">
+
+<?
+if ($val != $login && isSubrscriberOf(getUserID($login), getUserID($result)) == "false")
+	{
+?>
+
+<input type="checkbox" name="choice[]" value="<? echo $result; ?>"> <? echo $result; ?><br>
+<?
+	}
+    echo "</br><button type=submit value=\"Ajouter a mes abonnements !\"/>Ajouter a mes abonnements !</button>";
+?>
+
+</form>
+
 <br/>
 <br/>
 <a href="abo.php">Faire une nouvelle recherche</a></p>
@@ -177,6 +191,21 @@ delSubscription(getUserID($login), getUserID($choice1[$i]));
 }
 
 
+?>
+
+
+<p><h3>Mes abonnes :</h3></p>
+
+<?
+$tab1 = getSubscriberList(getUserID($login));
+
+for ($i = 0; isset($tab1[$i]); $i++)
+{
+	 echo "> ";
+	 echo $tab1[$i];
+	 echo "<br>";
+}
+  
 ?>
 
 
