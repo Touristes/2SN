@@ -118,5 +118,8 @@ else if (isset($_POST['Message']))
 	echo "<br>" . getMessageContent($id_message);
 }
 ?>
+</div>
+<div id="footer">
+</div>
 </body>
 </html>

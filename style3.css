@@ -47,8 +47,8 @@ body {
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-bottom: 10px;
-	margin-bottom:100px;
-			margin-top:60px;
+	margin-bottom:50px;
+			margin-top:80px;
 			vertical-align: top;
 }
 
@@ -64,9 +64,9 @@ body {
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-bottom: 10px;
-	margin-bottom:100px;
-		margin-top:60px;
-		vertical-align: top;
+	margin-bottom:50px;
+	margin-top:80px;
+	vertical-align: top;
 
 }
 
@@ -132,6 +132,15 @@ body {
 	height: 150px;
 	
 
+}
+
+
+#footer {
+	background-color: rgba(255,255,255,0.5);
+	display:inline-block;
+	margin-bottom:50px;
+	width: 1200px;
+	height:50px;
 }
 
 
@@ -458,7 +467,4 @@ body {
     right: 20px;
     top: 26px;
   }
-#footer {
-	width:40px;
-	margin-bottom:100px;
-}
+  

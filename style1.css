@@ -23,7 +23,7 @@ body {
 
 #cadrage {
 		margin: auto;
-width:1200px;	
+		width:1200px;	
 }
 
 #post {
@@ -80,6 +80,24 @@ width:1200px;
 	padding-bottom: 10px;
 	margin-bottom:100px;
 
+}
+
+#footer {
+	background-color: rgba(255,255,255,0.5);
+	display:inline-block;
+	margin-top:50px;
+	margin-bottom:50px;
+	width: 1200px;
+	height:50px;
+}
+
+#footer1 {
+	background-color: rgba(255,255,255,0.5);
+	display:inline-block;
+	margin-top:-50px;
+	margin-bottom:50px;
+	width: 1200px;
+	height:50px;
 }
 
 ::-webkit-input-placeholder {
@@ -452,7 +470,3 @@ width:1200px;
     right: 20px;
     top: 26px;
   }
-#footer {
-	width:40px;
-	margin-bottom:100px;
-}

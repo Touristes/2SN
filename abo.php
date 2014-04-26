@@ -44,11 +44,12 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
     
 <div id='cssmenu'>
 <ul>
-   <li class='active'><a href='accueil.php'><span>Home</span></a></li>
-   <li class='last'><a href='#'><span>Messages</span></a></li>    
+   <li class='last'><a href='accueil.php'><span>Home</span></a></li>
+   <li><a href='messages.php'><span>Messages</span></a></li>    
    <li><a href='profil.php'><span>Mon Profil</span></a></li>
-   <li><a href='abo.php'><span>Abonnements</span></a></li>
+   <li class='active'><a href='abo.php'><span>Abonnements</span></a></li>
    <li class='last'><a href='deconnect.php'><span>Deconnexion</span></a></li>
+  
 </ul>
 </div>
 
@@ -213,8 +214,7 @@ for ($i = 0; isset($tab1[$i]); $i++)
 </div>
 
 <div id="footer">
-
-
+test test
 </div>
     
 </body>
