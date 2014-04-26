@@ -24,9 +24,9 @@ if (isset($_POST['reinitPassword'])) {
   <title>2SN Reinitialisation de mot de passe</title>
 </head>
 <body>
-<div id="inscription">
+<div id="resetmdp">
   Si vous avez perdu votre mot de passe, veuillez entrer votre adresse si dessous.
-  Un nouveau mot de passe sera envoye a votre adresse mail.
+  Un nouveau mot de passe sera envoye a votre adresse mail.<br />
 <form id="signup" name="reinitPassword" method="POST" action="reinitPassword.php">
 <input type="email" placeholder="john.doe@email.com" name="mail" required>
   <button type="submit" value="Reinitialiser le mot de passe" name="reinitPassword">Reinitialiser mon mot de passe</button>

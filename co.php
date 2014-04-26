@@ -59,7 +59,8 @@ $_SESSION['fail'] = 1;
     <button type="button" onClick="ValiderMail1(this.form)">Connexion</button>    
 </form>
 </div>
-<?php if ($_SESSION['fail'] == 1) echo "<a href=\"reinitPassword.php\">Vous avez oublie votre mot de passe ?</a>"; $_SESSION['fail'] = 0;?>
+<div id="reset">
+<?php if ($_SESSION['fail'] == 1) echo "<a href=\"reinitPassword.php\">Vous avez oublie votre mot de passe ?</a>"; $_SESSION['fail'] = 0;?></div>
 <div id="inscription">
 Nouveau sur 2SN ?</br></br>
 <form id="signup" name="monform" method="post" action="traite.php">
