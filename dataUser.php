@@ -85,6 +85,26 @@ function getUserID($login) {
     return (FALSE);
   return ($ID);
 }
+
+function getIDuser($id_user) {
+  $db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  $query = "select login from user where id_user like \"".$id_user."\";";
+  $result = $db->query($query);
+  while ($row = $result->fetchArray())
+    {
+      for ($i = 0; isset($row[$i]); $i++)
+       $ID = $row[$i];
+    }
+  dbClose($db);
+  if ($i > 1)
+    return (FALSE);
+  return ($ID);
+}
+
+
+
 function getUserIDWithMail($email) {
   $db = dbConnect();
   if ($db == FALSE)

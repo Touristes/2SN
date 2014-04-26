@@ -20,7 +20,7 @@ function delSubscription($id_subscriber, $id_user) {
   $i = 0;
   if ($db == FALSE)
     return (0);
-  $query = "DELETE FROM subscriber WHERE id_user = \"".$id_user."\" AND id_subscriber = \"".$id_subscriber."\" LIMIT 1;";
+  $query = "DELETE FROM subscriber WHERE id_user = \"".$id_user."\" AND id_subscriber = \"".$id_subscriber."\";";
   $result = $db->query($query);
   if ($result == FALSE)
     return (FALSE);
@@ -75,7 +75,7 @@ function getSubscriptionList($id_user) {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select id_user from subscribers where id_subscriber = \"".$id_user."\";";
+  $query = "select id_user from subscriber where id_subscriber = \"".$id_user."\";";
   $result = $db->query($query);
   for ($i = 0 ;$row = $result->fetchArray(); $i++)
     {

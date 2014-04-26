@@ -16,6 +16,7 @@ include "sessionInit.php";
 require_once "dataUser.php";
 require_once "dataConnect.php";
 require_once "dataSubscriber.php";
+$login = $_SESSION['login'];
 ?>
 <!doctype html>
 <html>
@@ -100,15 +101,84 @@ else
 <p><h3>Liste de tous les Users :</h3></p>
 <?
 $tab = getUserList();
+?>
+
+
+<form name="abo" action="" method="POST">
+
+<?
 foreach($tab as $val)
 {
-	echo $val . "</br>";
+	if ($val != $login && isSubrscriberOf(getUserID($login), getUserID($val)) == "false")
+	{
+?>
+
+<input type="checkbox" name="choice[]" value="<? echo $val; ?>"> <? echo $val; ?><br>
+<?
+	}
+}
+    echo "</br><button type=submit value=\"Ajouter a mes abonnements !\"/>Ajouter a mes abonnements !</button>";
+?>
+
+</form>
+
+<?
+if(isset($_POST['choice']))
+{
+	$choice = $_POST['choice'];
+	for ($i = 0; isset($choice[$i]); $i++)
+	{
+addSubscription(getUserID($login), getUserID($choice[$i]));
+	}
+?>
+<meta http-equiv="refresh" content="0">
+<?
 }
 ?>
+
+
+
 </div>
 
 <div id="sidebarr">
-test
+<p><h3>Mes abonnements :</h3></p>
+<?
+
+$tab = getSubscriptionList(getUserID($login));
+?>
+
+
+<form name="delabo" action="" method="POST">
+
+
+<?
+for ($i = 0; isset($tab[$i]); $i++)
+{
+?>
+	<input type="checkbox" name="choice1[]" value="<? echo $tab[$i]; ?>"> <? echo $tab[$i]; ?><br>
+<?
+}
+    echo "</br><button type=submit value=\"Supprimer de mes abonnements !\"/>Supprimer de mes abonnements !</button>";
+
+?>
+</form>
+
+<?
+if(isset($_POST['choice1']))
+{
+	$choice1 = $_POST['choice1'];
+	for ($i = 0; isset($choice1[$i]); $i++)
+	{
+delSubscription(getUserID($login), getUserID($choice1[$i]));
+	}
+?>
+<meta http-equiv="refresh" content="0">
+<?
+}
+
+
+?>
+
 
 
 </div>
