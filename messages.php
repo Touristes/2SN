@@ -35,7 +35,7 @@ $('#cssmenu #menu-button').on('click', function(){
       menu.addClass('open');
     }
   });
-        </script>
+</script>
     
     
 <div id='cssmenu'>
@@ -58,13 +58,17 @@ $id = getUserID($login);
 <button type="submit" value ="Boite d'envoi" name="sendBox">Boite d'envoi</button>
 </form>
 <?php //contenu de la page
-//Bouton nouveau message
+//Nouveau message
 if (isset($_POST['newMessage'])) {
 	echo "<form id=\"fromNewMessage\" method=\"POST\" action=\"messages.php\" name=\"formNewMessage\">";
-	echo "<input type=text placeholder=\"login du destinataire\" name=messageReceiverLogin  required />";
-	echo "<input type=text placeholder=\"Contenu de votre message\" name=messageContent required />";
-	echo "<button type=\"submit\" value =\"newMessageSend\" name=\"newMessageSend\">Envoyer</button>";
-	echo "</form>";
+	if ($_POST['messageID'] != "Nouveau message") {
+		echo "<input type=text name=messageReceiverLogin value=\"".$_POST['newMessage'])."\" required />";
+	}
+	else
+		echo "<input type=text placeholder=\"login du destinataire\" name=messageReceiverLogin  required />";
+	echo "<input type=text placeholder=\"Contenu de votre message\" name=messageContent required />"
+	. "<button type=\"submit\" value =\"newMessageSend\" name=\"newMessageSend\">Envoyer</button>"
+	. "</form>";
 }
 //Boite de reception
 else if (isset($_POST['receptionBox'])) {
@@ -101,12 +105,12 @@ else if (isset($_POST['newMessageSend']))
 {
 	if (isUsernameExist($_POST['messageReceiverLogin']) == FALSE) {
 		echo "<br>Le nom d'utilisateur ".$_POST['messageReceiverLogin']." n'existe pas.<br>";
-		header('Refresh: 10; url=messages.php');
 	}
 	else {
 		 addMessage($_POST['messageContent'], $id, getUserID($_POST['messageReceiverLogin']));
-echo "Votre message a bien été envoyé.";
-}
+		 echo "Votre message a bien été envoyé.";
+	}
+	header('Refresh: 5; url=messages.php');
 }
 //Contenu du message
 else if (isset($_POST['Message']))
@@ -114,10 +118,27 @@ else if (isset($_POST['Message']))
 	$id_message = $_POST['Message'];
 	$id_sender = getMessageSender($id_message);
 	$id_receiver = getMessageReceiver($id_message);
+	if ($id == $id_sender)
+	echo "<br><form id=\"formMessage\" method=\"POST\" action=\"messages.php\" name=\"formMessage\">";
+	if ($id == $id_sender)
+		echo "<button type=\"submit\" value =\"".getUserInfo("login",$id_receiver)."\" name=\"newMessage\">Relancer</button>";
+	else if ($id == $id_receiver)
+		echo "<button type=\"submit\" value =\"".getUserInfo("login",$id_sender)."\" name=\"newMessage\">Repondre</button>";
+	echo "<button type=\"submit\" value =\"delMessage\" name=\"delMessage\">Supprimer</button></form>";
 	echo "<br>Message du : ".getMessageDate($id_message);
 	echo "<br>Envoyé par : ".getUserInfo("login", $id_sender);
 	echo "<br>Reçu par : ".getUserInfo("login", $id_receiver);
 	echo "<br>" . getMessageContent($id_message);
+}
+//Effacement du message
+else if (isset($_POST['delMessage']))
+{
+	$id_message = $_POST['messageID'];
+	if (delMessage($id_message))
+		echo "Votre message a bien été effacé.";
+	else
+		echo "Le message que vous tentez d'effacer n'existe pas.";
+	header('Refresh: 5; url=messages.php');
 }
 ?>
 </div>
