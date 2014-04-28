@@ -140,6 +140,21 @@ else if (isset($_POST['delMessage']))
 		echo "Le message que vous tentez d'effacer n'existe pas.";
 	header('Refresh: 5; url=messages.php');
 }
+//Affichage de la boite de reception par défaut
+else {
+	$messageList = getMessageReceptionList($id);
+        if ($messageList[0] == "")
+        	echo "Votre boite de reception est vide";
+	echo "<ul>";
+	for ($i = 0; isset($messageList[$i]); $i++)
+	{
+		echo "<li><form id=\"formMessageID\" method=\"POST\" action=\"messages.php\" name=\"formMessageID\">"
+		     ."<button type=\"submit\" name =\"Message\" value=\"".$messageList[$i]."\">"
+		     .getMessageDate($messageList[$i])." : "
+		     .getUserInfo("login", getMessageSender($messageList[$i]))."</button></form></li>";
+	}
+	echo "</ul>";
+}
 ?>
 </div>
 <div id="footer">
