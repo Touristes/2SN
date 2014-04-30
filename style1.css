@@ -21,8 +21,12 @@ body {
 	display:block;
 }
 
+#cadrage {
+		margin: auto;
+		width:1200px;	
+}
+
 #post {
-	position:relative;
 	background-color: rgba(255,255,255,0.5);
 	display:inline-block;
 	margin-top: 80px;
@@ -30,15 +34,13 @@ body {
 	margin-right:auto;
 	text-align:left;
 	width: 1180px;
-	height: 150px;
+	height: 180px;
 	padding:10px;
 }
 
 #sidebarl {
 	background-color: rgba(255,255,255,0.5);
 	display:inline-block;
-	margin-left: auto;
-	margin-right:auto;
 	text-align:left;
 	width: 295px;
 	height: 600px;
@@ -52,8 +54,6 @@ body {
 #sidebarr {
 	background-color: rgba(255,255,255,0.5);
 	display:inline-block;
-	margin-left: auto;
-	margin-right:auto;
 	text-align:left;
 	width: 295px;
 	height: 600px;
@@ -79,6 +79,25 @@ body {
 	padding-right: 10px;
 	padding-bottom: 10px;
 	margin-bottom:100px;
+
+}
+
+#footer {
+	background-color: rgba(255,255,255,0.5);
+	display:inline-block;
+	margin-top:50px;
+	margin-bottom:50px;
+	width: 1200px;
+	height:50px;
+}
+
+#footer1 {
+	background-color: rgba(255,255,255,0.5);
+	display:inline-block;
+	margin-top:-50px;
+	margin-bottom:50px;
+	width: 1200px;
+	height:50px;
 }
 
 ::-webkit-input-placeholder {
@@ -122,8 +141,7 @@ body {
 	margin-top: 10px;
 	margin-left: 0px;
 	width: 1180px;
-	height: 150px;
-	
+	height: 50px;
 
 }
 
@@ -139,7 +157,7 @@ body {
     margin: 20px 0 0 0;
     padding: 15px 8px;
 	margin-left:30px;        
-    width: 10%;
+    width: 120px;
     cursor: pointer;
     border: 1px solid #2493FF;
     overflow: visible;
@@ -452,7 +470,3 @@ body {
     right: 20px;
     top: 26px;
   }
-#footer {
-	width:40px;
-	margin-bottom:100px;
-}
