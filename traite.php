@@ -30,7 +30,7 @@
 
 <?php
 
-require_once "dataUser.php";
+require_once "dataRef.php";
 if (isset($_POST['pseudo1']))
 {
 $password = $_POST['pass'];
