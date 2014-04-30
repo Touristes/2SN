@@ -1,10 +1,118 @@
 <?php
 require_once "dataConnect.php";
 
-//function addPost($category, $author, $content);
-//function delPost($id);
-//function showPost($id);
-//function showAllPost();
+/*
+function addPost($category, $author, $content)
+{
+  $title = $_POST["title"];
+  $post = $_POST["post"];
+  $query = 'INSERT INTO post (title, id_user, text, id_category, id_type ) VALUES ("'.$title.'",'.'1,"'.$post.'",2,'.'3'.');';
+  $result = dbQuery($query);
+  if ($result == 0)
+	return ("An error occured[ERR DBQUERY]");
+  else
+	return (0);
+}*/
+
+function delPost($id)
+{
+  $db = dbConnect();
+  if ($db == FALSE)
+	{
+	  dbClose($db);
+	  return("[ERR DBCONNECT]");
+	}
+  else
+	{
+	  $query = "DELETE * FROM post where id_post=".$id.";";
+	  $result = dbQuery($query);
+	  if ($result == 0)
+		{
+		  dbClose($db);
+		  return("[ERR DBQUERY]");
+		}
+	  else
+		{
+		  dbClose($db);
+		  return(0);
+		}
+	}
+}
+
+
+function showPost($id)
+{
+  $db = $dbConnect();
+  if ($db == 0)
+	{
+	  dbClose($db);
+	  return("[ERR DBCONECT]");
+	}
+  else
+	{
+	  $query = "SELECT * FROM post WHERE id_post=".$id.";";
+	  $result = dbSelectToArry($query);
+	  if ($result == 0)
+		{
+		  dbClose($db);
+		  return("[ERR DBQUERY]");
+		}
+	  else
+		{
+		  dbClose($db);
+		  return($result);
+		}
+	}
+}
+
+
+function showAllPost()
+{
+  $db = dbConnect();
+  if ($db == FALSE)
+	return("[ERR DBCONNECT]");
+  else
+	{
+	  $query = "SELECT * FROM post;";
+	  $allpost = dbSelectToArray($query);
+	  if ($allpost == 0)
+		{
+		  dbClose($db);
+		  return ("[ERR DBTOARRAY]");
+		}
+	  else
+		{
+		  dbClose($db);
+		  return ($allpost);
+		}
+	}
+}
+
 //function showMultiplePost($field, $value);
-//function getPostID($author, $date);
+
+function getPostID($author, $date);
+{
+  $db = dbConnect();
+  if ($db == 0)
+	{
+	  dbClose($db);
+	  return("[ERR DBCONECT]");
+	}
+  else
+	{
+	  $query = "SELECT id_post FROM post WHERE id_user = {SELECT id_user FROM users WHERE name = ".$author.";} AND created = ".$date";";
+	  $result = dbQuery($query);
+	  if ($result = 0)
+		{
+		  dbClose($db);
+		  return("[ERR DBQUERY]");
+		}
+	  else
+		{
+		  dbCLose($db);
+		  return($result);
+		}
+	}
+}
+
 ?>
