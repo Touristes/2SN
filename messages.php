@@ -116,8 +116,7 @@ else if (isset($_POST['Message']))
 	$id_message = $_POST['Message'];
 	$id_sender = getMessageSender($id_message);
 	$id_receiver = getMessageReceiver($id_message);
-	if ($id == $id_sender)
-	echo "<br><form id=\"formMessage\" method=\"POST\" action=\"messages.php\" name=\"formMessage\">";
+	echo "<form id=\"formMessage\" method=\"POST\" action=\"messages.php\" name=\"formMessage\">";
 	if ($id == $id_sender)
 		echo "<button type=\"submit\" value =\"".getUserInfo("login",$id_receiver)."\" name=\"newMessage\">Relancer</button>";
 	else if ($id == $id_receiver)
