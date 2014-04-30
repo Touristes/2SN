@@ -1,7 +1,6 @@
 <?php
 include "sessionInit.php";
-require_once "dataMessages.php";
-require_once "dataUser.php";
+require_once "dataRef.php";
 
 if (!isset($_SESSION['check']))
 {
