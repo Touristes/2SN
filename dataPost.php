@@ -90,7 +90,7 @@ function showAllPost()
 
 //function showMultiplePost($field, $value);
 
-function getPostID($author, $date);
+function getPostID($author, $date)
 {
   $db = dbConnect();
   if ($db == 0)
@@ -100,7 +100,7 @@ function getPostID($author, $date);
 	}
   else
 	{
-	  $query = "SELECT id_post FROM post WHERE id_user = {SELECT id_user FROM users WHERE name = ".$author.";} AND created = ".$date";";
+	  $query = "SELECT id_post FROM post WHERE id_user = {SELECT id_user FROM users WHERE name = ".$author.";} AND created = ".$date.";";
 	  $result = dbQuery($query);
 	  if ($result = 0)
 		{
