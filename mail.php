@@ -1,5 +1,6 @@
 <?php
 require_once("dataRef.php");
+//Generation d un mot de passe aleatoire
 function generatePassword() {
   $password = substr(str_shuffle(md5(mt_rand())), 0, 8);
   return ($password);
@@ -19,11 +20,10 @@ function renewPassword($id) {
     echo "\nErreur technique le mail n'a pas pu être envoyé.\n";
     return (false);
   }
-  //  echo "Votre nouveau mot de passe est : " . $password;
   echo "<br>Vous allez recevoir votre nouveau mot de passe par e-mail.<br>";
   return (true);
 }
-
+//Definition du contenu du mail avant envoi
 function sendPasswordMail($mail, $password, $login) {
   $passage_ligne = "\n";
   $sujet = "Your new password for why";
@@ -37,7 +37,7 @@ function sendPasswordMail($mail, $password, $login) {
   else
     return (true);
 }
-
+//Configuration automatique du SMTP
 function configureSMTP() {
   ini_set( "SMTP", "ssl://smtp.gmail.com" );
   ini_set( "smtp_port", "465" );
@@ -46,7 +46,7 @@ function configureSMTP() {
   ini_set( "sendmail_from", "whyproject.2sn@gmail.com" );
   return (true);
 }
-
+//Definition du header du mail et envoi
 function sendMail($mail, $message_txt, $sujet, $passage_ligne) {
   $boundary = "-----=".md5(mt_rand());
   $header = "From: \"Why project\"<noreply@whyproject.com>".$passage_ligne;
