@@ -1,18 +1,18 @@
 <?php
-require_once "dataConnect.php";
 
-/*
-function addPost($category, $author, $content)
+function addPost($post)
 {
-  $title = $_POST["title"];
-  $post = $_POST["post"];
-  $query = 'INSERT INTO post (title, id_user, text, id_category, id_type ) VALUES ("'.$title.'",'.'1,"'.$post.'",2,'.'3'.');';
+  $title = $post[1];
+  $content = $post[2];
+  $query = "SELECT id_user from user where name=".$post[0].";";
+  $id_user = dbQuery($query);
+  $query = 'INSERT INTO post (title, id_user, text, id_category, id_type ) VALUES ("'.$title.'",'.$id_user.',"'.$content.'",2,'.'3'.');';
   $result = dbQuery($query);
   if ($result == 0)
 	return ("An error occured[ERR DBQUERY]");
   else
 	return (0);
-}*/
+}
 
 function delPost($id)
 {
@@ -114,5 +114,6 @@ function getPostID($author, $date)
 		}
 	}
 }
+
 
 ?>
