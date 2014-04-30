@@ -1,12 +1,41 @@
 <?php
 require_once "dataConnect.php";
+require_once "dataGroups.php";
+
+function SearchUser($search) {
+  $db = dbConnect();
+  $i = 0;
+  if ($db == FALSE)
+    return (0);
+  $query = "select login from user where login like \"".$search."\" limit 1;";
+  $result = $db->query($query);
+  while ($row = $result->fetchArray())
+    {
+      for ($i = 0; isset($row[$i]); $i++)
+        $login = $row[$i];
+    }
+  dbClose($db);
+  if ($i == 0)
+    return (FALSE);
+  else
+    return ($login);
+}
 
 function addUser($login, $email, $password) {
-  $db = dbConnect();
+  $db =dbConnect();
   if ($db == FALSE)
     return (FALSE);
-  $query = "insert into USER (login, email, password, created, modified, type, last_connection) values \"".
-    $username."\",\"".$email."\",".md5($password)."\"\, date('now'), date('now'), \"user\", date('now'));";
+  initDefaultUserGroups();
+  $query = "INSERT INTO user (login, email, password, created, modified, last_connexion) values (\"".$login."\",\"".$email."\",\"".md5($password)."\",date('now'),date('now'),date('now'));";
+  $result = $db->query($query);
+  if ($result == FALSE)
+    {
+      dbClose($db);
+      return (FALSE);
+    }
+  $ID = getUserID($login);
+  $ID_groups = getGroupID("user");
+  $query = "INSERT INTO belong (id_groups, id_user) values (\"".$ID_groups."\",\"".$ID."\");";
   $result = $db->query($query);
   if ($result == FALSE)
     {
@@ -17,11 +46,20 @@ function addUser($login, $email, $password) {
   return (TRUE);
 }
 function addAdmin($login, $email, $password) {
-  $db = dbConnect();
+  $db =dbConnect();
   if ($db == FALSE)
     return (FALSE);
-  $query = "insert into USER (login, email, password, created, modified, type, last_connection) values \"".
-    $username."\",\"".$email."\",".md5($password)."\"\, date('now'), date('now'), \"admin\", date('now'));";
+  initDefaultUserGroups();
+  $query = "INSERT INTO user (login, email, password, created, modified, last_connexion) values (\"".$login."\",\"".$email."\",\"".md5($password)."\",date('now'),date('now'),date('now'));";
+  $result = $db->query($query);
+  if ($result == FALSE)
+    {
+      dbClose($db);
+      return (FALSE);
+    }
+  $ID = getUserID($login);
+  $ID_groups = getGroupID("admin");
+  $query = "INSERT INTO belong (id_groups, id_user) values (\"".$ID_groups."\",\"".$ID."\");";
   $result = $db->query($query);
   if ($result == FALSE)
     {
@@ -35,7 +73,7 @@ function getUserID($login) {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select id_user from USER where login like \"".$login."\";";
+  $query = "select id_user from user where login like \"".$login."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
     {
@@ -47,11 +85,48 @@ function getUserID($login) {
     return (FALSE);
   return ($ID);
 }
+
+function getIDuser($id_user) {
+  $db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  $query = "select login from user where id_user like \"".$id_user."\";";
+  $result = $db->query($query);
+  while ($row = $result->fetchArray())
+    {
+      for ($i = 0; isset($row[$i]); $i++)
+       $ID = $row[$i];
+    }
+  dbClose($db);
+  if ($i > 1)
+    return (FALSE);
+  return ($ID);
+}
+
+
+
+function getUserIDWithMail($email) {
+  $db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  $query = "select id_user from user where email like \"".$email."\";";
+  $result = $db->query($query);
+  while ($row = $result->fetchArray())
+    {
+      for ($i = 0; isset($row[$i]); $i++)
+	$ID = $row[$i];
+    }
+  dbClose($db);
+  if ($i > 1)
+    return (FALSE);
+  return ($ID);
+}
+
 function getUserInfo($field, $ID) {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select \"".$field."\" from USER where id_user like \"".$ID."\";";
+  $query = "select \"".$field."\" from user where id_user like \"".$ID."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
     {
@@ -63,11 +138,45 @@ function getUserInfo($field, $ID) {
     return (FALSE);
   return ($info);
 }
+function getUserList() {
+  $db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  $query = "select login from user;";
+  $result = $db->query($query);
+  for ($i = 0 ;$row = $result->fetchArray(); $i++)
+    {
+        $array[$i] = $row[0];
+    }
+  dbClose($db);
+  return ($array);
+}
 function delUser($id) {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "delete from USER where id_user like \"".$id."\";";
+  $query = "delete from user where id_user = \"".$id."\";";
+  $result = $db->query($query);
+  if ($result == FALSE)
+    {
+      dbClose($db);
+      return (FALSE);
+    }
+  $query = "delete from groups where id_user = \"".$id."\";";
+  $result = $db->query($query);
+  if ($result == FALSE)
+    {
+      dbClose($db);
+      return (FALSE);
+    }
+  $query = "delete from belong where id_user = \"".$id."\";";
+  $result = $db->query($query);
+  if ($result == FALSE)
+    {
+      dbClose($db);
+      return (FALSE);
+    }
+  $query = "delete from subscriber where id_user = \"".$id."\" or id_subscriber = \"".$id."\";";
   $result = $db->query($query);
   if ($result == FALSE)
     {
@@ -79,9 +188,10 @@ function delUser($id) {
 }
 function isUsernameExist($login){
   $db = dbConnect();
+  $i = 0;
   if ($db == FALSE)
     return (0);
-  $query = "select id_user from USER where login like \"".$login."\";";
+  $query = "select id_user from user where login like \"".$login."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
     {
@@ -95,9 +205,10 @@ function isUsernameExist($login){
 }
 function isEmailExist($email){
   $db = dbConnect();
+  $i = 0;
   if ($db == FALSE)
     return (0);
-  $query = "select id_user from USER where email like \"".$email."\";";
+  $query = "select id_user from user where email like \"".$email."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
     {
@@ -114,7 +225,7 @@ function userConnect($login, $password){
   if ($db == FALSE)
     return (0);
   $id = getUserID($login);
-  $query = "select id_user from USER where id_user = \"".$id."\" and password = \"".md5($password)."\";";
+  $query = "select id_user from user where id_user = \"".$id."\" and password = \"".md5($password)."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
     {
@@ -123,7 +234,7 @@ function userConnect($login, $password){
     }
   if ($i > 0)
     {
-      $query = "update USER set last_connection = date('now') where id_user = \"".$id."\";";
+      $query = "update user set last_connexion = date('now') where id_user = \"".$id."\";";
       $result = $db->query($query);
       dbClose($db);
       return (TRUE);
@@ -135,23 +246,25 @@ function setUserField($id, $field, $newContent){
   $db = dbConnect();
   if ($db == FALSE)
     return (FALSE);
-  $query = "update USER set \"".$field."\"=\"".$newContent."\" where id_user = \"".$id."\";";
+  $query = "update user set \"".$field."\"=\"".$newContent."\" where id_user = \"".$id."\";";
   $result = $db->query($query);
   if ($result == FALSE)
     {
       dbClose($db);
       return (FALSE);
     }
-  $query = "update USER set modified = date('now') where id_user = \"".$id."\";";
+  $query = "update user set modified = date('now') where id_user = \"".$id."\";";
   $result = $db->query($query);
   dbClose($db);
   return (TRUE);
 }
 function isUserAdmin($id){
   $db = dbConnect();
+  $i = 0;
   if ($db == FALSE)
     return (0);
-  $query = "select id_user from USER where type = \"admin\" and id_user like \"".$id."\";";
+  $id_groups = getGroupID("admin");
+  $query = "select id_user from belong where id_groups = \"".$id_groups."\" and id_user = \"".$id."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
     {
