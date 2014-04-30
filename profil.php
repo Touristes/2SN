@@ -58,6 +58,7 @@ if(isset($_SESSION['login']))
   {
     $login = $_SESSION['login'];
     $id = getUserID($login);
+    //Traitement du formulaire de mise a jour des donnes personnelles 
     if (isset($_POST['login'])) {
       if (setUserField($id,"login",$_POST['login']) == false)
 	echo "Error on field login";
@@ -82,7 +83,9 @@ if(isset($_SESSION['login']))
       if (setUserField($id,"postalcode",$_POST['postalcode']) == false)
         echo "Error on field postalcode";
     }
+    //Changement de mot de passe  et effacement de l utilisateur
     if (isset($_POST['deluser']) || isset($_POST['changepasswd'])) {
+    	//suppression de l utilisateur avec controle du mot de passe
       if (isset($_POST['deluser'])) {
 	if (isset($_POST['passwd'])) {
 	  if (userConnect($id,$login) == true) {
@@ -99,6 +102,7 @@ if(isset($_SESSION['login']))
         echo "<input type=submit value=\"Valider\"></form>";}
       }
       if (isset($_POST['changepasswd'])) {
+      	//Change;ent du mot de passe
         if (isset($_POST['passwd']) || isset($_POST['newpasswd'])) {
           if (userConnect($id,$login) == true) {
             setUserField($id,"password",md5($_POST['newpasswd']));
@@ -115,6 +119,7 @@ if(isset($_SESSION['login']))
 	  echo "<br><input type=submit value=\"Valider\"></form>";}
       }
     }
+    //Affichage des info personnelles
     else {
     echo "Voici le compte-rendu de vos informations personnelles : ";
 	 echo "</br></br></br>Nombre d'abonnés : ".getSubscriberNumber($id);
