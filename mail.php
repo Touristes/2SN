@@ -1,5 +1,5 @@
 <?php
-require_once("dataUser.php");
+require_once("dataRef.php");
 function generatePassword() {
   $password = substr(str_shuffle(md5(mt_rand())), 0, 8);
   return ($password);
