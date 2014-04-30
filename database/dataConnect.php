@@ -1,6 +1,6 @@
 <?php
 function dbConnect() {
-  $dbname = 'database.db';
+  $dbname = './database/database.db';
   $db = new SQLite3($dbname);
   if (isset($db))
     return ($db);
