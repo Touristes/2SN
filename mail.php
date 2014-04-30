@@ -51,7 +51,7 @@ function sendDeletingAccountMail($mail, $login) {
     return (true);
 }
 //Definition du contenu du mail de creation de compte avant envoi
-function sendDeletingAccountMail($mail, $login) {
+function sendCreatingAccountMail($mail, $login) {
   $passage_ligne = "\n";
   $sujet = "Welcome in why";
 
@@ -64,7 +64,7 @@ function sendDeletingAccountMail($mail, $login) {
     return (true);
 }
 //Definition du contenu du mail de creation notification de message prive avant envoi
-function sendDeletingAccountMail($mail, $login, $login_sender) {
+function sendMPNotificationMail($mail, $login, $login_sender) {
   $passage_ligne = "\n";
   $sujet = "Why : vous avez recu un nouveau message";
 
