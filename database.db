@@ -1,0 +1,47 @@
+c-??te format 3@  c
+?v>?v*z?
+O??+r?)E
+Md41d8cd98f00b204e9800998ecf8427eiii 3Mchauffour@orange.frtom134b7da764b21d298ef307d04d8152dc5????AMthomas.chauffour@orange.frtom34b7da764b21d298ef307d04d8152dc5iii?)M!tata@gmail.comtata49d02d55ad10973b7b9d0dc9eba7fdf0||2014-04-099%Mth@orange.frtest098f6bcd4621d373cade4e832627b4f6sss?'Mtho@orange.frtest15a105e8b9d40e1329780d62ea2265d8a????9Mth.chauffour@orange.frtesti !!!grognet.florent@gmail.comFlorent6de346fcfd5d365185f5273fc40a420d2014-04-232014-04-232014-04-30[                            ?
+                                                                                        )M!!!toto@gmail.comtata49d02d55ad10973b7b9d0dc9eba7fdf02014-04-232014-04-232014-04-23_
+                                               /M!!!maxime@isefac.orgBobbyb238c13e822536cad3ac57a2280fbf452014-04-232014-04-232???)?serroot2014-04-23!adminroot2014-04-2342014-04-26b494817525c6?2014-04-232014-04-23
+     ]?k?9tableuseruserCREATE TABLE user
+(id_user integer primary key, email varchar(60), name varchar(30), firstname varchar(30), postalcode integer, login varchar(30), password varchar, created date, modified date, last_connexion date)?tablemessagemessageCREATE TABLE message
+tablesubscribersubscriberCREATE TABLE subscriber, id_user integer, id_receiver integer, reated date)a!!?
+(id_user integer, id_subscriber integer)}?UtablegroupsgroupsCREATE TABLE groups
+(id_groups integer primary key, name varchar(30), id_user integer, created date)P}tablebelongbelongCREATE TABLE belong
+(id_groups integer, id_user integer)? !!?
+                                         tablerepositoryrepositoryCREATE TABLE repository
+??d_repository integer primary key, name varchar(30), id_groups integer, id_user integer, created date)
+  e?h??R?tablesharesharCREATE TABLE share
+(id_repository integer, id_user integer)tablecontaincontain
+CREATE TABLE contain
+(id_repository integer, id_file integer)q	?Etablefilefile
+                                                               CREATE TABLE file
+(id_file integer primary key, id_user integer, created date, path varchar)?
+CREATE TABLE picture
+(id_picture integer primary key, id_user integer, id_post integer, path varchar, posted date)?
+                                                                                              ?gtablevideovideoCREATE TABLE video
+(id_video integer primary key, id_user integer, id_post integer, url varchar, posted date)?
+                                                                                           ?tablepostpostCREATE TABLE post
+?;tablecategorycategoryCREATE TABLE categoryid_category integer, id_user integer, created date, tags varchar(15))t
+?id_cate???N7?&k???p))Eimary key, name varchar(15), created date)
+                       +Mtoto6@gmail.comtoto6cf79b41c0c309969de7a048f01f776d4???E
++Mtoto5@gmail.comtoto5853a8760759e46f00c2a4b0417b88116???E
+
+                                                          +Mtoto4@gmail.comtot_
+M!!thomas.chauffour@gmail.comtotof71dbe52628a3f83a77ab494817525c6?2014-04-232014-04-23K
+                                                                                       )M!tata@gmail.comtata49d02d55ad10973b7b9d0dc9eba7fdf0||2014-04-09?M)M!toto@gmail.comtotof71dbe52628a3f83a77ab494817525c6??2014-04-231
+Md41d8cd98f00b204e9800998ecf8427eiiiH
+                                     3Mchauffour@orange.frtom134b7da764b21d298ef307d04d8152dc5???N
+                                                                                                  AMthomas.chauffour@orange.frtom34b7da764b21d298ef307d04d8152dc5iiiE)Mtata@gmail.comtata49d02d55ad10973b7b9d0dc9eba7fdf0|||A
+                                                                                              %Mth@orange.frtest098f6bcd4621d373cade4e832627b4f6sssC
+                     'Mtho@orange.frtest15a105e8b9d40e1329780d62ea2265d8a???L
+                                                                            9Mth.chauffour@orange.frtest2ad0234829205b9033196ba818f7a872b???E	
+                +Mtoto1@gmail.comtoto1d9bb4a8aad7b5e737beeee4813577d1f???-t?A??.q-M!!!tata@tataThomas ChauffourThomas??tito5d933eef19aee7da192608de61b6c23d2014-04-092014-04-092014-04-09E
+
++Mtoto2@gmail.comtoto298f2ca614f219bdff9f3637a47338182???E
+
+                                                          +Mtoto3@gmail.comtoto311701f1f88db8c691a0ca6ac520c7706???E
+
+                                                                                                                    +Mtoto4@gmail.comtoto4f4560e3ba119e244a31ee8974ed6768c???E
++Mtoto5@gmail.comtoto5853a8760759e46f00c2a4b0417b88116???E+Mtoto6@gmail.comtoto6cf79b41sgr@sdvwgf71dbe52628a3f83a77ab494817525c6oooD#Mtest30@testtest3040a0d0d497cbced7d9b87e4359f1e94a???
