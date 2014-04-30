@@ -23,7 +23,7 @@ require_once "dataSubscriber.php";
 <link rel="stylesheet" type="text/css" href="style3.css" />
 
 <meta charset="UTF-8">
-<title>2SN - Accueil</title>
+<title>[Why] - Accueil</title>
 </head>
 
 <body>
@@ -47,7 +47,7 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
    <li><a href='messages.php'><span>Messages</span></a></li>    
    <li class='active'><a href='profil.php'><span>Mon Profil</span></a></li>
    <li><a href='abo.php'><span>Abonnements</span></a></li>
-   <li class='last'><a href='deconnect.php'><span>Deconnexion</span></a></li>
+   <li class='last'><a href='deconnect.php'><span>Déconnexion</span></a></li>
 </ul>
 </div>
 
@@ -89,14 +89,14 @@ if(isset($_SESSION['login']))
 	if (isset($_POST['passwd'])) {
 	  if (userConnect($id,$login) == true) {
 	    delUser($id);
-	    echo "Votre utilisateur a ete supprime.";
+	    echo "Votre utilisateur a été supprimé.";
 	    include "deconnect.php";
 	  }
 	  else
 	    echo "Erreur de mot de passe.";
 	  }
 	else {
-	echo "Si vous souhaitez vraiment effacer votre utilisateur, merci de retaper votre mot de passe :";
+	echo "Si vous souhaitez vraiment effacer votre utilisateur, merci de re-saisir votre mot de passe :";
 	echo "<form method=\"POST\" action=\"profil.php\"><input type=hidden name=deluser /><input type=password name=passwd />";
         echo "<input type=submit value=\"Valider\"></form>";}
       }
@@ -104,22 +104,22 @@ if(isset($_SESSION['login']))
         if (isset($_POST['passwd']) || isset($_POST['newpasswd'])) {
           if (userConnect($id,$login) == true) {
             setUserField($id,"password",md5($_POST['newpasswd']));
-            echo "Votre mot de passe a ete change.";
+            echo "Votre mot de passe a été changé.";
           }
           else
             echo "Erreur de mot de passe.";
 	}
         else {
-	  echo "Si vous souhaitez modifier votre mot de passe, merci de le taper une nouvelle fois :";
+	  echo "Si vous souhaitez modifier votre mot de passe, merci de le saisir une nouvelle fois :";
 	  echo "<form method=\"POST\" action=\"profil.php\"><input type=hidden name=changepasswd /><input type=password name=passwd />";
-	  echo "<br>Veuillez taper votre nouveau mot de passe : ";
+	  echo "<br>Veuillez saisir votre nouveau mot de passe : ";
 	  echo "<input type=password name=newpasswd />";
 	  echo "<br><input type=submit value=\"Valider\"></form>";}
       }
     }
     else {
     echo "Voici le compte-rendu de vos informations personnelles : ";
-	 echo "</br></br></br>Nombre d'abonnes : ".getSubscriberNumber($id);
+	 echo "</br></br></br>Nombre d'abonnés : ".getSubscriberNumber($id);
     echo "<form id=\"signup\" method=\"POST\" action=\"profil.php\"></br>User name : </br><input type=text name=login  value=\"".$login."\" />";
     echo "</br>E-Mail : </br><input type=text name=email  value=\"".getUserInfo("email",$id)."\" />";
     echo "</br>Name : </br><input type=text name=name  value=\"".getUserInfo("name",$id)."\" />";

@@ -14,7 +14,7 @@ if ($test == TRUE)
 	session_start();
 	$_SESSION['login'] = $login;
 	$_SESSION['check'] = "1";
-	echo "<script type=\"text/javascript\">alert(\"Connexion reussie !!\");location =\"accueil.php\"</script>";
+	echo "<script type=\"text/javascript\">alert(\"Connexion réussie !!\");location =\"accueil.php\"</script>";
 
 }
 else if ($test == FALSE)
@@ -32,7 +32,7 @@ $_SESSION['fail'] = 1;
 <head>
 <link rel="stylesheet" type="text/css" href="style.css" />
 <meta charset="UTF-8">
-<title>2SN Connexion</title>
+<title>[Why] Connexion</title>
 </head>
 <body>
 <SCRIPT language="javascript">
@@ -62,7 +62,7 @@ $_SESSION['fail'] = 1;
 <div id="reset">
 <?php if ($_SESSION['fail'] == 1) echo "<a href=\"reinitPassword.php\">Vous avez oublie votre mot de passe ?</a>"; $_SESSION['fail'] = 0;?></div>
 <div id="inscription">
-Nouveau sur 2SN ?</br></br>
+Nouveau sur [Why] ?</br></br>
 <form id="signup" name="monform" method="post" action="traite.php">
     <input type="email" placeholder="john.doe@email.com" name="mail" required>
     <input type="text" placeholder="Choisis ton pseudo !" name="pseudo" required>                  

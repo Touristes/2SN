@@ -19,7 +19,7 @@ else if ($_SESSION['check'] != "1")
 <link rel="stylesheet" type="text/css" href="style1.css" />
 
 <meta charset="UTF-8">
-<title>2SN - Accueil</title>
+<title>[Why] - Accueil</title>
 </head>
 
 <body>
@@ -44,7 +44,7 @@ $('#cssmenu #menu-button').on('click', function(){
    <li class='active'><a href='messages.php'><span>Messages</span></a></li>    
    <li><a href='profil.php'><span>Mon Profil</span></a></li>
    <li><a href='abo.php'><span>Abonnements</span></a></li>
-   <li class='last'><a href='deconnect.php'><span>Deconnexion</span></a></li>
+   <li class='last'><a href='deconnect.php'><span>Déconnexion</span></a></li>
 </ul>
 </div>
 <div id="post">
@@ -54,8 +54,8 @@ $id = getUserID($login);
 ?>
 <form id="formMenuBox" method="POST" action="messages.php" name="formMenuBox">
 <button type="submit" value ="Nouveau message" name="newMessage">+</button>
-<button type="submit" value ="Boite de reception" name="receptionBox">Boite de reception</button>
-<button type="submit" value ="Boite d'envoi" name="sendBox">Boite d'envoi</button>
+<button type="submit" value ="Boite de reception" name="receptionBox">Boîte de réception</button>
+<button type="submit" value ="Boite d'envoi" name="sendBox">Boîte d'envoi</button>
 </form>
 <?php //contenu de la page
 //Nouveau message
@@ -74,7 +74,7 @@ if (isset($_POST['newMessage'])) {
 else if (isset($_POST['receptionBox'])) {
 	$messageList = getMessageReceptionList($id);
         if ($messageList[0] == "")
-        	echo "Votre boite de reception est vide";
+        	echo "Votre boîte de reception est vide";
 	echo "<ul>";
 	for ($i = 0; isset($messageList[$i]); $i++)
 	{
@@ -123,7 +123,7 @@ else if (isset($_POST['Message']))
 	if ($id == $id_sender)
 		echo "<button type=\"submit\" value =\"".getUserInfo("login",$id_receiver)."\" name=\"newMessage\">Relancer</button>";
 	else if ($id == $id_receiver)
-		echo "<button type=\"submit\" value =\"".getUserInfo("login",$id_sender)."\" name=\"newMessage\">Repondre</button>";
+		echo "<button type=\"submit\" value =\"".getUserInfo("login",$id_sender)."\" name=\"newMessage\">Répondre</button>";
 	echo "<button type=\"submit\" value =\"delMessage\" name=\"delMessage\">Supprimer</button></form>";
 	echo "<br>Message du : ".getMessageDate($id_message);
 	echo "<br>Envoyé par : ".getUserInfo("login", $id_sender);
@@ -144,7 +144,7 @@ else if (isset($_POST['delMessage']))
 else {
 	$messageList = getMessageReceptionList($id);
         if ($messageList[0] == "")
-        	echo "Votre boite de reception est vide";
+        	echo "Votre boîte de réception est vide";
 	echo "<ul>";
 	for ($i = 0; isset($messageList[$i]); $i++)
 	{

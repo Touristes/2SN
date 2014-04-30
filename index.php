@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>2SN</title>
+<title>[Why]</title>
 </head>
 
 <?php

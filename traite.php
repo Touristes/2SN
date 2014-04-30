@@ -3,7 +3,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="style.css" />
 <meta charset="UTF-8">
-<title>2SN Inscription</title>
+<title>[Why] Inscription</title>
 </head>
 
 <SCRIPT language="javascript">
@@ -18,14 +18,14 @@
 </SCRIPT>
 
 <div id="final">
-<center><font size="15">Rejoins 2SN aujourd'hui !</font></center></br></br>
+<center><font size="15">Rejoins [Why] aujourd'hui !</font></center></br></br>
 <form id="signup" name="monform" method="post" action="">
     <input type="email" placeholder="john.doe@email.com" name="mail" value="<?php echo $_POST['mail'] ?>" required></br></br>
     <input type="text" placeholder="Choisis ton pseudo !" name="pseudo1" value="<?php echo $_POST['pseudo'] ?>"required></br></br>        
     <input type="password" placeholder="Choisis ton mot de passe !" name="pass" value="<?php echo $_POST['pass'] ?>" required></br></br>
     <input type="password" placeholder="Confirme ton mot de passe !" name="pass1" required></br></br>
 	<input type="checkbox" name="conditions" value="ok"/> J'accepte les conditions.
-    <button type="button" onClick="ValiderMail(this.form)">Creer mon compte</button>    
+    <button type="button" onClick="ValiderMail(this.form)">Créer mon compte</button>    
 </form>
 
 <?php
@@ -46,19 +46,19 @@ if ($test == false && $test1 == false)
 	include "sessionInit.php";
 	$_SESSION['login'] = $login;
 	$_SESSION['check'] = "1";
-	echo "<script type=\"text/javascript\">alert(\"Compte cree avec succes !!\");location =\"accueil.php\"</script>";
+	echo "<script type=\"text/javascript\">alert(\"Compte créé avec succès !!\");location =\"accueil.php\"</script>";
 
 }
 else if ($test == true)
 {
 echo '<script language="Javascript">
-alert ("Ce pseudo existe deja !" )
+alert ("Ce pseudo existe déjà !" )
 </script>';
 }
 else if ($test1 == true)
 {
 echo '<script language="Javascript">
-alert ("Cette email existe deja !" )
+alert ("Cet email existe déjà !" )
 </script>';		
 }
 }

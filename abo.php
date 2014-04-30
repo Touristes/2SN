@@ -24,7 +24,7 @@ $login = $_SESSION['login'];
 <link rel="stylesheet" type="text/css" href="style3.css" />
 
 <meta charset="UTF-8">
-<title>2SN - Abo</title>
+<title>[Why] - Abo</title>
 </head>
 
 <body>
@@ -48,7 +48,7 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
    <li><a href='messages.php'><span>Messages</span></a></li>    
    <li><a href='profil.php'><span>Mon Profil</span></a></li>
    <li class='active'><a href='abo.php'><span>Abonnements</span></a></li>
-   <li class='last'><a href='deconnect.php'><span>Deconnexion</span></a></li>
+   <li class='last'><a href='deconnect.php'><span>Déconnexion</span></a></li>
   
 </ul>
 </div>
@@ -195,7 +195,7 @@ delSubscription(getUserID($login), getUserID($choice1[$i]));
 ?>
 
 
-<p><h3>Mes abonnes :</h3></p>
+<p><h3>Mes abonnés :</h3></p>
 
 <?
 $tab1 = getSubscriberList(getUserID($login));
