@@ -19,7 +19,7 @@ else if ($_SESSION['check'] != "1")
 <link rel="stylesheet" type="text/css" href="style1.css" />
 
 <meta charset="UTF-8">
-<title>[Why] - Accueil</title>
+<title>2SN - Accueil</title>
 </head>
 
 <body>
@@ -44,7 +44,7 @@ $('#cssmenu #menu-button').on('click', function(){
    <li class='active'><a href='messages.php'><span>Messages</span></a></li>    
    <li><a href='profil.php'><span>Mon Profil</span></a></li>
    <li><a href='abo.php'><span>Abonnements</span></a></li>
-   <li class='last'><a href='deconnect.php'><span>Déconnexion</span></a></li>
+   <li class='last'><a href='deconnect.php'><span>Deconnexion</span></a></li>
 </ul>
 </div>
 <div id="post">
@@ -53,28 +53,28 @@ $login = $_SESSION['login'];
 $id = getUserID($login);
 ?>
 <form id="formMenuBox" method="POST" action="messages.php" name="formMenuBox">
-<button type="submit" value ="Nouveau message" name="newMessage">+</button>
-<button type="submit" value ="Boite de reception" name="receptionBox">Boîte de réception</button>
-<button type="submit" value ="Boite d'envoi" name="sendBox">Boîte d'envoi</button>
+<button type="submit" value ="newMessage" name="newMessage">+</button>
+<button type="submit" value ="Boite de reception" name="receptionBox">Boite de reception</button>
+<button type="submit" value ="Boite d'envoi" name="sendBox">Boite d'envoi</button>
 </form>
 <?php //contenu de la page
 //Nouveau message
 if (isset($_POST['newMessage'])) {
 	echo "<form id=\"fromNewMessage\" method=\"POST\" action=\"messages.php\" name=\"formNewMessage\">";
-	if ($_POST['messageID'] != "Nouveau message") {
+	if ($_POST['newMessage'] != "newMessage") {
 		echo "<input type=text name=messageReceiverLogin value=\"".$_POST['newMessage']."\" required />";
 	}
 	else
 		echo "<input type=text placeholder=\"login du destinataire\" name=messageReceiverLogin  required />";
-	echo "<input type=text placeholder=\"Contenu de votre message\" name=messageContent required />"
-	. "<button type=\"submit\" value =\"newMessageSend\" name=\"newMessageSend\">Envoyer</button>"
+	echo "<br><textarea placeholder=\"Contenu de votre message\" name=messageContent cols=\"40\" rows=\"5\" required></textarea>"
+	. "<br><button type=\"submit\" value =\"newMessageSend\" name=\"newMessageSend\">Envoyer</button>"
 	. "</form>";
 }
 //Boite de reception
 else if (isset($_POST['receptionBox'])) {
 	$messageList = getMessageReceptionList($id);
         if ($messageList[0] == "")
-        	echo "Votre boîte de reception est vide";
+        	echo "Votre boite de reception est vide";
 	echo "<ul>";
 	for ($i = 0; isset($messageList[$i]); $i++)
 	{
@@ -110,7 +110,6 @@ else if (isset($_POST['newMessageSend']))
 		 addMessage($_POST['messageContent'], $id, getUserID($_POST['messageReceiverLogin']));
 		 echo "Votre message a bien été envoyé.";
 	}
-	header('Refresh: 5; url=messages.php');
 }
 //Contenu du message
 else if (isset($_POST['Message']))
@@ -123,7 +122,7 @@ else if (isset($_POST['Message']))
 	if ($id == $id_sender)
 		echo "<button type=\"submit\" value =\"".getUserInfo("login",$id_receiver)."\" name=\"newMessage\">Relancer</button>";
 	else if ($id == $id_receiver)
-		echo "<button type=\"submit\" value =\"".getUserInfo("login",$id_sender)."\" name=\"newMessage\">Répondre</button>";
+		echo "<button type=\"submit\" value =\"".getUserInfo("login",$id_sender)."\" name=\"newMessage\">Repondre</button>";
 	echo "<button type=\"submit\" value =\"delMessage\" name=\"delMessage\">Supprimer</button></form>";
 	echo "<br>Message du : ".getMessageDate($id_message);
 	echo "<br>Envoyé par : ".getUserInfo("login", $id_sender);
@@ -138,13 +137,12 @@ else if (isset($_POST['delMessage']))
 		echo "Votre message a bien été effacé.";
 	else
 		echo "Le message que vous tentez d'effacer n'existe pas.";
-	header('Refresh: 5; url=messages.php');
 }
 //Affichage de la boite de reception par défaut
 else {
 	$messageList = getMessageReceptionList($id);
         if ($messageList[0] == "")
-        	echo "Votre boîte de réception est vide";
+        	echo "Votre boite de reception est vide";
 	echo "<ul>";
 	for ($i = 0; isset($messageList[$i]); $i++)
 	{
