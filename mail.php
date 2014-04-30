@@ -7,7 +7,6 @@ function generatePassword() {
 }
 
 function renewPassword($id) {
-
   $password = generatePassword();
   $mail = getUserInfo("email", $id);
   $login = getUserInfo("login", $id);
@@ -23,7 +22,7 @@ function renewPassword($id) {
   echo "<br>Vous allez recevoir votre nouveau mot de passe par e-mail.<br>";
   return (true);
 }
-//Definition du contenu du mail avant envoi
+//Definition du contenu du mail de renouvellement de mot de passe avant envoi
 function sendPasswordMail($mail, $password, $login) {
   $passage_ligne = "\n";
   $sujet = "Your new password for why";
@@ -31,6 +30,46 @@ function sendPasswordMail($mail, $password, $login) {
   $message_txt = "Bonjour ".$login.",".$passage_ligne;
   $message_txt .= "Un renouvellement de mot de passe a ete demande pour votre compte.".$passage_ligne;
   $message_txt .= "Voici votre nouveau mot de passe : ".$password.$passage_ligne;
+
+  if (sendMail($mail, $message_txt, $sujet, $passage_ligne) == false)
+    return (false);
+  else
+    return (true);
+}
+//Definition du contenu du mail de suppression de compte avant envoi
+function sendDeletingAccountMail($mail, $login) {
+  $passage_ligne = "\n";
+  $sujet = "Good bye from why";
+
+  $message_txt = "Bonjour ".$login.",".$passage_ligne;
+  $message_txt .= "Nous vous confirmons l'effacement de votre comtpe.".$passage_ligne;
+  $message_txt .= "Au revoir !".$passage_ligne;
+
+  if (sendMail($mail, $message_txt, $sujet, $passage_ligne) == false)
+    return (false);
+  else
+    return (true);
+}
+//Definition du contenu du mail de creation de compte avant envoi
+function sendDeletingAccountMail($mail, $login) {
+  $passage_ligne = "\n";
+  $sujet = "Welcome in why";
+
+  $message_txt = "Bonjour ".$login.",".$passage_ligne;
+  $message_txt .= "Nous vous confirmons la creation de votre comtpe.".$passage_ligne;
+
+  if (sendMail($mail, $message_txt, $sujet, $passage_ligne) == false)
+    return (false);
+  else
+    return (true);
+}
+//Definition du contenu du mail de creation notification de message prive avant envoi
+function sendDeletingAccountMail($mail, $login, $login_sender) {
+  $passage_ligne = "\n";
+  $sujet = "Why : vous avez recu un nouveau message";
+
+  $message_txt = "Bonjour ".$login.",".$passage_ligne;
+  $message_txt .= "Vous avez recu un nouveau message de ".$login_sender." .".$passage_ligne;
 
   if (sendMail($mail, $message_txt, $sujet, $passage_ligne) == false)
     return (false);
@@ -66,8 +105,4 @@ function sendMail($mail, $message_txt, $sujet, $passage_ligne) {
   else
     return (false);
 }
-
-//sendCreationMail($mail);
-//sendDeleteMail($mail);
-//sendPMNotificationMail($mail);
 ?>
