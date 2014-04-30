@@ -1,6 +1,6 @@
 <?php
 require_once "mail.php";
-require_once "dataUser.php";
+require_once "dataRef.php";
 
 if (isset($_POST['reinitPassword'])) {
     if ($_POST['mail'] == "") {
