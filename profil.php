@@ -13,9 +13,7 @@ else if ($_SESSION['check'] != "1")
 ?>
 <?php
 include "sessionInit.php";
-require_once "dataUser.php";
-require_once "dataConnect.php";
-require_once "dataSubscriber.php";
+require_once "dataRef.php";
 ?>
 <!doctype html>
 <html>
