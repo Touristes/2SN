@@ -121,7 +121,7 @@ else if (isset($_POST['Message']))
 		echo "<button type=\"submit\" value =\"".getUserInfo("login",$id_receiver)."\" name=\"newMessage\">Relancer</button>";
 	else if ($id == $id_receiver)
 		echo "<button type=\"submit\" value =\"".getUserInfo("login",$id_sender)."\" name=\"newMessage\">Repondre</button>";
-	echo "<button type=\"submit\" value =\"delMessage\" name=\"delMessage\">Supprimer</button></form>";
+	echo "<button type=\"submit\" value =\""$id_message""\" name=\"delMessage\">Supprimer</button></form>";
 	echo "<br>Message du : ".getMessageDate($id_message);
 	echo "<br>Envoyé par : ".getUserInfo("login", $id_sender);
 	echo "<br>Reçu par : ".getUserInfo("login", $id_receiver);
@@ -130,7 +130,7 @@ else if (isset($_POST['Message']))
 //Effacement du message
 else if (isset($_POST['delMessage']))
 {
-	$id_message = $_POST['messageID'];
+	$id_message = $_POST['delMessage'];
 	if (delMessage($id_message))
 		echo "Votre message a bien été effacé.";
 	else
