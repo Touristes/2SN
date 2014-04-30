@@ -62,7 +62,7 @@ $id = getUserID($login);
 if (isset($_POST['newMessage'])) {
 	echo "<form id=\"fromNewMessage\" method=\"POST\" action=\"messages.php\" name=\"formNewMessage\">";
 	if ($_POST['messageID'] != "Nouveau message") {
-		echo "<input type=text name=messageReceiverLogin value=\"".$_POST['newMessage'])."\" required />";
+		echo "<input type=text name=messageReceiverLogin value=\"".$_POST['newMessage']."\" required />";
 	}
 	else
 		echo "<input type=text placeholder=\"login du destinataire\" name=messageReceiverLogin  required />";
