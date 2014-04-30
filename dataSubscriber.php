@@ -28,7 +28,7 @@ function delSubscription($id_subscriber, $id_user) {
   return (TRUE);
 }
 
-function getSubscrptionNumber($id_user){
+function getSubscriberNumber($id_user){
   $db = dbConnect();
   $i = 0;
   if ($db == FALSE)
@@ -43,7 +43,7 @@ function getSubscrptionNumber($id_user){
   dbClose($db);
   return ($i);
 }
-function getSubscriberNumber($id_user){
+function getSubscriptionNumber($id_user){
   $db = dbConnect();
   $i = 0;
   if ($db == FALSE)
