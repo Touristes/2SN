@@ -76,14 +76,14 @@ $post = showAllPost();
 
 for ($i = 0 ; $post[0][$i] ; $i++)
   {
-	echo "<div id='post'>";
+	//echo "<div id='post'>";
 	echo $post[1][$i];
 	echo " Par id utilisateur : ";
 	echo $post[2][$i];
 	echo "</br>";
 	echo $post[3][$i];
 	echo "<br/>";
-	echo "</div>";
+//	echo "</div>";
 	echo"<br/>";
   }
 
