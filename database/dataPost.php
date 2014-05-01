@@ -2,16 +2,22 @@
 
 function addPost($post)
 {
+  $db = dbConnect();
   $title = $post[1];
   $content = $post[2];
-  $query = "SELECT id_user from user where name=".$post[0].";";
-  $id_user = dbQuery($query);
-  $query = 'INSERT INTO post (title, id_user, text, id_category, id_type ) VALUES ("'.$title.'",'.$id_user.',"'.$content.'",2,'.'3'.');';
+  $id_user = getUserID($post[0]);
+  $query = 'INSERT INTO post (title, id_user, text, id_category, id_type, created ) VALUES ("'.$title.'",'.$id_user.',"'.$content.'",2,'.'3,'.'date(\'now\')'.');';
   $result = dbQuery($query);
   if ($result == 0)
-	return ("An error occured[ERR DBQUERY]");
+	{
+	  dbClose($db);
+	  return ("An error occured[ERR DBQUERY]");
+	}
   else
-	return (0);
+	{
+	  dbClose($db);
+	  return (0);
+	}
 }
 
 function delPost($id)
@@ -73,7 +79,7 @@ function showAllPost()
 	return("[ERR DBCONNECT]");
   else
 	{
-	  $query = "SELECT * FROM post;";
+	  $query = "SELECT * FROM post ORDER BY created DESC, id_post DESC;";
 	  $allpost = dbSelectToArray($query);
 	  if ($allpost == 0)
 		{
@@ -117,3 +123,4 @@ function getPostID($author, $date)
 
 
 ?>
+
