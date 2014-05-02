@@ -13,7 +13,3 @@ $post[4] = 2; //type;
 addPost($post);
 ?>
 <META http-EQUIV="Refresh" CONTENT="0; url=accueil.php">
-<?
-header( 'Location: accueil.php' ) ;
-
-?>
