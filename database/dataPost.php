@@ -48,7 +48,7 @@ function delPost($id)
 
 function showPost($id)
 {
-  $db = $dbConnect();
+  $db = dbConnect();
   if ($db == 0)
 	{
 	  dbClose($db);
@@ -57,7 +57,7 @@ function showPost($id)
   else
 	{
 	  $query = "SELECT * FROM post WHERE id_post=".$id.";";
-	  $result = dbSelectToArry($query);
+	  $result = dbSelectToArray($query);
 	  if ($result == 0)
 		{
 		  dbClose($db);
@@ -98,7 +98,7 @@ function showAllPost()
 
 function showPostByUser($id)
 {
-  $db = $dbConnect();
+  $db = dbConnect();
   if ($db == 0)
     {
       dbClose($db);
@@ -107,7 +107,7 @@ function showPostByUser($id)
   else
     {
       $query = "SELECT * FROM post WHERE id_user=".$id.";";
-      $result = dbSelectToArry($query);
+      $result = dbSelectToArray($query);
       if ($result == 0)
         {
           dbClose($db);
