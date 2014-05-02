@@ -47,8 +47,8 @@ $('#cssmenu #menu-button').on('click', function(){
 </div>
 	  <div id="post">
 	  <form id="signup" name="monform" method="post" action="send_post.php">
-	  <textarea cols="60" rows="1" name="title" placeholder="title" required="required"></textarea>
-	  <textarea cols="60" rows="5" name="posts" required="required"></textarea>
+	  <textarea cols="60" rows="1" name="title" placeholder="title" required></textarea>
+	  <textarea cols="60" rows="5" name="posts" required></textarea>
 	  <div id="post1">
 	  Type:
 	  <select>
@@ -56,10 +56,10 @@ $('#cssmenu #menu-button').on('click', function(){
 	  <option selected value="troll">Troll</option>
 	  </select>
   Tags: -- 
-  <br/>
-  <br/>
   Ajouter un fichier: 
-	  <input type="file" name="file"/>
+	 <div id="fichier">
+      <input type="file" name="file"/>
+      </div>
 	  </div>
 	 <?php /* <div id="post1">
 	  <input type="text" placeholder="Ajoute un lien" name="mail"   required>

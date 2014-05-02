@@ -69,6 +69,8 @@ $result = SearchUser($requete);
 if($result != FALSE) // si le nombre de résultats est supérieur à 0, on continue
 {
 	echo "<h3>Resultat de votre recherche :</h3></br>";
+
+
 	
 ?>
 	<form name="abo" action="" method="POST">
@@ -102,7 +104,27 @@ else
 else
 { // et voilà le formulaire, en HTML de nouveau !
 ?>
-<p><h3>Vous pouvez rechercher un User particulier :</h3></p>
+
+
+<style>
+.ribbon {padding-left:10px}
+.ribbon-background {position:absolute;top:0;right:0;font-size:8px;color:#cccccc;}
+.ribbon-background a {color:#cccccc;text-decoration:none;font-weight:normal;}
+.ribbon-background a:hover {color:#cccccc;text-decoration:none;font-weight:normal;}
+.theribbon{position: relative;width: 540px;font-size: 1.5em;font-weight: bold;padding: 6px 20px 6px 71px;margin: 30px 10px 10px -71px;color: #fefefe;background-color: #2493ff;text-shadow: 0px 1px 2px #bbb;-webkit-box-shadow: 0px 2px 4px #888;-moz-box-shadow: 0px 2px 4px #888;box-shadow: 0px 2px 4px #888;}
+.theribbon:before, .theribbon:after {content: ' ';position: absolute;width: 0;height: 0;}
+.theribbon:before{}
+.theribbon:after{left: 0px;top: 100%;border-width: 5px 10px;border-style: solid;border-color: #666666 #666666 transparent transparent;}
+</style>
+
+
+<div class="ribbon">
+<div class="theribbon">Vous pouvez rechercher un User particulier :</div>
+<div class="ribbon-background"></div>
+</div>
+
+
+
  <form action="abo.php" method="Post">
 <input type="text" name="requete" size="20">
 <input type="submit" value="Ok">
