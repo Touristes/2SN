@@ -2,6 +2,7 @@
 require_once "mail.php";
 require_once "dataRef.php";
 
+//Traitement du formulaire de renouvellement de mot de passe
 if (isset($_POST['reinitPassword'])) {
     if ($_POST['mail'] == "") {
       echo "<b>Veuillez renseigner une adresse mail.</b>";
@@ -12,6 +13,7 @@ if (isset($_POST['reinitPassword'])) {
     else if (isEmailExist($_POST['mail']) == true) {
       $id = getUserIDWithMail($_POST['mail']);
       renewPassword($id);
+      //redirection a 10 sec apres envoi du mail
       header('Refresh: 10; url=index.php');
     }
 }
@@ -24,6 +26,7 @@ if (isset($_POST['reinitPassword'])) {
   <title>2SN Réinitialisation de mot de passe</title>
 </head>
 <body>
+<?php //Affichage du formulaire de renouvellement de mot de passe ?>
 <div id="resetmdp">
   Si vous avez perdu votre mot de passe, veuillez saisir votre e-mail ci-dessous.
   Un nouveau mot de passe vous y sera envoyé.<br />
