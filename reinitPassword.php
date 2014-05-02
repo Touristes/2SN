@@ -23,7 +23,7 @@ if (isset($_POST['reinitPassword'])) {
 <head>
 <link rel="stylesheet" type="text/css" href="style.css" />
 <meta charset="UTF-8">
-  <title>2SN Réinitialisation de mot de passe</title>
+  <title>[Why] - Réinitialisation de mot de passe</title>
 </head>
 <body>
 <?php //Affichage du formulaire de renouvellement de mot de passe ?>
