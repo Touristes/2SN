@@ -11,6 +11,7 @@ else if ($_SESSION['check'] != "1")
 }
 if (isUsernameExist($_POST['login']) == false)
   header('location : Accueil.php');
+$login = $_POST['login'];
 ?>
 <!doctype html>
 <html>
@@ -18,7 +19,7 @@ if (isUsernameExist($_POST['login']) == false)
 <link rel="stylesheet" type="text/css" href="style3.css" />
 
 <meta charset="UTF-8">
-  <title>[Why] - <?php $_POST['login'] ?></title>
+  <title>[Why] - <?php echo $login ?></title>
 </head>
 
 <body>
@@ -51,26 +52,27 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 
 <div id="sidebarl">
 <?php
-    $login = $_POST['login'];
     $id = getUserID($login);
-    echo "Profil de l'utilisateur ".$login." : <br>"
-    ."Nombre d'abonnes : ".getSubscriberList($id)."<br>"
-    ."Nombre d'abonnements :".getSubscriptionList($id)."<br>"
+    echo "Profil de l'utilisateur ".$login."<br>"
+    ."Nombre d'abonnes : ".getSubscriberNumber($id)."<br>"
+    ."Nombre d'abonnements : ".getSubscriptionNumber($id)."<br>"
     ."<form id=\"\" method=\"POST\" action=\"message.php\"><button type=\"submit\" value=\"".$login
     ."\" name=\"mailReceiver\">Envoyer un message</button></form><br>";
 ?>
 </div>
-
 <div id="sidebarr">
-<?php      $post = showPostByUser($id);
-	for ($i = 0; isset($post[0][$i]); $i++)
+      <?php
+      //(id_post integer primary key autoincrement, title varchar, id_user integer, text varchar, id_category , id_type, created date
+      $post = showPostByUser($id);
+for ($i = 0; isset($post[0][$i]) && $i < 5; $i++)
 	  {
-	    echo "Post du ".$post[4][$i]."<br>";
-	    // echo "Catergorie ".getCategory($post[3][$i])."<br>";
-	    echo "Contenu : ".$post[1][$i];
-	    echo "Tags : ".$post[5][$i]."<br>";
+	    echo "<b>".$post[1][$i]."</b><br>";
+	    echo "Post du ".$post[6][$i]."<br>";
+	    // echo "Catergorie ".getCategory($post[4][$i])."<br>";
+	    echo "Contenu : <br>".$post[3][$i]."<br><br>";
+	    //echo "Tags : ".$post[5][$i]."<br>";
 	  }
-?>
+	  ?>
 </div>
 
 <div id="footer">
