@@ -79,4 +79,24 @@ function dbSearchToArray($field_searched, $content, $table, $field_wanted) {
   dbClose($db);
   return ($array);
 }
+
+function queryQuotes($string)
+{
+  $string2 = " ";
+  for ($i = 0, $j = 0 ; isset($string[$i]) ; $i++, $j++)
+    {
+      $string2[$j] = $string[$i];
+      if ($string[$i] == "'")
+	{
+	  $j++;
+	  $string2[$j] = "'";
+	}
+      else if ($string[$i] == '"')
+        {
+          $j++;
+          $string2[$j] = '"';
+        }
+    }
+  return($string2);
+}
 ?>
