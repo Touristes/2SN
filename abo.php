@@ -26,6 +26,20 @@ $login = $_SESSION['login'];
 </head>
 
 <body>
+<style>
+.ribbon {padding-left:0px}
+.ribbon-background {position:absolute;top:0;right:0;font-size:8px;color:#cccccc;}
+.ribbon-background a {color:#cccccc;text-decoration:none;font-weight:normal;}
+.ribbon-background a:hover {color:#cccccc;text-decoration:none;font-weight:normal;}
+.theribbon{position: relative;width: 465px;font-size: 1.5em;font-weight: bold;padding: 6px 20px 6px 35px;margin: 0px 0px 10px -30px;color: #fefefe;background-color: #2493ff;text-shadow: 0px 1px 2px #bbb;-webkit-box-shadow: 0px 2px 4px #888;-moz-box-shadow: 0px 2px 4px #888;box-shadow: 0px 2px 4px #888;}
+.theribbon1{position: relative;width: 250px;font-size: 1.5em;font-weight: bold;padding: 6px 20px 6px 35px;margin: 0px 0px 10px -30px;color: #fefefe;background-color: #2493ff;text-shadow: 0px 1px 2px #bbb;-webkit-box-shadow: 0px 2px 4px #888;-moz-box-shadow: 0px 2px 4px #888;box-shadow: 0px 2px 4px #888;}
+.theribbon:before, .theribbon:after {content: ' ';position: absolute;width: 0;height: 0;}
+.theribbon:before{}
+.theribbon:after{left: 0px;top: 100%;border-width: 5px 10px;border-style: solid;border-color: #666666 #666666 transparent transparent;}
+.theribbon1:before, .theribbon1:after {content: ' ';position: absolute;width: 0;height: 0;}
+.theribbon1:before{}
+.theribbon1:after{left: 0px;top: 100%;border-width: 5px 10px;border-style: solid;border-color: #666666 #666666 transparent transparent;}
+</style>
 <script>
 $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 	$('#cssmenu #menu-button').on('click', function(){
@@ -96,7 +110,14 @@ if ($val != $login && isSubrscriberOf(getUserID($login), getUserID($result)) == 
 else
 { // de nouveau, un peu de HTML
 ?>
-<h3>Pas de résultats</h3>
+<div class="ribbon">
+<div class="theribbon1">
+Pas de résultats
+</div>
+<div class="ribbon-background"></div>
+</div>
+
+
 <p>Nous n'avons trouvé aucun résultat pour votre requête "<? echo $_POST['requete']; ?>". <a href="abo.php">Réessayez</a> avec autre chose.</p>
 <?
 }// Fini d'afficher l'erreur ^^
@@ -105,24 +126,10 @@ else
 { // et voilà le formulaire, en HTML de nouveau !
 ?>
 
-
-<style>
-.ribbon {padding-left:10px}
-.ribbon-background {position:absolute;top:0;right:0;font-size:8px;color:#cccccc;}
-.ribbon-background a {color:#cccccc;text-decoration:none;font-weight:normal;}
-.ribbon-background a:hover {color:#cccccc;text-decoration:none;font-weight:normal;}
-.theribbon{position: relative;width: 540px;font-size: 1.5em;font-weight: bold;padding: 6px 20px 6px 71px;margin: 30px 10px 10px -71px;color: #fefefe;background-color: #2493ff;text-shadow: 0px 1px 2px #bbb;-webkit-box-shadow: 0px 2px 4px #888;-moz-box-shadow: 0px 2px 4px #888;box-shadow: 0px 2px 4px #888;}
-.theribbon:before, .theribbon:after {content: ' ';position: absolute;width: 0;height: 0;}
-.theribbon:before{}
-.theribbon:after{left: 0px;top: 100%;border-width: 5px 10px;border-style: solid;border-color: #666666 #666666 transparent transparent;}
-</style>
-
-
 <div class="ribbon">
 <div class="theribbon">Vous pouvez rechercher un User particulier :</div>
 <div class="ribbon-background"></div>
 </div>
-
 
 
  <form action="abo.php" method="Post">
@@ -131,9 +138,17 @@ else
 </form>
 <?
 }
-// et voilà, c'est fini !
 ?>
-<p><h3>Liste de tous les Users :</h3></p>
+
+</br>
+</br>
+
+<div class="ribbon">
+<div class="theribbon1">
+Liste de tous les Users :</div>
+<div class="ribbon-background"></div>
+</div>
+
 <?
 $tab = getUserList();
 ?>
@@ -176,7 +191,12 @@ addSubscription(getUserID($login), getUserID($choice[$i]));
 </div>
 
 <div id="sidebarr">
-<p><h3>Mes abonnements :</h3></p>
+
+<div class="ribbon">
+<div class="theribbon1">
+Mes abonnements :</div>
+<div class="ribbon-background"></div>
+</div>
 <?
 
 $tab = getSubscriptionList(getUserID($login));
@@ -213,9 +233,13 @@ delSubscription(getUserID($login), getUserID($choice1[$i]));
 
 
 ?>
-
-
-<p><h3>Mes abonnés :</h3></p>
+</br>
+<div class="ribbon">
+<div class="theribbon1">
+Mes abonnés :
+</div>
+<div class="ribbon-background"></div>
+</div>
 
 <?
 $tab1 = getSubscriberList(getUserID($login));
