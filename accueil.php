@@ -18,7 +18,7 @@ else if ($_SESSION['check'] != "1")
 <link rel="stylesheet" type="text/css" href="style1.css" />
 
 <meta charset="UTF-8">
-<title>2SN - Accueil</title>
+<title>[Why] - Accueil</title>
 </head>
 
 <body>
