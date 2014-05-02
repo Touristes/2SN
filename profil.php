@@ -21,7 +21,7 @@ require_once "dataRef.php";
 <link rel="stylesheet" type="text/css" href="style3.css" />
 
 <meta charset="UTF-8">
-<title>[Why] - Accueil</title>
+<title>[Why] - Profil</title>
 </head>
 
 <body>
