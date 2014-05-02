@@ -56,7 +56,7 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
     echo "Profil de l'utilisateur ".$login."<br>"
     ."Nombre d'abonnes : ".getSubscriberNumber($id)."<br>"
     ."Nombre d'abonnements : ".getSubscriptionNumber($id)."<br>"
-    ."<form id=\"\" method=\"POST\" action=\"message.php\"><button type=\"submit\" value=\"".$login
+    ."<form id=\"\" method=\"POST\" action=\"messages.php\"><button type=\"submit\" value=\"".$login
     ."\" name=\"mailReceiver\">Envoyer un message</button></form><br>";
 ?>
 </div>
