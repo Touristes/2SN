@@ -142,13 +142,18 @@ else
 </div>
 
 <div id="sidebarr">
-test
-
-
-
-
-
-
+<?php
+//Affichage des Posts dans une limite de 5                                                                                                        
+$post = showPostByUser($id);
+for ($i = 0; isset($post[0][$i]) && $i < 5; $i++)
+  {
+    echo "<b>".$post[1][$i]."</b><br>";
+    echo "Post du ".$post[6][$i]."<br>";
+    // echo "Catergorie ".getCategory($post[4][$i])."<br>";                                                                                       
+    echo "Contenu : <br>".$post[3][$i]."<br><br>";
+    //echo "Tags : ".$post[5][$i]."<br>";                                                                                                         
+  }
+?>
 </div>
 
 <div id="footer">
