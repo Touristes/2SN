@@ -96,6 +96,32 @@ function showAllPost()
 
 //function showMultiplePost($field, $value);
 
+function showPostByUser($id)
+{
+  $db = $dbConnect();
+  if ($db == 0)
+    {
+      dbClose($db);
+      return("[ERR DBCONECT]");
+    }
+  else
+    {
+      $query = "SELECT * FROM post WHERE id_user=".$id.";";
+      $result = dbSelectToArry($query);
+      if ($result == 0)
+        {
+          dbClose($db);
+          return("[ERR DBQUERY]");
+        }
+      else
+        {
+          dbClose($db);
+          return($result);
+        }
+    }
+}
+
+
 function getPostID($author, $date)
 {
   $db = dbConnect();
