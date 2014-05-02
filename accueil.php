@@ -47,8 +47,8 @@ $('#cssmenu #menu-button').on('click', function(){
 </div>
 	  <div id="post">
 	  <form id="signup" name="monform" method="post" action="send_post.php">
-	  <textarea cols="60" rows="1" name="title" placeholder="title" required></textarea>
-	  <textarea cols="60" rows="5" name="posts" required></textarea>
+	  <textarea cols="60" rows="1" name="title" placeholder="title" required="required"></textarea>
+	  <textarea cols="60" rows="5" name="posts" required="required"></textarea>
 	  <div id="post1">
 	  Type:
 	  <select>
