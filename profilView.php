@@ -1,6 +1,8 @@
 <?php
 include "sessionInit.php";
 require_once "dataRef.php";
+
+//Test si l'utilisateur sest connecté
 if (!isset($_SESSION['check']))
 {
 		echo "<script type=\"text/javascript\">alert(\"Acces interdit !!\");location =\"co.php\"</script>";
@@ -36,7 +38,7 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 	});
 	</script>
     
-    
+<?php //Menu ?>
 <div id='cssmenu'>
 <ul>
    <li class='last'><a href='accueil.php'><span>Home</span></a></li>
@@ -52,6 +54,7 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 
 <div id="sidebarl">
 <?php
+    //Informations utilisateur
     $id = getUserID($login);
     echo "Profil de l'utilisateur ".$login."<br>"
     ."Nombre d'abonnes : ".getSubscriberNumber($id)."<br>"
@@ -62,6 +65,7 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 </div>
 <div id="sidebarr">
       <?php
+      //Affichage des Posts dans une limite de 5
       //(id_post integer primary key autoincrement, title varchar, id_user integer, text varchar, id_category , id_type, created date
       $post = showPostByUser($id);
 for ($i = 0; isset($post[0][$i]) && $i < 5; $i++)
