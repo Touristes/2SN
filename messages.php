@@ -121,7 +121,7 @@ else if (isset($_POST['Message']))
 		echo "<button type=\"submit\" value =\"".getUserInfo("login",$id_receiver)."\" name=\"newMessage\">Relancer</button>";
 	else if ($id == $id_receiver)
 		echo "<button type=\"submit\" value =\"".getUserInfo("login",$id_sender)."\" name=\"newMessage\">Repondre</button>";
-	echo "<button type=\"submit\" value =\""$id_message""\" name=\"delMessage\">Supprimer</button></form>";
+	echo "<button type=\"submit\" value =\"".$id_message."\" name=\"delMessage\">Supprimer</button></form>";
 	echo "<br>Message du : ".getMessageDate($id_message);
 	echo "<br>Envoyé par : ".getUserInfo("login", $id_sender);
 	echo "<br>Reçu par : ".getUserInfo("login", $id_receiver);
