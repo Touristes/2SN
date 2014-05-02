@@ -210,7 +210,7 @@ $tab = getSubscriptionList(getUserID($login));
 for ($i = 0; isset($tab[$i]); $i++)
 {
 ?>
-	<input type="checkbox" name="choice1[]" value="<? echo $tab[$i]; ?>"> <? echo $tab[$i]; ?><br>
+	<input type="checkbox" name="choice1[]" value="<? echo $tab[$i]; ?>"> <? echo profilLinkForm($tab[$i]);?><br>
 <?
 }
     echo "</br><button type=submit value=\"Supprimer de mes abonnements !\"/>Supprimer de mes abonnements !</button>";
