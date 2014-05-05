@@ -12,9 +12,13 @@ else if ($_SESSION['check'] != "1")
 {
 		echo "<script type=\"text/javascript\">alert(\"Acces interdit !!\");location =\"co.php\"</script>";
 }
-if (isUsernameExist($_POST['loginProfilView']) == false)
-  header('location : Accueil.php');
+if (isUsernameExist($_POST['loginProfilView']) == false) {
+  echo "<SCRIPT LANGUAGE=\"JavaScript\">document.location.href=\"acceuil.php\"</SCRIPT>";
+}
 $login = $_POST['loginProfilView'];
+if ($login == $_SESSION['login']) {
+  echo "<SCRIPT LANGUAGE=\"JavaScript\">document.location.href=\"profil.php\"</SCRIPT>";
+}
 ?>
 <!doctype html>
 <html>
@@ -57,23 +61,23 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 <?php
 	//Traitement formulaire abonnement
 	//Abonnement
-	if (isset[$_POST['Subscribe']]) {
+	  if (isset($_POST['Subscribe'])) {
 	addSubscription(getUserID($_SESSION['login']), getUserID($login));
 	}
 	//Désabonnement
-	else if (isset[$_POST['Unsubscribe']]) {
+	  else if (isset($_POST['Unsubscribe'])) {
 	delSubscription(getUserID($_SESSION['login']), getUserID($login));
 	}
     //Informations utilisateur
     $id = getUserID($login);
     echo "Profil de l'utilisateur ".$login."<br>"
     ."Nombre d'abonnes : ".getSubscriberNumber($id)."<br>"
-    ."Nombre d'abonnements : ".getSubscriptionNumber($id)."<br>"
+    ."Nombre d'abonnements : ".getSubscriptionNumber($id)."<br>";
 	//Formulaire d'envoi de message, renvoie vers message.php
-    echo "<form id=\"formNewMessage\" method=\"POST\" action=\"messages.php\"><button type=\"submit\" value=\"".$login
-		."\" name=\"newMessage\">Envoyer un message</button></form>"
+    echo "<form id=\"formNewMessage\" method=\"POST\" action=\"messages.php\"><button type=\"submit\" value=\""
+    .$login."\" name=\"newMessage\">Envoyer un message</button></form>";
 	//Bouton abonnement ou désabonnement
-	if (isSubbscriberOf(getUserID($_SESSION['login']), getUserID($login)) == FALSE) {
+	if (isSubrscriberOf(getUserID($_SESSION['login']), getUserID($login)) == "false") {
 		echo "<form id=\"formSubscribe\" method=\"POST\" action=\"profilView.php\">"
 			."<input type=\"hidden\" name=\"loginProfilView\" value=\"".$login."\">"
 			."<button type=\"submit\" value=\"Subscribe\" name=\"Subscribe\">S'abonner</button></form>";
