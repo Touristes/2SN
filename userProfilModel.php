@@ -1,3 +1,4 @@
+<?php
 //Fonction qui renvoie un formulaire permettant de faire un utilisateur cliquable pour renvoyer vers son profil
 //Attention : ne doit pas être utilisée dans un formulaire existant.
 function profilLinkForm($login)
@@ -15,3 +16,4 @@ function profilLinkInForm($login)
               .$login."</button>";
   return ($linkForm);
 }
+?>
