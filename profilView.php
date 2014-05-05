@@ -55,13 +55,34 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 
 <div id="sidebarl">
 <?php
+	//Traitement formulaire abonnement
+	//Abonnement
+	if (isset[$_POST['Subscribe']]) {
+	addSubscription(getUserID($_SESSION['login']), getUserID($login));
+	}
+	//Désabonnement
+	else if (isset[$_POST['Unsubscribe']]) {
+	delSubscription(getUserID($_SESSION['login']), getUserID($login));
+	}
     //Informations utilisateur
     $id = getUserID($login);
     echo "Profil de l'utilisateur ".$login."<br>"
     ."Nombre d'abonnes : ".getSubscriberNumber($id)."<br>"
     ."Nombre d'abonnements : ".getSubscriptionNumber($id)."<br>"
-    ."<form id=\"\" method=\"POST\" action=\"messages.php\"><button type=\"submit\" value=\"".$login
-    ."\" name=\"mailReceiver\">Envoyer un message</button></form><br>";
+	//Formulaire d'envoi de message, renvoie vers message.php
+    echo "<form id=\"formNewMessage\" method=\"POST\" action=\"messages.php\"><button type=\"submit\" value=\"".$login
+		."\" name=\"newMessage\">Envoyer un message</button></form>"
+	//Bouton abonnement ou désabonnement
+	if (isSubbscriberOf(getUserID($_SESSION['login']), getUserID($login)) == FALSE) {
+		echo "<form id=\"formSubscribe\" method=\"POST\" action=\"profilView.php\">"
+			."<input type=\"hidden\" name=\"loginProfilView\" value=\"".$login."\">"
+			."<button type=\"submit\" value=\"Subscribe\" name=\"Subscribe\">S'abonner</button></form>";
+			}
+	else {
+		echo "<form id=\"formUnsubscribe\" method=\"POST\" action=\"profilView.php\">"
+			."<input type=\"hidden\" name=\"loginProfilView\" value=\"".$login."\">"
+			."<button type=\"submit\" value=\"Unsubscribe\" name=\"Unsubscribe\">Se désabonner</button></form>";
+			}
 ?>
 </div>
 <div id="sidebarr">
