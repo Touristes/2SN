@@ -1,6 +1,7 @@
 <?php
 include "sessionInit.php";
 require_once "dataRef.php";
+require_once "userProfilModel.php";
 
 //Test si l'utilisateur sest connecté
 if (!isset($_SESSION['check']))
@@ -11,9 +12,9 @@ else if ($_SESSION['check'] != "1")
 {
 		echo "<script type=\"text/javascript\">alert(\"Acces interdit !!\");location =\"co.php\"</script>";
 }
-if (isUsernameExist($_POST['login']) == false)
+if (isUsernameExist($_POST['loginProfilView']) == false)
   header('location : Accueil.php');
-$login = $_POST['login'];
+$login = $_POST['loginProfilView'];
 ?>
 <!doctype html>
 <html>
