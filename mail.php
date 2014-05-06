@@ -76,6 +76,28 @@ function sendMPNotificationMail($mail, $login, $login_sender) {
   else
     return (true);
 }
+//Definition du contenu du mail de contact
+function sendContactMail($login, $message) {
+  $mail = "whyproject.2sn@gmail.com";
+  $passage_ligne = "\n";
+  $sujet = "New message from ".$login;
+
+  $message_txt = "Bonjour dieu,".$passage_ligne;
+  $message_txt .= "L'utilisateur répondant au nom de ".$login.$passage_ligne;
+  $message_txt .= "vous a laissé un message :".$passage_ligne;
+  $message_txt .= textToMail($message, $passage_ligne);
+  $message_txt .= $passage_ligne;
+  
+  if (sendMail($mail, $message_txt, $sujet, $passage_ligne) == false)
+    return (false);
+  else
+    return (true);
+}
+//Définition de la fonction permettant de mettre en forme un texte pour  l'envoyer par mail
+function textToMail($message, $passage_ligne) {
+	$final_message = wordwrap($message, 60, $passage_ligne, true);
+	return ($final_message);
+}
 //Configuration automatique du SMTP
 function configureSMTP() {
   ini_set( "SMTP", "ssl://smtp.gmail.com" );
