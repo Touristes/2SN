@@ -1,6 +1,7 @@
 <?php
 include "sessionInit.php";
 require_once "dataRef.php";
+require_once "userProfilModel.php";
 
 if (!isset($_SESSION['check']))
 {
@@ -58,6 +59,33 @@ height:20px;
 border:0;
 background-color:#F0F0F0;
 margin-top:+1px;
+}
+#delMessage {
+background: url('./DeleteButton.png') no-repeat;
+width:15px;
+height:15px;
+border:0;
+margin-left:0.4%;
+}
+#response {
+height:15px;
+border:0;
+background-color:#F0F0F0;
+position:absolute;
+margin-left:5px;
+margin-top:6px;
+}
+#messageContent {
+margin-left:1%;
+}
+#messageText {
+  margin-left:2%;
+}
+#formProfilView {
+display:inline-block;
+}
+#userLink {
+border:0;
 }
 </style>
 <div id="cadrage">
@@ -153,15 +181,21 @@ else if (isset($_POST['Message']))
 	$id_sender = getMessageSender($id_message);
 	$id_receiver = getMessageReceiver($id_message);
 	echo "<form id=\"formMessage\" method=\"POST\" action=\"messages.php\" name=\"formMessage\">";
+        echo "<button id=\"delMessage\" type=\"submit\" value =\"".$id_message."\" name=\"delMessage\">"
+          ."</button>";
 	if ($id == $id_sender)
-		echo "<button type=\"submit\" value =\"".getUserInfo("login",$id_receiver)."\" name=\"newMessage\">Relancer</button>";
+		echo "<button id=\"response\" type=\"submit\" value =\"".getUserInfo("login",$id_receiver)."\" name=\"newMessage\">Relancer</button>";
 	else if ($id == $id_receiver)
-		echo "<button type=\"submit\" value =\"".getUserInfo("login",$id_sender)."\" name=\"newMessage\">Repondre</button>";
-	echo "<button type=\"submit\" value =\"".$id_message."\" name=\"delMessage\">Supprimer</button></form>";
-	echo "<br>Message du : ".getMessageDate($id_message);
-	echo "<br>Envoyé par : ".getUserInfo("login", $id_sender);
-	echo "<br>Reçu par : ".getUserInfo("login", $id_receiver);
-	echo "<br>" . getMessageContent($id_message);
+		echo "<button id=\"response\" type=\"submit\" value =\"".getUserInfo("login",$id_sender)."\" name=\"newMessage\">Repondre</button>";
+	echo "</form>";
+echo "<div id=\"messageContent\">";
+if ($id == $id_sender)
+  echo "<br><small>Message envoye a ".profilLinkForm(getUserInfo("login", $id_receiver))."</small>";
+else if ($id == $id_receiver)
+  echo "<br><small>Message recu par ".profilLinkForm(getUserInfo("login", $id_receiver))."</small>";
+	echo "<br><div id=\"messageText\">" . getMessageContent($id_message) ."</div>";
+echo "<small>Recu le : ".getMessageDate($id_message)."</small>";
+echo "</div>";
 }
 //Effacement du message
 else if (isset($_POST['delMessage']))
