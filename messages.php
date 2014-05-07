@@ -22,9 +22,47 @@ else if ($_SESSION['check'] != "1")
 </head>
 
 <body>
+<style>
+#formMenuBox {
+  margin-top:0.4%;
+  margin-left:0.4%;
+}
+#formMenuBox button {
+border:0;
+width:150px;
+height:40px;
+background-color:#aFaFaF;
+}
+#fromNewMessage{
+margin-left:0.4%;
+margin-top:0.1%;
+}
+#receiver {
+width:144px;
+}
+#content {
+width:455px;
+height:150px;
+}
+#fromNewMessage button{
+border:0;
+width:60px;
+height:30px;
+background-color:#a0F0a0;
+}
+#messageList {
+  list-style-image: url('./triforce.png');;
+}
+#messageList button{
+height:20px;
+border:0;
+background-color:#F0F0F0;
+margin-top:+1px;
+}
+</style>
 <div id="cadrage">
 <script>
-  $('#cssmenu').prepend('<div id="menu-button">Menu</div>');                                                                                
+  $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 $('#cssmenu #menu-button').on('click', function(){
     var menu = $(this).next('ul');
     if (menu.hasClass('open')) {
@@ -35,8 +73,6 @@ $('#cssmenu #menu-button').on('click', function(){
     }
   });
 </script>
-    
-    
 <div id='cssmenu'>
 <ul>
    <li class='last'><a href='accueil.php'><span>Home</span></a></li>
@@ -52,7 +88,7 @@ $login = $_SESSION['login'];
 $id = getUserID($login);
 ?>
 <form id="formMenuBox" method="POST" action="messages.php" name="formMenuBox">
-<button type="submit" value ="newMessage" name="newMessage">+</button>
+<button type="submit" value ="newMessage" name="newMessage">Nouveau message</button>
 <button type="submit" value ="Boite de reception" name="receptionBox">Boite de reception</button>
 <button type="submit" value ="Boite d'envoi" name="sendBox">Boite d'envoi</button>
 </form>
@@ -61,11 +97,11 @@ $id = getUserID($login);
 if (isset($_POST['newMessage'])) {
 	echo "<form id=\"fromNewMessage\" method=\"POST\" action=\"messages.php\" name=\"formNewMessage\">";
 	if ($_POST['newMessage'] != "newMessage") {
-		echo "<input type=text name=messageReceiverLogin value=\"".$_POST['newMessage']."\" required />";
+		echo "<input id=\"receiver\" type=text name=messageReceiverLogin value=\"".$_POST['newMessage']."\" required />";
 	}
 	else
-		echo "<input type=text placeholder=\"login du destinataire\" name=messageReceiverLogin  required />";
-	echo "<br><textarea placeholder=\"Contenu de votre message\" name=messageContent cols=\"40\" rows=\"5\" required></textarea>"
+		echo "<input id=\"receiver\"type=text placeholder=\"login du destinataire\" name=messageReceiverLogin  required />";
+	echo "<br><textarea id=\"content\"placeholder=\"Contenu de votre message\" name=messageContent cols=\"40\" rows=\"5\" required></textarea>"
 	. "<br><button type=\"submit\" value =\"newMessageSend\" name=\"newMessageSend\">Envoyer</button>"
 	. "</form>";
 }
@@ -73,8 +109,8 @@ if (isset($_POST['newMessage'])) {
 else if (isset($_POST['receptionBox'])) {
 	$messageList = getMessageReceptionList($id);
         if ($messageList[0] == "")
-        	echo "Votre boite de reception est vide";
-	echo "<ul>";
+        	echo "<br>Votre boite de reception est vide";
+	echo "<ul id=\"messageList\">";
 	for ($i = 0; isset($messageList[$i]); $i++)
 	{
 		echo "<li><form id=\"formMessageID\" method=\"POST\" action=\"messages.php\" name=\"formMessageID\">"
@@ -88,8 +124,8 @@ else if (isset($_POST['receptionBox'])) {
 else if (isset($_POST['sendBox'])) {
 	 $messageList = getMessageSendList($id);
 	 if ($messageList[0] == "")
-	 	echo "Votre boite d'envoi est vide";
-	 echo "<ul>";
+	 	echo "<br>Votre boite d'envoi est vide";
+	 echo "<ul id=\"messageList\">";
 	 for ($i = 0; isset($messageList[$i]); $i++)
 	 {
 	 	echo "<li><form id=\"formMessageID\" method=\"POST\" action=\"messages.php\" name=\"formMessageID\">"
@@ -107,7 +143,7 @@ else if (isset($_POST['newMessageSend']))
 	}
 	else {
 		 addMessage($_POST['messageContent'], $id, getUserID($_POST['messageReceiverLogin']));
-		 echo "Votre message a bien été envoyé.";
+		 echo "<br> Votre message a bien été envoyé.";
 	}
 }
 //Contenu du message
@@ -132,16 +168,16 @@ else if (isset($_POST['delMessage']))
 {
 	$id_message = $_POST['delMessage'];
 	if (delMessage($id_message))
-		echo "Votre message a bien été effacé.";
+		echo "<br>Votre message a bien été effacé.";
 	else
-		echo "Le message que vous tentez d'effacer n'existe pas.";
+		echo "<br>Le message que vous tentez d'effacer n'existe pas.";
 }
 //Affichage de la boite de reception par défaut
 else {
 	$messageList = getMessageReceptionList($id);
         if ($messageList[0] == "")
-        	echo "Votre boite de reception est vide";
-	echo "<ul>";
+        	echo "<br>Votre boite de reception est vide";
+	echo "<ul id=\"messageList\">";
 	for ($i = 0; isset($messageList[$i]); $i++)
 	{
 		echo "<li><form id=\"formMessageID\" method=\"POST\" action=\"messages.php\" name=\"formMessageID\">"
