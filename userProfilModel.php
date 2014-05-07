@@ -11,8 +11,8 @@ function profilLinkForm($login)
 //Fonction identique à celle ci-dessus sauf qu'elle doit être insérée dans un formulaire existant
 function profilLinkInForm($login)
 {
-  $linkForm = "<button class=\"formProfilView\" type=\"submit\" name=\"loginProfilView\" value=\""
-	          .$login."\" onclick=\"this.form.action = \"profilView.php\"; this.form.submit();\" >"
+  $linkForm = "<button class=\"formProfilView\" name=\"loginProfilView\" value=\""
+                  .$login."\" onClick=\"this.form.action='profilView.php'; this.form.submit();\" >"                                                        
               .$login."</button>";
   return ($linkForm);
 }
