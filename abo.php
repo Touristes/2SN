@@ -247,8 +247,8 @@ $tab1 = getSubscriberList(getUserID($login));
 
 for ($i = 0; isset($tab1[$i]); $i++)
 {
-	 echo "> ";
-	 echo $tab1[$i];
+	// echo "> ";
+	 echo profilLinkForm($tab1[$i]);
 	 echo "<br>";
 }
   
