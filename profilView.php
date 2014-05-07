@@ -77,6 +77,11 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 	      echo "<script type=\"text/javascript\">alert(\"Mauvais mot de passe !\");\"</script>";
 		}
 	}
+	//Supression de post si admin
+	  else if (isset($_POST['delPost']) && (isUserAdmin(getUserID($_SESSION['login'])) == true)) {
+	    delPost($_POST['delPost']);
+	    echo $_POST['delPost'];
+	  }
     //Informations utilisateur
     $id = getUserID($login);
     echo "Profil de l'utilisateur ".$login."<br>"
@@ -109,17 +114,24 @@ if (isUserAdmin(getUserID($_SESSION['login'])) == true) {
 <div id="sidebarr">
       <?php
       //Affichage des Posts
-      //Supression de compte si admin
       //(id_post integer primary key autoincrement, title varchar, id_user integer, text varchar, id_category , id_type, created date
       $post = showPostByUser($id);
+echo "<form id=\"formPostList\" method=\"POST\" action=\"profilView.php\">"
+	."<input type=\"hidden\" name=\"loginProfilView\" value=\"".$login."\">";
 for ($i = 0; isset($post[0][$i]); $i++)
 	  {
+	    //Bouton supprimer accessible uniquement a l admin
+	    if (isUserAdmin(getUserID($_SESSION['login'])) == true) {
+	      echo "<button type=\"submit\" class=\"delButton\" name=\"delPost\" value=\"".$post[0][$i]."\">
+		<img src=\"DeleteButton.png\" /></button>";
+	    }
 	    echo "<b>".$post[1][$i]."</b><br>";
 	    echo "Post du ".$post[6][$i]."<br>";
 	    // echo "Catergorie ".getCategory($post[4][$i])."<br>";
 	    echo "Contenu : <br>".$post[3][$i]."<br><br>";
 	    //echo "Tags : ".$post[5][$i]."<br>";
 	  }
+echo "</form>";
 	  ?>
 </div>
 
