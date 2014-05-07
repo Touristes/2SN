@@ -13,7 +13,7 @@ else if ($_SESSION['check'] != "1")
 		echo "<script type=\"text/javascript\">alert(\"Acces interdit !!\");location =\"co.php\"</script>";
 }
 if (isUsernameExist($_POST['loginProfilView']) == false) {
-  echo "<SCRIPT LANGUAGE=\"JavaScript\">document.location.href=\"acceuil.php\"</SCRIPT>";
+  echo "<SCRIPT LANGUAGE=\"JavaScript\">document.location.href=\"accueil.php\"</SCRIPT>";
 }
 $login = $_POST['loginProfilView'];
 if ($login == $_SESSION['login']) {
@@ -42,7 +42,6 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 		}
 	});
 	</script>
-    
 <?php //Menu ?>
 <div id='cssmenu'>
 <ul>
@@ -68,6 +67,16 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 	  else if (isset($_POST['Unsubscribe'])) {
 	delSubscription(getUserID($_SESSION['login']), getUserID($login));
 	}
+	//Supression de compte si admin
+          else if (isset($_POST['delAccount']) && (isUserAdmin(getUserID($_SESSION['login'])) == true)) {
+	    if (md5($_POST['rootPassword']) == getUserInfo("password", getUserID($_SESSION['login']))) {
+	      delUser(getUserID($login));
+	      echo "<script type=\"text/javascript\">alert(\"Le compte a ete suprime !\");document.location.href=\"accueil.php\"</script>";
+	    }
+	    else {
+	      echo "<script type=\"text/javascript\">alert(\"Mauvais mot de passe !\");\"</script>";
+		}
+	}
     //Informations utilisateur
     $id = getUserID($login);
     echo "Profil de l'utilisateur ".$login."<br>"
@@ -87,11 +96,20 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 			."<input type=\"hidden\" name=\"loginProfilView\" value=\"".$login."\">"
 			."<button type=\"submit\" value=\"Unsubscribe\" name=\"Unsubscribe\">Se désabonner</button></form>";
 			}
+	//Bouton supression de compte accessible uniquement a l admin
+if (isUserAdmin(getUserID($_SESSION['login'])) == true) {
+                echo "<form id=\"formDelAccount\" method=\"POST\" action=\"profilView.php\">"
+                        ."<input type=\"hidden\" name=\"loginProfilView\" value=\"".$login."\">"
+		  ."<button type=\"submit\" value=\"delAccount\" name=\"delAccount\">Supprimer le compte</button>"
+                  ."Confirmez par mot de passe : <input type=\"password\" name=\"rootPassword\" required />"
+                  ."</form>";
+}
 ?>
 </div>
 <div id="sidebarr">
       <?php
       //Affichage des Posts
+      //Supression de compte si admin
       //(id_post integer primary key autoincrement, title varchar, id_user integer, text varchar, id_category , id_type, created date
       $post = showPostByUser($id);
 for ($i = 0; isset($post[0][$i]); $i++)
