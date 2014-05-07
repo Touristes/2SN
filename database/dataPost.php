@@ -30,7 +30,7 @@ function delPost($id)
 	}
   else
 	{
-	  $query = "DELETE * FROM post where id_post=".$id.";";
+	  $query = "DELETE FROM post where id_post=".$id.";";
 	  $result = dbQuery($query);
 	  if ($result == 0)
 		{
