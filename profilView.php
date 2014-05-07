@@ -91,10 +91,10 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 </div>
 <div id="sidebarr">
       <?php
-      //Affichage des Posts dans une limite de 5
+      //Affichage des Posts
       //(id_post integer primary key autoincrement, title varchar, id_user integer, text varchar, id_category , id_type, created date
       $post = showPostByUser($id);
-for ($i = 0; isset($post[0][$i]) && $i < 5; $i++)
+for ($i = 0; isset($post[0][$i]); $i++)
 	  {
 	    echo "<b>".$post[1][$i]."</b><br>";
 	    echo "Post du ".$post[6][$i]."<br>";
