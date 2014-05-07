@@ -1,5 +1,6 @@
 <?php
 include "sessionInit.php";
+require_once "userProfilModel.php";
 
 if (!isset($_SESSION['check']))
 {
@@ -163,7 +164,7 @@ foreach($tab as $val)
 	{
 ?>
 
-<input type="checkbox" name="choice[]" value="<? echo $val; ?>"> <? echo $val; ?><br>
+<input type="checkbox" name="choice[]" value="<? echo $val; ?>"> <? echo profilLinkInForm($val); ?><br>
 <?
 	}
 }
@@ -210,7 +211,7 @@ $tab = getSubscriptionList(getUserID($login));
 for ($i = 0; isset($tab[$i]); $i++)
 {
 ?>
-	<input type="checkbox" name="choice1[]" value="<? echo $tab[$i]; ?>"> <? echo $tab[$i]; ?><br>
+	<input type="checkbox" name="choice1[]" value="<? echo $tab[$i]; ?>"> <? echo profilLinkInForm($tab[$i]); ?><br>
 <?
 }
     echo "</br><button type=submit value=\"Supprimer de mes abonnements !\"/>Supprimer de mes abonnements !</button>";
