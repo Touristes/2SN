@@ -25,6 +25,43 @@ require_once "dataRef.php";
 </head>
 
 <body>
+<style>
+  .ribbon {padding-left:0px}
+.ribbon-background {position:absolute;top:0;right:0;font-size:8px;color:#cccccc;}
+.ribbon-background a {color:#cccccc;text-decoration:none;font-weight:normal;}
+.ribbon-background a:hover {color:#cccccc;text-decoration:none;font-weight:normal;}
+.theribbon{position: relative;width: 465px;font-size: 1.5em;font-weight: bold;padding: 6px 20px 6px 35px;margin: 0px 0px 10px -30px;color: #fefefe;background-color: #2493ff;text-shadow: 0px 1px 2px #bbb;-webkit-box-shadow: 0px 2px 4px #888;-moz-box-shadow: 0px 2px 4px #888;box-shadow: 0px 2px 4px #888;}
+.theribbon1{position: relative;width: 300px;font-size: 1.5em;font-weight: bold;padding: 6px 20px 6px 35px;margin: 0px 0px 10px -30px;color: #fefefe;background-color: #2493ff;text-shadow: 0px 1px 2px #bbb;-webkit-box-shadow: 0px 2px 4px #888;-moz-box-shadow: 0px 2px 4px #888;box-shadow: 0px 2px 4px #888;}
+.theribbon:before, .theribbon:after {content: ' ';position: absolute;width: 0;height: 0;}
+.theribbon:before{}
+.theribbon:after{left: 0px;top: 100%;border-width: 5px 10px;border-style: solid;border-color: #666666 #666666 transparent transparent;}
+.theribbon1:before, .theribbon1:after {content: ' ';position: absolute;width: 0;height: 0;}
+.theribbon1:before{}
+.theribbon1:after{left: 0px;top: 100%;border-width: 05px 10px;border-style: solid;border-color: #666666 #666666 transparent transparent;}
+#formUserMod {
+margin-left:20%;
+font-size:large;
+}
+#formUserMod button{
+	width : 100px;
+	height : 50px;
+	position : absolute;
+	left: 105px;
+	top: 232px;
+}
+#formUserMod input{
+width : 300px;
+margin-left:+2%;
+}
+#formUserMod #but1{
+}
+#formUserMod #but2{
+top: 288px;
+}
+#formUserMod #but3{
+top: 344px;
+}
+</style>
 <script>
 $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 	$('#cssmenu #menu-button').on('click', function(){
@@ -47,16 +84,13 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 </ul>
 </div>
 
-
-
-
 <div id="sidebarl">
 <?php
 if(isset($_SESSION['login']))
   {
     $login = $_SESSION['login'];
     $id = getUserID($login);
-    //Traitement du formulaire de mise a jour des donnes personnelles 
+    //Traitement du formulaire de mise a jour des donnes personnelles
     if (isset($_POST['login'])) {
       if (setUserField($id,"login",$_POST['login']) == false)
 	echo "Error on field login";
@@ -118,33 +152,37 @@ if(isset($_SESSION['login']))
       }
     }
     //Affichage des info personnelles
-    else {
-    echo "Voici le compte-rendu de vos informations personnelles : ";
-	 echo "</br></br></br>Nombre d'abonnés : ".getSubscriberNumber($id);
+    else {?>
+<div class="ribbon">
+<div class="theribbon">
+Voici le compte-rendu de vos informations personnelles : </div>
+<div class="ribbon-background"></div>
+</div>
+<?php
+	 echo "</br>Nombre d'abonnés : ".getSubscriberNumber($id);
     echo "<form id=\"formUserMod\" method=\"POST\" action=\"profil.php\"></br>"
     	."User name : </br><input type=text name=login  value=\"".$login."\" <br>";
     echo "</br>E-Mail : </br><input type=text name=email  value=\"".getUserInfo("email",$id)."\" />";
     echo "</br>Name : </br><input type=text name=name  value=\"".getUserInfo("name",$id)."\" />";
     echo "</br>First name : </br><input type=text name=firstname  value=\"".getUserInfo("firstname",$id)."\" />";
-    echo "</br>Postal code : </br><input type=text name=postalcode value=\"".getUserInfo("postalcode",$id)."\" />";
-    echo "<br><br><button type=submit value=\"Modifiez vos infos personnelles\"/>Modifiez vos infos personnelles</button>";
+    echo "</br>Postal code : </br><input type=text name=postalcode value=\"".getUserInfo("postalcode",$id)."\" /><br>";
+    echo "<button id=\"but1\"type=submit value=\"Modifiez vos infos personnelles\"/>Modifiez vos infos personnelles</button>";
     echo "</form>";
     echo "<form id=\"formUserMod\" method=\"POST\" action=\"profil.php\">"
-    	."<button type=submit value =\"Changer le mot de passe\" name=changepasswd>Changer le mot de passe</button></form>";
+    	."<button id=\"but2\"type=submit value =\"Changer le mot de passe\" name=changepasswd>Changer le mot de passe</button></form>";
     echo "<form id=\"formUserMod\" method=\"POST\" action=\"profil.php\">"
-    	."<button type=submit value=\"Effacer le compte\" name=deluser>Effacer le compte</button></form>";}
+    	."<button id=\"but3\"type=submit value=\"Effacer le compte\" name=deluser>Effacer le compte</button></form>";}
   }
 else
   header('Location: index.php');
 ?>
-
 
 </div>
 
 <div id="sidebarr">
 <?php
 //Affichage des Posts
-	  echo "Voici la liste de vos posts <br><br>";
+	  echo "<div class=\"theribbon1\">Voici la liste de vos posts:</div><br>";
 $post = showPostByUser($id);
 for ($i = 0; isset($post[0][$i]); $i++)
   {
@@ -157,7 +195,7 @@ for ($i = 0; isset($post[0][$i]); $i++)
   }
 ?>
 </div>
-
+</div>
 <div id="footer">
 
 
