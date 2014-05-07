@@ -37,12 +37,10 @@ $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 		}
 	});
 	</script>
-    
-    
 <div id='cssmenu'>
 <ul>
    <li class='last'><a href='accueil.php'><span>Home</span></a></li>
-   <li><a href='messages.php'><span>Messages</span></a></li>    
+   <li><a href='messages.php'><span>Messages</span></a></li>
    <li class='active'><a href='profil.php'><span>Mon Profil</span></a></li>
    <li><a href='abo.php'><span>Abonnements</span></a></li>
    <li class='last'><a href='deconnect.php'><span>Déconnexion</span></a></li>
@@ -102,7 +100,7 @@ if(isset($_SESSION['login']))
         echo "<input type=submit value=\"Valider\"></form>";}
       }
       if (isset($_POST['changepasswd'])) {
-      	//Change;ent du mot de passe
+      	//Changement du mot de passe
         if (isset($_POST['passwd']) || isset($_POST['newpasswd'])) {
           if (userConnect($id,$login) == true) {
             setUserField($id,"password",md5($_POST['newpasswd']));
@@ -123,16 +121,18 @@ if(isset($_SESSION['login']))
     else {
     echo "Voici le compte-rendu de vos informations personnelles : ";
 	 echo "</br></br></br>Nombre d'abonnés : ".getSubscriberNumber($id);
-    echo "<form id=\"signup\" method=\"POST\" action=\"profil.php\"></br>User name : </br><input type=text name=login  value=\"".$login."\" />";
+    echo "<form id=\"formUserMod\" method=\"POST\" action=\"profil.php\"></br>"
+    	."User name : </br><input type=text name=login  value=\"".$login."\" <br>";
     echo "</br>E-Mail : </br><input type=text name=email  value=\"".getUserInfo("email",$id)."\" />";
     echo "</br>Name : </br><input type=text name=name  value=\"".getUserInfo("name",$id)."\" />";
     echo "</br>First name : </br><input type=text name=firstname  value=\"".getUserInfo("firstname",$id)."\" />";
     echo "</br>Postal code : </br><input type=text name=postalcode value=\"".getUserInfo("postalcode",$id)."\" />";
-    echo "</br><button type=submit value=\"Modifiez vos infos personnelles\"/>Modifiez vos infos personnelles</button>";
+    echo "<br><br><button type=submit value=\"Modifiez vos infos personnelles\"/>Modifiez vos infos personnelles</button>";
     echo "</form>";
-    echo "</br></br></br></br><form id=\"signup\" method=\"POST\" action=\"profil.php\"><button type=submit value =\"Changer le mot de passe\" name=changepasswd>Changer le mot de passe</button></form>";
-    echo "</br><form id=\"signup\" method=\"POST\" action=\"profil.php\">
-</br>	</br></br><button type=submit value =\"Effacer le compte\" name=deluser>Effacer le compte</button></form>";}
+    echo "<form id=\"formUserMod\" method=\"POST\" action=\"profil.php\">"
+    	."<button type=submit value =\"Changer le mot de passe\" name=changepasswd>Changer le mot de passe</button></form>";
+    echo "<form id=\"formUserMod\" method=\"POST\" action=\"profil.php\">"
+    	."<button type=submit value=\"Effacer le compte\" name=deluser>Effacer le compte</button></form>";}
   }
 else
   header('Location: index.php');
@@ -143,15 +143,17 @@ else
 
 <div id="sidebarr">
 <?php
-//Affichage des Posts                                                                                                     
+//Affichage des Posts
+	  echo "Voici la liste de vos posts <br><br>";
 $post = showPostByUser($id);
 for ($i = 0; isset($post[0][$i]); $i++)
   {
     echo "<b>".$post[1][$i]."</b><br>";
-    echo "Post du ".$post[6][$i]."<br>";
-    // echo "Catergorie ".getCategory($post[4][$i])."<br>";                                                                                       
-    echo "Contenu : <br>".$post[3][$i]."<br><br>";
-    //echo "Tags : ".$post[5][$i]."<br>";                                                                                                         
+    // echo "Catergorie ".getCategory($post[4][$i])."<br>";
+    echo "| ".$post[3][$i]."<br>";
+    //echo "Tags : ".$post[5][$i]."<br>";
+    echo "<small>Publie le ".$post[6][$i]."</small><br>";
+    echo "<br>";
   }
 ?>
 </div>
@@ -160,6 +162,5 @@ for ($i = 0; isset($post[0][$i]); $i++)
 
 
 </div>
-    
 </body>
 </html>
