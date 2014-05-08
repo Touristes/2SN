@@ -276,11 +276,4 @@ function isUserAdmin($id){
     return (TRUE);
   return (FALSE);
 }
-function profilLinkForm($login)
-{
-  $linkForm =  "<form id=\"formProfilView\" method=\"POST\" action=\"profilView.php\">"
-               ."<button class=\"formProfilView\" type=\"submit\" name=\"login\" value=\"".$login."\">"
-               .$login."</button></form>";
-  return ($linkForm);
-}
 ?>
