@@ -2,8 +2,8 @@
 /* CSS Document */
 
 @font-face {
-    font-family: 'MaSuperPolice';
-    src:url('MyriadPro-Light.otf');
+  font-family: 'MaSuperPolice';
+  src:url('MyriadPro-Light.otf');
 }
 
 body {
@@ -47,9 +47,9 @@ body {
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-bottom: 10px;
-	margin-bottom:50px;
-			margin-top:80px;
-			vertical-align: top;
+	margin-bottom:20px;
+  margin-top:80px;
+  vertical-align: top;
 }
 
 #sidebarr {
@@ -65,10 +65,9 @@ body {
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-bottom: 10px;
-	margin-bottom:50px;
+	margin-bottom:20px;
 	margin-top:80px;
 	vertical-align: top;
-
 }
 
 #gen {
@@ -85,45 +84,21 @@ body {
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-bottom: 10px;
-	margin-bottom:100px;
+	margin-bottom:20px;
 	margin-top:60px;
 }
 
 ::-webkit-input-placeholder {
-   color: #bbb;
+ color: #bbb;
 }
 
 :-moz-placeholder {
-   color: #bbb;
+ color: #bbb;
 }                       
 
 .placeholder{
-    color: #bbb; /* polyfill */
-}       
-
-#signup input{
-    margin: 5px 0;
-    padding: 10px;
-    width: 85%;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 3px; 
-}
-
-#signup textarea{
-    margin: 5px 0;
-    padding: 10px;
-    width: 85%;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 3px; 
-}
-
-#signup textarea:focus{
-        outline: 0;
-        border-color: #aaa;
-    box-shadow: 0 2px 1px rgba(0, 0, 0, .3) inset;
-}       
+  color: #bbb; /* polyfill */
+}           
 
 #post1 {
 	position:absolute;
@@ -131,59 +106,72 @@ body {
 	margin-left: 0px;
 	width: 1180px;
 	height: 150px;
-	
-
 }
 
+/* Signup */
 
-#footer {
-	background-color: rgba(255,255,255,0.5);
-	display:inline-block;
-	margin-bottom:50px;
-	width: 1200px;
-	height:50px;
+#signup input{
+  margin: 5px 0;
+  padding: 10px;
+  width: 85%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 3px; 
 }
 
+#signup textarea{
+  margin: 5px 0;
+  padding: 10px;
+  width: 85%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 3px; 
+}
+
+#signup textarea:focus{
+  outline: 0;
+  border-color: #aaa;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, .3) inset;
+}   
 
 #signup input:focus{
-        outline: 0;
-        border-color: #aaa;
-    box-shadow: 0 2px 1px rgba(0, 0, 0, .3) inset;
+  outline: 0;
+  border-color: #aaa;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, .3) inset;
 }       
 
 #signup button{
 	position:absolute;
-    margin: 20px 0 0 0;
-    padding: 15px 8px;
-    width: 30%;
-    cursor: pointer;
-    border: 1px solid #2493FF;
-    overflow: visible;
-    color: #fff;
-    font: bold 1.4em arial, helvetica;
-    text-shadow: 0 -1px 0 rgba(0,0,0,.4);         
-    background-color: #2493ff;
-    background-image: linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,0)); 
-    transition: background-color .2s ease-out;
-    border-radius: 3px;
-    box-shadow: 0 2px 1px rgba(0, 0, 0, .3),
-                0 1px 0 rgba(255, 255, 255, .5) inset;                               
+  margin: 20px 0 0 0;
+  padding: 15px 8px;
+  width: 30%;
+  cursor: pointer;
+  border: 1px solid #2493FF;
+  overflow: visible;
+  color: #fff;
+  font: bold 1.4em arial, helvetica;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.4);         
+  background-color: #2493ff;
+  background-image: linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,0)); 
+  transition: background-color .2s ease-out;
+  border-radius: 3px;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, .3),
+  0 1px 0 rgba(255, 255, 255, .5) inset;                               
 }
 
 #signup button:hover{
-    background-color: #7cbfff;
-        border-color: #7cbfff;
+  background-color: #7cbfff;
+  border-color: #7cbfff;
 }
 
 #signup button:active{
-    position: absolute;
-	top:95px;
-    text-shadow: none;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, .3) inset;
+  position: absolute;
+  top:95px;
+  text-shadow: none;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .3) inset;
 }
 
-
-
+/* Menu */
 
 #cssmenu {
 	z-index: 99;
@@ -195,16 +183,18 @@ body {
 	margin-bottom:10px;
 	position:fixed;
 	width: 1200px;
-  	padding: 0;
-  	line-height: 1;
-  	font-family: "MaSuperPolice";
+ padding: 0;
+ line-height: 1;
+ font-family: "MaSuperPolice";
 }
+
 #cssmenu ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: block;
 }
+
 #cssmenu ul:after {
   content: ' ';
   display: block;
@@ -213,12 +203,14 @@ body {
   clear: both;
   visibility: hidden;
 }
+
 #cssmenu ul li {
   margin: 0;
   padding: 0;
   display: block;
   position: relative;
 }
+
 #cssmenu ul li a {
   text-decoration: none;
   display: block;
@@ -229,11 +221,13 @@ body {
   -o-transition: color .2s ease;
   transition: color .2s ease;
 }
+
 #cssmenu ul li ul {
   position: absolute;
   left: -9999px;
   top: auto;
 }
+
 #cssmenu ul li ul li {
   max-height: 0;
   position: absolute;
@@ -244,6 +238,7 @@ body {
   transition: max-height 0.4s ease-out;
   background: #ffffff;
 }
+
 #cssmenu ul li ul li.has-sub:after {
   display: block;
   position: absolute;
@@ -256,6 +251,7 @@ body {
   top: 13px;
   right: 15px;
 }
+
 #cssmenu ul li ul li.has-sub:before {
   display: block;
   position: absolute;
@@ -268,6 +264,7 @@ body {
   top: 15px;
   right: 15px;
 }
+
 #cssmenu ul li ul li a {
   font-size: 14px;
   font-weight: 400;
@@ -278,25 +275,31 @@ body {
   width: 140px;
   padding: 11px 10px 11px 20px;
 }
+
 #cssmenu ul li ul li:hover > a,
 #cssmenu ul li ul li.active > a {
   color: #4cb6ea;
 }
+
 #cssmenu ul li ul li:hover:after,
 #cssmenu ul li ul li.active:after {
   background: #4cb6ea;
 }
+
 #cssmenu ul li ul li:hover > ul {
   left: 170px;
   top: 0;
 }
+
 #cssmenu ul li ul li:hover > ul > li {
   max-height: 72px;
   position: relative;
 }
+
 #cssmenu > ul > li {
   float: left;
 }
+
 #cssmenu > ul > li:after {
   content: '';
   display: block;
@@ -312,9 +315,11 @@ body {
   -o-transition: height .2s;
   transition: height .2s;
 }
+
 #cssmenu > ul > li.has-sub > a {
   padding-right: 40px;
 }
+
 #cssmenu > ul > li.has-sub > a:after {
   display: block;
   content: '';
@@ -326,6 +331,7 @@ body {
   right: 14px;
   top: 16px;
 }
+
 #cssmenu > ul > li.has-sub > a:before {
   display: block;
   content: '';
@@ -338,6 +344,7 @@ body {
   right: 16px;
   top: 21px;
 }
+
 #cssmenu > ul > li > a {
   color: #000000;
   padding: 15px 20px;
@@ -348,32 +355,40 @@ body {
   z-index: 2;
   position: relative;
 }
+
 #cssmenu > ul > li:hover:after,
 #cssmenu > ul > li.active:after {
   height: 100%;
 }
+
 #cssmenu > ul > li:hover > a,
 #cssmenu > ul > li.active > a {
   color: #000000;
 }
+
 #cssmenu > ul > li:hover > a:after,
 #cssmenu > ul > li.active > a:after {
   background: #000000;
 }
+
 #cssmenu > ul > li:hover > a:before,
 #cssmenu > ul > li.active > a:before {
   border-top-color: #ffffff;
 }
+
 #cssmenu > ul > li:hover > ul {
   left: 0;
 }
+
 #cssmenu > ul > li:hover > ul > li {
   max-height: 72px;
   position: relative;
 }
+
 #cssmenu #menu-button {
   display: none;
 }
+
 @media all and (max-width: 768px), only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (min--moz-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (-o-min-device-pixel-ratio: 2/1) and (max-width: 1024px), only screen and (min-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (min-resolution: 192dpi) and (max-width: 1024px), only screen and (min-resolution: 2dppx) and (max-width: 1024px) {
   #cssmenu > ul {
     max-height: 0;
@@ -384,16 +399,20 @@ body {
     -o-transition: max-height 0.35s ease-out;
     transition: max-height 0.35s ease-out;
   }
+
   #cssmenu > ul.open {
     max-height: 1000px;
     border-top: 1px solid rgba(110, 110, 110, 0.25);
   }
+
   #cssmenu ul {
     width: 100%;
   }
+
   #cssmenu ul > li {
     float: none;
   }
+
   #cssmenu ul li a {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -401,38 +420,46 @@ body {
     width: 100%;
     padding: 12px 20px;
   }
+
   #cssmenu ul > li:after {
     display: none;
   }
+
   #cssmenu ul li.has-sub > a:after,
   #cssmenu ul li.has-sub > a:before,
   #cssmenu ul li ul li.has-sub:after,
   #cssmenu ul li ul li.has-sub:before {
     display: none;
   }
+
   #cssmenu ul li ul,
   #cssmenu ul li ul li ul,
   #cssmenu ul li ul li:hover > ul {
     left: 0;
     position: relative;
   }
+
   #cssmenu ul li ul li,
   #cssmenu ul li:hover > ul > li {
     max-height: 999px;
     position: relative;
     background: none;
   }
+
   #cssmenu ul li ul li a {
     padding: 8px 20px 8px 35px;
     color: #000000;
     width: auto;
   }
+
   #cssmenu ul li ul ul li a {
     padding: 8px 20px 8px 50px;
   }
+
   #cssmenu ul li ul li:hover > a {
     color: #000000;
   }
+
   #cssmenu #menu-button {
     display: block;
     -webkit-box-sizing: border-box;
@@ -447,6 +474,7 @@ body {
     color: #000000;
     cursor: pointer;
   }
+
   #cssmenu #menu-button:after {
     display: block;
     content: '';
@@ -458,6 +486,7 @@ body {
     right: 20px;
     top: 16px;
   }
+
   #cssmenu #menu-button:before {
     display: block;
     content: '';
@@ -471,13 +500,12 @@ body {
   
   /* ribbon style */
 
-
-.ribbon {padding-left:50px}
-.ribbon-background {position:absolute;top:0;right:0;font-size:8px;color:#cccccc;}
-.ribbon-background a {color:#cccccc;text-decoration:none;font-weight:normal;}
-.ribbon-background a:hover {color:#cccccc;text-decoration:none;font-weight:normal;}
-.theribbon{position: relative;width: 540px;font-size: 1.5em;font-weight: bold;padding: 6px 20px 6px 71px;margin: 30px 10px 10px -71px;color: #fefefe;background-color: #2493ff;text-shadow: 0px 1px 2px #bbb;-webkit-box-shadow: 0px 2px 4px #888;-moz-box-shadow: 0px 2px 4px #888;box-shadow: 0px 2px 4px #888;}
-.theribbon:before, .theribbon:after {content: ' ';position: absolute;width: 0;height: 0;}
-.theribbon:before{}
-.theribbon:after{left: 0px;top: 100%;border-width: 5px 10px;border-style: solid;border-color: #666666 #666666 transparent transparent;}
+  .ribbon {padding-left:50px}
+  .ribbon-background {position:absolute;top:0;right:0;font-size:8px;color:#cccccc;}
+  .ribbon-background a {color:#cccccc;text-decoration:none;font-weight:normal;}
+  .ribbon-background a:hover {color:#cccccc;text-decoration:none;font-weight:normal;}
+  .theribbon{position: relative;width: 540px;font-size: 1.5em;font-weight: bold;padding: 6px 20px 6px 71px;margin: 30px 10px 10px -71px;color: #fefefe;background-color: #2493ff;text-shadow: 0px 1px 2px #bbb;-webkit-box-shadow: 0px 2px 4px #888;-moz-box-shadow: 0px 2px 4px #888;box-shadow: 0px 2px 4px #888;}
+  .theribbon:before, .theribbon:after {content: ' ';position: absolute;width: 0;height: 0;}
+  .theribbon:before{}
+  .theribbon:after{left: 0px;top: 100%;border-width: 5px 10px;border-style: solid;border-color: #666666 #666666 transparent transparent;}
 

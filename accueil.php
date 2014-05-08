@@ -16,6 +16,7 @@ else if ($_SESSION['check'] != "1")
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="style1.css" />
+	<link rel="stylesheet" type="text/css" href="styleFooter.css"/>
 
 	<meta charset="UTF-8">
 	<title>[Why] - Accueil</title>
