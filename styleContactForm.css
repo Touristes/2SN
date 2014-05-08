@@ -21,6 +21,67 @@ body {
 	display:block;
 }
 
+#signup input{
+  margin: 5px 0;
+  padding: 10px;
+  width: 85%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 3px; 
+}
+
+#signup textarea{
+  margin: 5px 0;
+  padding: 10px;
+  width: 85%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 3px; 
+}
+
+#signup textarea:focus{
+  outline: 0;
+  border-color: #aaa;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, .3) inset;
+}       
+
+#signup input:focus{
+  outline: 0;
+  border-color: #aaa;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, .3) inset;
+}       
+
+#signup button{
+	position:absolute;
+  margin: 20px 0 0 0;
+  padding: 15px 8px;
+  margin-left:30px;        
+  width: 120px;
+  cursor: pointer;
+  border: 1px solid #2493FF;
+  overflow: visible;
+  color: #fff;
+  font: bold 1.4em arial, helvetica;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.4);         
+  background-color: #2493ff;
+  background-image: linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,0)); 
+  transition: background-color .2s ease-out;
+  border-radius: 3px;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, .3),
+  0 1px 0 rgba(255, 255, 255, .5) inset;                               
+}
+
+#signup button:hover{
+  background-color: #7cbfff;
+  border-color: #7cbfff;
+}
+
+#signup button:active{
+  position: absolute;
+  top:150px;
+  text-shadow: none;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .3) inset;
+}
 #cadrage {
 		margin: auto;
 		width:1200px;	
