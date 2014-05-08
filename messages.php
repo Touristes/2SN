@@ -107,7 +107,7 @@ $('#cssmenu #menu-button').on('click', function(){
    <li class='active'><a href='messages.php'><span>Messages</span></a></li>    
    <li><a href='profil.php'><span>Mon Profil</span></a></li>
    <li><a href='abo.php'><span>Abonnements</span></a></li>
-   <li class='last'><a href='deconnect.php'><span>Deconnexion</span></a></li>
+   <li class='last'><a href='deconnect.php'><span>Déconnexion</span></a></li>
 </ul>
 </div>
 <div id="post">
@@ -117,8 +117,8 @@ $id = getUserID($login);
 ?>
 <form id="formMenuBox" method="POST" action="messages.php" name="formMenuBox">
 <button type="submit" value ="newMessage" name="newMessage">Nouveau message</button>
-<button type="submit" value ="Boite de reception" name="receptionBox">Boite de reception</button>
-<button type="submit" value ="Boite d'envoi" name="sendBox">Boite d'envoi</button>
+<button type="submit" value ="Boite de reception" name="receptionBox">Boîte de réception</button>
+<button type="submit" value ="Boite d'envoi" name="sendBox">Boîte d'envoi</button>
 </form>
 <?php //contenu de la page
 //Nouveau message
@@ -137,7 +137,7 @@ if (isset($_POST['newMessage'])) {
 else if (isset($_POST['receptionBox'])) {
 	$messageList = getMessageReceptionList($id);
         if ($messageList[0] == "")
-        	echo "<br>Votre boite de reception est vide";
+        	echo "<br>Votre boîte de reception est vide";
 	echo "<ul id=\"messageList\">";
 	for ($i = 0; isset($messageList[$i]); $i++)
 	{
@@ -152,7 +152,7 @@ else if (isset($_POST['receptionBox'])) {
 else if (isset($_POST['sendBox'])) {
 	 $messageList = getMessageSendList($id);
 	 if ($messageList[0] == "")
-	 	echo "<br>Votre boite d'envoi est vide";
+	 	echo "<br>Votre boîte d'envoi est vide";
 	 echo "<ul id=\"messageList\">";
 	 for ($i = 0; isset($messageList[$i]); $i++)
 	 {
@@ -190,11 +190,11 @@ else if (isset($_POST['Message']))
 	echo "</form>";
 echo "<div id=\"messageContent\">";
 if ($id == $id_sender)
-  echo "<br><small>Message envoye a ".profilLinkForm(getUserInfo("login", $id_receiver))."</small>";
+  echo "<br><small>Message envoyé a ".profilLinkForm(getUserInfo("login", $id_receiver))."</small>";
 else if ($id == $id_receiver)
-  echo "<br><small>Message recu par ".profilLinkForm(getUserInfo("login", $id_receiver))."</small>";
+  echo "<br><small>Message reçu par ".profilLinkForm(getUserInfo("login", $id_receiver))."</small>";
 	echo "<br><div id=\"messageText\">" . getMessageContent($id_message) ."</div>";
-echo "<small>Recu le : ".getMessageDate($id_message)."</small>";
+echo "<small>Reçu le : ".getMessageDate($id_message)."</small>";
 echo "</div>";
 }
 //Effacement du message
@@ -210,7 +210,7 @@ else if (isset($_POST['delMessage']))
 else {
 	$messageList = getMessageReceptionList($id);
         if ($messageList[0] == "")
-        	echo "<br>Votre boite de reception est vide";
+        	echo "<br>Votre boîte de réception est vide";
 	echo "<ul id=\"messageList\">";
 	for ($i = 0; isset($messageList[$i]); $i++)
 	{
@@ -224,6 +224,10 @@ else {
 ?>
 </div>
 <div id="footer">
+	<a href='contactForm.php'><span id="b-left">Contact</span></a>
+   	<a href='faq.php'><span id="b-middle">Faq</span></a>
+   	<a href='co.php'><span id="b-right">Inscription</span></a>
+
 </div>
 </body>
 </html>
