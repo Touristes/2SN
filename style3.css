@@ -55,7 +55,6 @@ body {
 #sidebarr {
 	background-color: rgba(255,255,255,0.5);
 	display:inline-block;
-	overflow:auto;
 	margin-left: auto;
 	margin-right:auto;
 	text-align:left;
@@ -68,6 +67,12 @@ body {
 	margin-bottom:20px;
 	margin-top:80px;
 	vertical-align: top;
+}
+
+#affpost {
+	overflow:auto;
+	height:50%;
+	margin-bottom:10px;
 }
 
 #gen {

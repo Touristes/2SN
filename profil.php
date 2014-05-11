@@ -181,6 +181,7 @@ $('#cssmenu #menu-button').on('click', function(){
 </div>
 
 <div id="sidebarr">
+<div id="affpost">
   <?php
 //Affichage des Posts
   echo "<div class=\"theribbon1\">Voici la liste de vos posts :</div><br>";
@@ -195,6 +196,27 @@ $('#cssmenu #menu-button').on('click', function(){
     echo "<br>";
   }
   ?>
+  </div>
+  
+  <div id="affpost">
+  <?php
+//Affichage des Posts
+  echo "<div class=\"theribbon1\">Voici la liste de vos posts :</div><br>";
+  $post = showPostByUser($id);
+  for ($i = 0; isset($post[0][$i]); $i++)
+  {
+    echo "<b>".$post[1][$i]."</b><br>";
+    // echo "Catergorie ".getCategory($post[4][$i])."<br>";
+    echo "| ".$post[3][$i]."<br>";
+    //echo "Tags : ".$post[5][$i]."<br>";
+    echo "<small>Publie le ".$post[6][$i]."</small><br>";
+    echo "<br>";
+  }
+  ?>
+  </div>
+  
+  
+  
 </div>
 <div id="cadrage-f">
   <div id="footer">
