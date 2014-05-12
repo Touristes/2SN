@@ -5,6 +5,8 @@ require_once "dataConnect.php";
 // post_image(int), post_video(int), post_text(int), posts(int), news_du_jour(int), shares_files(int)
 // private_message_sends (int), private_message_receives (int)
 // id_user NULL correspond au site
+
+//inititalise les stats du site, s'ils n'existent pas
 initSiteStat();
 
 function initSiteStat() {
@@ -44,22 +46,15 @@ function isSiteStatExist() {
   return (FALSE);
 }
 
-//addUserStat(id_user)
-//addUserNewPeriod(id_user, period_start)
-//addSiteNewPeriod(period_start)
-//closeSitePeriod(period_start)
-//closeUserPeriod(id_user, period_start)
-//delUserPeriod(id_user, period_start, period_end)
-//delSitePeriod(period_start, period_end)
-//delUserStats(id_user)
+//fonction générique pour recupérer la valeur d'un champ
 function getField($field, $id_user, $begin, $period_start) {
 $db = dbConnect();
   if ($db == FALSE)
     return (0);
   if ($begin == 1)
-	$query = "select \"".$field."\" from stats where id_user = \"".$id_user."\" AND begin = 1;";
+	$query = "select \"".$field."\" from stats where id_user = ".$id_user." AND begin = 1;";
   else if ($begin == 0) {
-	$query = "select \"".$field."\" from stats where id_user = \"".$id_user."\" AND begin = 0 "
+	$query = "select \"".$field."\" from stats where id_user = ".$id_user." AND begin = 0 "
 		."AND period_start = \"".$period_start."\";";
 	}
   $result = $db->query($query);
@@ -76,14 +71,16 @@ $db = dbConnect();
   dbClose($db);
   return ($content);
 }
+
+//fonction généreique pour modifier la valeur d'un champ
 function setField($field, $id_user, $begin, $period_start, $new_value) {
 $db = dbConnect();
   if ($db == FALSE)
     return (0);
   if ($begin == 1)
-	$query = "update stats set \"".$field."\"=\"".$new_value."\" where id_user = \"".$id_user."\" AND begin = 1;";
+	$query = "update stats set \"".$field."\"=\"".$new_value."\" where id_user = ".$id_user." AND begin = 1;";
   else if ($begin == 0) {
-	$query = "update stats set \"".$field."\"=\"".$new_value."\" where id_user = \"".$id_user."\" AND begin = 0 "
+	$query = "update stats set \"".$field."\"=\"".$new_value."\" where id_user = ".$id_user." AND begin = 0 "
 		."AND period_start = \"".$period_start."\";";
 	}
   $result = $db->query($query);
@@ -93,8 +90,11 @@ $db = dbConnect();
   return (TRUE);
 }
 
+//fonction générique pour incrémenter la valeur d'un champ
 function incrementField($field, $id_user, $begin, $period_start) {
 	if ($field == "id_stat" || $field == "id_user" || $field == "period_start" || $field == "period_end")
+		return (FALSE);
+	if (isPeriodClosed($period_start, $id_user) == true)
 		return (FALSE);
 	if (strpos($field, "post_") != false)
 		setField("posts", $id_user, $begin, $period_start, getField("posts", $id_user, $begin, $period_start) + 1)
@@ -102,6 +102,27 @@ function incrementField($field, $id_user, $begin, $period_start) {
 		incrementField($field, "NULL", $begin, $period_start);
 	return (setField($field, $id_user, $begin, $period_start, getField($field, $id_user, $begin, $period_start) + 1));
 }
+
+//liste des fonctions à ajouter
+
+//addUserStat(id_user)
+//addUserNewPeriod(id_user, period_start)
+//addSiteNewPeriod(period_start)
+//closeSitePeriod(period_start)
+//closeUserPeriod(id_user, period_start)
+//delUserPeriod(id_user, period_start, period_end)
+//delSitePeriod(period_start, period_end)
+//delUserStats(id_user)
+//getSitePeriodList()
+//getUserPeriodList($id_user)
+//isSitePeriodClosed($period_start)
+//isUserPeriodClosed($period_start,$id_user)
+//isPeriodClosed($period_start, $id_user)
+//getSiteCloseDate($period_start)
+//getUSerCloseDate($period_start, $id_user)
+
+//Liste des fonctions pour récupérer les champs de statistique du site depuis sa création
+
 function getSiteTotalPostTroll() {
 	return (getField("post_troll", NULL, 1, NULL));
 }
@@ -132,6 +153,9 @@ function getSiteTotalPrivateMessageSends() {
 function getSiteTotalPrivateMessageReceives() {
 	return (getField("private_message_receives", NULL, 1, NULL));
 }
+
+//Liste des fonctions pour récupérer les champs de statistique du site pour une période donnée
+
 function getSitePeriodPostTroll($period_start) {
 	return (getField("post_troll", NULL, 0, $period_start));
 }
@@ -162,7 +186,9 @@ function getSitePeriodPrivateMessageSends($period_start) {
 function getSitePeriodPrivateMessageReceives($period_start) {
 	return (getField("private_message_receives", NULL, 0, $period_start));
 }
-//getSitePeriodList($period_start)
+
+//Liste des fonctions pour modifier les champs de statistique du site depuis sa création
+
 function setSiteTotalPostTroll($new_value) {
 	return (setField("post_troll", NULL, 1, NULL, $new_value));
 }
@@ -193,6 +219,9 @@ function setSiteTotalPrivateMessageSends($new_value) {
 function setSiteTotalPrivateMessageReceives($new_value) {
 	return (setField("private_message_receives", NULL, 1, NULL, $new_value));
 }
+
+//Liste des fonctions pour modifier les champs de statistique du site pour une periode donnée
+
 function setSitePeriodPostTroll($new_value, $period_start) {
 	return (setField("post_troll", NULL, 0, $period_start, $new_value));
 }
@@ -223,125 +252,268 @@ function setSitePeriodPrivateMessageSends($new_value, $period_start) {
 function setSitePeriodPrivateMessageReceives($new_value, $period_start) {
 	return (setField("private_message_receives", NULL, 0, $period_start, $new_value));
 }
+
+//Liste des fonctions pour incrémenter les champs de statistique du site depuis sa création
+
 function incrementSiteTotalPostTroll() {
-	return (setField("post_troll", NULL, 1, NULL, getField("post_troll", NULL, 1, NULL) + 1 ));
+	return (incrementField("post_troll", NULL, 1, NULL);
 }
 function incrementSiteTotalPostActu() {
-	return (setField("post_actu", NULL, 1, NULL, getField("post_troll", NULL, 1, NULL) + 1 ));
+	return (incrementField("post_actu", NULL, 1, NULL));
 }
 function incrementSiteTotalPostImage() {
-	return (setField("post_image", NULL, 1, NULL, getField("post_troll", NULL, 1, NULL) + 1 ));
+	return (incrementField("post_image", NULL, 1, NULL));
 }
 function incrementSiteTotalPostVideo() {
-	return (setField("post_video", NULL, 1, NULL, getField("post_troll", NULL, 1, NULL) + 1 ));
+	return (incrementField("post_video", NULL, 1, NULL));
 }
 function incrementSiteTotalPostText() {
-	return (setField("post_text", NULL, 1, NULL, getField("post_troll", NULL, 1, NULL) + 1 ));
+	return (incrementField("post_text", NULL, 1, NULL));
 }
 function incrementSiteTotalPost() {
-	return (setField("posts", NULL, 1, NULL, getField("post_troll", NULL, 1, NULL) + 1 ));
+	return (incrementField("posts", NULL, 1, NULL));
 }
 function incrementSiteTotalNewsDuJour() {
-	return (setField("news_du_jour", NULL, 1, NULL, getField("post_troll", NULL, 1, NULL) + 1 ));
+	return (incrementField("news_du_jour", NULL, 1, NULL));
 }
 function incrementSiteTotalSharedFiles() {
-	return (setField("shared_files", NULL, 1, NULL, getField("post_troll", NULL, 1, NULL) + 1 ));
+	return (incrementField("shared_files", NULL, 1, NULL,));
 }
 function incrementSiteTotalPrivateMessageSends() {
-	return (setField("private_messagge_sends", NULL, 1, NULL, getField("post_troll", NULL, 1, NULL) + 1 ));
+	return (incrementField("private_messagge_sends", NULL, 1, NULL));
 }
 function incrementSiteTotalPrivateMessageReceives() {
-	return (setField("private_message_receives", NULL, 1, NULL, getField("post_troll", NULL, 1, NULL) + 1 ));
+	return (incrementField("private_message_receives", NULL, 1, NULL));
 }
+
+//Liste des fonctions pour incrémenter les champs de statistique du site pour une période donnée
+
 function incrementSitePeriodPostTroll($period_start) {
-	return (setField("post_troll", NULL, 0, $period_start, getField("post_troll", NULL, 1, NULL) + 1 ));
+	return (incrementField("post_troll", NULL, 0, $period_start));
 }
 function incrementSitePeriodPostActu($period_start) {
-	return (setField("post_actu", NULL, 0, $period_start, getField("post_troll", NULL, 1, NULL) + 1 ));
+	return (incrementField("post_actu", NULL, 0, $period_start));
 }
 function incrementSitePeriodPostImage($period_start) {
-	return (setField("post_image", NULL, 0, $period_start, getField("post_troll", NULL, 1, NULL) + 1 ));
+	return (incrementField("post_image", NULL, 0, $period_start));
 }
 function incrementSitePeriodPostVideo($period_start) {
-	return (setField("post_video", NULL, 0, $period_start, getField("post_troll", NULL, 1, NULL) + 1 ));
+	return (incrementField("post_video", NULL, 0, $period_start));
 }
 function incrementSitePeriodPostText($period_start) {
-	return (setField("post_text", NULL, 0, $period_start, getField("post_troll", NULL, 1, NULL) + 1 ));
+	return (incrementField("post_text", NULL, 0, $period_start));
 }
 function incrementSitePeriodPosts($period_start) {
-	return (setField("posts", NULL, 0, $period_start, getField("post_troll", NULL, 1, NULL) + 1 ));
+	return (incrementField("posts", NULL, 0, $period_start));
 }
 function incrementSitePeriodNewsDuJour($period_start) {
-	return (setField("news_du_jour", NULL, 0, $period_start, getField("post_troll", NULL, 1, NULL) + 1 ));
+	return (incrementField("news_du_jour", NULL, 0, $period_start));
 }
 function incrementSitePeriodSharedFiles($period_start) {
-	return (setField("shared_files", NULL, 0, $period_start, getField("post_troll", NULL, 1, NULL) + 1 ));
+	return (incrementField("shared_files", NULL, 0, $period_start));
 }
 function incrementSitePeriodPrivateMessageSends($period_start) {
-	return (setField("private_message_sends", NULL, 0, $period_start, getField("post_troll", NULL, 1, NULL) + 1 ));
+	return (incrementField("private_message_sends", NULL, 0, $period_start));
 }
 function incrementSitePeriodPrivateMessageReceives($period_start) {
-	return (setField("private_message_receives", NULL, 0, $period_start, getField("post_troll", NULL, 1, NULL) + 1 ));
+	return (incrementField("private_message_receives", NULL, 0, $period_start));
 }
-//getUserTotalPostTroll($id_user)
-//getUserTotalPostActu($id_user)
-//getUserTotalPostImage($id_user)
-//getUserTotalPostVideo($id_user)
-//getUserTotalPostText($id_user)
-//getUserTotalPost($id_user)
-//getUserTotalNewsDuJour($id_user)
-//getUserTotalSharedFiles($id_user)
-//getUserTotalPrivateMessageSends($id_user)
-//getUserTotalPrivateMessageReceives($id_user)
-//getUserPeriodPostTroll($id_user, $period_start)
-//getUserPeriodPostActu($id_user, $period_start)
-//getUserPeriodPostImage($id_user, $period_start)
-//getUserPeriodPostVideo($id_user, $period_start)
-//getUserPeriodPostText($id_user, $period_start)
-//getUserPeriodPost($id_user, $period_start)
-//getUserPeriodNewsDuJour($id_user, $period_start)
-//getUserPeriodSharedFiles($id_user, $period_start)
-//getUserPeriodPrivateMessageSends($id_user, $period_start)
-//getUserPeriodPrivateMessageReceives($id_user, $period_start)
-//getUserPeriodList($id_user, $period_start)
-//setUserTotalPostTroll($id_user)
-//setUserTotalPostActu($id_user)
-//setUserTotalPostImage($id_user)
-//setUserTotalPostVideo($id_user)
-//setUserTotalPostText($id_user)
-//setUserTotalPost($id_user)
-//setUserTotalNewsDuJour($id_user)
-//setUserTotalSharedFiles($id_user)
-//setUserTotalPrivateMessageSends($id_user)
-//setUserTotalPrivateMessageReceives($id_user)
-//setUserPeriodPostTroll($id_user, $period_start)
-//setUserPeriodPostActu($id_user, $period_start)
-//setUserPeriodPostImage($id_user, $period_start)
-//setUserPeriodPostVideo($id_user, $period_start)
-//setUserPeriodPostText($id_user, $period_start)
-//setUserPeriodPost($id_user, $period_start)
-//setUserPeriodNewsDuJour($id_user, $period_start)
-//setUserPeriodSharedFiles($id_user, $period_start)
-//setUserPeriodPrivateMessageSends($id_user, $period_start)
-//setUserPeriodPrivateMessageReceives($id_user, $period_start)
-//incrementUserTotalPostTroll($id_user)
-//incrementUserTotalPostActu($id_user)
-//incrementUserTotalPostImage($id_user)
-//incrementUserTotalPostVideo($id_user)
-//incrementUserTotalPostText($id_user)
-//incrementUserTotalPost($id_user)
-//incrementUserTotalNewsDuJour($id_user)
-//incrementUserTotalSharedFiles($id_user)
-//incrementUserTotalPrivateMessageSends($id_user)
-//incrementUserTotalPrivateMessageReceives($id_user)
-//incrementUserPeriodPostTroll($id_user, $period_start)
-//incrementUserPeriodPostActu($id_user, $period_start)
-//incrementUserPeriodPostImage($id_user, $period_start)
-//incrementUserPeriodPostVideo($id_user, $period_start)
-//incrementUserPeriodPostText($id_user, $period_start)
-//incrementUserPeriodPost($id_user, $period_start)
-//incrementUserPeriodNewsDuJour($id_user, $period_start)
-//incrementUserPeriodSharedFiles($id_user, $period_start)
-//incrementUserPeriodPrivateMessageSends($id_user, $period_start)
-//incrementUserPeriodPrivateMessageReceives($id_user, $period_start)
+
+//Liste des fonctions pour récupérer les champs de statistique d'un utilisateur depuis la crétion de son compte
+
+function getUserTotalPostTroll($id_user) {
+	return (getField("post_troll", $id_user, 1, NULL, $new_value));
+}
+function getUserTotalPostActu($id_user) {
+	return (getField("post_actu", $id_user, 1, NULL, $new_value));
+}
+function getUserTotalPostImage($id_user) {
+	return (getField("post_image", $id_user, 1, NULL, $new_value));
+}
+function getUserTotalPostVideo($id_user) {
+	return (getField("post_video", $id_user, 1, NULL, $new_value));
+}
+function getUserTotalPostText($id_user) {
+	return (getField("post_text", $id_user, 1, NULL, $new_value));
+}
+function getUserTotalPost($id_user) {
+	return (getField("posts", $id_user, 1, NULL, $new_value));
+}
+function getUserTotalNewsDuJour($id_user) {
+	return (getField("news_du_jour", $id_user, 1, NULL, $new_value));
+}
+function getUserTotalSharedFiles($id_user) {
+	return (getField("shared_files", $id_user, 1, NULL, $new_value));
+}
+function getUserTotalPrivateMessageSends($id_user) {
+	return (getField("private_message_sends", $id_user, 1, NULL, $new_value));
+}
+function getUserTotalPrivateMessageReceives($id_user) {
+	return (getField("private_message_receives", $id_user, 1, NULL, $new_value));
+}
+
+//Liste des fonctions pour récupérer les champs de statistique d'un utilisateur pour une période donnée
+
+function getUserPeriodPostTroll($id_user, $period_start) {
+	return (getField("post_troll", $id_user, 0, $period_start, $new_value));
+}
+function getUserPeriodPostActu($id_user, $period_start) {
+	return (getField("post_actu", $id_user, 0, $period_start, $new_value));
+}
+function getUserPeriodPostImage($id_user, $period_start) {
+	return (getField("post_image", $id_user, 0, $period_start, $new_value));
+}
+function getUserPeriodPostVideo($id_user, $period_start) {
+	return (getField("post_video", $id_user, 0, $period_start, $new_value));
+}
+function getUserPeriodPostText($id_user, $period_start) {
+	return (getField("post_text", $id_user, 0, $period_start, $new_value));
+}
+function getUserPeriodPost($id_user, $period_start) {
+	return (getField("posts", $id_user, 0, $period_start, $new_value));
+}
+function getUserPeriodNewsDuJour($id_user, $period_start) {
+	return (getField("news_du_jour", $id_user, 0, $period_start, $new_value));
+}
+function getUserPeriodSharedFiles($id_user, $period_start) {
+	return (getField("shared_files", $id_user, 0, $period_start, $new_value));
+}
+function getUserPeriodPrivateMessageSends($id_user, $period_start) {
+	return (getField("private_message_sends", $id_user, 0, $period_start, $new_value));
+}
+function getUserPeriodPrivateMessageReceives($id_user, $period_start) {
+	return (getField("private_message_receives", $id_user, 0, $period_start, $new_value));
+}
+
+//Liste des fonctions pour modifier les champs de statistique d'un utilisateur depuis la crétion de son compte
+
+function setUserTotalPostTroll($id_user) {
+	return (setField("post_troll", $id_user, 1, NULL, $new_value));
+}
+function setUserTotalPostActu($id_user) {
+	return (setField("post_actu", $id_user, 1, NULL, $new_value));
+}
+function setUserTotalPostImage($id_user) {
+	return (setField("post_image", $id_user, 1, NULL, $new_value));
+}
+function setUserTotalPostVideo($id_user) {
+	return (setField("post_video", $id_user, 1, NULL, $new_value));
+}
+function setUserTotalPostText($id_user) {
+	return (setField("post_text", $id_user, 1, NULL, $new_value));
+}
+function setUserTotalPost($id_user) {
+	return (setField("posts", $id_user, 1, NULL, $new_value));
+}
+function setUserTotalNewsDuJour($id_user) {
+	return (setField("news_du_jour", $id_user, 1, NULL, $new_value));
+}
+function setUserTotalSharedFiles($id_user) {
+	return (setField("shared_files", $id_user, 1, NULL, $new_value));
+}
+function setUserTotalPrivateMessageSends($id_user) {
+	return (setField("private_message_sends", $id_user, 1, NULL, $new_value));
+}
+function setUserTotalPrivateMessageReceives($id_user) {
+	return (setField("private_message_receives", $id_user, 1, NULL $new_value));
+}
+
+//Liste des fonctions pour modifier les champs de statistique d'un utilisateur pour une période donnée
+
+function setUserPeriodPostTroll($id_user, $period_start) {
+	return (setField("post_troll", $id_user, 0, $period_start $new_value));
+}
+function setUserPeriodPostActu($id_user, $period_start) {
+	return (setField("post_actu", $id_user, 0, $period_start $new_value));
+}
+function setUserPeriodPostImage($id_user, $period_start) {
+	return (setField("post_image", $id_user, 0, $period_start $new_value));
+}
+function setUserPeriodPostVideo($id_user, $period_start) {
+	return (setField("post_video", $id_user, 0, $period_start $new_value));
+}
+function setUserPeriodPostText($id_user, $period_start) {
+	return (setField("post_text", $id_user, 0, $period_start $new_value));
+}
+function setUserPeriodPost($id_user, $period_start) {
+	return (setField("posts", $id_user, 0, $period_start $new_value));
+}
+function setUserPeriodNewsDuJour($id_user, $period_start)  {
+	return (setField("news_du_jour", $id_user, 0, $period_start $new_value));
+}
+function setUserPeriodSharedFiles($id_user, $period_start) {
+	return (setField("shared_files", $id_user, 0, $period_start $new_value));
+}
+function setUserPeriodPrivateMessageSends($id_user, $period_start) {
+	return (setField("private_message_sends", $id_user, 0, $period_start $new_value));
+}
+function setUserPeriodPrivateMessageReceives($id_user, $period_start) {
+	return (setField("private_message_receives", $id_user, 0, $period_start $new_value));
+}
+
+//Liste des fonctions pour incrémenter les champs de statistique d'un utilisateur depuis la crétion de son compte
+
+function incrementUserTotalPostTroll($id_user) {
+	return (incrementField("post_troll", $id_user, 1, NULL));
+}
+function incrementUserTotalPostActu($id_user) {
+	return (incrementField("post_actu", $id_user, 1, NULL));
+}
+function incrementUserTotalPostImage($id_user) {
+	return (incrementField("post_image", $id_user, 1, NULL));
+}
+function incrementUserTotalPostVideo($id_user) {
+	return (incrementField("post_video", $id_user, 1, NULL));
+}
+function incrementUserTotalPostText($id_user) {
+	return (incrementField("post_text", $id_user, 1, NULL));
+}
+function incrementUserTotalPost($id_user) {
+	return (incrementField("posts", $id_user, 1, NULL));
+}
+function incrementUserTotalNewsDuJour($id_user) {
+	return (incrementField("news_du_jour", $id_user, 1, NULL));
+}
+function incrementUserTotalSharedFiles($id_user) {
+	return (incrementField("shared_files", $id_user, 1, NULL));
+}
+function incrementUserTotalPrivateMessageSends($id_user) {
+	return (incrementField("private_message_sends", $id_user, 1, NULL));
+}
+function incrementUserTotalPrivateMessageReceives($id_user) {
+	return (incrementField("private_message_receives", $id_user, 1, NULL));
+}
+
+//Liste des fonctions pour incrémenter les champs de statistique d'un utilisateur pour une période donnée
+
+function incrementUserPeriodPostTroll($id_user, $period_start) {
+	return (incrementField("post_troll", $id_user, 1, $period_start));
+}
+function incrementUserPeriodPostActu($id_user, $period_start) {
+	return (incrementField("post_actu", $id_user, 1, $period_start));
+}
+function incrementUserPeriodPostImage($id_user, $period_start) {
+	return (incrementField("post_image", $id_user, 1, $period_start));
+}
+function incrementUserPeriodPostVideo($id_user, $period_start) {
+	return (incrementField("post_video", $id_user, 1, $period_start));
+}
+function incrementUserPeriodPostText($id_user, $period_start) {
+	return (incrementField("post_text", $id_user, 1, $period_start));
+}
+function incrementUserPeriodPost($id_user, $period_start) {
+	return (incrementField("posts", $id_user, 1, $period_start));
+}
+function incrementUserPeriodNewsDuJour($id_user, $period_start) {
+	return (incrementField("news_du_jour", $id_user, 1, $period_start));
+}
+function incrementUserPeriodSharedFiles($id_user, $period_start) {
+	return (incrementField("shared_files", $id_user, 1, $period_start));
+}
+function incrementUserPeriodPrivateMessageSends($id_user, $period_start) {
+	return (incrementField("private_message_sends", $id_user, 1, $period_start));
+}
+function incrementUserPeriodPrivateMessageReceives($id_user, $period_start) {
+	return (incrementField("private_message_receives", $id_user, 1, $period_start));
+}
 ?>
