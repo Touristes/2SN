@@ -75,6 +75,12 @@ body {
 	margin-bottom:10px;
 }
 
+#affstat {
+	overflow:auto;
+	height:50%;
+	margin-bottom:10px;
+}
+
 #gen {
 
 	background-color: rgba(255,255,255,0.5);
