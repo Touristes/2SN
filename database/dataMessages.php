@@ -5,7 +5,7 @@ function addMessage($content, $id_user, $id_receiver) {
   $db =dbConnect();
   if ($db == FALSE)
     return (FALSE);
-  $query = "INSERT INTO message (message, id_user, id_receiver, reated) values (\"".$content."\",\"".$id_user."\",\"".$id_receiver."\",date('now'));";
+  $query = "INSERT INTO message (message, id_user, id_receiver, created) values (\"".$content."\",\"".$id_user."\",\"".$id_receiver."\",date('now'));";
   $result = $db->query($query);
   if ($result == FALSE)
     {
@@ -97,7 +97,7 @@ function getMessageReceptionList($id_user){
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select id_message from message where id_receiver = \"".$id_user."\" order by reated desc;";
+  $query = "select id_message from message where id_receiver = \"".$id_user."\" order by created desc;";
   $result = $db->query($query);
   for ($i = 0 ;$row = $result->fetchArray(); $i++)
     {
@@ -110,7 +110,7 @@ function getMessageReceptionListByDate($id_user, $date) {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select id_message from message where id_receiver = \"".$id_user."\" and reated like \"".$date."\" order by reated;";
+  $query = "select id_message from message where id_receiver = \"".$id_user."\" and created like \"".$date."\" order by created;";
   $result = $db->query($query);
   for ($i = 0 ;$row = $result->fetchArray(); $i++)
     {
@@ -123,7 +123,7 @@ function getMessageSendList($id_user) {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select id_message from message where id_user = \"".$id_user."\" order by reated;";
+  $query = "select id_message from message where id_user = \"".$id_user."\" order by created;";
   $result = $db->query($query);
   for ($i = 0 ;$row = $result->fetchArray(); $i++)
     {
@@ -136,7 +136,7 @@ function getMessageSendListByDate($id_user, $date) {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select id_message from message where id_user = \"".$id_user."\" and reated like \"".$date."\" order by reated;";
+  $query = "select id_message from message where id_user = \"".$id_user."\" and created like \"".$date."\" order by created;";
   $result = $db->query($query);
   for ($i = 0 ;$row = $result->fetchArray(); $i++)
     {

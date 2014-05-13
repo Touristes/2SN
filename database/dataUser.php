@@ -26,7 +26,7 @@ function addUser($login, $email, $password) {
   if ($db == FALSE)
     return (FALSE);
   initDefaultUserGroups();
-  $query = "INSERT INTO user (login, email, password, created, modified, last_connexion) values (\"".$login."\",\"".$email."\",\"".md5($password)."\",date('now'),date('now'),date('now'));";
+  $query = "INSERT INTO user (login, email, password, created, modified, last_connection) values (\"".$login."\",\"".$email."\",\"".md5($password)."\",date('now'),date('now'),date('now'));";
   $result = $db->query($query);
   if ($result == FALSE)
     {
@@ -50,7 +50,7 @@ function addAdmin($login, $email, $password) {
   if ($db == FALSE)
     return (FALSE);
   initDefaultUserGroups();
-  $query = "INSERT INTO user (login, email, password, created, modified, last_connexion) values (\"".$login."\",\"".$email."\",\"".md5($password)."\",date('now'),date('now'),date('now'));";
+  $query = "INSERT INTO user (login, email, password, created, modified, last_connection) values (\"".$login."\",\"".$email."\",\"".md5($password)."\",date('now'),date('now'),date('now'));";
   $result = $db->query($query);
   if ($result == FALSE)
     {
@@ -234,7 +234,7 @@ function userConnect($login, $password){
     }
   if ($i > 0)
     {
-      $query = "update user set last_connexion = date('now') where id_user = \"".$id."\";";
+      $query = "update user set last_connection = date('now') where id_user = \"".$id."\";";
       $result = $db->query($query);
       dbClose($db);
       return (TRUE);

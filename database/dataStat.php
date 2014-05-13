@@ -1,12 +1,16 @@
 <?php
 require_once "dataConnect.php";
 // peut-être amenné à changer
-// id_stat(int primary_key, auto_increment), id_user(int NULL),begin(boolean), period_start(date), period_end(date NULL), post_troll(int), post_actu(int),
+// id_stat(int primary_key, auto_increment), id_user(int NULL),begin(boolean), period_start(date), period_end(date NULL)
+// post_troll(int), post_actu(int
 // post_image(int), post_video(int), post_text(int), posts(int), news_du_jour(int), shares_files(int)
 // private_message_sends (int), private_message_receives (int)
+// Conseils :
 // id_user NULL correspond au site
+// on ne peut pas lancer deux périodes de stats le même jour pour un utilisateur
 
-//inititalise les stats du site, s'ils n'existent pas
+//inititalise les stats du site, si elles n'existent pas
+
 initSiteStat();
 
 function initSiteStat() {
@@ -28,11 +32,54 @@ function initSiteStat() {
   return (TRUE);
 }
 
+//Vérifie si les stats du site existent
+
 function isSiteStatExist() {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-    $query = "select stat_ref from stats where id_user = NULL;";
+    $query = "select id_stat from stats where id_user = NULL and begin = 1;";
+  $result = $db->query($query);
+  $i = 0;
+  while ($row = $result->fetchArray())
+    {
+      for ($i = 0; isset($row[$i]); $i++)
+        $ID = $row[$i];
+    }
+  dbClose($db);
+  if ($i > 0)
+    return (TRUE);
+  return (FALSE);
+}
+
+//Ajoute les statistique d'un utilisateur si elles n'existent pas
+
+function addUserStats($id_user) {
+  $db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  if (isUserStatExist($id_user) == FALSE) {
+  $query = "INSERT INTO stats (id_user, begin, period_start, post_troll, post_actu, post_image,"
+	." post_video, post_text, news_du_jour, shared_files, private_message_sends, private_message_receives)"
+	."values (".$id_user.", 1, date('now'), 0, 0, 0, 0, 0, 0, 0, 0, 0);";
+  $result = $db->query($query);
+  if ($result == FALSE)
+    {
+      dbClose($db);
+      return (FALSE);
+    }
+  }
+  dbClose($db);
+  return (TRUE);
+}
+
+//Vérifie si les stats d'un utilisateur existent
+
+function isUserStatExist($id_user) {
+  $db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+    $query = "select id_stat from stats where id_user = ".$id_user." and begin = 1;";
   $result = $db->query($query);
   $i = 0;
   while ($row = $result->fetchArray())
@@ -47,6 +94,7 @@ function isSiteStatExist() {
 }
 
 //fonction générique pour recupérer la valeur d'un champ
+
 function getField($field, $id_user, $begin, $period_start) {
 $db = dbConnect();
   if ($db == FALSE)
@@ -73,6 +121,7 @@ $db = dbConnect();
 }
 
 //fonction généreique pour modifier la valeur d'un champ
+
 function setField($field, $id_user, $begin, $period_start, $new_value) {
 $db = dbConnect();
   if ($db == FALSE)
@@ -90,7 +139,42 @@ $db = dbConnect();
   return (TRUE);
 }
 
+//Permet de récupérer la date de création des stats
+
+function getCreationDate($id_user) {
+$db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  $query = "select period_start from stats where id_user = ".$id_user." AND begin = 1;";
+  $result = $db->query($query);
+  if ($result == FALSE)
+	return (FALSE);
+  $i = 0;
+  while ($row = $result->fetchArray())
+    {
+      for ($i = 0; isset($row[$i]); $i++)
+        $content = $row[$i];
+    }
+  if ($i != 1)
+	return (FALSE);
+  dbClose($db);
+  return ($content);
+}
+
+//Permet de récupérer la date de création des stats du site
+
+function getSiteCreationDate() {
+	return (getCreationDate(NULL));
+}
+
+//Permet de récupérer la date de création des stats d'un utilisateur
+
+function getUserCreationDate($id_user) {
+	return (getCreationDate($id_user));
+}
+
 //fonction générique pour incrémenter la valeur d'un champ
+
 function incrementField($field, $id_user, $begin, $period_start) {
 	if ($field == "id_stat" || $field == "id_user" || $field == "period_start" || $field == "period_end")
 		return (FALSE);
@@ -103,23 +187,241 @@ function incrementField($field, $id_user, $begin, $period_start) {
 	return (setField($field, $id_user, $begin, $period_start, getField($field, $id_user, $begin, $period_start) + 1));
 }
 
-//liste des fonctions à ajouter
+//Focntion retournant true si la période est cloturée ou false si elle est ouverte
 
-//addUserStat(id_user)
-//addUserNewPeriod(id_user, period_start)
-//addSiteNewPeriod(period_start)
-//closeSitePeriod(period_start)
-//closeUserPeriod(id_user, period_start)
-//delUserPeriod(id_user, period_start, period_end)
-//delSitePeriod(period_start, period_end)
-//delUserStats(id_user)
-//getSitePeriodList()
-//getUserPeriodList($id_user)
-//isSitePeriodClosed($period_start)
-//isUserPeriodClosed($period_start,$id_user)
-//isPeriodClosed($period_start, $id_user)
-//getSiteCloseDate($period_start)
-//getUSerCloseDate($period_start, $id_user)
+function isPeriodClosed($period_start, $id_user) {
+$db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  $query = "select period_closed from stats where begin = 0 and id_user = ".$id_user." and period_start = \"".$period_start."\";";
+  $result = $db->query($query);
+  if ($result == FALSE)
+	return (0);
+  while ($row = $result->fetchArray())
+    {
+      for ($i = 0; isset($row[$i]); $i++)
+		$period_end = $row[$i];
+    }
+  dbClose($db);
+  if ($period_end == NULL)
+	return (false);
+  return (true);
+}
+
+//Focntion retournant true si la période du site est cloturée ou false si elle est ouverte
+
+function isSitePeriodClosed($period_start) {
+	return (isPeriodClosed($period_start, NULL));
+}
+
+//Focntion retournant true si la période d'un utilisateur est cloturée ou false si elle est ouverte
+
+function isUserPeriodClosed($period_start, $id_user) {
+	return (isPeriodClosed($period_start, $id_user));
+}
+
+//Focntion retournant true si la période existe ou false sinon
+
+function isPeriodExist($period_start, $id_user) {
+$db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  $query = "select period_start from stats where begin = 0 and id_user = ".$id_user." and period_start = \"".$period_start."\";";
+  $result = $db->query($query);
+  if ($result == FALSE)
+	return (0);
+  $i = 0;
+  while ($row = $result->fetchArray())
+    {
+      for ($i = 0; isset($row[$i]); $i++)
+		$period = $row[$i];
+    }
+  dbClose($db);
+  if ($i > 0)
+	return (true);
+  return (false);
+}
+
+//Focntion retournant true si la période du site existe ou false sinon
+
+function isSitePeriodExist($period_start) {
+	return (isPeriodExist($period_start, NULL));
+}
+
+//Focntion retournant true si la période d'un utilisateur existe ou false sinon
+
+function isUserPeriodExist($period_start, $id_user) {
+	return (isPeriodExist($period_start, $id_user));
+}
+
+//Permet d'ajouter une nouvelle période de stats si elle n'existe pas
+
+function addNewPeriod($id_user) {
+  $db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  if (isUserPeriodExist(date("Y-m-d")) == FALSE) {
+  $query = "INSERT INTO stats (id_user, begin, period_start, post_troll, post_actu, post_image,"
+	." post_video, post_text, news_du_jour, shared_files, private_message_sends, private_message_receives)"
+	."values (".$id_user.", 0, date('now'), 0, 0, 0, 0, 0, 0, 0, 0, 0);";
+  $result = $db->query($query);
+  if ($result == FALSE)
+    {
+      dbClose($db);
+      return (FALSE);
+    }
+  }
+  dbClose($db);
+  return (TRUE);
+}
+
+//Permet d'ajouter une nouvelle période de stats pour un utilisateur donné si elle n'existe pas
+
+function addUserNewPeriod($id_user) {
+	return(addNewPeriod($id_user));
+}
+
+//Permet d'ajouter une nouvelle période de stats pour le site donné si elle n'existe pas
+
+function addSiteNewPeriod() {
+	return(addNewPeriod(NULL));
+}
+
+//Focntion retournant la date de cloture de la période si la période existe ou false sinon
+
+function getCloseDate($period_start, $id_user) {
+$db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  $query = "select period_close from stats where begin = 0 and id_user = ".$id_user." and period_start = \"".$period_start."\";";
+  $result = $db->query($query);
+  if ($result == FALSE)
+	return (0);
+  $i = 0;
+  while ($row = $result->fetchArray())
+    {
+      for ($i = 0; isset($row[$i]); $i++)
+		$period_close = $row[$i];
+    }
+  dbClose($db);
+  if ($i > 0)
+	return ($period_close);
+  return (false);
+}
+
+//Focntion retournant la date de cloture de la période si la période du site existe ou false sinon
+
+function getSiteCloseDate($period_start) {
+	return (getCloseDate($period_start, NULL));
+}
+
+//Focntion retournant la date de cloture de la période si la période d'un utilisateur existe ou false sinon
+
+function getUserCloseDate($period_start, $id_user) {
+	return (getCloseDate($period_start, $id_user));
+}
+
+//Permet de clore une période
+
+function closePeriod($id_user, $period_start) {
+$db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  $query = "update stats set period_end = date('now') where begin = 0 and id_user = ".$id_user
+			." and period_start = \"".$period_start."\";";
+  $result = $db->query($query);
+  if ($result == FALSE)
+	return (FALSE);
+  dbClose($db);
+  return (TRUE);
+}
+
+//Permet de clore une période pour le site
+
+function closeSitePeriod(period_start) {
+	return (closePeriod(NULL, $period_start));
+}
+
+//Permet de clore une période pour un utilisateur donné
+
+function closeUserPeriod($id_user, $period_start) {
+	return (closePeriod($id_user, $period_start));
+}
+
+//renvoie la liste des périodes de stats
+
+function getPeriodList($id_user) {
+$db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  $query = "select period_start from stats where begin = 0 and id_user = ".$id_user.";";
+  $result = $db->query($query);
+  if ($result == FALSE)
+	return (0);
+  $i = 0;
+  while ($row = $result->fetchArray())
+    {
+      for ($i = 0; isset($row[$i]); $i++)
+		$period[$i] = $row[$i];
+    }
+  dbClose($db);
+  if ($i > 0)
+	return ($period);
+  return (false);
+}
+
+//renvoie la liste des périodes de stats pour le site
+
+function getSitePeriodList() {
+	return (getPeriodList(NULL));
+}
+
+//renvoie la liste des périodes de stats pour un utilisateur donné
+
+function getUserPeriodList($id_user) {
+	return (getPeriodList($id_user));
+}
+
+//efface une periode de statistiques
+
+function delPeriod($id_user, $period_start) {
+$db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  $query = "delete from stats where begin = 0 and id_user = ".$id_user
+			." and period_start = \"".$period_start."\";";
+  $result = $db->query($query);
+  if ($result == FALSE)
+	return (FALSE);
+  dbClose($db);
+  return (TRUE);
+}
+
+//efface une periode de statistiques pour un utilisateur donné
+
+function delUserPeriod($id_user, $period_start) {
+	return (delPeriod($id_user, $period_start));
+}
+
+//efface une periode de statistiques pour le site
+
+function delSitePeriod($period_start) {
+	return (delPeriod(NULL, $period_start));
+}
+
+//efface les statistiques d'un utilisateur
+
+function delUserStats($id_user) {
+$db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  $query = "delete from stats where begin = 1 and id_user = ".$id_user.";";
+  $result = $db->query($query);
+  if ($result == FALSE)
+	return (FALSE);
+  dbClose($db);
+  return (TRUE);
+}
 
 //Liste des fonctions pour récupérer les champs de statistique du site depuis sa création
 
