@@ -186,7 +186,7 @@ $('#cssmenu #menu-button').on('click', function(){
   <?php
 //Affichage des Posts
   echo "<div class=\"theribbon1\">Voici la liste de vos posts :</div><br>";
- // $post = showPostByUser($id);
+  $post = showPostByUser($id);
   for ($i = 0; isset($post[0][$i]); $i++)
   {
     echo "<b>".$post[1][$i]."</b><br>";
