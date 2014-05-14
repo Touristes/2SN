@@ -81,7 +81,7 @@ function getMessageDate($id_message) {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select reated from message where id_message = \"".$id_message."\";";
+  $query = "select created from message where id_message = \"".$id_message."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
     {
