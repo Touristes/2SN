@@ -6,7 +6,9 @@ function addPost($post)
   $title = $post[1];
   $content = $post[2];
   $id_user = getUserID($post[0]);
-  $query = 'INSERT INTO post (title, id_user, text, id_category, id_type, created ) VALUES ("'.$title.'",'.$id_user.',"'.$content.'",2,'.'3,'.'date(\'now\')'.');';
+  $troll = 0;
+  $query = 'INSERT INTO post (title, id_user, text, id_category, id_type, troll, created ) VALUES ("'
+  	.$title.'",'.$id_user.',"'.$content.'",2,'.'3,'.$troll.','.'date(\'now\')'.');';
   $result = dbQuery($query);
   if ($result == 0)
 	{
