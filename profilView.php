@@ -187,7 +187,7 @@ for ($i = 0; isset($post[0][$i]); $i++)
 	    // echo "Catergorie ".getCategory($post[4][$i])."<br>";
 	    echo "| ".$post[3][$i]."<br>";
 	    //echo "Tags : ".$post[5][$i]."<br>";
-	    echo "<small>Publie le ".$post[6][$i]."</small><br>";
+	    echo "<small>Publie le ".$post[7][$i]."</small><br>";
 	    echo "<br>";
 	  }
 echo "</form>";
