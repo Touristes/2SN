@@ -2,6 +2,7 @@
 require_once "dataConnect.php";
 require_once "dataGroups.php";
 
+//Permet de rechercher un utilisateur
 function SearchUser($search) {
   $db = dbConnect();
   $i = 0;
@@ -21,6 +22,7 @@ function SearchUser($search) {
     return ($login);
 }
 
+//Ajoute un utilisateur 
 function addUser($login, $email, $password) {
   $db =dbConnect();
   if ($db == FALSE)
@@ -45,6 +47,7 @@ function addUser($login, $email, $password) {
   dbClose($db);
   return (TRUE);
 }
+//Ajoute un administrateur
 function addAdmin($login, $email, $password) {
   $db =dbConnect();
   if ($db == FALSE)
@@ -69,6 +72,7 @@ function addAdmin($login, $email, $password) {
   dbClose($db);
   return (TRUE);
 }
+//Recupere l'id d'un utilisateur à partir de son login
 function getUserID($login) {
   $db = dbConnect();
   if ($db == FALSE)
@@ -85,7 +89,7 @@ function getUserID($login) {
     return (FALSE);
   return ($ID);
 }
-
+//Recupère un ID d'un utliisateur à partir de son ID, wait what ? Cette fonction n'est pas de moi.
 function getIDuser($id_user) {
   $db = dbConnect();
   if ($db == FALSE)
@@ -103,8 +107,7 @@ function getIDuser($id_user) {
   return ($ID);
 }
 
-
-
+//Récupère l'ID d'un utilisateur à partir de son email
 function getUserIDWithMail($email) {
   $db = dbConnect();
   if ($db == FALSE)
@@ -121,7 +124,7 @@ function getUserIDWithMail($email) {
     return (FALSE);
   return ($ID);
 }
-
+//Recupère n'importe quel info de l'utilisateur à partir de son ID
 function getUserInfo($field, $ID) {
   $db = dbConnect();
   if ($db == FALSE)
@@ -138,6 +141,7 @@ function getUserInfo($field, $ID) {
     return (FALSE);
   return ($info);
 }
+//Renvoie un tableau contenant la liste des utilisateurs
 function getUserList() {
   $db = dbConnect();
   if ($db == FALSE)
@@ -151,6 +155,7 @@ function getUserList() {
   dbClose($db);
   return ($array);
 }
+//Efface un utilisateur
 function delUser($id) {
   $db = dbConnect();
   if ($db == FALSE)
@@ -186,6 +191,7 @@ function delUser($id) {
   dbClose($db);
   return (TRUE);
 }
+//Teste si un login existe
 function isUsernameExist($login){
   $db = dbConnect();
   $i = 0;
@@ -203,6 +209,7 @@ function isUsernameExist($login){
     return (TRUE);
   return (FALSE);
 }
+//Teste si un email est dans la base
 function isEmailExist($email){
   $db = dbConnect();
   $i = 0;
@@ -220,6 +227,7 @@ function isEmailExist($email){
     return (TRUE);
   return (FALSE);
 }
+//Connexion d'un utilisateur
 function userConnect($login, $password){
   $db = dbConnect();
   if ($db == FALSE)
@@ -242,6 +250,7 @@ function userConnect($login, $password){
   dbClose($db);
   return (FALSE);
 }
+//Modifier une information d'un utilisateur à partir de son ID
 function setUserField($id, $field, $newContent){
   $db = dbConnect();
   if ($db == FALSE)
@@ -258,6 +267,7 @@ function setUserField($id, $field, $newContent){
   dbClose($db);
   return (TRUE);
 }
+//Test si un utlisateur est administrateur
 function isUserAdmin($id){
   $db = dbConnect();
   $i = 0;
