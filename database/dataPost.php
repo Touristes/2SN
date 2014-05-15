@@ -1,5 +1,6 @@
 <?php
 
+//ajoute un post à partir d'un tableau en entrée
 function addPost($post)
 {
   $db = dbConnect();
@@ -21,7 +22,7 @@ function addPost($post)
 	  return (0);
 	}
 }
-
+//Efface un post à partir de son id
 function delPost($id)
 {
   $db = dbConnect();
@@ -47,7 +48,7 @@ function delPost($id)
 	}
 }
 
-
+//Renvoi le tableau contenant un post à partir de son ID
 function showPost($id)
 {
   $db = dbConnect();
@@ -73,7 +74,7 @@ function showPost($id)
 	}
 }
 
-
+//Renvoie la liste de tous les posts dans un tableau
 function showAllPost()
 {
   $db = dbConnect();
@@ -95,9 +96,7 @@ function showAllPost()
 		}
 	}
 }
-
-//function showMultiplePost($field, $value);
-
+//Renvoie un taleau avec la liste des posts pour un utilisateur donné
 function showPostByUser($id)
 {
   $db = dbConnect();
@@ -122,8 +121,8 @@ function showPostByUser($id)
         }
     }
 }
-
-
+//Recupère l'ID d'un post à partir de son nom et de la date du post
+//Ne fonctionne pas si l'utilisateur a posté plusieurs fois dans la même journée
 function getPostID($author, $date)
 {
   $db = dbConnect();
@@ -149,6 +148,24 @@ function getPostID($author, $date)
 	}
 }
 
+//si la variable troll est à un il l'affiche si c'est à 0 non.
+function showTrollPost($troll)
+{
+    $query = "SELECT * FROM post WHERE troll=".$troll." order by created, id_post desc;";
+    $result = dbSelectToArray($query);
+    if ($result == 0)
+		return("[ERR DBQUERY]");
+    return($result);
+}
 
+//si la variable troll est à un il l'affiche si c'est à 0 non.
+function showTrollPostByUser($troll, $id_user)
+{
+	$query = "SELECT * FROM post WHERE troll=".$troll." AND id_user=".$id_user." order by created, id_post desc;";
+    $result = dbSelectToArray($query);
+    if ($result == 0)
+      return("[ERR DBQUERY]");
+    return($result);
+}
 ?>
 
