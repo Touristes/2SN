@@ -18,9 +18,9 @@ function initSiteStat() {
   if ($db == FALSE)
     return (0);
   if (isSiteStatExist() == FALSE) {
-  $query = "INSERT INTO stats (begin, period_start, post_troll, post_actu, post_image,"
-	." post_video, post_text, news_du_jour, shared_files, private_message_sends, private_message_receives)"
-	."values (1, date('now'), 0, 0, 0, 0, 0, 0, 0, 0, 0);";
+  $query = "INSERT INTO stats (period_start, post_troll, post_actu, post_image,"
+	." post_video, post_text, news_du_jour, shared_files, private_message_sends, private_message_receives, begin)"
+	."values (date('now'), 0, 0, 0, 0, 0, 0, 0, 0, 0, 1);";
   $result = $db->query($query);
   if ($result == FALSE)
     {
@@ -59,9 +59,9 @@ function addUserStats($id_user) {
   if ($db == FALSE)
     return (0);
   if (isUserStatExist($id_user) == FALSE) {
-  $query = "INSERT INTO stats (id_user, begin, period_start, post_troll, post_actu, post_image,"
-	." post_video, post_text, news_du_jour, shared_files, private_message_sends, private_message_receives)"
-	."values (".$id_user.", 1, date('now'), 0, 0, 0, 0, 0, 0, 0, 0, 0);";
+  $query = "INSERT INTO stats (id_user, period_start, post_troll, post_actu, post_image,"
+	." post_video, post_text, news_du_jour, shared_files, private_message_sends, private_message_receives, begin)"
+	."values (".$id_user.", date('now'), 0, 0, 0, 0, 0, 0, 0, 0, 0, 1);";
   $result = $db->query($query);
   if ($result == FALSE)
     {
