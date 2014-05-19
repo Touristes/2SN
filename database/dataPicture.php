@@ -1,9 +1,4 @@
 <?php
-//Fichier à creer pour gérer l'affichage de la photo
-// + controle sur le nom du fichier
-// + contrôle taille du fichier
-// + ajout du fichier sur le serveur (à ne pas mettre dans la partie vue :p)
-
 //Ajoute le lien vers l'image dans la bdd
 function addPicture($id_user, $id_post, $path) {
   $db =dbConnect();

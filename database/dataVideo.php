@@ -1,9 +1,7 @@
 <?php
-//Fichier à créeer pour gérer l'affichage de la video
-//+ contrôle de l'url de la video
 
 //ajoute le lien vers la video dans la bdd
-function addVideo($id_video) {
+function addVideo($id_user, $id_post, $url) {
   $db =dbConnect();
   if ($db == FALSE)
     return (FALSE);
