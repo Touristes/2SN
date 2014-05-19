@@ -1,5 +1,5 @@
 <?php
-require_once "dataRef.php";
+require_once "../dataRef.php";
 
 //ajoute le fichier sur le serveur
 function addFileToServeur($_FILE) {
