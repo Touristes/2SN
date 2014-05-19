@@ -1,6 +1,7 @@
 <?php
-require_once "videoModel.php";
-require_once "videoView.php";
+require_once "../dataRef.php";
+require_once "../Models/videoModel.php";
+require_once "../videoView.php";
 
 //Lance l'affichage de la video
 function affVideo($id_post) {
