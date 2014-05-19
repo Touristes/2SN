@@ -129,6 +129,7 @@ else
 	?>
 	<form name="abo" action="" method="POST">
 		<?
+		if ($tab != false) {
 		foreach($tab as $val)
 		{
 			if ($val != $login && isSubrscriberOf(getUserID($login), getUserID($val)) == "false")
@@ -140,6 +141,9 @@ else
 			}
 		}
 		echo "</br><button type=submit value=\"Ajouter a mes abonnements !\"/>Ajouter a mes abonnements !</button>";
+		}
+		else
+			echo "Surprise, suite a une epidemie de gastro en tere cuite, le monde a succombe, vous etes seul sur internet.."
 		?>
 	</form>
 	<?
