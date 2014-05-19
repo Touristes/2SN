@@ -1,4 +1,5 @@
 <?php
+require_once "Controllers/videoControler.php";
 
 //ajoute un post à partir d'un tableau en entrée
 function addPost($post)
