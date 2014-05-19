@@ -1,6 +1,6 @@
 <?php
-require_once "dataRef.php";
-require_once "dataModel.php";
+require_once "../dataRef.php";
+require_once "../Models/pictureModel.php";
 
 //Test l'image à partir de son chemin
 function pictureTest($path) {
