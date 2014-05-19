@@ -1,5 +1,5 @@
 <?php
-require_once "../dataRef.php";
+require_once "dataRef.php";
 
 //Test si le post contient un lien vidéo, et renvoie la liste oui
 function isPostContainVideoLink($id_post) {
