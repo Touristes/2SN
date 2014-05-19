@@ -15,6 +15,7 @@ else {
 	}
 	return ($links);
 }
+}
 
 //Lance les contrôlles avant enregistrement de la vidéo
 function newVideo($id_post) {
