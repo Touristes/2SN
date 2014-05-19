@@ -1,4 +1,5 @@
 <?php
+require_once "dataCOnnect.php";
 require_once "dataPost.php";
 //category : id_category / name / created
 initDefaultCategories();
