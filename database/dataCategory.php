@@ -17,7 +17,6 @@ function addCategory($name) {
       return (FALSE);
     }
   }
-  }
   dbClose($db);
   return (TRUE);
 }
@@ -91,7 +90,6 @@ function initDefaultCategories() {
       dbClose($db);
       return (FALSE);
     }
-  }
   }
   dbClose($db);
   return (TRUE);
