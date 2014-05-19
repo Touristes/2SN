@@ -1,4 +1,5 @@
 <?php
+require_once "Controllers/dataControler.php";
 require_once "database/dataCategory.php";
 require_once "database/dataConnect.php";
 require_once "database/dataFile.php";
