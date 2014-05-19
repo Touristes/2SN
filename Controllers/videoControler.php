@@ -22,7 +22,6 @@ function newVideo($id_post) {
 	return (false);
 }
 else {
-	add
 	for ($i = 0; isset($links[$i]); $i++) {
 		addVideo($id_user, $id_post, $links[$i]);
 	}
