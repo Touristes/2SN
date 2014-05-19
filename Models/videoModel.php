@@ -15,7 +15,7 @@ function isPostContainVideoLink($id_post) {
 function getLinks($id_post) {
 	$tab = showPost($id_post);
 	$content = $tab[3];
-	if (preg_match_all("|(http.*^[:blank:])|U", $content, $links, PREG_PATTERN_ORDER) {
+	if (preg_match_all("|(http.*^[:blank:])|U", $content, $links, PREG_PATTERN_ORDER)) {
 		return ($links);
 	}
 	else
