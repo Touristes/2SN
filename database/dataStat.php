@@ -19,7 +19,7 @@ function initSiteStat() {
     return (0);
   if (isSiteStatExist() == FALSE) {
   $query = "INSERT INTO stats (period_start, post_troll, post_actu, post_image,"
-	." post_video, post_text, news_du_jour, shared_files, private_message_sends, private_message_receives, begin)"
+	." post_video, post_text, news_du_jour, shared_file, private_message_send, private_message_receives, begin)"
 	."values (date('now'), 0, 0, 0, 0, 0, 0, 0, 0, 0, 1);";
   $result = $db->query($query);
   if ($result == FALSE)
@@ -60,7 +60,7 @@ function addUserStats($id_user) {
     return (0);
   if (isUserStatExist($id_user) == FALSE) {
   $query = "INSERT INTO stats (id_user, period_start, post_troll, post_actu, post_image,"
-	." post_video, post_text, news_du_jour, shared_files, private_message_sends, private_message_receives, begin)"
+	." post_video, post_text, news_du_jour, shared_file, private_message_send, private_message_receives, begin)"
 	."values (".$id_user.", date('now'), 0, 0, 0, 0, 0, 0, 0, 0, 0, 1);";
   $result = $db->query($query);
   if ($result == FALSE)
@@ -262,7 +262,7 @@ function addNewPeriod($id_user) {
     return (0);
   if (isUserPeriodExist(date("Y-m-d")) == FALSE) {
   $query = "INSERT INTO stats (id_user, begin, period_start, post_troll, post_actu, post_image,"
-	." post_video, post_text, news_du_jour, shared_files, private_message_sends, private_message_receives)"
+	." post_video, post_text, news_du_jour, shared_file, private_message_send, private_message_receives)"
 	."values (".$id_user.", 0, date('now'), 0, 0, 0, 0, 0, 0, 0, 0, 0);";
   $result = $db->query($query);
   if ($result == FALSE)
@@ -447,10 +447,10 @@ function getSiteTotalNewsDuJour() {
 	return (getField("news_du_jour", NULL, 1, NULL));
 }
 function getSiteTotalSharedFiles() {
-	return (getField("shared_files", NULL, 1, NULL));
+	return (getField("shared_file", NULL, 1, NULL));
 }
 function getSiteTotalPrivateMessageSends() {
-	return (getField("private_message_sends", NULL, 1, NULL));
+	return (getField("private_message_send", NULL, 1, NULL));
 }
 function getSiteTotalPrivateMessageReceives() {
 	return (getField("private_message_receives", NULL, 1, NULL));
@@ -480,10 +480,10 @@ function getSitePeriodNewsDuJour($period_start) {
 	return (getField("news_du_jour", NULL, 0, $period_start));
 }
 function getSitePeriodSharedFiles($period_start) {
-	return (getField("shared_files", NULL, 0, $period_start));
+	return (getField("shared_file", NULL, 0, $period_start));
 }
 function getSitePeriodPrivateMessageSends($period_start) {
-	return (getField("private_message_sends", NULL, 0, $period_start));
+	return (getField("private_message_send", NULL, 0, $period_start));
 }
 function getSitePeriodPrivateMessageReceives($period_start) {
 	return (getField("private_message_receives", NULL, 0, $period_start));
@@ -513,10 +513,10 @@ function setSiteTotalNewsDuJour($new_value) {
 	return (setField("news_du_jour", NULL, 1, NULL, $new_value));
 }
 function setSiteTotalSharedFiles($new_value) {
-	return (setField("shared_files", NULL, 1, NULL, $new_value));
+	return (setField("shared_file", NULL, 1, NULL, $new_value));
 }
 function setSiteTotalPrivateMessageSends($new_value) {
-	return (setField("private_message_sends", NULL, 1, NULL, $new_value));
+	return (setField("private_message_send", NULL, 1, NULL, $new_value));
 }
 function setSiteTotalPrivateMessageReceives($new_value) {
 	return (setField("private_message_receives", NULL, 1, NULL, $new_value));
@@ -546,10 +546,10 @@ function setSitePeriodNewsDuJour($new_value, $period_start) {
 	return (setField("news_du_jour", NULL, 0, $period_start, $new_value));
 }
 function setSitePeriodSharedFiles($new_value, $period_start) {
-	return (setField("shared_files", NULL, 0, $period_start, $new_value));
+	return (setField("shared_file", NULL, 0, $period_start, $new_value));
 }
 function setSitePeriodPrivateMessageSends($new_value, $period_start) {
-	return (setField("private_message_sends", NULL, 0, $period_start, $new_value));
+	return (setField("private_message_send", NULL, 0, $period_start, $new_value));
 }
 function setSitePeriodPrivateMessageReceives($new_value, $period_start) {
 	return (setField("private_message_receives", NULL, 0, $period_start, $new_value));
@@ -579,10 +579,10 @@ function incrementSiteTotalNewsDuJour() {
 	return (incrementField("news_du_jour", NULL, 1, NULL));
 }
 function incrementSiteTotalSharedFiles() {
-	return (incrementField("shared_files", NULL, 1, NULL));
+	return (incrementField("shared_file", NULL, 1, NULL));
 }
 function incrementSiteTotalPrivateMessageSends() {
-	return (incrementField("private_messagge_sends", NULL, 1, NULL));
+	return (incrementField("private_message_send", NULL, 1, NULL));
 }
 function incrementSiteTotalPrivateMessageReceives() {
 	return (incrementField("private_message_receives", NULL, 1, NULL));
@@ -612,10 +612,10 @@ function incrementSitePeriodNewsDuJour($period_start) {
 	return (incrementField("news_du_jour", NULL, 0, $period_start));
 }
 function incrementSitePeriodSharedFiles($period_start) {
-	return (incrementField("shared_files", NULL, 0, $period_start));
+	return (incrementField("shared_file", NULL, 0, $period_start));
 }
 function incrementSitePeriodPrivateMessageSends($period_start) {
-	return (incrementField("private_message_sends", NULL, 0, $period_start));
+	return (incrementField("private_message_send", NULL, 0, $period_start));
 }
 function incrementSitePeriodPrivateMessageReceives($period_start) {
 	return (incrementField("private_message_receives", NULL, 0, $period_start));
@@ -645,10 +645,10 @@ function getUserTotalNewsDuJour($id_user) {
 	return (getField("news_du_jour", $id_user, 1, NULL, $new_value));
 }
 function getUserTotalSharedFiles($id_user) {
-	return (getField("shared_files", $id_user, 1, NULL, $new_value));
+	return (getField("shared_file", $id_user, 1, NULL, $new_value));
 }
 function getUserTotalPrivateMessageSends($id_user) {
-	return (getField("private_message_sends", $id_user, 1, NULL, $new_value));
+	return (getField("private_message_send", $id_user, 1, NULL, $new_value));
 }
 function getUserTotalPrivateMessageReceives($id_user) {
 	return (getField("private_message_receives", $id_user, 1, NULL, $new_value));
@@ -678,10 +678,10 @@ function getUserPeriodNewsDuJour($id_user, $period_start) {
 	return (getField("news_du_jour", $id_user, 0, $period_start, $new_value));
 }
 function getUserPeriodSharedFiles($id_user, $period_start) {
-	return (getField("shared_files", $id_user, 0, $period_start, $new_value));
+	return (getField("shared_file", $id_user, 0, $period_start, $new_value));
 }
 function getUserPeriodPrivateMessageSends($id_user, $period_start) {
-	return (getField("private_message_sends", $id_user, 0, $period_start, $new_value));
+	return (getField("private_message_send", $id_user, 0, $period_start, $new_value));
 }
 function getUserPeriodPrivateMessageReceives($id_user, $period_start) {
 	return (getField("private_message_receives", $id_user, 0, $period_start, $new_value));
@@ -711,10 +711,10 @@ function setUserTotalNewsDuJour($id_user) {
 	return (setField("news_du_jour", $id_user, 1, NULL, $new_value));
 }
 function setUserTotalSharedFiles($id_user) {
-	return (setField("shared_files", $id_user, 1, NULL, $new_value));
+	return (setField("shared_file", $id_user, 1, NULL, $new_value));
 }
 function setUserTotalPrivateMessageSends($id_user) {
-	return (setField("private_message_sends", $id_user, 1, NULL, $new_value));
+	return (setField("private_message_send", $id_user, 1, NULL, $new_value));
 }
 function setUserTotalPrivateMessageReceives($id_user) {
 	return (setField("private_message_receives", $id_user, 1, NULL, $new_value));
@@ -744,10 +744,10 @@ function setUserPeriodNewsDuJour($id_user, $period_start)  {
 	return (setField("news_du_jour", $id_user, 0, $period_start, $new_value));
 }
 function setUserPeriodSharedFiles($id_user, $period_start) {
-	return (setField("shared_files", $id_user, 0, $period_start, $new_value));
+	return (setField("shared_file", $id_user, 0, $period_start, $new_value));
 }
 function setUserPeriodPrivateMessageSends($id_user, $period_start) {
-	return (setField("private_message_sends", $id_user, 0, $period_start, $new_value));
+	return (setField("private_message_send", $id_user, 0, $period_start, $new_value));
 }
 function setUserPeriodPrivateMessageReceives($id_user, $period_start) {
 	return (setField("private_message_receives", $id_user, 0, $period_start, $new_value));
@@ -777,10 +777,10 @@ function incrementUserTotalNewsDuJour($id_user) {
 	return (incrementField("news_du_jour", $id_user, 1, NULL));
 }
 function incrementUserTotalSharedFiles($id_user) {
-	return (incrementField("shared_files", $id_user, 1, NULL));
+	return (incrementField("shared_file", $id_user, 1, NULL));
 }
 function incrementUserTotalPrivateMessageSends($id_user) {
-	return (incrementField("private_message_sends", $id_user, 1, NULL));
+	return (incrementField("private_message_send", $id_user, 1, NULL));
 }
 function incrementUserTotalPrivateMessageReceives($id_user) {
 	return (incrementField("private_message_receives", $id_user, 1, NULL));
@@ -810,10 +810,10 @@ function incrementUserPeriodNewsDuJour($id_user, $period_start) {
 	return (incrementField("news_du_jour", $id_user, 1, $period_start));
 }
 function incrementUserPeriodSharedFiles($id_user, $period_start) {
-	return (incrementField("shared_files", $id_user, 1, $period_start));
+	return (incrementField("shared_file", $id_user, 1, $period_start));
 }
 function incrementUserPeriodPrivateMessageSends($id_user, $period_start) {
-	return (incrementField("private_message_sends", $id_user, 1, $period_start));
+	return (incrementField("private_message_send", $id_user, 1, $period_start));
 }
 function incrementUserPeriodPrivateMessageReceives($id_user, $period_start) {
 	return (incrementField("private_message_receives", $id_user, 1, $period_start));
