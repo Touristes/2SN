@@ -18,9 +18,9 @@ function initSiteStat() {
   if ($db == FALSE)
     return (0);
   if (isSiteStatExist() == FALSE) {
-  $query = "INSERT INTO stats (period_start, post_troll, post_actu, post_image,"
+  $query = "INSERT INTO stats (id_user, period_start, post_troll, post_actu, post_image,"
 	." post_video, post_text, news_du_jour, shared_file, private_message_send, private_message_receives, begin)"
-	."values (date('now'), 0, 0, 0, 0, 0, 0, 0, 0, 0, 1);";
+	."values (NULL, date('now'), 0, 0, 0, 0, 0, 0, 0, 0, 0, 1);";
   $result = $db->query($query);
   if ($result == FALSE)
     {
@@ -38,7 +38,7 @@ function isSiteStatExist() {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-    $query = "select id_stat from stats where id_user = NULL and begin = 1;";
+    $query = "select id_stat from stats where id_user IS NULL and begin = 1;";
   $result = $db->query($query);
   $i = 0;
   while ($row = $result->fetchArray())
@@ -79,7 +79,7 @@ function isUserStatExist($id_user) {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-    $query = "select id_stat from stats where id_user = ".$id_user." and begin = 1;";
+    $query = "select id_stat from stats where id_user = \"".$id_user."\" and begin = 1;";
   $result = $db->query($query);
   $i = 0;
   while ($row = $result->fetchArray())
@@ -99,10 +99,14 @@ function getField($field, $id_user, $begin, $period_start) {
 $db = dbConnect();
   if ($db == FALSE)
     return (0);
+  if ($id_user == NULL)
+    $id_user = "IS NULL";
+  else
+    $id_user = "= ".$id_user;
   if ($begin == 1)
-	$query = "select \"".$field."\" from stats where id_user = ".$id_user." AND begin = 1;";
+	$query = "select \"".$field."\" from stats where id_user ".$id_user." AND begin = 1;";
   else if ($begin == 0) {
-	$query = "select \"".$field."\" from stats where id_user = ".$id_user." AND begin = 0 "
+	$query = "select \"".$field."\" from stats where id_user ".$id_user." AND begin = 0 "
 		."AND period_start = \"".$period_start."\";";
 	}
   $result = $db->query($query);
@@ -126,10 +130,14 @@ function setField($field, $id_user, $begin, $period_start, $new_value) {
 $db = dbConnect();
   if ($db == FALSE)
     return (0);
+  if ($id_user == NULL)
+    $id_user = "IS NULL";
+  else
+    $id_user = "= ".$id_user;
   if ($begin == 1)
-	$query = "update stats set \"".$field."\"=\"".$new_value."\" where id_user = ".$id_user." AND begin = 1;";
+	$query = "update stats set \"".$field."\"=\"".$new_value."\" where id_user ".$id_user." AND begin = 1;";
   else if ($begin == 0) {
-	$query = "update stats set \"".$field."\"=\"".$new_value."\" where id_user = ".$id_user." AND begin = 0 "
+	$query = "update stats set \"".$field."\"=\"".$new_value."\" where id_user ".$id_user." AND begin = 0 "
 		."AND period_start = \"".$period_start."\";";
 	}
   $result = $db->query($query);
@@ -145,7 +153,11 @@ function getCreationDate($id_user) {
 $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select period_start from stats where id_user = ".$id_user." AND begin = 1;";
+  if ($id_user == NULL)
+    $id_user = "IS NULL";
+  else
+    $id_user = "= ".$id_user;
+  $query = "select period_start from stats where id_user ".$id_user." AND begin = 1;";
   $result = $db->query($query);
   if ($result == FALSE)
 	return (FALSE);
@@ -183,7 +195,7 @@ function incrementField($field, $id_user, $begin, $period_start) {
 	if (strpos($field, "post_") != false)
 		setField("posts", $id_user, $begin, $period_start, getField("posts", $id_user, $begin, $period_start) + 1);
 	if ($id_user != NULL)
-		incrementField($field, "NULL", $begin, $period_start);
+	  incrementField($field, NULL, $begin, $period_start);
 	return (setField($field, $id_user, $begin, $period_start, getField($field, $id_user, $begin, $period_start) + 1));
 }
 
@@ -193,7 +205,11 @@ function isPeriodClosed($period_start, $id_user) {
 $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select period_end from stats where begin = 0 and id_user = ".$id_user." and period_start = \"".$period_start."\";";
+  if ($id_user == NULL)
+    $id_user = "IS NULL";
+  else
+    $id_user = "= ".$id_user;
+  $query = "select period_end from stats where begin = 0 and id_user ".$id_user." and period_start = \"".$period_start."\";";
   $result = $db->query($query);
   if ($result == FALSE)
 	return (0);
