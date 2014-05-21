@@ -2,20 +2,21 @@
 require_once "dataRef.php";
 
 //ajoute le fichier sur le serveur
-function addFileToServeur($_FILE) {
+function addFileToServeur() {
 	//Teste la taille du fichier avant de l'uploader
-	if(filesize($_FILES['picture']['tmp_name']) > 4194304) {
+	if(filesize($_FILES['file']['tmp_name']) > 4194304) {
 		return (false);
 	}
 	//Ajoute le fichier
-	if(isset($_FILES['picture'])) { 
+	if(isset($_FILES['file'])) {
 		$dir = 'images/upload/';
-		$fichier = basename($_FILES['picture']['name']);
-		if(!move_uploaded_file($_FILES['picture']['tmp_name'], $dir . $fichier)) {
+		$fichier = $_FILES['file']['name'];
+		if(!(move_uploaded_file($_FILES['file']['tmp_name'], $dir . $fichier))) {
 			return(false);
 		}
+		echo $dir . $fichier;
 	}
-	return (true);
+       	return (true);
 }
 
 //efface le fichier du serveur
