@@ -1,6 +1,6 @@
 <?php
 require_once "Controllers/videoControler.php";
-
+require_once "Controllers/pictureControler.php";
 //ajoute un post à partir d'un tableau en entrée
 function addPost($post)
 {
@@ -12,6 +12,10 @@ function addPost($post)
   if (isPostContainVideoLinkViaContent($content) != false) {
 	$query = 'INSERT INTO post (title, id_user, text, id_category, id_type, troll, created ) VALUES ("'
 		.$title.'",'.$id_user.',"'.$content.'",'.getCategoryID("Video").','.'3,'.$troll.','.'datetime(\'now\')'.');';
+  }
+  else if ($post[3] == getCategoryID("Picture")) {
+        $query = 'INSERT INTO post (title, id_user, text, id_category, id_type, troll, created ) VALUES ("'
+	  .$title.'",'.$id_user.',"'.$content.'",'.getCategoryID("Picture").','.'3,'.$troll.','.'datetime(\'now\')'.');';
   }
   else {
 	$query = 'INSERT INTO post (title, id_user, text, id_category, id_type, troll, created ) VALUES ("'
@@ -26,6 +30,8 @@ function addPost($post)
   if (isPostContainVideoLinkViaContent($content) != false) {
 		newVideo(getPostID($id_user, date("Y-m-d H:i:s")));
   }
+  else if ($post[3] == getCategoryID("Picture"))
+    controlerPictureAdd($id_user, $id_post, $_FILES);
   else
 	{
 	  dbClose($db);
@@ -247,4 +253,3 @@ function showTrollPostByUser($troll, $id_user)
     return($result);
 }
 ?>
-
