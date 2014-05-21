@@ -38,7 +38,7 @@ function getPicturePath($id_picture) {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select path from image where id_picture = \"".$id_picture."\";";
+  $query = "select path from picture where id_picture = \"".$id_picture."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
     {
@@ -56,7 +56,7 @@ function getPicturePosted($id_picture) {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select posted from image where id_picture = \"".$id_picture."\";";
+  $query = "select posted from picture where id_picture = \"".$id_picture."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
     {
@@ -74,7 +74,7 @@ function getPictureIDWithPath($path) {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select id_picture from image where path = \"".$path."\";";
+  $query = "select id_picture from picture where path = \"".$path."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
     {
@@ -92,7 +92,7 @@ function getPictureID($id_post) {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select id_picture from image where id_post = \"".$id_post."\";";
+  $query = "select id_picture from picture where id_post = \"".$id_post."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
     {
@@ -110,7 +110,7 @@ function getPicturePostID($id_picture) {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select id_post from image where id_picture = \"".$id_picture."\";";
+  $query = "select id_post from picture where id_picture = \"".$id_picture."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
     {
@@ -128,7 +128,7 @@ function getPictureUserID($id_picture) {
   $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select id_user from image where id_picture = \"".$id_picture."\";";
+  $query = "select id_user from picture where id_picture = \"".$id_picture."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
     {
