@@ -47,7 +47,7 @@ else if ($_SESSION['check'] != "1")
 			</ul>
 		</div>
 		<div id="post">
-			<form id="signup" name="monform" method="post" action="send_post.php">
+			<form id="signup" name="monform" method="post" action="send_post.php"  enctype="multipart/form-data">
 				<textarea cols="60" rows="1" name="title" placeholder="title" required></textarea>
 				<textarea cols="60" rows="5" name="posts" required></textarea>
 				<div id="post1">
