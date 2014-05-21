@@ -1,6 +1,7 @@
 <?php
 require_once "dataConnect.php";
 require_once "dataGroups.php";
+require_once "dataStat.php";
 
 //Permet de rechercher un utilisateur
 function SearchUser($search) {
@@ -22,7 +23,7 @@ function SearchUser($search) {
     return ($login);
 }
 
-//Ajoute un utilisateur 
+//Ajoute un utilisateur
 function addUser($login, $email, $password) {
   $db =dbConnect();
   if ($db == FALSE)
@@ -45,6 +46,7 @@ function addUser($login, $email, $password) {
       return (FALSE);
     }
   dbClose($db);
+  addUserStats(getUserID($login));
   return (TRUE);
 }
 //Ajoute un administrateur
@@ -70,6 +72,7 @@ function addAdmin($login, $email, $password) {
       return (FALSE);
     }
   dbClose($db);
+  addUserStats(getUserID($login));
   return (TRUE);
 }
 //Recupere l'id d'un utilisateur à partir de son login
