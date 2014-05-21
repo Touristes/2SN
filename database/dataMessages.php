@@ -13,6 +13,10 @@ function addMessage($content, $id_user, $id_receiver) {
       return (FALSE);
     }
   dbClose($db);
+  incrementUserTotalPrivateMessageSends($id_user);
+  incrementSiteTotalPrivateMessageSends($id_user);
+  incrementUserTotalPrivateMessageReceives($id_receiver);
+  incrementSiteTotalPrivateMessageReceives($id_receiver);
   return (TRUE);
 }
 function delMessage($id_message) {
