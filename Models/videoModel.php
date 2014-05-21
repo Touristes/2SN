@@ -21,12 +21,11 @@ function isPostContainVideoLinkViaContent($content) {
 		return ($links);
 }
 
-
 //Récupères tous les liens d'un post
 function getLinks($id_post) {
 	$tab = showPost($id_post);
 	$content = $tab[3];
-	if (preg_match_all("|(http.*^[:blank:])|U", $content, $links, PREG_PATTERN_ORDER)) {
+	if (preg_match_all("|(http.*)|U", $content, $links)) {
 		return ($links);
 	}
 	else
@@ -35,7 +34,7 @@ function getLinks($id_post) {
 
 //Récupères tous les liens d'un post
 function getLinksViaContent($content) {
-	if (preg_match_all("|(http.*^[:blank:])|U", $content, $links, PREG_PATTERN_ORDER)) {
+  if (preg_match_all("|(http.*)|U", $content, $links)) {
 		return ($links);
 	}
 	else
