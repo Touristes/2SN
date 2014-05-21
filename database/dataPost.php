@@ -12,14 +12,17 @@ function addPost($post)
   if (isPostContainVideoLinkViaContent($content) != false) {
 	$query = 'INSERT INTO post (title, id_user, text, id_category, id_type, troll, created ) VALUES ("'
 		.$title.'",'.$id_user.',"'.$content.'",'.getCategoryID("Video").','.'3,'.$troll.','.'datetime(\'now\')'.');';
+	incrementUserTotalPostVideo($id_user);
   }
   else if ($post[3] == getCategoryID("Picture")) {
         $query = 'INSERT INTO post (title, id_user, text, id_category, id_type, troll, created ) VALUES ("'
 	  .$title.'",'.$id_user.',"'.$content.'",'.getCategoryID("Picture").','.'3,'.$troll.','.'datetime(\'now\')'.');';
+	incrementUserTotalPostImage($id_user);
   }
   else {
 	$query = 'INSERT INTO post (title, id_user, text, id_category, id_type, troll, created ) VALUES ("'
 	  .$title.'",'.$id_user.',"'.$content.'",'.getCategoryID("Text").','.'3,'.$troll.','.'datetime(\'now\')'.');';
+	incrementUserTotalPostText($id_user);
   }
   $result = dbQuery($query);
   if ($result == 0)
@@ -33,11 +36,8 @@ function addPost($post)
   }
   else if ($post[3] == getCategoryID("Picture"))
     controlerPictureAdd($id_user, $id_post, $_FILES);
-  else
-	{
-	  dbClose($db);
-	  return (0);
-	}
+  dbClose($db);
+  return (0);
 }
 //Efface un post à partir de son id
 function delPost($id)
