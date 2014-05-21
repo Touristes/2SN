@@ -193,7 +193,7 @@ function isPeriodClosed($period_start, $id_user) {
 $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select period_closed from stats where begin = 0 and id_user = ".$id_user." and period_start = \"".$period_start."\";";
+  $query = "select period_end from stats where begin = 0 and id_user = ".$id_user." and period_start = \"".$period_start."\";";
   $result = $db->query($query);
   if ($result == FALSE)
 	return (0);
@@ -293,7 +293,7 @@ function getCloseDate($period_start, $id_user) {
 $db = dbConnect();
   if ($db == FALSE)
     return (0);
-  $query = "select period_close from stats where begin = 0 and id_user = ".$id_user." and period_start = \"".$period_start."\";";
+  $query = "select period_end from stats where begin = 0 and id_user = ".$id_user." and period_start = \"".$period_start."\";";
   $result = $db->query($query);
   if ($result == FALSE)
 	return (0);
