@@ -19,7 +19,7 @@ function addPost($post)
   }
   else {
 	$query = 'INSERT INTO post (title, id_user, text, id_category, id_type, troll, created ) VALUES ("'
-		.$title.'",'.$id_user.',"'.$content.'",'.getCategoryID("Text").','.'3,'.$troll.','.'datetime(\'now\')'.');';
+	  .$title.'",'.$id_user.',"'.$content.'",'.getCategoryID("Text").','.'3,'.$troll.','.'datetime(\'now\')'.');';
   }
   $result = dbQuery($query);
   if ($result == 0)
@@ -27,8 +27,9 @@ function addPost($post)
 	  dbClose($db);
 	  return ("An error occured[ERR DBQUERY]");
 	}
+  date_default_timezone_set('UTC');
   if (isPostContainVideoLinkViaContent($content) != false) {
-		newVideo(getPostID($id_user, date("Y-m-d H:i:s")));
+    newVideo(getPostID($id_user, date("Y-m-d H:i:s")));
   }
   else if ($post[3] == getCategoryID("Picture"))
     controlerPictureAdd($id_user, $id_post, $_FILES);
