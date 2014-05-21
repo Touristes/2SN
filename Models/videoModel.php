@@ -11,10 +11,30 @@ function isPostContainVideoLink($id_post) {
 		return ($links);
 }
 
+//Test si le post contient un lien vidéo, et renvoie la liste oui
+function isPostContainVideoLinkViaContent($content) {
+	if (($links = getLinksViaContent($content)) == false)
+		return (false);
+	if ($links = videoSupportedSites($links) == false)
+		return (false);
+	else
+		return ($links);
+}
+
+
 //Récupères tous les liens d'un post
 function getLinks($id_post) {
 	$tab = showPost($id_post);
 	$content = $tab[3];
+	if (preg_match_all("|(http.*^[:blank:])|U", $content, $links, PREG_PATTERN_ORDER)) {
+		return ($links);
+	}
+	else
+		return (false);
+}
+
+//Récupères tous les liens d'un post
+function getLinksViaContent($content) {
 	if (preg_match_all("|(http.*^[:blank:])|U", $content, $links, PREG_PATTERN_ORDER)) {
 		return ($links);
 	}
