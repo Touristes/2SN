@@ -9,7 +9,7 @@ function addPost($post)
   $content = $post[2];
   $id_user = getUserID($post[0]);
   $troll = 0;
-  if (isPostContainVideoLink != false) {
+  if (isPostContainVideoLinkViaContent($content) != false) {
 	$query = 'INSERT INTO post (title, id_user, text, id_category, id_type, troll, created ) VALUES ("'
 		.$title.'",'.$id_user.',"'.$content.'",'.getCategoryID("Video").','.'3,'.$troll.','.'datetime(\'now\')'.');';
   }
@@ -23,7 +23,7 @@ function addPost($post)
 	  dbClose($db);
 	  return ("An error occured[ERR DBQUERY]");
 	}
-  if (isPostContainVideoLink != false) {
+  if (isPostContainVideoLinkViaContent($content) != false) {
 		newVideo(getPostID($id_user, date("Y-m-d H:i:s")));
   }
   else
