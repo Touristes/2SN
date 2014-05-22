@@ -75,7 +75,7 @@ if (($name == "skywalker") || ($name == "obiwan") || ($name == "yoda") || ($name
 		background-image: url('Views/Images/Others/starwars.jpg');
 		}
 		</style> ";
-	echo "<script type=\"text/javascript\">alert(\"Use the force, luke.\"); </script>";
+	echo "<script type=\"text/javascript\">alert(\"Luke, why did you kissed your own sister ??! \"); </script>";
 	return (true);
 }
 return(false);
@@ -93,6 +93,16 @@ if (($name == "simpson") || ($name == "simpsons")) {
 		</style> ";
 	echo "<script type=\"text/javascript\">alert(\"Here take a duff !\"); </script>";
 	echo "<script type=\"text/javascript\">alert(\"D'oh !\"); </script>";
+	return (true);
+}
+return(false);
+}
+
+function isItCharlieSheen($id_user) {
+$name = strtolower(getUserInfo("name", $id_user));
+$firstname = strtolower(getUserInfo("firstname", $id_user));
+if (($name == "sheen") || ($name == "charlie")) {
+	echo "<script type=\"text/javascript\">alert(\"Suivez la ligne blanche !\"); </script>";
 	return (true);
 }
 return(false);
