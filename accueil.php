@@ -52,7 +52,7 @@ else if ($_SESSION['check'] != "1")
 				<textarea cols="60" rows="5" name="posts" required></textarea>
 				<div id="post1">
 					Type:
-					<select>
+					<select name="troll">
 						<option value="news">News</option>
 						<option selected value="troll">Troll</option>
 					</select>

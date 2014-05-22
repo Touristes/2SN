@@ -100,9 +100,12 @@ return(false);
 
 function nyanCat() {
 $random = mt_rand(30, 43);
-//Trouver la video nyanCat 10 hours 
 if ($random == 42)
 	videoView("http://www.youtube.com/embed/QHLq0yCEUts&autoplay=1");
+}
+
+function addTrollPic() {
+	echo "<img src=\"troll.jpg\" />";
 }
 
 ?>
