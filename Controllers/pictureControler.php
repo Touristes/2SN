@@ -48,6 +48,6 @@ function controlerPictureRemove($id_picture) {
 
 //Lance l'affichage de l'image
 function controlerPictureDisplay($id_post) {
-//recupere la liste des images et lance la fonction affPicture($path)
+affPicture(getPicturePath(getPictureID($id_post)));
 }
 ?>
