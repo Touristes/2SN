@@ -9,7 +9,7 @@ function isChuckInThere($string) {
 }
 
 function affChuck() {
-	echo "<img src=\"chuck_no.jpg\" />";
+	echo "<img src=\"Views/Images/Others/chuck_no.jpg\" />";
 }
 
 function isItChuckAccount($id_user) {
@@ -26,7 +26,7 @@ function changeBackgroundToChuck{) {
 echo "<style type=\"text/css\">
 body
 {
-background-image: url('chuckBackground.jpg');
+background-image: url('Views/Images/Others/chuckBackground.jpg');
 }
 </style> ";
 }
@@ -39,7 +39,7 @@ if (($postalcode == 23100) || ($name == "leonidas" || $firstname == "leonidas") 
 	echo "<style type=\"text/css\">
 		body
 		{
-		background-image: url('sparta.jpg');
+		background-image: url('Views/Images/Others/sparta.jpg');
 		}
 		</style> ";
 	return (true);
@@ -56,7 +56,7 @@ if (($name == "eric" && $firstname == "cartman") || ($name == "kenny" && $firstn
 	echo "<style type=\"text/css\">
 		body
 		{
-		background-image: url('southpark.jpg');
+		background-image: url('Views/Images/Others/southpark.jpg');
 		}
 		</style> ";
 	echo "<script type=\"text/javascript\">alert(\"Servietsky : On s'fume un pétard ?\"); </script>";
@@ -72,7 +72,7 @@ if (($name == "skywalker") || ($name == "obiwan") || ($name == "yoda") || ($name
 	echo "<style type=\"text/css\">
 		body
 		{
-		background-image: url('starwars.jpg');
+		background-image: url('Views/Images/Others/starwars.jpg');
 		}
 		</style> ";
 	echo "<script type=\"text/javascript\">alert(\"Use the force, luke.\"); </script>";
@@ -88,7 +88,7 @@ if (($name == "simpson") || ($name == "simpsons")) {
 	echo "<style type=\"text/css\">
 		body
 		{
-		background-image: url('simpsons.jpg');
+		background-image: url('Views/Images/Others/simpsons.jpg');
 		}
 		</style> ";
 	echo "<script type=\"text/javascript\">alert(\"Here take a duff !\"); </script>";
