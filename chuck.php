@@ -1,7 +1,7 @@
 <?php
 
 function isChuckInThere($string) {
-	if (preg_match_all("(chuck\snorris)",strtolower($string), $out) {
+  if (preg_match_all("(chuck\snorris)",strtolower($string), $out)) {
 		return (true);
 	}
 	else
@@ -9,20 +9,20 @@ function isChuckInThere($string) {
 }
 
 function affChuck() {
-	echo "<img src=\"Views/Images/Others/chuck_no.jpg\" />";
+	echo "<img class=\"chuck\" src=\"Views/Images/Others/chuck_no.jpg\" />";
 }
 
 function isItChuckAccount($id_user) {
 $name = strtolower(getUserInfo("name", $id_user));
 $firstName = strtolower(getUserInfo("firstname", $id_user));
 if ($name == "norris" && $firstname == "chuck")
-	changeBackgroundToChuck{);
+  changeBackgroundToChuck();
 else
 	return (false);
 return (true);
 }
 
-function changeBackgroundToChuck{) {
+function changeBackgroundToChuck() {
 echo "<style type=\"text/css\">
 body
 {
@@ -35,7 +35,7 @@ function isItSparta($id_user) {
 $postalcode = getUserInfo("postalcode", $id_user);
 $name = strtolower(getUserInfo("name", $id_user));
 $firstname = strtolower(getUserInfo("firstname", $id_user));
-if (($postalcode == 23100) || ($name == "leonidas" || $firstname == "leonidas") {
+if (($postalcode == 23100) || ($name == "leonidas" || $firstname == "leonidas")) {
 	echo "<style type=\"text/css\">
 		body
 		{
@@ -110,12 +110,12 @@ return(false);
 
 function nyanCat() {
 $random = mt_rand(30, 43);
-if ($random == 42)
+if ($random ==  42)
 	videoView("http://www.youtube.com/embed/QHLq0yCEUts&autoplay=1");
 }
 
 function addTrollPic() {
-	echo "<img src=\"troll.jpg\" />";
+	echo "<img class=\"chuck\" src=\"Views/Images/Others/troll.jpg\" />";
 }
 
 function callCaptainObvious() {

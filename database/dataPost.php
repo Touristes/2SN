@@ -33,12 +33,11 @@ function addPost($post)
 	  dbClose($db);
 	  return ("An error occured[ERR DBQUERY]");
 	}
-  date_default_timezone_set('UTC');
   if (isPostContainVideoLinkViaContent($content) != false) {
-    newVideo(getPostID($id_user, date("Y-m-d H:i:s")));
+    newVideo(getPostID($id_user, getDBDateTime()), $id_user);
   }
   else if ($post[3] == getCategoryID("Picture"))
-    controlerPictureAdd($id_user, $id_post, $_FILES);
+    controlerPictureAdd($id_user, getPostID($id_user, getDBDateTime()), $_FILES);
   dbClose($db);
   return (0);
 }
@@ -175,13 +174,14 @@ function isPostByCategory($name, $id_post) {
     return (0);
   $query = "select id_post from post where id_post = \"".$id_post."\" and id_category = \"".$id_categrory."\";";
   $result = $db->query($query);
-  while ($row = $result->fetchArray())
+  for ($i = 0 ; $row = $result->fetchArray(); $i++)
     {
-      for ($i = 0; isset($row[$i]); $i++)
-$ID = $row[$i];
+	$ID = $row[$i];
     }
   dbClose($db);
-  if ($i == 1)
+  if ($result == FALSE)
+    return (FALSE);
+  if ($i > 0)
     return (TRUE);
   return (FALSE);
 }
@@ -222,18 +222,14 @@ function getPostID($author, $datetime)
 	}
   else
 	{
-	  $query = "SELECT id_post FROM post WHERE id_user = {SELECT id_user FROM users WHERE name = ".$author.";} AND created like ".$datetime.";";
-	  $result = dbQuery($query);
-	  if ($result = 0)
-		{
-		  dbClose($db);
-		  return("[ERR DBQUERY]");
-		}
-	  else
-		{
-		  dbCLose($db);
-		  return($result);
-		}
+	  $query = "SELECT id_post FROM post WHERE id_user = ".$author." and created = Datetime('".$datetime."');";
+	  $result = $db->query($query);
+	  for ($i = 0 ; $row = $result->fetchArray(); $i++)
+	    {
+	      $ID = $row[$i];
+	    }
+	  dbClose($db);
+	  return($ID);
 	}
 }
 

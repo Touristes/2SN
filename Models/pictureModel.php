@@ -9,12 +9,11 @@ function addFileToServeur() {
 	}
 	//Ajoute le fichier
 	if(isset($_FILES['file'])) {
-		$dir = 'Views/images/upload/';
+		$dir = 'Views/Images/Upload/';
 		$fichier = $_FILES['file']['name'];
 		if(!(move_uploaded_file($_FILES['file']['tmp_name'], $dir . $fichier))) {
 			return(false);
 		}
-		echo $dir . $fichier;
 	}
        	return (true);
 }
@@ -26,5 +25,4 @@ function delFileFromServeur($path) {
 	}
 	return (true);
 }
-
 ?>

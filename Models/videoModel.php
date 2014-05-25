@@ -5,7 +5,7 @@ require_once "dataRef.php";
 function isPostContainVideoLink($id_post) {
 	if (($links = getLinks($id_post)) == false)
 		return (false);
-	if ($links = videoSupportedSites($links) == false)
+	  if (($links = videoSupportedSites($links)) == false)
 		return (false);
 	return ($links);
 }
@@ -22,8 +22,8 @@ function isPostContainVideoLinkViaContent($content) {
 
 //Récupères tous les liens d'un post
 function getLinks($id_post) {
-	$tab = showPost($id_post);
-	$content = $tab[3];
+  $tab = showPost($id_post);
+	$content = $tab[3][0];
 	if (preg_match_all("|(http.*)|u", $content, $links)) {
 		return ($links[0]);
 	}

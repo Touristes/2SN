@@ -7,7 +7,7 @@ function addVideo($id_user, $id_post, $url) {
     return (FALSE);
   initDefaultUserGroups();
   $query = "INSERT INTO video (id_user, id_post, url, posted)"
-  ." values (\"".$id_user."\",\"".$id_post."\",\"".$url."\",date('now'));";
+  ." values (\"".$id_user."\",\"".$id_post."\",\"".$url."\",datetime('now'));";
   $result = $db->query($query);
   if ($result == FALSE)
     {

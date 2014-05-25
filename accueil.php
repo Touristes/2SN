@@ -1,6 +1,9 @@
 <?php
 include "sessionInit.php";
 include "dataRef.php";
+require_once "Controllers/frontControler.php";
+require_once "chuck.php";
+require_once "userProfilModel.php";
 
 if (!isset($_SESSION['check']))
 {
@@ -20,6 +23,16 @@ else if ($_SESSION['check'] != "1")
 
 	<meta charset="UTF-8">
 	<title>[Why] - Accueil</title>
+<style>
+  img.postImage {
+  max-width: 100%;
+hight: auto;
+}
+img.chuck {
+  max-width: 12%;
+hight: auto;
+}
+</style>
 </head>
 
 <body>
@@ -70,35 +83,68 @@ else if ($_SESSION['check'] != "1")
 </div>
 
 <div id="sidebarl">
-	test
-	test2
+  <?php
+//Affichage des Posts images
+$post = getPostsByCategory("Picture");
+for ($i = 0; isset($post[1][$i]); $i++)
+  {
+      echo "<b>".$post[1][$i]."</b><br>";
+      controlerPictureDisplay($post[0][$i]);
+      echo "<br>";
+      echo "| ".$post[3][$i]."<br>";
+      //echo "Tags : ".$post[5][$i]."<br>";
+      echo "<small>Publie le ".$post[7][$i]."</small><br>";
+      echo profilLinkForm(getUserInfo("login", $post[2][$i]))."<br>";
+      if (isChuckInThere($post[3][$i]))
+	affChuck();
+      else if ($post[6][$i] == 1)
+	addTrollPic();
+      echo "<br>";
+    }
+  ?>
 </div>
-
 <div id="gen">
-	<?php
-	$post = showAllPost();
-
-	for ($i = 0 ; $post[0][$i] ; $i++)
-	{
-		echo "<div>";
-		echo $post[6][$i];
-		echo " -- ";
-		echo $post[1][$i];
-		echo " par: ";
-		$login =  getUserInfo("login", $post[2][$i]);
-		echo $login;
-		echo "</br>";
-		echo $post[3][$i];
-		echo "<br/>";
-		echo "</div>";
-		echo"<br/>";
-	}
-	?>
+  <?php
+  //Affichage des Posts Video
+  $post = getPostsByCategory("Video");
+  for ($i = 0; isset($post[1][$i]); $i++)
+    {
+	echo "<b>".$post[1][$i]."</b><br>";
+	affVideo($post[0][$i]);
+	echo "<br>";
+	echo "| ".$post[3][$i]."<br>";
+	//echo "Tags : ".$post[5][$i]."<br>";
+	echo "<small>Publie le ".$post[7][$i]."</small><br>";
+	echo profilLinkForm(getUserInfo("login", $post[2][$i]))."<br>";
+	if (isChuckInThere($post[3][$i]))
+	  affChuck();
+	else if ($post[6][$i] == 1)
+	  addTrollPic();
+	echo "<br>";
+      }
+?>
 </div>
-
 <div id="sidebarr">
-	test
+<?php
+    //Affichage des Posts Texte
+    $post = getPostsByCategory("Text");
+for ($i = 0; isset($post[1][$i]); $i++)
+  {
+    echo "<b>".$post[1][$i]."</b><br>";
+    echo "| ".$post[3][$i]."<br>";
+    //echo "Tags : ".$post[5][$i]."<br>";
+    echo "<small>Publie le ".$post[7][$i]."</small><br>";
+    echo profilLinkForm(getUserInfo("login", $post[2][$i]))."<br>";
+    if (isChuckInThere($post[3][$i]))
+      affChuck();
+    else if ($post[6][$i] == 1)
+      addTrollPic();
+    echo "<br>";
+  }
+?>
 </div>
+</div>
+
 <div id="footer">
 	<a href='contactForm.php'><span id="b-left">Contact</span></a>
 	<a href='faq.php'><span id="b-middle">Faq</span></a>
@@ -106,4 +152,5 @@ else if ($_SESSION['check'] != "1")
 </div>
 </div>
 </body>
+  <?php nyanCat(); ?>
 </html>

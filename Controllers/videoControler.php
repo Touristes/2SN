@@ -18,7 +18,7 @@ else {
 }
 
 //Lance les contrôlles avant enregistrement de la vidéo
-function newVideo($id_post) {
+function newVideo($id_post, $id_user) {
 	if (($links = isPostContainVideoLink($id_post)) == false) {
 	return (false);
 }

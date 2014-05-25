@@ -35,6 +35,21 @@ function dbSelectDisplay($query) {
   dbClose($db);
   return (0);
 }
+
+function getDBDateTime() {
+  $db = dbConnect();
+  if ($db == FALSE)
+    return (0);
+  $query = "select datetime('now');";
+  $result = $db->query($query);
+  while ($row = $result->fetchArray())
+    {
+        $time = $row[0];
+    }
+  dbClose($db);
+  return ($time);
+}
+
 function dbSelectToArray($query) {
   $db = dbConnect();
   if ($db == FALSE)

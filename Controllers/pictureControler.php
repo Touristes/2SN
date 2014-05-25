@@ -1,6 +1,7 @@
 <?php
 require_once "dataRef.php";
 require_once "Models/pictureModel.php";
+require_once "Views/pictureView.php";
 
 //Test l'image à partir de son chemin
 function pictureTest() {
@@ -21,7 +22,7 @@ function controlerPictureAdd($id_user, $id_post) {
 	if (addFileToServeur() == false) {
 		return (false);
 	}
-$path = "images/upload/" . basename($_FILES['file']['name']);
+$path = "Views/Images/Upload/" . basename($_FILES['file']['name']);
 //ajoute l'image sur la base de données
 	if (addPicture ($id_user, $id_post, $path) == false) {
 		delFileFromServeur($path);

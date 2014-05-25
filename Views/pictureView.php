@@ -3,6 +3,6 @@
 
 //affichage de l'image
 function affPicture($path) {
-	echo "<img src=\"".$path."\" />"; 
+	echo "<img class=\"postImage\" src=\"".$path."\" />";
 }
 ?>
