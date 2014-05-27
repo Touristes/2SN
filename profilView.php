@@ -53,7 +53,7 @@ height:15px;
 border:0;
 }
 #deletingAccount {
-background: url('./DeleteButton.png') no-repeat;
+background: url('./Views/Images/Icons/DeleteButton.png') no-repeat;
 border:0;
 width:150px;
 height:40px;
@@ -67,14 +67,14 @@ display:none;
 display:block;
 }
 #formNewMessage button{
-background: url('./message.png') no-repeat;
+background: url('./Views/Images/Icons/message.png') no-repeat;
 border:0;
 width:150px;
 height:40px;
 background-color:#aFaFaF;
 }
 #formSubscribe button{
-background: url('./abo.png') no-repeat;
+background: url('./Views/Images/Icons/abo.png') no-repeat;
 border:0;
 width:150px;
 height:40px;
@@ -82,7 +82,7 @@ margin-top:+1px;
 background-color:#aFaFaF;
 }
 #formUnsubscribe button{
-background: url('./abo.png') no-repeat;
+background: url('./Views/Images/Icons/abo.png') no-repeat;
 border:0;
 width:150px;
 height:40px;

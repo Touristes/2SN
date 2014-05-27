@@ -53,7 +53,7 @@ else if ($_SESSION['check'] != "1")
 		background-color:#a0F0a0;
 	}
 	#messageList {
-		list-style-image: url('./triforce.png');;
+		list-style-image: url('./Views/Images/Icons/triforce.png');;
 	}
 	#messageList button{
 		height:20px;
@@ -62,7 +62,7 @@ else if ($_SESSION['check'] != "1")
 		margin-top:+1px;
 	}
 	#delMessage {
-		background: url('./DeleteButton.png') no-repeat;
+		background: url('./Views/Images/Icons/DeleteButton.png') no-repeat;
 		width:15px;
 		height:15px;
 		border:0;
