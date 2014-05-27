@@ -6,7 +6,7 @@ include "sessionInit.php";
 <!doctype html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="styleContactForm.css" />
+<link rel="stylesheet" type="text/css" href="./Views/Styles/styleContactForm.css" />
 <meta charset="UTF-8">
 <title>[Why] - Contact</title>
 </head>

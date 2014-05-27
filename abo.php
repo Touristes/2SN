@@ -20,8 +20,8 @@ $login = $_SESSION['login'];
 <!doctype html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="style3.css" />
-	<link rel="stylesheet" type="text/css" href="styleFooter.css"/>
+	<link rel="stylesheet" type="text/css" href="./Views/Styles/style3.css" />
+	<link rel="stylesheet" type="text/css" href="./Views/Styles/styleFooter.css"/>
 
 	<meta charset="UTF-8">
 	<title>[Why] - Abonnements</title>

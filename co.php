@@ -30,7 +30,7 @@ if (isset($_POST['login']))
 <!doctype html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" type="text/css" href="./Views/Styles/style.css" />
   <meta charset="UTF-8">
   <title>[Why] - Connexion</title>
 </head>

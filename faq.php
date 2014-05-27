@@ -6,7 +6,7 @@ include "sessionInit.php";
 <!doctype html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="styleFaq.css" />
+	<link rel="stylesheet" type="text/css" href="./Views/Styles/styleFaq.css" />
 	<meta charset="UTF-8">
 	<title>[Why] - FAQ</title>
 </head>
