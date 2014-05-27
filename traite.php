@@ -30,7 +30,7 @@
 
 <?php
 
-require_once "dataRef.php";
+require_once "./Controllers/frontControler.php";
 if (isset($_POST['pseudo1']))
 {
 $password = $_POST['pass'];

@@ -1,9 +1,8 @@
 <?php
 include "sessionInit.php";
-include "dataRef.php";
-require_once "Controllers/frontControler.php";
+require_once "./Controllers/frontControler.php";
 require_once "chuck.php";
-require_once "userProfilModel.php";
+require_once "./Models/userProfilModel.php";
 
 if (!isset($_SESSION['check']))
 {

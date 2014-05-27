@@ -1,6 +1,6 @@
 <?php
 include "sessionInit.php";
-require_once "dataRef.php";
+require_once "./Controllers/frontControler.php";
 if (isset($_POST['login']))
 {
   $password = $_POST['pass'];

@@ -1,6 +1,6 @@
 <?php
 
-include "dataRef.php";
+require_once "./Controllers/frontControler.php";
 include "sessionInit.php";
 
 $post[2] = $_POST["posts"];

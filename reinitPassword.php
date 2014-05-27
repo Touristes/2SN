@@ -1,6 +1,6 @@
 <?php
-require_once "mail.php";
-require_once "dataRef.php";
+require_once "./Models/mail.php";
+require_once "./Controllers/frontControler.php";
 
 //Traitement du formulaire de renouvellement de mot de passe
 if (isset($_POST['reinitPassword'])) {

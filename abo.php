@@ -1,6 +1,7 @@
 <?php
 include "sessionInit.php";
-require_once "userProfilModel.php";
+require_once "./Models/userProfilModel.php";
+require_once "./Controllers/frontControler.php";
 
 if (!isset($_SESSION['check']))
 {
@@ -10,11 +11,6 @@ else if ($_SESSION['check'] != "1")
 {
 	echo "<script type=\"text/javascript\">alert(\"Acces interdit !!\");location =\"co.php\"</script>";
 }
-
-?>
-<?php
-include "sessionInit.php";
-require_once "dataRef.php";
 $login = $_SESSION['login'];
 ?>
 <!doctype html>

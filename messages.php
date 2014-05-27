@@ -1,7 +1,7 @@
 <?php
 include "sessionInit.php";
-require_once "dataRef.php";
-require_once "userProfilModel.php";
+require_once "./Controllers/frontControler.php";
+require_once "./Models/userProfilModel.php";
 
 if (!isset($_SESSION['check']))
 {

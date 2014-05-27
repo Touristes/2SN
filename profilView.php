@@ -1,8 +1,7 @@
 <?php
 include "sessionInit.php";
-require_once "dataRef.php";
-require_once "userProfilModel.php";
-require_once "Controllers/dataControler.php";
+require_once "./Models/userProfilModel.php";
+require_once "./Controllers/frontControler.php";
 require_once "chuck.php";
 
 //Test si l'utilisateur sest connecté

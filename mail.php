@@ -1,5 +1,5 @@
 <?php
-require_once("dataRef.php");
+require_once "./Controllers/frontControler.php";
 //Generation d un mot de passe aleatoire
 function generatePassword() {
   $password = substr(str_shuffle(md5(mt_rand())), 0, 8);
