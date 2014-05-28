@@ -22,12 +22,14 @@ require_once "Controllers/frontControler.php";
 <head>
   <link rel="stylesheet" type="text/css" href="./Views/Styles/style3.css" />
   <link rel="stylesheet" type="text/css" href="./Views/Styles/styleFooter.css"/>
+  <link rel="stylesheet" type="text/css" href="./Views/Styles/styleChart.css"/>
 
   <meta charset="UTF-8">
   <title>[Why] - Profil</title>
 </head>
 
 <body>
+  <script src='Chart.js/Chart.min.js'></script>
   <style>
 
   img.postImage {
@@ -247,7 +249,6 @@ $('#cssmenu #menu-button').on('click', function(){
 
 </div>
 <div id="affstat">
-  <script src='Chart.js/Chart.min.js'></script>
   <?php
   $creationDate = getUserCreationDate($id);
   $totalPosts = getUserTotalPostText($id);
@@ -262,13 +263,14 @@ $('#cssmenu #menu-button').on('click', function(){
   $receivedPrivateMsg = getUserTotalPrivateMessageReceives($id);
   echo "<div class=\"theribbon1\">Voici la liste de vos stats :</div><br>";
   ?>
-  <div id="statInfo">Ton compte a été créé le <?php echo $creationdate; ?></div>
-  <div id="statInfo">Depuis la création du compte, nombre de posts Troll vs Actus :</div>
+  <div id="statInfo">Ton compte a été créé le <?php echo getUserCreationDate($id); ?></div>
+  <div id="statInfo">Depuis la création du compte, tu as eu <?php echo $dailyNews; ?> posts élus Actu du jour.</div>
+  <div id="statInfo">Depuis la création du compte, nombre de posts <a id="green">Troll</a> vs <a id="blue">Actus</a> :</div>
   <canvas id="pNbr1" width="300" height="200"></canvas>
-  <div id="statInfo">Depuis la création du compte, nombre de posts Texte/Image/Vidéo :</div>
+  <div id="statInfo">Depuis la création du compte, nombre de posts <a id="orange">Texte</a>/<a id="white">Image</a>/<a id="purple">Vidéo</a> :</div>
   <canvas id="pNbr2" width="300" height="200"></canvas>
-  <div id="statInfo">Depuis la création du compte, nombre de fichiers partagés :</div>
-  <div id="statInfo">Depuis la création du compte, nombre de messages persos envoyés/reçus :</div>
+  <div id="statInfo">Depuis la création du compte, nombre de fichiers partagés : <?php echo $sharedFiles; ?></div>
+  <div id="statInfo">Depuis la création du compte, nombre de messages persos envoyés/reçus : <?php echo $sentPrivateMsg; ?>/<?php echo $receivedPrivateMsg; ?></div>
 
   <script>       
   var totalPosts = '<?php echo $totalPosts;?>';
@@ -282,36 +284,37 @@ $('#cssmenu #menu-button').on('click', function(){
   var sentPrivateMsg = '<?php echo $sentPrivateMsg;?>';
   var receivedPrivateMsg = '<?php echo $receivedPrivateMsg;?>';
 
-  /*var options = {
-                  percentageInnerCutout : 50,
-                };*/
   var pNbr1Data = [
   {
-    value : trollPosts,
-    color : "#E0E4CC"
+    value : trollPosts*10,
+    color : "#84dc84"
   },
   {
-    value : newsPosts,
+    value : newsPosts*10,
     color : "#69D2E7"
   }     
   ]
   var pNbr2Data = [
   {
-    value: picturePosts,
+    value: picturePosts*10,
     color:"#F38630"
   },
   {
-    value : videoPosts,
+    value : videoPosts*10,
     color : "#E0E4CC"
   },
   {
-    value : textPosts,
-    color : "#69D2E7"
+    value : textPosts*10,
+    color : "#bf7fbf"
   }     
   ]
+  var options = {
+                  segmentShowStroke : false,
+                  animateScale : true
+  }
   var pNbr1 = document.getElementById('pNbr1').getContext('2d');
-  var pNbr2 = document.getElementById('pNbr2').getContext('2d');
   new Chart(pNbr1).Doughnut(pNbr1Data,options);
+  var pNbr2 = document.getElementById('pNbr2').getContext('2d');
   new Chart(pNbr2).Doughnut(pNbr2Data,options);
   </script>
 </div>
