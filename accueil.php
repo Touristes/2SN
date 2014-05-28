@@ -85,6 +85,7 @@ hight: auto;
   <?php
 //Affichage des Posts images
 $post = getPostsByCategory("Picture");
+if ($post != false)
 for ($i = 0; isset($post[1][$i]); $i++)
   {
       echo "<b>".$post[1][$i]."</b><br>";
@@ -106,6 +107,7 @@ for ($i = 0; isset($post[1][$i]); $i++)
   <?php
   //Affichage des Posts Video
   $post = getPostsByCategory("Video");
+if ($post != false)
   for ($i = 0; isset($post[1][$i]); $i++)
     {
 	echo "<b>".$post[1][$i]."</b><br>";
@@ -127,6 +129,7 @@ for ($i = 0; isset($post[1][$i]); $i++)
 <?php
     //Affichage des Posts Texte
     $post = getPostsByCategory("Text");
+if ($post != false)
 for ($i = 0; isset($post[1][$i]); $i++)
   {
     echo "<b>".$post[1][$i]."</b><br>";
