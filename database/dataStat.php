@@ -192,7 +192,7 @@ function incrementField($field, $id_user, $begin, $period_start) {
 		return (FALSE);
 	if (isPeriodClosed($period_start, $id_user) == true)
 		return (FALSE);
-	if (strpos($field, "post_") != false)
+	if (strpos($field, "post_") != false && ($field != "post_actu" || $field != "post_troll"))
 		setField("posts", $id_user, $begin, $period_start, getField("posts", $id_user, $begin, $period_start) + 1);
 	if ($id_user != NULL)
 	  incrementField($field, NULL, $begin, $period_start);
