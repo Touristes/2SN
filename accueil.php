@@ -154,6 +154,8 @@ for ($i = 0; isset($post[1][$i]); $i++)
 		<a href='co.php'><span id="b-right">Inscription</span></a>
 	</div>
 </div>
-</body>
-  <?php nyanCat(); ?>
+<div id="easteregg" style="width:10px; height:10px;"> 
+	<?php nyanCat(); ?>
+</div>
+</body> 
 </html>
