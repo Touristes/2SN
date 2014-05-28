@@ -80,7 +80,7 @@ function showPost($id)
 	{
 	  $query = "SELECT * FROM post WHERE id_post=".$id.";";
 	  $result = dbSelectToArray($query);
-	  if ($result == 0)
+	  if ($result == false)
 		{
 		  dbClose($db);
 		  return("[ERR DBQUERY]");
@@ -103,7 +103,7 @@ function showAllPost()
 	{
 	  $query = "SELECT * FROM post ORDER BY created DESC, id_post DESC;";
 	  $allpost = dbSelectToArray($query);
-	  if ($allpost == 0)
+	  if ($allpost == false)
 		{
 		  dbClose($db);
 		  return ("[ERR DBTOARRAY]");
@@ -128,10 +128,10 @@ function getPostsByCategory($name) {
     {
       $query = "SELECT * FROM post WHERE id_category = \"".$id_category."\" order by created, id_post desc;";
       $result = dbSelectToArray($query);
-      if ($result == 0)
+      if ($result == false)
         {
           dbClose($db);
-          return("[ERR DBQUERY]");
+          return(false);
         }
       else
         {
@@ -153,7 +153,7 @@ function getPostsByCategoryAndUser($name, $id_user) {
     {
       $query = "SELECT * FROM post WHERE id_user = \"".$id_user."\" and id_category = \"".$id_category."\" order by created, id_post desc;";
       $result = dbSelectToArray($query);
-      if ($result == 0)
+      if ($result == false)
         {
           dbClose($db);
           return("[ERR DBQUERY]");
