@@ -147,11 +147,12 @@ for ($i = 0; isset($post[1][$i]); $i++)
 </div>
 </div>
 
-<div id="footer">
-	<a href='contactForm.php'><span id="b-left">Contact</span></a>
-	<a href='faq.php'><span id="b-middle">Faq</span></a>
-	<a href='co.php'><span id="b-right">Inscription</span></a>
-</div>
+<div id="cadrage-f" style="width:89%;">
+	<div id="footer">
+		<a href='contactForm.php'><span id="b-left">Contact</span></a>
+		<a href='faq.php'><span id="b-middle">Faq</span></a>
+		<a href='co.php'><span id="b-right">Inscription</span></a>
+	</div>
 </div>
 </body>
   <?php nyanCat(); ?>
