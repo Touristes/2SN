@@ -1,5 +1,5 @@
 <?php
-include "sessionInit.php";
+include "./Resources/sessionInit.php";
 
 if (!isset($_SESSION['check']))
 {

@@ -1,6 +1,6 @@
 <?php
 require_once "./Controllers/frontControler.php";
-include "sessionInit.php";
+include "./Resources/sessionInit.php";
 ?>
 
 <!doctype html>

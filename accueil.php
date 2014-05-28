@@ -1,5 +1,5 @@
 <?php
-include "sessionInit.php";
+include "./Resources/sessionInit.php";
 require_once "./Controllers/frontControler.php";
 require_once "chuck.php";
 require_once "./Models/userProfilModel.php";

@@ -1,7 +1,7 @@
 <?php
 
 require_once "./Controllers/frontControler.php";
-include "sessionInit.php";
+include "./Resources/sessionInit.php";
 
 $post[2] = $_POST["posts"];
 $post[0] = $_SESSION["login"];

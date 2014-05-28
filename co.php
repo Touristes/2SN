@@ -1,5 +1,5 @@
 <?php
-include "sessionInit.php";
+include "./Resources/sessionInit.php";
 require_once "./Controllers/frontControler.php";
 if (isset($_POST['login']))
 {
