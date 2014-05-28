@@ -6,7 +6,7 @@
 }
 
 body {
-	background-image:url(background.bmp);
+	background-image: url(../Images/background.bmp); 
 	-webkit-background-size: cover; /* pour Chrome et Safari */
 	-moz-background-size: cover; /* pour Firefox */
 	-o-background-size: cover; /* pour Opera */
