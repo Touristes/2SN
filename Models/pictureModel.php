@@ -1,6 +1,5 @@
 <?php
-require_once "dataRef.php";
-
+require_once "Controllers/frontControler.php";
 //ajoute le fichier sur le serveur
 function addFileToServeur() {
 	//Teste la taille du fichier avant de l'uploader
