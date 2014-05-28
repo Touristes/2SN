@@ -30,14 +30,14 @@ require_once "Controllers/frontControler.php";
 <body>
   <style>
 
-img.postImage {
-max-width: 100%;
-hight: auto;
-}
-img.chuck {
-  max-width: 12%;
-  hight: auto;
-}
+  img.postImage {
+    max-width: 100%;
+    hight: auto;
+  }
+  img.chuck {
+    max-width: 12%;
+    hight: auto;
+  }
   .ribbon {padding-left:0px}
   .ribbon-background {position:absolute;top:0;right:0;font-size:8px;color:#cccccc;}
   .ribbon-background a {color:#cccccc;text-decoration:none;font-weight:normal;}
@@ -50,7 +50,7 @@ img.chuck {
   .theribbon1:before, .theribbon1:after {content: ' ';position: absolute;width: 0;height: 0;}
   .theribbon1:before{}
   .theribbon1:after{left: 0px;top: 100%;border-width: 05px 10px;border-style: solid;border-color: #666666 #666666 transparent transparent;}
-#formUserMod {
+  #formUserMod {
     margin-left:20%;
     font-size:large;
   }
@@ -61,19 +61,19 @@ img.chuck {
    left: 105px;
    top: 232px;
  }
-    #formUserMod input {
+ #formUserMod input {
   width : 300px;
   margin-left:+2%;
-  }
-    #formUserMod #but1 {}
-      #formUserMod #but2{
+}
+#formUserMod #but1 {}
+#formUserMod #but2{
   top: 288px;
 }
-	#formUserMod #but3{
+#formUserMod #but3{
   top: 344px;
-      }
+}
 #hide {
-display:block;
+  display:block;
 }
 </style>
 <script>
@@ -194,77 +194,130 @@ $('#cssmenu #menu-button').on('click', function(){
 </div>
 
 <div id="sidebarr">
-<div id="affpost">
+  <div id="affpost">
 
-  <?php
+    <?php
 //Affichage des Posts
-  echo "<div class=\"theribbon1\">Voici la liste de vos posts :</div><br>";
-  $post = showPostByUser($id);
-  for ($i = 0; isset($post[1][$i]); $i++)
-  {
-    if (getCategoryName($post[4][$i]) == "Video") {
-		echo "<b>".$post[1][$i]."</b><br>";
+    echo "<div class=\"theribbon1\">Voici la liste de vos posts :</div><br>";
+    $post = showPostByUser($id);
+    for ($i = 0; isset($post[1][$i]); $i++)
+    {
+      if (getCategoryName($post[4][$i]) == "Video") {
+        echo "<b>".$post[1][$i]."</b><br>";
 		// echo "Catergorie ".getCategory($post[4][$i])."<br>";
-		affVideo($post[0][$i]);
-		echo "<br>";
-		echo "| ".$post[3][$i]."<br>";
+        affVideo($post[0][$i]);
+        echo "<br>";
+        echo "| ".$post[3][$i]."<br>";
 		//echo "Tags : ".$post[5][$i]."<br>";
-		echo "<small>Publie le ".$post[7][$i]."</small><br>";
-                if (isChuckInThere($post[3][$i]))
-                  affChuck();
-                else if ($post[6][$i] == 1)
-                  addTrollPic();
-		echo "<br>";
-	}
-	else if (getCategoryName($post[4][$i]) == "Picture") {
-		echo "<b>".$post[1][$i]."</b><br>";
+        echo "<small>Publie le ".$post[7][$i]."</small><br>";
+        if (isChuckInThere($post[3][$i]))
+          affChuck();
+        else if ($post[6][$i] == 1)
+          addTrollPic();
+        echo "<br>";
+      }
+      else if (getCategoryName($post[4][$i]) == "Picture") {
+        echo "<b>".$post[1][$i]."</b><br>";
 		// echo "Catergorie ".getCategory($post[4][$i])."<br>";
-		controlerPictureDisplay($post[0][$i]);
-		echo "<br>";
-		echo "| ".$post[3][$i]."<br>";
+        controlerPictureDisplay($post[0][$i]);
+        echo "<br>";
+        echo "| ".$post[3][$i]."<br>";
 		//echo "Tags : ".$post[5][$i]."<br>";
-		echo "<small>Publie le ".$post[7][$i]."</small><br>";
-                if (isChuckInThere($post[3][$i]))
-                  affChuck();
-                else if ($post[6][$i] == 1)
-                  addTrollPic();
-		echo "<br>";
-	}
-	else if (getCategoryName($post[4][$i]) == "Text") {
-	    echo "<b>".$post[1][$i]."</b><br>";
+        echo "<small>Publie le ".$post[7][$i]."</small><br>";
+        if (isChuckInThere($post[3][$i]))
+          affChuck();
+        else if ($post[6][$i] == 1)
+          addTrollPic();
+        echo "<br>";
+      }
+      else if (getCategoryName($post[4][$i]) == "Text") {
+       echo "<b>".$post[1][$i]."</b><br>";
 		// echo "Catergorie ".getCategory($post[4][$i])."<br>";
-		echo "| ".$post[3][$i]."<br>";
+       echo "| ".$post[3][$i]."<br>";
 		//echo "Tags : ".$post[5][$i]."<br>";
-		echo "<small>Publie le ".$post[7][$i]."</small><br>";
-                if (isChuckInThere($post[3][$i]))
-                  affChuck();
-		else if ($post[6][$i] == 1)
-		  addTrollPic();
-		echo "<br>";
-	}
+       echo "<small>Publie le ".$post[7][$i]."</small><br>";
+       if (isChuckInThere($post[3][$i]))
+        affChuck();
+      else if ($post[6][$i] == 1)
+        addTrollPic();
+      echo "<br>";
+    }
   }
   ?>
- 
-  </div>
- <div id="affstat">
+
+</div>
+<div id="affstat">
+  <script src='Chart.js/Chart.min.js'></script>
   <?php
-//Affichage des Posts
+  $creationDate = getUserCreationDate($id);
+  $totalPosts = getUserTotalPostText($id);
+  $trollPosts = getUserTotalPostTroll($id);
+  $newsPosts = getUserTotalPostActu($id);
+  $picturePosts = getUserTotalPostImage($id);
+  $videoPosts = getUserTotalPostVideo($id);
+  $textPosts = getUserTotalPostText($id);
+  $dailyNews = getUserTotalNewsDuJour($id);
+  $sharedFiles = getUserTotalSharedFiles($id);
+  $sentPrivateMsg = getUserTotalPrivateMessageSends($id);
+  $receivedPrivateMsg = getUserTotalPrivateMessageReceives($id);
   echo "<div class=\"theribbon1\">Voici la liste de vos stats :</div><br>";
-  $post = showPostByUser($id);
-  for ($i = 0; isset($post[0][$i]); $i++)
-  {
-    echo "<b>".$post[1][$i]."</b><br>";
-    echo "Catergorie ".getCategoryName($post[4][$i])."<br>";
-    echo "| ".$post[3][$i]."<br>";
-    //echo "Tags : ".$post[5][$i]."<br>";
-    echo "<small>Publie le ".$post[6][$i]."</small><br>";
-    echo "<br>";
-  }
   ?>
-  </div>
+  <div id="statInfo">Ton compte a été créé le <?php echo $creationdate; ?></div>
+  <div id="statInfo">Depuis la création du compte, nombre de posts Troll vs Actus :</div>
+  <canvas id="pNbr1" width="300" height="200"></canvas>
+  <div id="statInfo">Depuis la création du compte, nombre de posts Texte/Image/Vidéo :</div>
+  <canvas id="pNbr2" width="300" height="200"></canvas>
+  <div id="statInfo">Depuis la création du compte, nombre de fichiers partagés :</div>
+  <div id="statInfo">Depuis la création du compte, nombre de messages persos envoyés/reçus :</div>
 
- </div>
-<div id="cadrage-f">
+  <script>       
+  var totalPosts = '<?php echo $totalPosts;?>';
+  var trollPosts = '<?php echo $trollPosts;?>';
+  var newsPosts = '<?php echo $newsPosts;?>';
+  var picturePosts = '<?php echo $picturePosts;?>';
+  var videoPosts = '<?php echo $videoPosts;?>';
+  var textPosts = '<?php echo $textPosts;?>';
+  var dailyNews = '<?php echo $dailyNews;?>';
+  var sharedFiles = '<?php echo $sharedFiles;?>';
+  var sentPrivateMsg = '<?php echo $sentPrivateMsg;?>';
+  var receivedPrivateMsg = '<?php echo $receivedPrivateMsg;?>';
+
+  /*var options = {
+                  percentageInnerCutout : 50,
+                };*/
+  var pNbr1Data = [
+  {
+    value : trollPosts,
+    color : "#E0E4CC"
+  },
+  {
+    value : newsPosts,
+    color : "#69D2E7"
+  }     
+  ]
+  var pNbr2Data = [
+  {
+    value: picturePosts,
+    color:"#F38630"
+  },
+  {
+    value : videoPosts,
+    color : "#E0E4CC"
+  },
+  {
+    value : textPosts,
+    color : "#69D2E7"
+  }     
+  ]
+  var pNbr1 = document.getElementById('pNbr1').getContext('2d');
+  var pNbr2 = document.getElementById('pNbr2').getContext('2d');
+  new Chart(pNbr1).Doughnut(pNbr1Data,options);
+  new Chart(pNbr2).Doughnut(pNbr2Data,options);
+  </script>
+</div>
+
+</div>
+<div id="cadrage-f" style="width:89%;">
 	<div id="footer">
 		<a href='contactForm.php'><span id="b-left">Contact</span></a>
 		<a href='faq.php'><span id="b-middle">Faq</span></a>
