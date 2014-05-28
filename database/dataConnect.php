@@ -55,6 +55,8 @@ function dbSelectToArray($query) {
   if ($db == FALSE)
     return (0);
   $result = $db->query($query);
+  if ($result == false)
+    return (false);
   for ($j = 0 ;$row = $result->fetchArray(); $j++)
     {
       for ($i = 0; isset($row[$i]); $i++)
