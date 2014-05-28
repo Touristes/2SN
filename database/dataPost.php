@@ -8,10 +8,14 @@ function addPost($post)
   $title = $post[1];
   $content = $post[2];
   $id_user = getUserID($post[0]);
-  if ($post['5'] == "troll")
+  if ($post['5'] == "troll") {
 	$troll = 1;
-  else
+	incrementUserTotalPostTroll($id_user);
+  }
+  else {
 	$troll = 0;
+	incrementUserTotalPostActu($id_user);
+  }
   if (isPostContainVideoLinkViaContent($content) != false) {
 	$query = 'INSERT INTO post (title, id_user, text, id_category, id_type, troll, created ) VALUES ("'
 		.$title.'",'.$id_user.',"'.$content.'",'.getCategoryID("Video").','.'3,'.$troll.','.'datetime(\'now\')'.');';
