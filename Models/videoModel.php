@@ -1,6 +1,5 @@
 <?php
-require_once "dataRef.php";
-
+require_once "Controllers/frontControler.php";
 //Test si le post contient un lien vidéo, et renvoie la liste oui
 function isPostContainVideoLink($id_post) {
 	if (($links = getLinks($id_post)) == false)
