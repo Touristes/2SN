@@ -263,14 +263,18 @@ $('#cssmenu #menu-button').on('click', function(){
   $receivedPrivateMsg = getUserTotalPrivateMessageReceives($id);
   echo "<div class=\"theribbon1\">Voici la liste de vos stats :</div><br>";
   ?>
-  <div id="statInfo">Ton compte a été créé le <?php echo getUserCreationDate($id); ?></div>
-  <div id="statInfo">Depuis la création du compte, tu as eu <?php echo $dailyNews; ?> posts élus Actu du jour.</div>
-  <div id="statInfo">Depuis la création du compte, nombre de posts <a id="green">Troll</a> vs <a id="blue">Actus</a> :</div>
-  <canvas id="pNbr1" width="300" height="200"></canvas>
-  <div id="statInfo">Depuis la création du compte, nombre de posts <a id="orange">Texte</a>/<a id="white">Image</a>/<a id="purple">Vidéo</a> :</div>
-  <canvas id="pNbr2" width="300" height="200"></canvas>
-  <div id="statInfo">Depuis la création du compte, nombre de fichiers partagés : <?php echo $sharedFiles; ?></div>
-  <div id="statInfo">Depuis la création du compte, nombre de messages persos envoyés/reçus : <?php echo $sentPrivateMsg; ?>/<?php echo $receivedPrivateMsg; ?></div>
+  <div id="statInfo">
+    <p>Ton compte a été créé le <?php echo getUserCreationDate($id); ?></p>
+    <p>Depuis la création du compte, tu as :</p>
+    <ul>
+      <li><?php echo $dailyNews; ?> posts élus Actu du jour.</li>
+      <li>XX posts <a id="green">Troll</a> vs XX posts <a id="blue">Actus</a> :</li>
+      <canvas id="pNbr1" width="300" height="200"></canvas>
+      <li>XX posts <a id="orange">Texte</a>, XX posts <a id="white">Image</a> et XX posts <a id="purple">Vidéo</a></li>
+      <canvas id="pNbr2" width="300" height="200"></canvas>
+      <li>partagé <?php echo $sharedFiles; ?> fichiers</li>
+      <li>envoyé <?php echo $sentPrivateMsg; ?> et reçu <?php echo $receivedPrivateMsg; ?> messages persos</li>
+  </ul>
 
   <script>       
   var totalPosts = '<?php echo $totalPosts;?>';
