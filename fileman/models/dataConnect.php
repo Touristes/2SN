@@ -3,7 +3,6 @@ function dbConnect() {
   $dbname = 'database.db';
   $db = new SQLite3($dbname);
   if (isset($db)){
-    echo ("  connection_db_ok !!");
     return ($db);
   }
   else

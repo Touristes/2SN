@@ -1,22 +1,37 @@
 <?php
-	echo "Passé dans InsertInto";
+	echo "InsertInto.php";
 	/**************************************************/
 	require_once('dataConnect.php');
+
 	$filename = $_POST["nom"];
 	$filesize = $_POST["taille"];
 	$filerep = $_POST["repertoire"];
-	echo $filename;
-	echo $filesize;
-	echo $filerep;
+	$date =	"2010/10/10";
+	$id_user = 1;
+	$url = "uploads/file";
+	$description = "no description";
+	
+	echo $filename;echo $filesize;echo $filerep;echo $date;echo $id_user;echo $description;
 
-	//$sql = "INSERT INTO file (name, id_user, created, url, size, description) VALUES ('ana','ana','ana','ana','ana','banana');";
-	//VALUES ("'.$title.'",'.$id_user.',"'.$content.'",2,'.'3,'.'date(\'now\')'.');';
-	// $query = 'INSERT INTO post (title, id_user, text, id_category, id_type, created ) VALUES ("'.$title.'",'.$id_user.',"'.$content.'",2,'.'3,'.'date(\'now\')'.');';
- 	// $result = dbQuery($query);
-	$sql = 'INSERT INTO file (name, id_user, created, url, size, description) VALUES ("'.$filename.'",'001','.'date(\'now\')'.',"'.$filesize.'",'10',"azertyu");';
 
-	if (dbQuery($sql)){
-		echo "Well done insert";
-	} else {
-		echo "not inserted";
-	}
+	  	$db =dbConnect();
+	  	if ($db == FALSE){
+	  		echo "connection db KO";	
+	    	return (FALSE);
+	    }
+	    echo "connection db OKKK";	
+
+	 // $sql = "INSERT INTO file (name, id_user, created, url, size, description) VALUES (\"".$filename."\",\"".$id_user."\",\"".$date."\",\"".$url."\",\"".$filesize."\",\"".$description."\");";
+	 $sql = "INSERT INTO file (name, id_user, created, url, size, description) VALUES ('".$_POST["nom"]."',1,'$date','uploads/file',23,'$description');";
+
+		$result = $db->query($sql);
+	  	if ($result == FALSE)
+	    {
+	      dbClose($db);
+	      var_dump($sql);
+	      return (FALSE);
+	    }
+	  	dbClose($db);
+	  	echo "SQL Well done execute";
+	  	return (TRUE);
+?>

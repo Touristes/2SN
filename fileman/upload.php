@@ -1,6 +1,6 @@
 <?php
 //Liste des extensions interdites
-$not_allowed 	= array('sh', 'batch', 'sh', 'exe', 'bat', 'pif', 'src', 'reg', 'php', 'c', 'exe');
+$not_allowed = array('ksh', 'sh', 'batch', 'exe', 'bat', 'pif', 'src', 'reg', 'php', 'c', 'exe', 'rpm', 'deb');
 
 if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 
