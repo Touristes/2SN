@@ -14,24 +14,24 @@
 	echo $filename;echo $filesize;echo $filerep;echo $date;echo $id_user;echo $description;
 
 
-	  	$db =dbConnect();
-	  	if ($db == FALSE){
-	  		echo "connection db KO";	
-	    	return (FALSE);
-	    }
-	    echo "connection db OKKK";	
+	 //  	$db =dbConnect();
+	 //  	if ($db == FALSE){
+	 //  		echo "connection db KO";	
+	 //    	return (FALSE);
+	 //    }
+	 //    echo "connection db OKKK";	
 
-	 // $sql = "INSERT INTO file (name, id_user, created, url, size, description) VALUES (\"".$filename."\",\"".$id_user."\",\"".$date."\",\"".$url."\",\"".$filesize."\",\"".$description."\");";
-	 $sql = "INSERT INTO file (name, id_user, created, url, size, description) VALUES ('".$_POST["nom"]."',1,'$date','uploads/file',23,'$description');";
+	 // // $sql = "INSERT INTO file (name, id_user, created, url, size, description) VALUES (\"".$filename."\",\"".$id_user."\",\"".$date."\",\"".$url."\",\"".$filesize."\",\"".$description."\");";
+	 // $sql = "INSERT INTO file (name, id_user, created, url, size, description) VALUES ('".$_POST["nom"]."',1,'$date','uploads/file',23,'$description');";
 
-		$result = $db->query($sql);
-	  	if ($result == FALSE)
-	    {
-	      dbClose($db);
-	      var_dump($sql);
-	      return (FALSE);
-	    }
-	  	dbClose($db);
-	  	echo "SQL Well done execute";
-	  	return (TRUE);
+		// $result = $db->query($sql);
+	 //  	if ($result == FALSE)
+	 //    {
+	 //      dbClose($db);
+	 //      var_dump($sql);
+	 //      return (FALSE);
+	 //    }
+	 //  	dbClose($db);
+	 //  	echo "SQL Well done execute";
+	 //  	return (TRUE);
 ?>
