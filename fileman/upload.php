@@ -1,4 +1,5 @@
 <?php
+require_once('models/dataConnect.php');
 //Liste des extensions interdites
 $not_allowed = array('ksh', 'sh', 'batch', 'exe', 'bat', 'pif', 'src', 'reg', 'php', 'c', 'exe', 'rpm', 'deb');
 
@@ -16,4 +17,5 @@ if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 	}
 }
 echo '{"status":"error_1"}';
+
 exit;

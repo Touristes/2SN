@@ -54,9 +54,10 @@ $(function(){
 
             console.log(' NOM FICHIER -> ' + name + ' TAILLE -> ' + size + ' REPERTOIRE -> ' + repertory);
 
-            $.post('../../upload.php', {nom: name, taille: size, repertoire: repertory}, function(data) {
+            $.post('../../models/InsertInto.php', {nom: name, taille: size, repertoire: repertory}, function(data) {
+            // $.post('../../models/InsertInto.php', {nom: name, taille: size, repertoire: repertory}, function(data) {
                 console.log('Ajouter 2');
-                $('#allfile').text(data);
+                $('#info').append(data);
             });
 
             // Automatically upload the file once it is added to the queue

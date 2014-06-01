@@ -17,13 +17,24 @@ function deleteFile($name){
 	}
 	dbClose();
 }
-function displayAllFile(){
-	dbConnect();
-	$sql = "SELECT * FROM file;";
-	if (dbQuery($sql)){
-		echo "Tout vos fichier uploader";
-	}
-	dbClose();
+function displayAllFileUser(){
+
+  $db = dbConnect();
+  $sql = $db->prepare('SELECT name FROM file;');
+  $result = $sql->execute();
+  echo "Voila Tes Fichiers";
+  while ($row = $result->fetchArray())
+  {
+     echo "<pre>";
+     echo "<form action='delete_file.php' method='POST'>";
+     echo "<table><tr>";
+     echo "<td width='20%;'><label id='label-dbname' for='name-database' name='label-dbname'>".$row[name]."</label></td>";  
+     echo '<td><a type="submit" id="button-delete" value="Delete" class="btn btn-danger" role="button" name="delete">Delete</a></td>';
+     echo  "</tr></table>";     
+     echo "</form>";
+     echo "</pre>";
+  }
+  dbClose();
 }
 function displayPublicFile(){
 	dbConnect();

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+	<?php require_once('/models/dataFile.php');?>
 	<head>
 		<meta charset="utf-8"/>
 		<title>Why - fileman</title>
@@ -18,29 +18,27 @@
 		  <p>Why - Fileman</p>
 		  <footer>Mon gestionnaire de fichier</footer>
 		</blockquote>
-		<div id="info"> </div>
-		<form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
-			<div class="form-group" id="rep">
+		<div id="info"></div>
+		<div class="row">
+			<form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
+				<div class="form-group" id="rep">
     			<label class="sr-only" for="">Repertoire</label>
     			<input id="rep_name" type="text" class="form-control" placeholder="Default">
-  			</div>
-			<div id="drop">
-				Drop Here
-				<a>Browse</a>
-				<input type="file" name="upl" id="upl" multiple />
-			</div>
-			<div id="uploaded">
-				<ul>
+  				</div>
+				<div id="drop">
+					Glisse tes fichiers
+					<a id="btn-browse" >Parcourir</a>
+					<input type="file" name="upl" id="upl" multiple />
+				</div>
+				<div id="uploaded">
+					<ul>
 					<!-- The file uploads will be shown here -->
-				</ul>
-			</div>
-		</form>
-		<div>
-			<span>
-			<table id="allfile" class="table table-striped">
-  				
-			</table>
-		</span>
+					</ul>
+				</div>
+			</form>
+		</div>
+		<div id="allfile" class="col-md-3">
+
 		</div>
 		
 		<footer >
@@ -58,6 +56,7 @@
 		<script src="assets/js/jquery.fileupload.js"></script>
 		
 		<!-- Our main JS file -->
+		<script src="assets/js/my_script.js"></script>
 		<script src="assets/js/script.js"></script>
 
 	</body>
