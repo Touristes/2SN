@@ -51,6 +51,7 @@ hight: auto;
 
 		<div id='cssmenu'>
 			<ul>
+            <li ><a href='accueil.php'><img src="Views/Images/logo.png" width="50px;"></a></li> 
 				<li class='active'><a href='accueil.php'><span>Home</span></a></li>
 				<li ><a href='messages.php'><span>Messages</span></a></li> 
 				<li><a href='profil.php'><span>Mon Profil</span></a></li>
@@ -60,8 +61,8 @@ hight: auto;
 		</div>
 		<div id="post">
 			<form id="signup" name="monform" method="post" action="send_post.php"  enctype="multipart/form-data">
-				<textarea cols="60" rows="1" name="title" placeholder="title" required></textarea>
-				<textarea cols="60" rows="5" name="posts" required></textarea>
+				<textarea cols="60" rows="1" name="title" placeholder="Titre" required></textarea>
+				<textarea cols="60" rows="5" name="posts" placeholder="Ton info.." required></textarea>
 				<div id="post1">
 					Type:
 					<select name="troll">
@@ -147,7 +148,7 @@ for ($i = 0; isset($post[1][$i]); $i++)
 </div>
 </div>
 
-<div id="cadrage-f" style="width:89%;">
+<div id="cadrage-f">
 	<div id="footer">
 		<a href='contactForm.php'><span id="b-left">Contact</span></a>
 		<a href='faq.php'><span id="b-middle">Faq</span></a>

@@ -55,6 +55,7 @@ background-image: url(../Images/background.bmp);
 #sidebarr {
 	background-color: rgba(255,255,255,0.5);
 	display:inline-block;
+	padding:10px;
 	margin-left: auto;
 	margin-right:auto;
 	text-align:left;
@@ -67,6 +68,7 @@ background-image: url(../Images/background.bmp);
 	margin-bottom:20px;
 	margin-top:80px;
 	vertical-align: top;
+	overflow:auto;
 }
 
 #affpost {

@@ -52,6 +52,7 @@ if (isset($_POST['login']))
            }
          }
          </SCRIPT>
+         <div id="inline">
        <div id="connect">
         <form id="signup" name="formulaire1" method="post" action="">
           <input type="email" placeholder="Login" name="login" required style="width:90%;">
@@ -70,8 +71,9 @@ if (isset($_POST['login']))
             <button type="button" onClick="ValiderMail(this.form)">Inscris-toi !</button>    
           </form>
         </div>
-
+</div>
         <div id="presentation">
+        <img src="Views/Images/logo.png" width="500px">
         </div>
       </body>
       </html>

@@ -92,6 +92,7 @@ $('#cssmenu #menu-button').on('click', function(){
 </script>
 <div id='cssmenu'>
   <ul>
+              <li ><a href='accueil.php'><img src="Views/Images/logo.png" width="50px;"></a></li> 
    <li class='last'><a href='accueil.php'><span>Home</span></a></li>
    <li><a href='messages.php'><span>Messages</span></a></li>
    <li class='active'><a href='profil.php'><span>Mon Profil</span></a></li>
@@ -324,7 +325,7 @@ $('#cssmenu #menu-button').on('click', function(){
 </div>
 
 </div>
-<div id="cadrage-f" style="width:89%;">
+<div id="cadrage-f">
 	<div id="footer">
 		<a href='contactForm.php'><span id="b-left">Contact</span></a>
 		<a href='faq.php'><span id="b-middle">Faq</span></a>
