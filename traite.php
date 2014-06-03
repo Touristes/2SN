@@ -25,7 +25,7 @@
     <input type="password" placeholder="Choisis ton mot de passe !" name="pass" value="<?php echo $_POST['pass'] ?>" required></br></br>
     <input type="password" placeholder="Confirme ton mot de passe !" name="pass1" required></br></br>
 	<input type="checkbox" name="conditions" value="ok"/> J'accepte les conditions.
-    <button type="button" onClick="ValiderMail(this.form)">Créer mon compte</button>    
+    <button type="button" onClick="ValiderMail(this.form)">Créer mon compte</button>
 </form>
 
 <?php
@@ -59,7 +59,7 @@ else if ($test1 == true)
 {
 echo '<script language="Javascript">
 alert ("Cet email existe déjà !" )
-</script>';		
+</script>';
 }
 }
 ?>

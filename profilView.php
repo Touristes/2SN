@@ -2,7 +2,7 @@
 include "./Resources/sessionInit.php";
 require_once "./Models/userProfilModel.php";
 require_once "./Controllers/frontControler.php";
-require_once "chuck.php";
+require_once "./Models/chuck.php";
 
 //Test si l'utilisateur sest connecté
 if (!isset($_SESSION['check']))

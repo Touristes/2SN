@@ -16,7 +16,7 @@ else if ($_SESSION['check'] != "1")
 {
 		echo "<script type=\"text/javascript\">location =\"co.php\"</script>";
 }
-else 
+else
 {
 	echo "<script type=\"text/javascript\">location =\"accueil.php\"</script>";
 }

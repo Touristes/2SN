@@ -1,7 +1,7 @@
 <?php
 include "./Resources/sessionInit.php";
 require_once "./Controllers/frontControler.php";
-require_once "chuck.php";
+require_once "./Models/chuck.php";
 require_once "./Models/userProfilModel.php";
 
 if (!isset($_SESSION['check']))
@@ -60,7 +60,7 @@ hight: auto;
 			</ul>
 		</div>
 		<div id="post">
-			<form id="signup" name="monform" method="post" action="send_post.php"  enctype="multipart/form-data">
+			<form id="signup" name="monform" method="post" action="Controllers/send_post.php"  enctype="multipart/form-data">
 				<textarea cols="60" rows="1" name="title" placeholder="Titre" required></textarea>
 				<textarea cols="60" rows="5" name="posts" placeholder="Ton info.." required></textarea>
 				<div id="post1">

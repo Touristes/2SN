@@ -12,9 +12,7 @@ else if ($_SESSION['check'] != "1")
 
 ?>
 <?php
-// include "sessionInit.php";
-// require_once "dataRef.php";
-require_once "chuck.php";
+require_once "./Models/chuck.php";
 require_once "Controllers/frontControler.php";
 ?>
 <!doctype html>
