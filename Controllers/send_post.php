@@ -1,5 +1,5 @@
 <?php
-
+chdir("../");
 require_once "./Controllers/frontControler.php";
 include "./Resources/sessionInit.php";
 
@@ -15,4 +15,4 @@ if ($_FILES['file']['tmp_name'] != '' && $_FILES['file']['size'] > 0 && $_FILES[
 addPost($post);
 //exit;
 ?>
-<META http-EQUIV="Refresh" CONTENT="0; url=accueil.php">
+<META http-EQUIV="Refresh" CONTENT="0; url=../accueil.php">
