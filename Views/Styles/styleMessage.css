@@ -26,7 +26,7 @@
     background-color:#a0F0a0;
     }
 #messageList {
-    list-style-image: url('./Views/Images/Icons/triforce.png');;
+    list-style-image: url('../Images/Icons/triforce.png');;
     }
 #messageList button{
     height:20px;
@@ -35,7 +35,7 @@
     margin-top:+1px;
     }
 #delMessage {
-    background: url('./Views/Images/Icons/DeleteButton.png') no-repeat;
+    background: url('../Images/Icons/DeleteButton.png') no-repeat;
     width:15px;
     height:15px;
     border:0;
