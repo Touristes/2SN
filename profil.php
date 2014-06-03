@@ -129,11 +129,11 @@ $('#cssmenu #menu-button').on('click', function(){
     <?php
     echo "</br>Nombre d'abonnés : ".getSubscriberNumber($id);
     echo "<form id=\"formUserMod\" method=\"POST\" action=\"profil.php\"></br>"
-    ."User name : </br><input type=text name=login  value=\"".$login."\" <br>";
+    ."Login : </br><input type=text name=login  value=\"".$login."\" <br>";
     echo "</br>E-Mail : </br><input type=text name=email  value=\"".getUserInfo("email",$id)."\" />";
-    echo "</br>Name : </br><input type=text name=name  value=\"".getUserInfo("name",$id)."\" />";
-    echo "</br>First name : </br><input type=text name=firstname  value=\"".getUserInfo("firstname",$id)."\" />";
-    echo "</br>Postal code : </br><input type=text name=postalcode value=\"".getUserInfo("postalcode",$id)."\" /><br>";
+    echo "</br>Nom : </br><input type=text name=name  value=\"".getUserInfo("name",$id)."\" />";
+    echo "</br>Prenom : </br><input type=text name=firstname  value=\"".getUserInfo("firstname",$id)."\" />";
+    echo "</br>Code Postal : </br><input type=text name=postalcode value=\"".getUserInfo("postalcode",$id)."\" /><br>";
     echo "<button id=\"but1\"type=submit value=\"Modifiez vos infos personnelles\"/>Modifiez vos infos personnelles</button>";
     echo "</form>";
     echo "<form id=\"formUserMod\" method=\"POST\" action=\"profil.php\">"

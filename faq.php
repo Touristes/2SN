@@ -28,6 +28,7 @@ include "./Resources/sessionInit.php";
     
 <div id='cssmenu'>
 <ul>
+<li ><a href='accueil.php'><img src="Views/Images/logo.png" width="50px;"></a></li> 
    <li class='last'><a href='accueil.php'><span>Home</span></a></li>
    <li><a href='messages.php'><span>Messages</span></a></li>    
    <li><a href='profil.php'><span>Mon Profil</span></a></li>
@@ -54,15 +55,15 @@ include "./Resources/sessionInit.php";
 	<ul>
 		<li id="faq_<?php echo $id++ ?>">
 			<h5>En quoi consiste [Why] ?</h5>
-			<p>Le faux-texte (Ã©galement appelÃ© lorem ipsum, lipsum) est, en imprimerie, un texte sans valeur sÃ©mantique, permettant de remplir des pages lors d'une mise en forme afin d'en calibrer le contenu en l'absence du texte dÃ©finitif.</p>
+			<p>Le faux-texte (Egalement appele lorem ipsum, lipsum) est, en imprimerie, un texte sans valeur sÃ©mantique, permettant de remplir des pages lors d'une mise en forme afin d'en calibrer le contenu en l'absence du texte definitif.</p>
 		</li>
 
 		<li id="faq_<?php echo $id++ ?>">
 			<h5>De quoi ai-je besoin pour utiliser [Why] ?</h5>
-			<p>GÃ©nÃ©ralement, on utilise un texte en faux latin (le texte ne veut rien dire, il a Ã©tÃ© modifiÃ©), le Lorem ipsum ou Lipsum, qui permet donc de faire office de texte d'attente. L'avantage de le mettre en latin est que l'opÃ©rateur sait au premier coup d'Å“il que la page contenant ces lignes n'est pas valide, et surtout l'attention du client n'est pas dÃ©rangÃ©e par le contenu, il demeure concentrÃ© seulement sur l'aspect graphique.</p>
+			<p>GÃ©nÃ©ralement, on utilise un texte en faux latin (le texte ne veut rien dire, il a Ã©tÃ© modifiÃ©), le Lorem ipsum ou Lipsum, qui permet donc de faire office de texte d'attente. L'avantage de le mettre en latin est que l'opÃ©rateur sait au premier coup d'oeil que la page contenant ces lignes n'est pas valide, et surtout l'attention du client n'est pas dÃ©rangÃ©e par le contenu, il demeure concentrÃ© seulement sur l'aspect graphique.</p>
 		</li>
 		<li id="faq_<?php echo $id++ ?>">
-			<h5>Que signifie s'abonner Ã  quelquâ€™un sur [Why] ?</h5>
+			<h5>Que signifie s'abonner a squelqu'un sur [Why] ?</h5>
 			<p>Il circule des centaines de versions diffÃ©rentes du Lorem ipsum, mais ce texte aurait originellement Ã©tÃ© tirÃ© de l'ouvrage de CicÃ©ron, De Finibus Bonorum et Malorum (Liber Primus, 32), texte populaire Ã  cette Ã©poque, dont l'une des premiÃ¨res phrases est : Â« Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit... Â» (Â« Il n'existe personne qui aime la souffrance pour elle-mÃªme, ni qui la recherche ni qui la veuille pour ce qu'elle est... Â»).</p>
 		</li>
 		<li id="faq_<?php echo $id++ ?>">
