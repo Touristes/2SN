@@ -91,14 +91,14 @@ affPostImages();
 </div>
 <div id="gen">
   <?php
-  //Affichage des Posts Video
-affPostVideo();
+    //Affichage des Posts Texte
+affPostText();
 ?>
 </div>
 <div id="sidebarr">
 <?php
-    //Affichage des Posts Texte
-affPostText();
+  //Affichage des Posts Video
+affPostVideo();
 ?>
 </div>
 </div>
