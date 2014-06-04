@@ -17,6 +17,7 @@ $login = $_SESSION['login'];
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="./Views/Styles/style3.css" />
+	<link rel="stylesheet" type="text/css" href="./Views/Styles/styleSubscription.css"/>
 	<link rel="stylesheet" type="text/css" href="./Views/Styles/styleFooter.css"/>
 
 	<meta charset="UTF-8">
@@ -24,20 +25,6 @@ $login = $_SESSION['login'];
 </head>
 
 <body>
-	<style>
-	.ribbon {padding-left:0px}
-	.ribbon-background {position:absolute;top:0;right:0;font-size:8px;color:#cccccc;}
-	.ribbon-background a {color:#cccccc;text-decoration:none;font-weight:normal;}
-	.ribbon-background a:hover {color:#cccccc;text-decoration:none;font-weight:normal;}
-	.theribbon{position: relative;width: 465px;font-size: 1.5em;font-weight: bold;padding: 6px 20px 6px 35px;margin: 0px 0px 10px -30px;color: #fefefe;background-color: #2493ff;text-shadow: 0px 1px 2px #bbb;-webkit-box-shadow: 0px 2px 4px #888;-moz-box-shadow: 0px 2px 4px #888;box-shadow: 0px 2px 4px #888;}
-	.theribbon1{position: relative;width: 250px;font-size: 1.5em;font-weight: bold;padding: 6px 20px 6px 35px;margin: 0px 0px 10px -30px;color: #fefefe;background-color: #2493ff;text-shadow: 0px 1px 2px #bbb;-webkit-box-shadow: 0px 2px 4px #888;-moz-box-shadow: 0px 2px 4px #888;box-shadow: 0px 2px 4px #888;}
-	.theribbon:before, .theribbon:after {content: ' ';position: absolute;width: 0;height: 0;}
-	.theribbon:before{}
-	.theribbon:after{left: 0px;top: 100%;border-width: 5px 10px;border-style: solid;border-color: #666666 #666666 transparent transparent;}
-	.theribbon1:before, .theribbon1:after {content: ' ';position: absolute;width: 0;height: 0;}
-	.theribbon1:before{}
-	.theribbon1:after{left: 0px;top: 100%;border-width: 5px 10px;border-style: solid;border-color: #666666 #666666 transparent transparent;}
-	</style>
 	<script>
 	$('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 	$('#cssmenu #menu-button').on('click', function(){
@@ -57,7 +44,7 @@ $login = $_SESSION['login'];
 			<li><a href='messages.php'><span>Messages</span></a></li>    
 			<li><a href='profil.php'><span>Mon Profil</span></a></li>
 			<li class='active'><a href='abo.php'><span>Abonnements</span></a></li>
-			<li class='last'><a href='deconnect.php'><span>Déconnexion</span></a></li>
+			<li class='last'><a href='./Resources/deconnect.php'><span>Déconnexion</span></a></li>
 		</ul>
 	</div>
 	<div id="sidebarl">

@@ -3,6 +3,7 @@ include "./Resources/sessionInit.php";
 require_once "./Controllers/frontControler.php";
 require_once "./Models/chuck.php";
 require_once "./Models/userProfilModel.php";
+require_once "./Views/postView.php";
 
 if (!isset($_SESSION['check']))
 {
@@ -56,7 +57,7 @@ hight: auto;
 				<li ><a href='messages.php'><span>Messages</span></a></li> 
 				<li><a href='profil.php'><span>Mon Profil</span></a></li>
 				<li><a href='abo.php'><span>Abonnements</span></a></li>
-				<li class='last'><a href='deconnect.php'><span>Déconnexion</span></a></li>
+				<li class='last'><a href='./Resources/deconnect.php'><span>Déconnexion</span></a></li>
 			</ul>
 		</div>
 		<div id="post">
@@ -85,65 +86,19 @@ hight: auto;
 <div id="sidebarl">
   <?php
 //Affichage des Posts images
-$post = getPostsByCategory("Picture");
-if ($post != false)
-for ($i = 0; isset($post[1][$i]); $i++)
-  {
-      echo "<b>".$post[1][$i]."</b><br>";
-      controlerPictureDisplay($post[0][$i]);
-      echo "<br>";
-      echo "| ".$post[3][$i]."<br>";
-      //echo "Tags : ".$post[5][$i]."<br>";
-      echo "<small>Publie le ".$post[7][$i]."</small><br>";
-      echo profilLinkForm(getUserInfo("login", $post[2][$i]))."<br>";
-      if (isChuckInThere($post[3][$i]))
-	affChuck();
-      else if ($post[6][$i] == 1)
-	addTrollPic();
-      echo "<br>";
-    }
+affPostImages();
   ?>
 </div>
 <div id="gen">
   <?php
   //Affichage des Posts Video
-  $post = getPostsByCategory("Video");
-if ($post != false)
-  for ($i = 0; isset($post[1][$i]); $i++)
-    {
-	echo "<b>".$post[1][$i]."</b><br>";
-	affVideo($post[0][$i]);
-	echo "<br>";
-	echo "| ".$post[3][$i]."<br>";
-	//echo "Tags : ".$post[5][$i]."<br>";
-	echo "<small>Publie le ".$post[7][$i]."</small><br>";
-	echo profilLinkForm(getUserInfo("login", $post[2][$i]))."<br>";
-	if (isChuckInThere($post[3][$i]))
-	  affChuck();
-	else if ($post[6][$i] == 1)
-	  addTrollPic();
-	echo "<br>";
-      }
+affPostVideo();
 ?>
 </div>
 <div id="sidebarr">
 <?php
     //Affichage des Posts Texte
-    $post = getPostsByCategory("Text");
-if ($post != false)
-for ($i = 0; isset($post[1][$i]); $i++)
-  {
-    echo "<b>".$post[1][$i]."</b><br>";
-    echo "| ".$post[3][$i]."<br>";
-    //echo "Tags : ".$post[5][$i]."<br>";
-    echo "<small>Publie le ".$post[7][$i]."</small><br>";
-    echo profilLinkForm(getUserInfo("login", $post[2][$i]))."<br>";
-    if (isChuckInThere($post[3][$i]))
-      affChuck();
-    else if ($post[6][$i] == 1)
-      addTrollPic();
-    echo "<br>";
-  }
+affPostText();
 ?>
 </div>
 </div>
