@@ -28,6 +28,7 @@ if ($login == $_SESSION['login']) {
 <link rel="stylesheet" type="text/css" href="./Views/Styles/style3.css" />
 <link rel="stylesheet" type="text/css" href="./Views/Styles/styleProfilView.css" />
 <link rel="stylesheet" type="text/css" href="./Views/Styles/styleFooter.css" />
+<link rel="stylesheet" type="text/css" href="./Views/Styles/styleChart.css" />
 
 <meta charset="UTF-8">
   <title>[Why] - <?php echo $login ?></title>
@@ -116,6 +117,82 @@ if (isUserAdmin(getUserID($_SESSION['login'])) == true) {
                   ."<br><br><br></form>";
 }
 ?>
+<br>
+<div id="affstat">
+  <?php
+  $creationDate = getUserCreationDate($id);
+$totalPosts = getUserTotalPostText($id);
+$trollPosts = getUserTotalPostTroll($id);
+$newsPosts = getUserTotalPostActu($id);
+$picturePosts = getUserTotalPostImage($id);
+$videoPosts = getUserTotalPostVideo($id);
+$textPosts = getUserTotalPostText($id);
+$dailyNews = getUserTotalNewsDuJour($id);
+$sharedFiles = getUserTotalSharedFiles($id);
+$sentPrivateMsg = getUserTotalPrivateMessageSends($id);
+$receivedPrivateMsg = getUserTotalPrivateMessageReceives($id);
+echo "<div class=\"theribbon1\">Voici la liste de ses stats :</div><br>";
+  ?>
+  <div id="statInfo">
+  <p>Compte créé le <?php echo getUserCreationDate($id); ?></p>
+  <p>Depuis la création du compte, tu as :</p>
+    <ul>
+  <li><?php echo $dailyNews; ?> posts élus Actu du jour.</li>
+  <li>XX posts <a id="green">Troll</a> vs XX posts <a id="blue">Actus</a> :</li>
+      <canvas id="pNbr1" width="300" height="200"></canvas>
+  <li>XX posts <a id="orange">Texte</a>, XX posts <a id="white">Image</a> et XX posts <a id="purple">Vidéo</a></li>
+      <canvas id="pNbr2" width="300" height="200"></canvas>
+  <li>partagé <?php echo $sharedFiles; ?> fichiers</li>
+  <li>envoyé <?php echo $sentPrivateMsg; ?> et reçu <?php echo $receivedPrivateMsg; ?> messages persos</li>
+  </ul>
+
+  <script>       
+  var totalPosts = '<?php echo $totalPosts;?>';
+var trollPosts = '<?php echo $trollPosts;?>';
+var newsPosts = '<?php echo $newsPosts;?>';
+var picturePosts = '<?php echo $picturePosts;?>';
+var videoPosts = '<?php echo $videoPosts;?>';
+var textPosts = '<?php echo $textPosts;?>';
+var dailyNews = '<?php echo $dailyNews;?>';
+var sharedFiles = '<?php echo $sharedFiles;?>';
+var sentPrivateMsg = '<?php echo $sentPrivateMsg;?>';
+var receivedPrivateMsg = '<?php echo $receivedPrivateMsg;?>';
+
+  var pNbr1Data = [
+		   {
+		   value : trollPosts*10,
+		   color : "#84dc84"
+		   },
+		   {
+		   value : newsPosts*10,
+		   color : "#69D2E7"
+		   }     
+  ]
+  var pNbr2Data = [
+		   {
+		   value: picturePosts*10,
+		   color:"#F38630"
+		   },
+		   {
+		   value : videoPosts*10,
+		   color : "#E0E4CC"
+		   },
+		   {
+		   value : textPosts*10,
+		   color : "#bf7fbf"
+		   }     
+  ]
+    var options = {
+  segmentShowStroke : false,
+  animateScale : true
+  }
+    var pNbr1 = document.getElementById('pNbr1').getContext('2d');
+new Chart(pNbr1).Doughnut(pNbr1Data,options);
+		var pNbr2 = document.getElementById('pNbr2').getContext('2d');
+new Chart(pNbr2).Doughnut(pNbr2Data,options);
+  </script>
+</div>
+</div>
 </div>
 <div id="sidebarr">
       <?php
