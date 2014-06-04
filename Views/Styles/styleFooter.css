@@ -8,7 +8,7 @@
 
 #cadrage-f {
   margin: auto;
-  width:83%;
+  width:87%;
   height:10%;	
 }
 
@@ -27,10 +27,12 @@
 
 #b-left {
   float: left;
+  position: relative;
 }
 
 #b-right {
   float: right;
+  position: relative;
 }
 
 a:link, a:visited {

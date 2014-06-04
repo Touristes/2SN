@@ -39,13 +39,13 @@ include "./Resources/sessionInit.php";
 </div>
 
 <div id="middle">
-	<p>Une question ? Un problème ? Pas de soucis, la réponse est peut-être déjà ici ! Parcours les questions-réponses déjà disponibles, et si tu ne trouves pas ton bonheur, n'hésites-pas à <a href="contactForm.php">nous contacter</a> !</p>
+	<p>Une question ? Un problème ? Pas de soucis, la réponse est peut-être déjà ici ! Parcours les questions-réponses déjà disponibles, interroges Captain Obvious, et si malgré tout tu ne trouves pas ton bonheur, n'hésites-pas à <a href="contactForm.php">nous contacter</a> !</p>
 	<h2>[ Questions : ]</h2>
 	<?php $id = 1; ?>
 	<ul>
 		<li><a href="#faq_<?php echo $id++ ?>" id="links">En quoi consiste [Why] ?</a></li>
 		<li><a href="#faq_<?php echo $id++ ?>" id="links">De quoi ai-je besoin pour utiliser [Why] ?</a></li>
-		<li><a href="#faq_<?php echo $id++ ?>" id="links">Que signifie s'abonner à  quelqu'un sur [Why] ?</a></li>
+		<li><a href="#faq_<?php echo $id++ ?>" id="links">Que signifie s'abonner à quelqu'un sur [Why] ?</a></li>
 		<li><a href="#faq_<?php echo $id++ ?>" id="links">Comment savoir à quelles personnes je suis abonné ?</a></li>
 	</ul>
 </div>

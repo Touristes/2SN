@@ -39,11 +39,11 @@ $login = $_SESSION['login'];
 	</script>
 	<div id='cssmenu'>
 		<ul>
-			<li ><a href='accueil.php'><img src="Views/Images/logo.png" width="50px;"></a></li> 
-			<li class='last'><a href='accueil.php'><span>Home</span></a></li>
-			<li><a href='messages.php'><span>Messages</span></a></li>    
+			<li><a href='accueil.php'><img src="Views/Images/logo.png" width="50px;"></a></li>
 			<li><a href='profil.php'><span>Mon Profil</span></a></li>
-			<li class='active'><a href='abo.php'><span>Abonnements</span></a></li>
+			<li class='active'><a href='abo.php'><span>Mes Abonnements</span></a></li>
+			<li class='last'><a href='fileman/index.html'><span>Mon Partage</span></a></li>
+			<li><a href='messages.php'><span>Mes Messages</span></a></li>    
 			<li class='last'><a href='./Resources/deconnect.php'><span>Déconnexion</span></a></li>
 		</ul>
 	</div>
