@@ -118,7 +118,7 @@ function addTrollPic() {
 	echo "<img class=\"chuck\" src=\"Views/Images/Others/troll.png\" />";
 }
 
-function addTrollPic() {
+function addActuPic() {
 	echo "<img class=\"chuck\" src=\"Views/Images/Others/actu.png\" />";
 }
 function callCaptainObvious() {
