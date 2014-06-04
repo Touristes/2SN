@@ -1,5 +1,5 @@
 <?php
-chdir(../);
+chdir("../");
 include "./Resources/sessionInit.php";
 	$_SESSION['check'] = "0";
 	include "./Resources/sessionDestroy.php";
