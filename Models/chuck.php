@@ -122,7 +122,7 @@ function addActuPic() {
 	echo "<img class=\"chuck\" src=\"Views/Images/Others/actu.png\" />";
 }
 function callCaptainObvious() {
-	$random = mt_rand(1, 20);
+	$random = mt_rand(1, 30);
 	$array[1] = "Manger est le meilleur remède contre la faim.";
 	$array[2] = "Dans 365 jours, nous serons dans un an.";
 	$array[3] = "Vous êtes sur Why.";
@@ -143,6 +143,16 @@ function callCaptainObvious() {
 	$array[18] = "Vous êtes sur un site web.";
 	$array[19] = "Quand vous cliquez sur messages, vous accedez à la partie message.";
 	$array[20] = "Votre écran est sale.";
+	$array[21] = "Vous allez cliquer sur OK.";
+        $array[22] = "Arretez de me cliquer dessus, c'est deplace.";
+        $array[23] = "La nuit, on ne voit plus le soleil.";
+        $array[24] = "Vous etes sur la faq.";
+        $array[25] = "Une combinaison de plusieurs lettres forme parfois un mot.";
+        $array[26] = "Les personnes sont des gens.";
+        $array[27] = "Un train fonctionne grace a des rails, comme Charlie Sheen.";
+        $array[28] = "Il y a des chats sur le net.";
+        $array[29] = "Le protocole HTTP, est un protocole de communication.";
+        $array[30] = "Une fenetre viens de s'afficher.";
 	//En ajouter plusieurs pour décrire les autres easter eggs
 	echo "<script type=\"text/javascript\">alert(\"".$array[$random]."\"); </script>";
 }
