@@ -77,12 +77,12 @@ if (isset($_POST['login']))
 
        <h3> Bienvenue sur [Why], le réseau social pour les geeks, par des geeks !</h3>
 
-[Why] est né de l'envie de partage de cinq passionnés d'informatique. 
-Déçus par les solutions existantes trop axées sur le voyeurisme et la collecte/revente des informations personnelles des utilisateurs, ils ont créé un réseau social entièrement dédié au partage d'actualités high-tech entre utilisateurs ainsi qu'au partage de fichiers en tout genre. </br></br>
-Sur [Why], pas de photos du repas de votre collègue de boulot ni d'échographie de votre voisine ; de l'info, seulement de l'info, rien que de l'info. Et c'est vous, utilisateur, qui votez pour l'info la plus pertinente du jour, affichée en tête de page pendant 24h !
-En plus, [Why] respecte votre vie privée : nous ne collectons aucune donnée sur vous et effaçons vos billets dès 7 jours d'existence. Focus sur l'actualité !
+<p>[Why] est né de l'envie de partage de cinq passionnés d'informatique.</p> 
+<p>Déçus par les solutions existantes trop axées sur le voyeurisme et la collecte/revente des informations personnelles des utilisateurs, ils ont créé un réseau social entièrement dédié au partage d'actualités high-tech entre utilisateurs ainsi qu'au partage de fichiers en tout genre.</p>
+<p>Sur [Why], pas de photos du repas de votre collègue de boulot ni d'échographie de votre voisine ; de l'info, seulement de l'info, rien que de l'info. Et c'est vous, utilisateurs, qui votez pour l'info la plus pertinente du jour, affichée en tête de page pendant 24h !</p>
+<p>En plus, [Why] respecte votre vie privée : nous ne collectons aucune donnée sur vous et effaçons vos billets dès 7 jours d'existence. Focus sur l'actualité !</p>
 
-<h4>Alors, c'est pas cool ?</h4>
+<p>Alors, c'est pas cool ?</p>
 
         </div>
       </body>
