@@ -14,6 +14,7 @@ else if ($_SESSION['check'] != "1")
 <?php
 require_once "./Models/chuck.php";
 require_once "Controllers/frontControler.php";
+require_once "Views/postView.php";
 ?>
 <!doctype html>
 <html>
@@ -152,51 +153,7 @@ $('#cssmenu #menu-button').on('click', function(){
 
     <?php
 //Affichage des Posts
-    echo "<div class=\"theribbon1\">Voici la liste de vos posts :</div><br>";
-    $post = showPostByUser($id);
-    for ($i = 0; isset($post[1][$i]); $i++)
-    {
-      if (getCategoryName($post[4][$i]) == "Video") {
-        echo "<b>".$post[1][$i]."</b><br>";
-		// echo "Catergorie ".getCategory($post[4][$i])."<br>";
-        affVideo($post[0][$i]);
-        echo "<br>";
-        echo "| ".$post[3][$i]."<br>";
-		//echo "Tags : ".$post[5][$i]."<br>";
-        echo "<small>Publie le ".$post[7][$i]."</small><br>";
-        if (isChuckInThere($post[3][$i]))
-          affChuck();
-        else if ($post[6][$i] == 1)
-          addTrollPic();
-        echo "<br>";
-      }
-      else if (getCategoryName($post[4][$i]) == "Picture") {
-        echo "<b>".$post[1][$i]."</b><br>";
-		// echo "Catergorie ".getCategory($post[4][$i])."<br>";
-        controlerPictureDisplay($post[0][$i]);
-        echo "<br>";
-        echo "| ".$post[3][$i]."<br>";
-		//echo "Tags : ".$post[5][$i]."<br>";
-        echo "<small>Publie le ".$post[7][$i]."</small><br>";
-        if (isChuckInThere($post[3][$i]))
-          affChuck();
-        else if ($post[6][$i] == 1)
-          addTrollPic();
-        echo "<br>";
-      }
-      else if (getCategoryName($post[4][$i]) == "Text") {
-       echo "<b>".$post[1][$i]."</b><br>";
-		// echo "Catergorie ".getCategory($post[4][$i])."<br>";
-       echo "| ".$post[3][$i]."<br>";
-		//echo "Tags : ".$post[5][$i]."<br>";
-       echo "<small>Publie le ".$post[7][$i]."</small><br>";
-       if (isChuckInThere($post[3][$i]))
-        affChuck();
-      else if ($post[6][$i] == 1)
-        addTrollPic();
-      echo "<br>";
-    }
-  }
+  affAllPost($id);
   ?>
 
 </div>
@@ -274,7 +231,7 @@ $('#cssmenu #menu-button').on('click', function(){
   new Chart(pNbr2).Doughnut(pNbr2Data,options);
   </script>
 </div>
-
+</div>
 </div>
 <div id="cadrage-f">
 	<div id="footer">
