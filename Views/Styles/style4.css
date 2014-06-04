@@ -29,12 +29,6 @@ body {
 	padding-bottom: 10px;
 }
 
-#checkbox {
-	display: inline-block;
-	float: left;
-	position: relative;
-}
-
 #cgu {
 	background-color: rgba(255,255,255,0.5);
 	margin-right:auto;
