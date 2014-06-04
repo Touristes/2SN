@@ -118,6 +118,9 @@ function addTrollPic() {
 	echo "<img class=\"chuck\" src=\"Views/Images/Others/troll.png\" />";
 }
 
+function addTrollPic() {
+	echo "<img class=\"chuck\" src=\"Views/Images/Others/actu.png\" />";
+}
 function callCaptainObvious() {
 	$random = mt_rand(1, 20);
 	$array[1] = "Manger est le meilleur remède contre la faim.";
