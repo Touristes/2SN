@@ -3,6 +3,7 @@ include "./Resources/sessionInit.php";
 require_once "./Models/userProfilModel.php";
 require_once "./Controllers/frontControler.php";
 require_once "./Models/chuck.php";
+require_once "./Views/postView.php";
 
 //Test si l'utilisateur sest connecté
 if (!isset($_SESSION['check']))
@@ -118,65 +119,7 @@ if (isUserAdmin(getUserID($_SESSION['login'])) == true) {
 <div id="sidebarr">
       <?php
       //Affichage des Posts
-$post = showPostByUser($id);
-echo "<form id=\"formPostList\" method=\"POST\" action=\"profilView.php\">"
-."<input type=\"hidden\" name=\"loginProfilView\" value=\"".$login."\">";
-for ($i = 0; isset($post[1][$i]); $i++)
-  {
-    if (getCategoryName($post[4][$i]) == "Video") {
-      //Bouton supprimer accessible uniquement a l admin
-      if (isUserAdmin(getUserID($_SESSION['login'])) == true) {
-	echo "<button type=\"submit\" id=\"delButton\" name=\"delPost\" value=\"".$post[0][$i]."\"></button>";
-      }
-      echo "<b>".$post[1][$i]."</b><br>";
-      // echo "Catergorie ".getCategory($post[4][$i])."<br>";
-      affVideo($post[0][$i]);
-      echo "<br>";
-      echo "| ".$post[3][$i]."<br>";
-      //echo "Tags : ".$post[5][$i]."<br>";
-      echo "<small>Publie le ".$post[7][$i]."</small><br>";
-      if (isChuckInThere($post[3][$i]))
-	affChuck();
-      else if ($post[6][$i] == 1)
-	addTrollPic();
-      echo "<br>";
-    }
-    else if (getCategoryName($post[4][$i]) == "Picture") {
-      //Bouton supprimer accessible uniquement a l admin
-      if (isUserAdmin(getUserID($_SESSION['login'])) == true) {
-	echo "<button type=\"submit\" id=\"delButton\" name=\"delPost\" value=\"".$post[0][$i]."\"></button>";
-      }
-      echo "<b>".$post[1][$i]."</b><br>";
-      // echo "Catergorie ".getCategory($post[4][$i])."<br>";
-      controlerPictureDisplay($post[0][$i]);
-      echo "<br>";
-      echo "| ".$post[3][$i]."<br>";
-      //echo "Tags : ".$post[5][$i]."<br>";
-      echo "<small>Publie le ".$post[7][$i]."</small><br>";
-      if (isChuckInThere($post[3][$i]))
-	affChuck();
-      else if ($post[6][$i] == 1)
-	addTrollPic();
-      echo "<br>";
-    }
-    else if (getCategoryName($post[4][$i]) == "Text") {
-      //Bouton supprimer accessible uniquement a l admin
-      if (isUserAdmin(getUserID($_SESSION['login'])) == true) {
-	echo "<button type=\"submit\" id=\"delButton\" name=\"delPost\" value=\"".$post[0][$i]."\"></button>";
-      }
-      echo "<b>".$post[1][$i]."</b><br>";
-      // echo "Catergorie ".getCategory($post[4][$i])."<br>";
-      echo "| ".$post[3][$i]."<br>";
-      //echo "Tags : ".$post[5][$i]."<br>";
-      echo "<small>Publie le ".$post[7][$i]."</small><br>";
-      if (isChuckInThere($post[3][$i]))
-	affChuck();
-      else if ($post[6][$i] == 1)
-	addTrollPic();
-      echo "<br>";
-    }
-  }
-echo "</form>";
+  affAllPost($id);
 	  ?>
 </div>
 
