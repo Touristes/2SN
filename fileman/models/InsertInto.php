@@ -7,10 +7,10 @@
 	$filerep = $_POST["repertoire"];
 	$date =	"2010/10/10";
 	$id_user = 1;
-	$url = "uploads/".$filename."";
+	$url = "uploads/";
 	$description = "no description";
 	
-	//echo $filename;echo $filesize;echo $filerep;echo $date;echo $id_user;echo $description;
+	echo $filename;echo $filesize;echo $filerep;echo $date;echo $id_user;echo $description;
   	$query = "INSERT INTO file (name, id_user, created, url, size, description) VALUES (\"".$filename."\",\"".$id_user."\",\"".$date."\",\"".$url."\",\"".$filesize."\",\"".$description."\");";
 
   	$db = dbConnect();

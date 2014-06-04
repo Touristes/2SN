@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
-	<?php require_once('/models/dataFile.php');?>
 	<head>
 		<meta charset="utf-8"/>
 		<title>Why - fileman</title>
-
 		<!-- Google web fonts -->
 		<!-- <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel='stylesheet' /> -->
-		<!-- Bootstrap CSS  -->
+		<!-- Bootstrap -->
 		<link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet" />
+		<script src="assets/bootstrap/js/bootstrap.js"></script>
 		<!-- The main CSS file -->
 		<link href="assets/css/style.css" rel="stylesheet" />
 	</head>
-
 	<body>
-		<blockquote>
-		  <p>Why - Fileman</p>
-		  <footer>Mon gestionnaire de fichier</footer>
-		</blockquote>
-		<div id="info"></div>
+  	<hr>
+		<ul class="nav nav-pills">
+  			<li class="active"><a href="#">Revenir à ma maison</a></li>
+  			<li><div id="info"></div></li>
+  			<a class="navbar-text navbar-right" href="#"> login en Alexis </a>
+		</ul>
+	</hr>
+		
 		<div class="row">
 			<form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
 				<div class="form-group" id="rep">
@@ -38,6 +39,12 @@
 			</form>
 		</div>
 		<div id="allfile" class="col-md-3">
+
+		</div>
+		<div id="sharedfile" class="col-md-3">
+
+		</div>
+		<div id="downloadedfile" class="col-md-3">
 
 		</div>
 		

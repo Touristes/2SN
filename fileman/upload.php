@@ -1,5 +1,5 @@
 <?php
-require_once('models/dataConnect.php');
+
 //Liste des extensions interdites
 $not_allowed = array('ksh', 'sh', 'batch', 'exe', 'bat', 'pif', 'src', 'reg', 'php', 'c', 'exe', 'rpm', 'deb');
 
