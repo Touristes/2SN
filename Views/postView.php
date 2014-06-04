@@ -67,7 +67,7 @@ for ($i = 0; isset($post[1][$i]); $i++)
 }
 
 //Affichage de tous les posts
-function affAllPost() {
+function affAllPost($id) {
     echo "<div class=\"theribbon1\">Voici la liste de vos posts :</div><br>";
     $post = showPostByUser($id);
     for ($i = 0; isset($post[1][$i]); $i++)
