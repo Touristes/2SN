@@ -73,6 +73,8 @@ include "./Resources/sessionInit.php";
 	[32] Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. </p>
 		</li>
 	</ul>
+			  <?php if (isset($_POST['captain'])) callCaptainObvious(); ?>
+<form id="captain" name="captian" method="post" action="faq.php"><button name="captain" type="submit"><img src="./Views/Images/Others/captainObvious.jpg" /></button></form>
 </div>
 
 <div id="footer">
