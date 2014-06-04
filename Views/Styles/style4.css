@@ -14,12 +14,13 @@ body {
 	background-size:cover;
 	font-family:"MaSuperPolice";
 }
+
 #final {
 	background-color: rgba(255,255,255,0.5);
-	 margin-right:auto;
-	 margin-left:auto;
-	 margin-top:5%;
-	 margin-bottom:10%;
+	margin-right:auto;
+	margin-left:auto;
+	margin-top:5%;
+	margin-bottom:10%;
 	width: 400px;
 	height: 600px;
 	padding-top: 10px;
@@ -27,12 +28,19 @@ body {
 	padding-right: 10px;
 	padding-bottom: 10px;
 }
+
+#checkbox {
+	display: inline-block;
+	float: left;
+	position: relative;
+}
+
 #cgu {
 	background-color: rgba(255,255,255,0.5);
-	 margin-right:auto;
-	 margin-left:auto;
-	 margin-top:5%;
-	 margin-bottom:10%;
+	margin-right:auto;
+	margin-left:auto;
+	margin-top:5%;
+	margin-bottom:10%;
 	width: 80%;
 	height: 600px;
 	padding-top: 10px;

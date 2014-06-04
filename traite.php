@@ -20,12 +20,11 @@
 <div id="final">
 <center><font size="15">Rejoins [Why] aujourd'hui !</font></center></br></br>
 <form id="signup" name="monform" method="post" action="">
-    <input type="email" placeholder="john.doe@email.com" name="mail" value="<?php echo $_POST['mail'] ?>" required></br></br>
+    <input type="email" placeholder="pwet.lagalette@pwet.com" name="mail" value="<?php echo $_POST['mail'] ?>" required></br></br>
     <input type="text" placeholder="Choisis ton pseudo !" name="pseudo1" value="<?php echo $_POST['pseudo'] ?>"required></br></br>        
     <input type="password" placeholder="Choisis ton mot de passe !" name="pass" value="<?php echo $_POST['pass'] ?>" required></br></br>
     <input type="password" placeholder="Confirme ton mot de passe !" name="pass1" required></br></br>
-    <a href="cgu.php" target="_blank"> J'accepte les conditions.</a>
-    <input type="checkbox" name="conditions" value="ok"/>
+    <input type="checkbox" name="conditions" value="ok">J'accepte les <a href="cgu.php">conditions d'utilisation</a>
     <button type="button" onClick="ValiderMail(this.form)">Créer mon compte</button>
 </form>
 </div>
