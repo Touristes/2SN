@@ -33,7 +33,7 @@ include "./Resources/sessionInit.php";
    <li><a href='messages.php'><span>Messages</span></a></li>    
    <li><a href='profil.php'><span>Mon Profil</span></a></li>
    <li><a href='abo.php'><span>Abonnements</span></a></li>
-   <li class='last'><a href='deconnect.php'><span>Déconnexion</span></a></li>
+   <li class='last'><a href='Resources/deconnect.php'><span>Déconnexion</span></a></li>
   
 </ul>
 </div>
@@ -46,7 +46,7 @@ include "./Resources/sessionInit.php";
 		<li><a href="#faq_<?php echo $id++ ?>" id="links">En quoi consiste [Why] ?</a></li>
 		<li><a href="#faq_<?php echo $id++ ?>" id="links">De quoi ai-je besoin pour utiliser [Why] ?</a></li>
 		<li><a href="#faq_<?php echo $id++ ?>" id="links">Que signifie s'abonner à  quelqu'un sur [Why] ?</a></li>
-		<li><a href="#faq_<?php echo $id++ ?>" id="links">Comment savoir à  quelles personnes je suis abonné ?</a></li>
+		<li><a href="#faq_<?php echo $id++ ?>" id="links">Comment savoir à quelles personnes je suis abonné ?</a></li>
 	</ul>
 </div>
 
@@ -80,7 +80,7 @@ include "./Resources/sessionInit.php";
 <div id="footer">
 	<a href='contactForm.php'><span id="b-left">Contact</span></a>
    	<a href='faq.php'><span id="b-middle">Faq</span></a>
-   	<a href='co.php'><span id="b-right">Inscription</span></a>
+   	<a href='cgu.php'><span id="b-right">CGU</span></a>
 
 </div>
 

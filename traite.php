@@ -3,7 +3,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="./Views/Styles/style4.css" />
 <meta charset="UTF-8">
-<title>[Why] Inscription</title>
+<title>[Why] - Inscription</title>
 </head>
 <body>
 <SCRIPT language="javascript">

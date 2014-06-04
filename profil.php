@@ -150,7 +150,7 @@ $('#cssmenu #menu-button').on('click', function(){
 	<div id="footer">
 		<a href='contactForm.php'><span id="b-left">Contact</span></a>
 		<a href='faq.php'><span id="b-middle">Faq</span></a>
-		<a href='co.php'><span id="b-right">Inscription</span></a>
+		<a href='cgu.php'><span id="b-right">CGU</span></a>
 	</div>
 </div>
 </body>

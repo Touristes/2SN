@@ -2,8 +2,9 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="./Views/Styles/style4.css" />
+<link rel="stylesheet" type="text/css" href="./Views/Styles/styleFooter.css"/>
 <meta charset="UTF-8">
-<title>[Why] CGU</title>
+<title>[Why] - CGU</title>
 </head>
 <body>
 
@@ -74,7 +75,13 @@ Ces services sont gérés et fournis par [Why].
 
 
 </div>
-
+<div id="cadrage-f">
+	<div id="footer">
+		<a href='contactForm.php'><span id="b-left">Contact</span></a>
+		<a href='faq.php'><span id="b-middle">Faq</span></a>
+		<a href='cgu.php'><span id="b-right">CGU</span></a>
+	</div>
+</div>
 
 
 </body>
