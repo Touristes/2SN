@@ -1,3 +1,11 @@
+  img.postImage {
+    max-width: 100%;
+    hight: auto;
+  }
+  img.chuck {
+    max-width: 12%;
+    hight: auto;
+  }
   .ribbon {padding-left:0px}
 .ribbon-background {position:absolute;top:0;right:0;font-size:8px;color:#cccccc;}
 .ribbon-background a {color:#cccccc;text-decoration:none;font-weight:normal;}
