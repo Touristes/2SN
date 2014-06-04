@@ -25,7 +25,7 @@
     <input type="text" placeholder="Choisis ton pseudo !" name="pseudo1" value="<?php echo $_POST['pseudo'] ?>"required></br></br>        
     <input type="password" placeholder="Choisis ton mot de passe !" name="pass" value="<?php echo $_POST['pass'] ?>" required></br></br>
     <input type="password" placeholder="Confirme ton mot de passe !" name="pass1" required></br></br>
-    <p><span><input type="checkbox" name="conditions" value="ok"></span>  J'accepte les <a href="cgu.php">conditions d'utilisation</a></p>
+    <p><span><input type="checkbox" name="conditions" value="ok"></span> J'accepte les <a href="cgu.php">conditions d'utilisation</a></p>
     <button type="button" onClick="ValiderMail(this.form)">Créer mon compte</button>
 </form>
 </div>

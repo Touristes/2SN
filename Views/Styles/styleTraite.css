@@ -5,4 +5,5 @@ p {
 p span {
 	position: relative;
 	float: left;
+	padding-right: 10px;
 }

@@ -39,7 +39,7 @@ $login = $_SESSION['login'];
 	</script>
 	<div id='cssmenu'>
 		<ul>
-                    <li ><a href='accueil.php'><img src="Views/Images/logo.png" width="50px;"></a></li> 
+			<li ><a href='accueil.php'><img src="Views/Images/logo.png" width="50px;"></a></li> 
 			<li class='last'><a href='accueil.php'><span>Home</span></a></li>
 			<li><a href='messages.php'><span>Messages</span></a></li>    
 			<li><a href='profil.php'><span>Mon Profil</span></a></li>
@@ -54,25 +54,25 @@ if(isset($_POST['requete']) && $_POST['requete'] != NULL) // on vérifie d'abord
 	$requete = htmlspecialchars($_POST['requete']); // on crée une variable $requete pour faciliter l'écriture de la requête SQL, mais aussi pour empêcher les éventuels malins qui utiliseraient du PHP ou du JS, avec la fonction htmlspecialchars().
 	$result = SearchUser($requete);
 	if($result != FALSE) // si le nombre de résultats est supérieur à 0, on continue
-{
-	echo "<h3>Resultat de votre recherche :</h3></br>";
-	?>
-	<form name="abo" action="" method="POST">
-		<?
-		if ($val != $login && isSubrscriberOf(getUserID($login), getUserID($result)) == "false")
-		{
-			?>
-
-			<input type="checkbox" name="choice[]" value="<? echo $result; ?>"> <? echo $result; ?><br>
-			<?
-		}
-		echo "</br><button type=submit value=\"Ajouter a mes abonnements !\"/>Ajouter a mes abonnements !</button>";
+	{
+		echo "<h3>Resultat de votre recherche :</h3></br>";
 		?>
-	</form>
-	<br/>
-	<br/>
-	<a href="abo.php">Faire une nouvelle recherche</a></p>
-	<?
+		<form name="abo" action="" method="POST">
+			<?
+			if ($val != $login && isSubrscriberOf(getUserID($login), getUserID($result)) == "false")
+			{
+				?>
+
+				<input type="checkbox" name="choice[]" value="<? echo $result; ?>"> <? echo $result; ?><br>
+				<?
+			}
+			echo "</br><button type=submit value=\"Ajouter a mes abonnements !\"/>Ajouter a mes abonnements !</button>";
+			?>
+		</form>
+		<br/>
+		<br/>
+		<a href="abo.php">Faire une nouvelle recherche</a></p>
+		<?
 } // Fini d'afficher les résultats ! Maintenant, nous allons afficher l'éventuelle erreur en cas d'échec de recherche et le formulaire.
 else
 { // de nouveau, un peu de HTML
@@ -114,17 +114,17 @@ else
 	<form name="abo" action="" method="POST">
 		<?
 		if ($tab != false) {
-		foreach($tab as $val)
-		{
-			if ($val != $login && isSubrscriberOf(getUserID($login), getUserID($val)) == "false")
+			foreach($tab as $val)
 			{
-				?>
+				if ($val != $login && isSubrscriberOf(getUserID($login), getUserID($val)) == "false")
+				{
+					?>
 
-				<input type="checkbox" name="choice[]" value="<? echo $val; ?>"> <? echo profilLinkInForm($val); ?><br>
-				<?
+					<input type="checkbox" name="choice[]" value="<? echo $val; ?>"> <? echo profilLinkInForm($val); ?><br>
+					<?
+				}
 			}
-		}
-		echo "</br><button type=submit value=\"Ajouter a mes abonnements !\"/>Ajouter a mes abonnements !</button>";
+			echo "</br><button type=submit value=\"Ajouter a mes abonnements !\"/>Ajouter a mes abonnements !</button>";
 		}
 		else
 			echo "Surprise, suite a une epidemie de gastro en tere cuite, le monde a succombe, vous etes seul sur internet.."
