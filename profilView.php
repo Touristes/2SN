@@ -27,6 +27,7 @@ if ($login == $_SESSION['login']) {
 <head>
 <link rel="stylesheet" type="text/css" href="./Views/Styles/style3.css" />
 <link rel="stylesheet" type="text/css" href="./Views/Styles/styleProfilView.css" />
+<link rel="stylesheet" type="text/css" href="./Views/Styles/styleFooter.css" />
 
 <meta charset="UTF-8">
   <title>[Why] - <?php echo $login ?></title>
@@ -123,10 +124,12 @@ if (isUserAdmin(getUserID($_SESSION['login'])) == true) {
 	  ?>
 </div>
 
-<div id="footer">
-
-
+<div id="cadrage-f">
+        <div id="footer">
+                <a href='contactForm.php'><span id="b-left">Contact</span></a>
+                <a href='faq.php'><span id="b-middle">Faq</span></a>
+                <a href='co.php'><span id="b-right">Inscription</span></a>
+        </div>
 </div>
-
 </body>
 </html>
