@@ -1,5 +1,5 @@
 <?php
-require('dataConnect.php');
+require('../Controllers/dataControler.php');
 
 function insertFile($n, $i, $c, $s, $d){
 	dbConnect();

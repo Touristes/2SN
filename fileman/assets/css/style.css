@@ -2,21 +2,17 @@
     Simple reset
 --------------------------*/
 
-
 *{
     margin:0;
     padding:0;
 }
 
-
 /*-------------------------
     General Styles
 --------------------------*/
 
-
 html{
     min-height:900px;
-
 }
 
 body{
@@ -53,10 +49,21 @@ section, footer, header, aside{
 /*----------------------------
     The file upload form
 -----------------------------*/
-#title{ color:white;}
-#subtitle{color:#2493FF;}
+#title{
+    color:white;
+}
 
-#upload{
+#subtitle{
+    color:#2493FF;
+}
+
+#btn-retour-maison{
+    background-color: #01DFA5;
+}
+#who{   
+    color: #FFFFFF;}
+
+#upload{ 
     font-family:'PT Sans Narrow', sans-serif;
     padding:30px;
     border-radius:3px;

@@ -56,7 +56,7 @@ $(function(){
 
             $.post('../../models/InsertInto.php', {nom: name, taille: size, repertoire: repertory}, function(data) {
             // $.post('../../models/InsertInto.php', {nom: name, taille: size, repertoire: repertory}, function(data) {
-                console.log('Ajouter 2');
+                console.log('passé dans InsertInto');
                 $('#info').append(data);
             });
 
@@ -85,7 +85,7 @@ $(function(){
         },
 
         submit:function (e, data) {
-            console.log('submit');
+            
         }
     });
 
