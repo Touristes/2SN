@@ -1,0 +1,56 @@
+  .ribbon {padding-left:0px}
+.ribbon-background {position:absolute;top:0;right:0;font-size:8px;color:#cccccc;}
+.ribbon-background a {color:#cccccc;text-decoration:none;font-weight:normal;}
+.ribbon-background a:hover {color:#cccccc;text-decoration:none;font-weight:normal;}
+.theribbon{position: relative;width: 465px;font-size: 1.5em;font-weight: bold;padding: 6px 20px 6px 35px;margin: 0px 0px 10px -30px;color: #fefefe;background-color: #2493ff;text-shadow: 0px 1px 2px #bbb;-webkit-box-shadow: 0px 2px 4px #888;-moz-box-shadow: 0px 2px 4px #888;box-shadow: 0px 2px 4px #888;}
+.theribbon1{position: relative;width: 300px;font-size: 1.5em;font-weight: bold;padding: 6px 20px 6px 35px;margin: 0px 0px 10px -30px;color: #fefefe;background-color: #2493ff;text-shadow: 0px 1px 2px #bbb;-webkit-box-shadow: 0px 2px 4px #888;-moz-box-shadow: 0px 2px 4px #888;box-shadow: 0px 2px 4px #888;}
+.theribbon:before, .theribbon:after {content: ' ';position: absolute;width: 0;height: 0;}
+.theribbon:before{}
+.theribbon:after{left: 0px;top: 100%;border-width: 5px 10px;border-style: solid;border-color: #666666 #666666 transparent transparent;}
+.theribbon1:before, .theribbon1:after {content: ' ';position: absolute;width: 0;height: 0;}
+.theribbon1:before{}
+.theribbon1:after{left: 0px;top: 100%;border-width: 05px 10px;border-style: solid;border-color: #666666 #666666 transparent transparent;}
+
+#delButton {
+background: url('../Images/Icons/DeleteButton.png') no-repeat;
+width:15px;
+height:15px;
+border:0;
+}
+#deletingAccount {
+background: url('../Images/Icons/DeleteButton.png') no-repeat;
+border:0;
+width:150px;
+height:40px;
+margin-top:+1px;
+background-color:#aFaFaF;
+}
+#passwordConfirm {
+display:none;
+}
+#formDelAccount:hover #passwordConfirm {
+display:block;
+}
+#formNewMessage button{
+background: url('../Images/Icons/message.png') no-repeat;
+border:0;
+width:150px;
+height:40px;
+background-color:#aFaFaF;
+}
+#formSubscribe button{
+background: url('../Images/Icons/abo.png') no-repeat;
+border:0;
+width:150px;
+height:40px;
+margin-top:+1px;
+background-color:#aFaFaF;
+}
+#formUnsubscribe button{
+background: url('../Images/Icons/abo.png') no-repeat;
+border:0;
+width:150px;
+height:40px;
+margin-top:+1px;
+background-color:#aFaFaF;
+}
