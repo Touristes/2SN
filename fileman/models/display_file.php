@@ -7,7 +7,7 @@
   $result = $sql->execute();
   
   echo "<h4>Mes Fichiers Uploadé</h4>";
-  echo "<div class='panel panel-info'>";
+  echo "<div>";
   while ($row = $result->fetchArray())
   {
      //echo "<form action='models/deleteFileUser.php' method='POST'>";

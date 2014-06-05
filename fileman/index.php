@@ -4,8 +4,6 @@
 	<head>
 		<meta charset="utf-8"/>
 		<title>Why - fileman</title>
-		<!-- Google web fonts -->
-		<!-- <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel='stylesheet' /> -->
 		<!-- Bootstrap -->
 		<link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet" />
 		<script src="assets/bootstrap/js/bootstrap.js"></script>
@@ -28,13 +26,14 @@
 	<div class="row" id="cadrage">
 		<div id='cssmenu'>
 			<ul>
-            <li ><a href='accueil.php'><img src="../Views/Images/logo.png" width="50px;"></a></li> 
-				<li class='active'><a href='../../accueil.php'><span>Home</span></a></li>
-				<li ><a href='../../messages.php'><span>Messages</span></a></li> 
-				<li><a href='../../profil.php'><span>Mon Profil</span></a></li>
-				<li><a href='../../abo.php'><span>Abonnements</span></a></li>
-				<li><a href='index.php'><span>Fileman</span></a></li>
-				<li class='last'><a href='./Resources/deconnect.php'><span>Déconnexion</span></a></li>
+	            <li><a href='accueil.php'><img src="../Views/Images/logo.png" width="50px;"></a></li> 
+					<li class='active'><a href='../../accueil.php'><span>Home</span></a></li>
+					<li ><a href='../../messages.php'><span>Messages</span></a></li> 
+					<li><a href='../../profil.php'><span>Mon Profil</span></a></li>
+					<li><a href='../../abo.php'><span>Abonnements</span></a></li>
+					<li><a href='index.php'><span>Fileman</span></a></li>
+					<li class='last'><a href='./Resources/deconnect.php'><span>Déconnexion</span></a>
+				</li>
 			</ul>
 		</div>
 	<div>
@@ -58,7 +57,7 @@
 	</div>
 	<div class="row">
 			<div id="allfile" class="col-md-3">
-				
+				allfile
 			</div>
 			<div id="sharedfile" class="col-md-3">
 				sharedfile

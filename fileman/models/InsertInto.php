@@ -21,4 +21,3 @@
   	$sql = $db->prepare($query);
   	$result = $sql->execute();
 
-?>

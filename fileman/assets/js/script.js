@@ -53,7 +53,7 @@ $(function(){
                 repertory = 'default';
 
             console.log(' NOM FICHIER -> ' + name + ' TAILLE -> ' + size + ' REPERTOIRE -> ' + repertory);
-            $.post('../../models/InsertInto.php', {nom: name, taille: size, repertoire: repertory}, function(data) {
+            $.post('../fileman/models/InsertInto.php', {nom: name, taille: size, repertoire: repertory}, function(data) {
                 console.log('passé dans InsertInto');
                 $('#info').append(data);
             });
