@@ -256,4 +256,53 @@ function showTrollPostByUser($troll, $id_user)
       return("[ERR DBQUERY]");
     return($result);
 }
+
+//Funtion de news du jour
+function dailyNews()
+{
+  $db = dbConnect();
+  $query = "SELECT MAX(vote) as maxi FROM vote;";
+  $result = $db->query($query);
+  dbClose($db);
+  return(result);
+}
+
+//Function de verification de vote
+function verpost($post)
+{
+  $db = dbConnect();
+  $id_user = getUserID($post[0]);
+  $query = "SELECT id_user FROM vote WHERE id_post = '".$post[0]."' and id_user = '".$id_user."';";
+  $result = $db->query($query);
+  if ($result != 0)
+	{
+	  dbClose($db);
+	  return(1);
+	}
+  dbClose($db);
+  return(0);
+}
+
+//Function de vote
+function vote($post)
+{
+  $db = dbConnect();
+  $id_user = getUserID($post[0]);
+  if ($post[1] == "great") {
+	$vote = 1;
+	$query = "INSERT INTO vote();";
+  }
+  else {
+	$vote = 0;
+	$query = "INSERT INTO vote();";
+  }
+  $result = dbQuery($query);
+  if ($result == 0)
+	{
+	  dbClose($db);
+	  return ("An error occured[ERR DBQUERY]");
+	}
+  return (0);
+}
+
 ?>
