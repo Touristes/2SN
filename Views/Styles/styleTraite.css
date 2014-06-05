@@ -1,0 +1,9 @@
+p {
+	text-align: left;
+	position: relative;
+}
+p span {
+	position: relative;
+	float: left;
+	padding-right: 10px;
+}

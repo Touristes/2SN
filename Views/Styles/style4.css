@@ -13,13 +13,16 @@ body {
 	-o-background-size: cover; /* pour Opera */
 	background-size:cover;
 	font-family:"MaSuperPolice";
+	 margin: auto;
+  width:83%;
 }
+
 #final {
 	background-color: rgba(255,255,255,0.5);
-	 margin-right:auto;
-	 margin-left:auto;
-	 margin-top:5%;
-	 margin-bottom:10%;
+	margin-right:auto;
+	margin-left:auto;
+	margin-top:5%;
+	margin-bottom:10%;
 	width: 400px;
 	height: 600px;
 	padding-top: 10px;
@@ -27,13 +30,14 @@ body {
 	padding-right: 10px;
 	padding-bottom: 10px;
 }
+
 #cgu {
 	background-color: rgba(255,255,255,0.5);
-	 margin-right:auto;
-	 margin-left:auto;
-	 margin-top:5%;
-	 margin-bottom:10%;
-	width: 80%;
+	margin-right:auto;
+	margin-left:auto;
+	margin-top:5%;
+	margin-bottom:1%;
+
 	height: 600px;
 	padding-top: 10px;
 	padding-left: 10px;

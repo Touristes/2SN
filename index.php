@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>[Why]</title>
+	<meta charset="UTF-8">
+	<title>[Why]</title>
 </head>
 
 <?php
@@ -10,11 +10,11 @@ include "./Resources/sessionInit.php";
 
 if (!isset($_SESSION['check']))
 {
-		echo "<script type=\"text/javascript\">location =\"co.php\"</script>";
+	echo "<script type=\"text/javascript\">location =\"co.php\"</script>";
 }
 else if ($_SESSION['check'] != "1")
 {
-		echo "<script type=\"text/javascript\">location =\"co.php\"</script>";
+	echo "<script type=\"text/javascript\">location =\"co.php\"</script>";
 }
 else
 {

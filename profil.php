@@ -30,7 +30,7 @@ require_once "./Controllers/profilController.php";
 </head>
 
 <body>
-  <script src='Chart.js/Chart.min.js'></script>
+  <script src='Modules/Chart-js/Chart.min.js'></script>
 <script>
 $('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 $('#cssmenu #menu-button').on('click', function(){
