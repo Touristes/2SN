@@ -20,7 +20,7 @@ html{
 
 @font-face {
   font-family: 'MaSuperPolice';
-  src:url('MyriadPro-Light.otf');
+  src:url('../../../Views/Styles/MyriadPro-Light.otf');
 }
 
 body{
@@ -186,6 +186,9 @@ section, footer, header, aside{
     color:#FFFFFF;
 }
 
+/*----------------------------
+    The file upload form
+-----------------------------*/
 
 #cadrage {
   margin: auto;
@@ -353,11 +356,10 @@ section, footer, header, aside{
     position:relative;
     top:0;
     margin-bottom:10px;
-    position:fixed;
     width: 1200px;
- padding: 0;
- line-height: 1;
- font-family: "MaSuperPolice";
+    padding: 0;
+    line-height: 1;
+    font-family: "MaSuperPolice";
 }
 #cssmenu ul {
   list-style: none;
