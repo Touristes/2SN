@@ -1,7 +1,9 @@
 <?php
 require_once "./Controllers/frontControler.php";
 include "./Resources/sessionInit.php";
+require_once "./Models/chuck.php";
 ?>
+
 
 <!doctype html>
 <html>
