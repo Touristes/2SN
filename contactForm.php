@@ -33,6 +33,7 @@ include "./Resources/sessionInit.php";
 	   <li><a href='messages.php'><span>Messages</span></a></li>    
 	   <li><a href='profil.php'><span>Mon Profil</span></a></li>
 	   <li><a href='abo.php'><span>Abonnements</span></a></li>
+	   <li><a href='fileman/index.php'><span>Fileman</span></a></li>    
 	   <li class='last'><a href='deconnect.php'><span>Déconnexion</span></a></li>
 	</ul>
 </div>

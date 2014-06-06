@@ -19,7 +19,7 @@
 
   	// echo "<div class='alert alert-success col-md-3'>";
   	// if ($result){
-  	// 	echo $filename." à été uploadé ";
+  	// 	echo $filename." à été supprimer ";
   	// }
   	// echo "</div>";
 ?>

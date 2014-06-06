@@ -43,7 +43,8 @@ $login = $_SESSION['login'];
 			<li><a href='profil.php'><span>Mon Profil</span></a></li>
 			<li class='active'><a href='abo.php'><span>Mes Abonnements</span></a></li>
 			<li class='last'><a href='fileman/index.html'><span>Mon Partage</span></a></li>
-			<li><a href='messages.php'><span>Mes Messages</span></a></li>    
+			<li><a href='messages.php'><span>Mes Messages</span></a></li>
+			<li><a href='fileman/index.php'><span>Fileman</span></a></li>     
 			<li class='last'><a href='./Resources/deconnect.php'><span>Déconnexion</span></a></li>
 		</ul>
 	</div>

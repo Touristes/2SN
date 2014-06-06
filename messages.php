@@ -45,6 +45,7 @@ else if ($_SESSION['check'] != "1")
 				<li class='active'><a href='messages.php'><span>Messages</span></a></li>
 				<li><a href='profil.php'><span>Mon Profil</span></a></li>
 				<li><a href='abo.php'><span>Abonnements</span></a></li>
+				<li><a href='fileman/index.php'><span>Fileman</span></a></li>    
 				<li class='last'><a href='./Resources/deconnect.php'><span>Déconnexion</span></a></li>
 			</ul>
 		</div>
