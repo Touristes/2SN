@@ -20,6 +20,12 @@ while ($row = $result->fetchArray())
   {
 	$time = $row[0];
   }
+//$queryPath = "select path from picture where posted <= '".$time."';";
+//$result = $db->query($queryPath);
+//for ($i = 0; $row = $result->fetchArray(); $i++)
+//  {
+//	unlink($row[0]);
+//  }
 $delete_video = "DELETE FROM video where posted <='".$time."';";
 $db->query($delete_video);
 $delete_picture = "DELETE FROM picture where posted <= '".$time."';";
