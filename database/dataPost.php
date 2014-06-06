@@ -288,14 +288,11 @@ function vote($post)
 {
   $db = dbConnect();
   $id_user = getUserID($post[0]);
-  if ($post[1] == "great") {
+  if ($post[1] == "great")
 	$vote = 1;
-	$query = "INSERT INTO vote();";
-  }
-  else {
+  else
 	$vote = 0;
-	$query = "INSERT INTO vote();";
-  }
+  $query = "INSERT INTO vote('".$post[0]."', '".$id_user."', '".$vote."');";
   $result = dbQuery($query);
   if ($result == 0)
 	{
