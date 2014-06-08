@@ -1,4 +1,13 @@
-<?php include "./Resources/sessionInit.php"; ?>
+<?php 
+include "../Resources/sessionInit.php"; 
+	if (!isset($_SESSION['check'])) {
+		echo "<script type=\"text/javascript\">alert(\"Acces interdit !!\");location =\"co.php\"</script>";
+	}
+	else if ($_SESSION['check'] != "1") {
+		echo "<script type=\"text/javascript\">alert(\"Acces interdit !!\");location =\"co.php\"</script>";
+	}
+	$login = $_SESSION['login'];
+?>
 <!doctype html>
 <html>
 	<head>
@@ -9,6 +18,7 @@
 		<script src="assets/bootstrap/js/bootstrap.js"></script>
 		<!-- The main CSS file -->
 		<link href="assets/css/filemanStyle.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../Views/Styles/styleFooter.css"/>
 		<script>
 		$('#cssmenu').prepend('<div id="menu-button">Menu</div>');
 		$('#cssmenu #menu-button').on('click', function(){
@@ -26,23 +36,25 @@
 	<div class="row" id="cadrage">
 		<div id='cssmenu'>
 			<ul>
-	            <li><a href='accueil.php'><img src="../Views/Images/logo.png" width="50px;"></a></li> 
-					<li class='active'><a href='../../accueil.php'><span>Home</span></a></li>
-					<li ><a href='../../messages.php'><span>Messages</span></a></li> 
-					<li><a href='../../profil.php'><span>Mon Profil</span></a></li>
-					<li><a href='../../abo.php'><span>Abonnements</span></a></li>
-					<li><a href='index.php'><span>Fileman</span></a></li>
-					<li class='last'><a href='./Resources/deconnect.php'><span>Déconnexion</span></a>
-				</li>
+	            <li><a href='../../accueil.php'><img src="../Views/Images/logo.png" width="50px;"></a></li> 
+				<li><a href='../../accueil.php'><span>Home</span></a></li>
+				<li><a href='../../messages.php'><span>Messages</span></a></li> 
+				<li><a href='../../profil.php'><span>Mon Profil</span></a></li>
+				<li><a href='../../abo.php'><span>Abonnements</span></a></li>
+				<li><a class='active' href='index.php'><span>Fileman</span></a></li>
+				<li class='last'><a href='./Resources/deconnect.php'><span>Déconnexion</span></a></li>
+				<li><span id="login"><?php echo $login;?></span></li>
 			</ul>
 		</div>
 	<div>
 	<div class="row">
+		<div id="info"></div>
+		<div class="form-group" id="rep">
+  			<label class="sr-only" for="">Repertoire</label>
+    		<input id="rep_name" type="text" class="form-control" placeholder="Default">
+    		<a id="btn-create-rep" >Creation repertoire</a>
+  		</div>
 		<form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
-				<div class="form-group" id="rep">
-    			<label class="sr-only" for="">Repertoire</label>
-    			<input id="rep_name" type="text" class="form-control" placeholder="Default">
-  				</div>
 				<div id="drop">
 					Glisse tes fichiers
 					<a id="btn-browse" >Parcourir</a>
@@ -56,33 +68,34 @@
 		</form>
 	</div>
 	<div class="row">
-			<div id="allfile" class="col-md-3">
-				allfile
+			<div class="col-md-5">
+				<h4>Mes fichiers uploadé</h4>
+				<div class="row" id="allfile"></div>
 			</div>
-			<div id="sharedfile" class="col-md-3">
-				sharedfile
-			</div>
-			<div id="downloadedfile" class="col-md-3">
-				downloadedfile
-			</div>
+			<div id="sharedfile" class="col-md-4">sharedfile</div>
+			<div id="downloadedfile" class="col-md-3">downloadedfile</div>
 	</div>
-		<footer >
-			
-        </footer>
+	<div class="row" id="cadrage-f">
+		<div id="footer">
+			<a href='../contactForm.php'><span id="b-left">Contact</span></a>
+			<a href='../faq.php'><span id="b-middle">Faq</span></a>
+			<a href='../cgu.php'><span id="b-right">CGU</span></a>
+		</div>
+	</div>
         
-		<!-- JavaScript Includes -->
-		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
-		<script src="assets/js/jquery.1.9.1.min.js"></script> 
-		<script src="assets/js/jquery.knob.js"></script>
+	<!-- JavaScript Includes -->
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+	<script src="assets/js/jquery.1.9.1.min.js"></script> 
+	<script src="assets/js/jquery.knob.js"></script>
 
-		<!-- jQuery File Upload Dependencies -->
-		<script src="assets/js/jquery.ui.widget.js"></script>
-		<script src="assets/js/jquery.iframe-transport.js"></script>
-		<script src="assets/js/jquery.fileupload.js"></script>
+	<!-- jQuery File Upload Dependencies -->
+	<script src="assets/js/jquery.ui.widget.js"></script>
+	<script src="assets/js/jquery.iframe-transport.js"></script>
+	<script src="assets/js/jquery.fileupload.js"></script>
 		
-		<!-- Our main JS file -->
-		<script src="assets/js/my_script.js"></script>
-		<script src="assets/js/script.js"></script>
+	<!-- Our main JS file -->
+	<script src="assets/js/my_script.js"></script>
+	<script src="assets/js/script.js"></script>
 
 	</body>
 

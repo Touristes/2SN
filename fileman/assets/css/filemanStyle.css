@@ -72,10 +72,39 @@ section, footer, header, aside{
     color: #FFFFFF;}
 
 #upload{ 
-    font-family:'PT Sans Narrow', sans-serif;
     padding:30px;
     border-radius:3px;
-    margin:40px auto 100px;
+    margin:0px auto 130px;
+}
+#login{
+  margin-left: 300px;
+  color: #FFFFFF;
+  font-size: 20px;
+}
+#login span:hover{
+  
+}
+#rep a{
+    background-color:#58FAAC;
+    padding:12px 26px;
+    color:#fff;
+    font-size:14px;
+    border-radius:2px;
+    cursor:pointer;
+    display:inline-block;
+    margin-top:12px;
+    line-height:1;
+}
+#rep a:hover{
+    background-color:rgba(88, 250, 172, 0.5);
+    padding:12px 26px;
+    color:#fff;
+    font-size:14px;
+    border-radius:2px;
+    cursor:pointer;
+    display:inline-block;
+    margin-top:12px;
+    line-height:1;
 }
 
 #drop{
@@ -183,8 +212,18 @@ section, footer, header, aside{
 }
 
 #allfile{
-    color:#FFFFFF;
-    background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255,255,255,0.5);
+  display:inline-block;
+  overflow:auto;
+  text-align:left;
+  width: 350px;
+  height: 600px;
+  padding: 10px;
+  margin-bottom:10px;
+  vertical-align: top;
+  margin-top: 5px;
+  color: #FFFFFF;
+
 }
 #allfile a{
     color:#FFFFFF;
@@ -358,7 +397,7 @@ section, footer, header, aside{
     display:inline-block;
     margin: auto;
     position:relative;
-    top:0;
+    top:-20px;
     margin-bottom:10px;
     width: 1200px;
     padding: 0;
