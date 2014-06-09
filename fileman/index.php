@@ -18,18 +18,17 @@ include "../Resources/sessionInit.php";
 		<script src="assets/bootstrap/js/bootstrap.js"></script>
 		<!-- The main CSS file -->
 		<link href="assets/css/filemanStyle.css" rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="../Views/Styles/styleFooter.css"/>
 		<script>
-		$('#cssmenu').prepend('<div id="menu-button">Menu</div>');
-		$('#cssmenu #menu-button').on('click', function(){
-			var menu = $(this).next('ul');
-			if (menu.hasClass('open')) {
-				menu.removeClass('open');
-			}
-			else {
-				menu.addClass('open');
-			}
-		});
+			$('#cssmenu').prepend('<div id="menu-button">Menu</div>');
+			$('#cssmenu #menu-button').on('click', function(){
+				var menu = $(this).next('ul');
+				if (menu.hasClass('open')) {
+					menu.removeClass('open');
+				}
+				else {
+					menu.addClass('open');
+				}
+			});
 		</script>
 	</head>
 	<body>
@@ -50,10 +49,13 @@ include "../Resources/sessionInit.php";
 	<div class="row">
 		<div id="info"></div>
 		<div class="form-group" id="rep">
+			<input id="login-name" type="hidden" class="hidden" value="<?php echo $login;?>"></input>
   			<label class="sr-only" for="">Repertoire</label>
     		<input id="rep_name" type="text" class="form-control" placeholder="Default">
-    		<a id="btn-create-rep" >Creation repertoire</a>
+    		<a id="btn-create-rep">Creation repertoire</a>
+    		<div class="form-group" id="select-rep"></div>
   		</div>
+  		
 		<form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
 				<div id="drop">
 					Glisse tes fichiers
@@ -84,7 +86,6 @@ include "../Resources/sessionInit.php";
 	</div>
         
 	<!-- JavaScript Includes -->
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
 	<script src="assets/js/jquery.1.9.1.min.js"></script> 
 	<script src="assets/js/jquery.knob.js"></script>
 

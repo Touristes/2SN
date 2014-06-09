@@ -3,18 +3,30 @@ $(document).ready(function ()
 	/*** Creation d'un repertoire ******/
 	$('#btn-create-rep').on('click', function() 
 	{
-		alert ('toto');
-		var nom_repo = $('input#rep_name').text();
-		$.post('../fileman/controllers/c_createRepo.php', {repname: nom_repo}, function(data) 
+		var nom_repo = $('input#rep_name').val();
+		var session	= $('input#login-name').val();
+		console.log(''+session);
+		$.post('../fileman/models/createRepo.php', {repname: nom_repo, loginname: session}, function(data) 
 		{
 				$('#info').append(data);
 		})
 	})
+
+	var session	= $('input#login-name').val();
 	/*** Affiche les liste des fichier du user ***/	
-	$.post('../fileman/models/display_file.php', {}, function(data) 
+	$.post('../fileman/models/display_file_user.php', {login: session}, function(data) 
 	{
 		$('#allfile').append(data);
 	})
+
+	var session	= $('input#login-name').val();
+	/*** Affiche les liste des fichier du user ***/	
+	$.post('../fileman/models/list_rep_user.php', {login: session}, function(data) 
+	{
+		$('#select-rep').append(data);
+	})
+
+
 	/*** Supprimer un fichier onclick boutton ***/
 	$('#button-delete').on('click', function() 
 	{
