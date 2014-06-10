@@ -47,7 +47,7 @@ include "../Resources/sessionInit.php";
 		</div>
 	<div>
 	<div class="row">
-		<div id="info"></div>
+		<div id="info"><a type="submit" id="button-delete" value="Delete" class="btn btn-danger" role="button" name="delete">Delete</a></div>
 		<div class="form-group" id="rep">
 			<input id="login-name" type="hidden" class="hidden" value="<?php echo $login;?>"></input>
   			<label class="sr-only" for="">Repertoire</label>
@@ -74,8 +74,8 @@ include "../Resources/sessionInit.php";
 				<h4>Mes fichiers uploadé</h4>
 				<div class="row" id="allfile"></div>
 			</div>
-			<div id="sharedfile" class="col-md-4">sharedfile</div>
-			<div id="downloadedfile" class="col-md-3">downloadedfile</div>
+			<div id="sharedfile" class="col-md-4">tes fichier partagé</div>
+			<div id="downloadedfile" class="col-md-3">fichier partager par tes amis</div>
 	</div>
 	<div class="row" id="cadrage-f">
 		<div id="footer">

@@ -16,7 +16,8 @@
   while ($row = $result->fetchArray())
   {
      echo "<table><tr>";
-     echo "<td width='250'; height='36';><a href=".$row[url].">".$row[name]."&nbsp</a></td>";  
+     // echo "<td width='250'; height='36'; id='file-user'><a href=".$row[url].">".$row[name]."&nbsp</a></td>";
+     echo '<td width="250"; height="36";><input id="file-checkname" type="checkbox" name='.$row[name].' value='.$row[name].'><a href='.$row[url].'>'.$row[name].'&nbsp</a></td>';  
      echo '<td><a type="submit" id="button-delete" value="Delete" class="btn btn-danger" role="button" name="delete">Delete</a></td>';
      echo  "</tr></table>"; 
   }

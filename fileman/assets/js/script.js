@@ -54,7 +54,7 @@ $(function(){
 
             console.log(' NOM FICHIER -> ' + name + ' TAILLE -> ' + size + ' REPERTOIRE -> ' + repertory);
             $.post('../fileman/models/InsertInto.php', {nom: name, taille: size, repertoire: repertory}, function(data) {
-                console.log('passé dans InsertInto');
+                location.reload();
                 $('#info').append(data);
             });
 
