@@ -288,12 +288,20 @@ function vote($post)
 {
   $db = dbConnect();
   $id_user = getUserID($post[0]);
+  $query = "SELECT vote FROM post WHERE id_post='".$post[0]."';";
+  $vote = dbQuery($query);
   if ($post[1] == "great")
-	$vote = 1;
+	{
+	  $vote++;
+	}
   else
-	$vote = 0;
-  $query = "INSERT INTO vote('".$post[0]."', '".$id_user."', '".$vote."');";
-  $result = dbQuery($query);
+	{
+	  $vote--;
+	}
+  $query2 = "UPDATE post SET vote='".$vote."' WHERE id_post='".$post[0]."';";
+  dbQuery($query2);
+  $query3 = "INSERT INTO vote('".$post[0]."', '".$id_user."', '".$vote."');";
+  $result = dbQuery($query3);
   if ($result == 0)
 	{
 	  dbClose($db);

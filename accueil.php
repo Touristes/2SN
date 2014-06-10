@@ -71,8 +71,6 @@ hight: auto;
 						<option value="news">News</option>
 						<option selected value="troll">Troll</option>
 					</select>
-					Tags: -- 
-					Ajouter un fichier: 
 					<div id="fichier">
 						<input type="file" name="file"/>
 					</div>
