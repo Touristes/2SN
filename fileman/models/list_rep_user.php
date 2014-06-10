@@ -12,11 +12,11 @@
   $sql = $db->prepare('SELECT * FROM repository WHERE id_user like \''.$id_user.'\' ORDER BY created DESC;');
   $result = $sql->execute();
   
-  echo "<select>";
-  echo "<option value='Default'>Default</option>";  
+  echo "<select id='repository-select'>";
+  echo "<option id='nom-fichier' value='Default'>Default</option>";  
   while ($row = $result->fetchArray())
   {
-     echo "<option value=".$row[name].">".$row[name]."</option>";  
+     echo "<option id='nom-fichier' value=".$row[name].">".$row[name]."</option>";  
   }
   echo "</select>";
 

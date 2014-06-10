@@ -84,6 +84,9 @@ section, footer, header, aside{
 #login span:hover{
   
 }
+#select-rep{
+  margin-top: 50px;
+}
 #rep a{
     background-color:#58FAAC;
     padding:12px 26px;
@@ -112,7 +115,6 @@ section, footer, header, aside{
     padding: 10px 50px;
     height: 120px;
     width: 300px;
-    margin-left: 50px;
     border: 20px solid rgba(0, 0, 0, 0);
     border-radius: 3px;
     text-align: center;
@@ -228,9 +230,26 @@ section, footer, header, aside{
 #allfile a{
     color:#FFFFFF;
 }
+#sharedrep{
+  background-color: rgba(255,255,255,0.5);
+  display:inline-block;
+  overflow:auto;
+  text-align:left;
+  width: 350px;
+  height: 600px;
+  padding: 10px;
+  margin-bottom:10px;
+  vertical-align: top;
+  margin-top: 5px;
+  color: #FFFFFF;
+
+}
+#sharedrep a{
+    color:#FFFFFF;
+}
 
 /*----------------------------
-    The file upload form
+  
 -----------------------------*/
 
 #cadrage {

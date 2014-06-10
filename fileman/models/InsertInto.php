@@ -10,34 +10,28 @@
 	$filename 		= str_replace(" ", "_", $_POST["nom"]);
 	$filesize 		= $_POST["taille"];
 	$rep 			= $_POST["repertoire"];
+	$rep_select 	= $_POST["repertoireselect"];
 	$date 			= ".datetime(\"now\").";
 	$id_user 		= getUserID($login);
 	$url 			= "uploads/".$filename."";
 	$description 	= "no description";
 	$id_groups 		= 4;
-	// $id_repository 	= getRepoID($rep);
+	$id_repository 	= getRepoID($rep_select);
 
-	echo $filename;echo " ";echo $id_user;echo $rep;
-	echo $id_repository;
+	// echo $rep_select;
+	echo $id_user;
  	
  	$db = dbConnect();
-
- 	//  	$query_repo = "INSERT INTO repository (name, id_groups, created, id_user) 
- 	//  			VALUES (\"".$rep."\",\"".$id_groups."\","."datetime(\"now\")".",\"".$id_user."\");";
- 	// $sql = $db->prepare($query_repo);
-  	// 		$result = $sql->execute(); 
 
  	$query_file = "INSERT INTO file (name, id_user, created, url, size, description) 
  	 		VALUES (\"".$filename."\",\"".$id_user."\","."datetime(\"now\")".",\"".$url."\",\"".$filesize."\",\"".$description."\");";
   	$sql = $db->prepare($query_file);
   	$result = $sql->execute();
 
-
-
-  // 		$query_contain = "INSERT INTO contain (id_repository, id_file) 
- 	//  		VALUES (\"".$id_repository."\",\"".$id_user."\");";
- 	// $sql = $db->prepare($query_contain);
-  // 		$result = $sql->execute(); 
+  	$query_contain = "INSERT INTO contain (id_repository, id_file) 
+ 	 		VALUES (\"".$id_repository."\",\"".$id_user."\");";
+ 	$sql = $db->prepare($query_contain);
+  	$result = $sql->execute(); 
 
   	/*******   Rafraichir la list des fichier  ********/
   	

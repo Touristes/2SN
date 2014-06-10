@@ -1,4 +1,5 @@
 <?php
+
   /**********************************************/
   chdir("../../");
   require_once('Controllers/dataControler.php');
@@ -9,10 +10,10 @@
   $id_user    = getUserID($login);
 
   $db = dbConnect();
-  $sql = $db->prepare('SELECT * FROM file WHERE id_user like \''.$id_user.'\' ORDER BY created DESC;');
+  $sql = $db->prepare('SELECT * FROM file WHERE id_user like \''.$id_user.'\';');
   $result = $sql->execute();
   
-  // echo "<div>";
+  echo "<div>";
   while ($row = $result->fetchArray())
   {
      echo "<table><tr>";
@@ -21,6 +22,5 @@
      // echo '<td><a type="submit" id="button-delete" value="Delete" class="btn btn-danger" role="button" name="delete">Delete</a></td>';
      echo  "</tr></table>"; 
   }
-  // echo "</div>";
-
+  echo "</div>";
 ?>

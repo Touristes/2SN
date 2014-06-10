@@ -41,41 +41,46 @@ include "../Resources/sessionInit.php";
 				<li><a href='../../profil.php'><span>Mon Profil</span></a></li>
 				<li><a href='../../abo.php'><span>Abonnements</span></a></li>
 				<li><a class='active' href='index.php'><span>Fileman</span></a></li>
-				<li class='last'><a href='./Resources/deconnect.php'><span>Déconnexion</span></a></li>
+				<li class='last'><a href='../Resources/deconnect.php'><span>Déconnexion</span></a></li>
 				<li><span id="login"><?php echo $login;?></span></li>
 			</ul>
 		</div>
 	<div>
 	<div class="row">
-		<div id="info"><a type="submit" id="button-delete" value="Delete" class="btn btn-danger" role="button" name="delete">Delete</a></div>
-		<div class="form-group" id="rep">
+		<div id="info"></div>
+		<div class="form-group col-md-2" id="rep">
 			<input id="login-name" type="hidden" class="hidden" value="<?php echo $login;?>"></input>
   			<label class="sr-only" for="">Repertoire</label>
     		<input id="rep_name" type="text" class="form-control" placeholder="Default">
     		<a id="btn-create-rep">Creation repertoire</a>
-    		<div class="form-group" id="select-rep"></div>
+    		
   		</div>
-  		
-		<form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
-				<div id="drop">
-					Glisse tes fichiers
-					<a id="btn-browse" >Parcourir</a>
-					<input type="file" name="upl" id="upl" multiple />
-				</div>
-				<div id="uploaded">
-					<ul>
-					<!-- The file uploads will be shown here -->
-					</ul>
-				</div>
-		</form>
+  		<div class="form-group col-md-2" id="select-rep"></div>
+  		<div class="col-md-3">
+			<form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
+					<div id="drop">
+						Glisse tes fichiers
+						<a id="btn-browse" >Parcourir</a>
+						<input type="file" name="upl" id="upl" multiple />
+					</div>
+					<div id="uploaded">
+						<ul>
+						<!-- The file uploads will be shown here -->
+						</ul>
+					</div>
+			</form>
+		</div>
 	</div>
 	<div class="row">
-			<div class="col-md-5">
+			<div class="col-md-3">
 				<h4>Mes fichiers uploadé</h4>
 				<div class="row" id="allfile"></div>
 			</div>
-			<div id="sharedfile" class="col-md-4">tes fichier partagé</div>
-			<div id="downloadedfile" class="col-md-3">fichier partager par tes amis</div>
+			<div class="col-md-4">
+				<h4>Tes repertoire partagé avec tes amis</h4>
+				<div class="row" id="sharedfile">jjdjdhjg</div>
+			</div>
+			<div id="downloadedfile" class="col-md-3">fichier partagé par tes amis</div>
 	</div>
 	<div class="row" id="cadrage-f">
 		<div id="footer">
