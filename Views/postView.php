@@ -13,75 +13,76 @@ function affVoteForm($id_post, $id_user) {
   <button type=\"submit\" name=\"bad\" disabled=\"true\" >-</button></form>";
 }
 
-//Affichage des Posts images
+
+//Affichage des Posts images                                                                                                                                                                          
 function affPostImages() {
-  $post = getPostsByCategory("Picture");
-  if ($post != false)
-    for ($i = 0; isset($post[1][$i]); $i++)
-    {
+$post = getPostsByCategory("Picture");
+if ($post != false)
+for ($i = 0; isset($post[1][$i]); $i++)
+  {
       echo "<div class=\"posts\"><b>".$post[1][$i]."</b><br>";
+      affVoteForm($id_post, $id_user);
       controlerPictureDisplay($post[0][$i]);
       echo "<br>";
-      echo $post[3][$i]."<br>";
-      //echo "Tags : ".$post[5][$i]."<br>";
-      echo "<small>Publie le ".$post[7][$i]."</small><br>";
-      echo profilLinkForm(getUserInfo("login", $post[2][$i]))."<br>";
-      if (isChuckInThere($post[3][$i]))
-       affChuck();
-     else if ($post[6][$i] == 1)
-       addTrollPic();
-     else if ($post[6][$i] == 0)
-       addActuPic();
-     affVoteForm($id_post, $id_user);
-     echo "<br></div>";
-   }
- }
-
-//Affichage des Posts Video
- function affPostVideo() {
-  $post = getPostsByCategory("Video");
-  if ($post != false)
-    for ($i = 0; isset($post[1][$i]); $i++)
-    {
-     echo "<div class=\"posts\"><b>".$post[1][$i]."</b><br>";
-     affVideo($post[0][$i]);
-     echo "<br>";
-     echo $post[3][$i]."<br>";
-	//echo "Tags : ".$post[5][$i]."<br>";
-     echo "<small>Publie le ".$post[7][$i]."</small><br>";
-     echo profilLinkForm(getUserInfo("login", $post[2][$i]))."<br>";
-     if (isChuckInThere($post[3][$i]))
-       affChuck();
-     else if ($post[6][$i] == 1)
-       addTrollPic();
-     else if ($post[6][$i] == 0)
-      addActuPic();
-    affVoteForm($id_post, $id_user);
-    echo "<br></div>";
-  }
-}
-
-//Affichage des Posts Texte
-function affPostText() {
-  $post = getPostsByCategory("Text");
-  if ($post != false)
-    for ($i = 0; isset($post[1][$i]); $i++)
-    {
-      echo "<div class=\"posts\"><b>".$post[1][$i]."</b><br>";
-      echo $post[3][$i]."<br>";
-    //echo "Tags : ".$post[5][$i]."<br>";
+      echo "<br><br><div class=\"content\">".$post[3][$i]."</div><br>";
+      //echo "Tags : ".$post[5][$i]."<br>";                                                                                                                                                           
       echo "<small>Publie le ".$post[7][$i]."</small><br>";
       echo profilLinkForm(getUserInfo("login", $post[2][$i]))."<br>";
       if (isChuckInThere($post[3][$i]))
         affChuck();
       else if ($post[6][$i] == 1)
         addTrollPic();
-      else if ($post[6][$i] == 0)
-       addActuPic();
-     affVoteForm($id_post, $id_user);
-     echo "<br></div>";
-   }
- }
+          else if ($post[6][$i] == 0)
+        addActuPic();
+      echo "<br></div>";
+    }
+}
+
+//Affichage des Posts Video                                                                                                                                                                           
+function affPostVideo() {
+  $post = getPostsByCategory("Video");
+if ($post != false)
+  for ($i = 0; isset($post[1][$i]); $i++)
+    {
+        echo "<div class=\"posts\"><b>".$post[1][$i]."</b><br>";
+        affVoteForm($id_post, $id_user);
+        affVideo($post[0][$i]);
+        echo "<br>";
+        echo "<br><br><div class=\"content\">".$post[3][$i]."</div><br>";
+        //echo "Tags : ".$post[5][$i]."<br>";                                                                                                                                                         
+        echo "<small>Publie le ".$post[7][$i]."</small><br>";
+        echo profilLinkForm(getUserInfo("login", $post[2][$i]))."<br>";                                                                                                                               
+        if (isChuckInThere($post[3][$i]))
+          affChuck();
+        else if ($post[6][$i] == 1)
+          addTrollPic();
+        else if ($post[6][$i] == 0)
+                addActuPic();
+        echo "</div><br>";
+      }
+}
+
+//Affichage des Posts Texte                                                                                                                                                                           
+function affPostText() {
+    $post = getPostsByCategory("Text");
+if ($post != false)
+for ($i = 0; isset($post[1][$i]); $i++)
+  {
+    echo "<div class=\"posts\"><b>".$post[1][$i]."</b><br>";
+    affVoteForm($id_post, $id_user);
+    echo "<div class=\"content\">".$post[3][$i]."</div><br>";
+    //echo "Tags : ".$post[5][$i]."<br>";                                                                                                                                                             
+    echo "<small>Publie le ".$post[7][$i]."</small><br>";
+    echo profilLinkForm(getUserInfo("login", $post[2][$i]))."<br>";
+    if (isChuckInThere($post[3][$i]))
+      affChuck();
+    else if ($post[6][$i] == 1)
+      addTrollPic();                                                                                                                                                                                  
+        else if ($post[6][$i] == 0)
+          addActuPic();
+    echo "</div><br>";
+  }
+}
 
 //Affichage de tous les posts
  function affAllPost($id) {
