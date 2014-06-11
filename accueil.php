@@ -24,14 +24,27 @@ else if ($_SESSION['check'] != "1")
 	<meta charset="UTF-8">
 	<title>[Why] - Accueil</title>
 	<style>
-	img.postImage {
-		max-width: 100%;
-		hight: auto;
-	}
-	img.chuck {
-		max-width: 12%;
-		hight: auto;
-	}
+.posts {
+width: 88%;
+text-align: center;
+}
+
+.posts .voteForm button{
+position: relative;
+right: -60%;
+}
+
+img.postImage {
+position: relative;
+margin-top: -10%;
+max-width: 100%;
+height: auto;
+}
+
+img.chuck {
+max-width: 12%;
+height: auto;
+}
 	</style>
 </head>
 
