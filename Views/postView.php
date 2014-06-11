@@ -1,4 +1,12 @@
 <?php
+//Affichage du formulaire de votes
+function affVoteForm($id_post, $id_user) {
+  if (verPost($id_post, $id_user) == false)
+  echo "<form id=\"formVotes\" name=\"formVotes\" method=\"POST\" action=\"\">
+	<button type=\"submit\" name=\"good\">+</button>
+    	<button type=\"submit\" name=\"bad\">-</button></form>";
+}
+
 //Affichage des Posts images
 function affPostImages() {
 $post = getPostsByCategory("Picture");
@@ -8,7 +16,7 @@ for ($i = 0; isset($post[1][$i]); $i++)
       echo "<b>".$post[1][$i]."</b><br>";
       controlerPictureDisplay($post[0][$i]);
       echo "<br>";
-      echo "| ".$post[3][$i]."<br>";
+      echo $post[3][$i]."<br>";
       //echo "Tags : ".$post[5][$i]."<br>";
       echo "<small>Publie le ".$post[7][$i]."</small><br>";
       echo profilLinkForm(getUserInfo("login", $post[2][$i]))."<br>";
@@ -18,6 +26,7 @@ for ($i = 0; isset($post[1][$i]); $i++)
 	addTrollPic();
 	  else if ($post[6][$i] == 0)
 	addActuPic();
+      affVoteForm($id_post, $id_user);
       echo "<br>";
     }
 }
@@ -31,7 +40,7 @@ if ($post != false)
 	echo "<b>".$post[1][$i]."</b><br>";
 	affVideo($post[0][$i]);
 	echo "<br>";
-	echo "| ".$post[3][$i]."<br>";
+	echo $post[3][$i]."<br>";
 	//echo "Tags : ".$post[5][$i]."<br>";
 	echo "<small>Publie le ".$post[7][$i]."</small><br>";
 	echo profilLinkForm(getUserInfo("login", $post[2][$i]))."<br>";
@@ -41,6 +50,7 @@ if ($post != false)
 	  addTrollPic();
 	else if ($post[6][$i] == 0)
 		addActuPic();
+      affVoteForm($id_post, $id_user);
 	echo "<br>";
       }
 }
@@ -52,7 +62,7 @@ if ($post != false)
 for ($i = 0; isset($post[1][$i]); $i++)
   {
     echo "<b>".$post[1][$i]."</b><br>";
-    echo "| ".$post[3][$i]."<br>";
+    echo $post[3][$i]."<br>";
     //echo "Tags : ".$post[5][$i]."<br>";
     echo "<small>Publie le ".$post[7][$i]."</small><br>";
     echo profilLinkForm(getUserInfo("login", $post[2][$i]))."<br>";
@@ -62,6 +72,7 @@ for ($i = 0; isset($post[1][$i]); $i++)
       addTrollPic();
 	else if ($post[6][$i] == 0)
 	  addActuPic();
+    affVoteForm($id_post, $id_user);
     echo "<br>";
   }
 }
@@ -77,7 +88,7 @@ function affAllPost($id) {
 		// echo "Catergorie ".getCategory($post[4][$i])."<br>";
         affVideo($post[0][$i]);
         echo "<br>";
-        echo "| ".$post[3][$i]."<br>";
+        echo $post[3][$i]."<br>";
 		//echo "Tags : ".$post[5][$i]."<br>";
         echo "<small>Publie le ".$post[7][$i]."</small><br>";
         if (isChuckInThere($post[3][$i]))
@@ -93,7 +104,7 @@ function affAllPost($id) {
 		// echo "Catergorie ".getCategory($post[4][$i])."<br>";
         controlerPictureDisplay($post[0][$i]);
         echo "<br>";
-        echo "| ".$post[3][$i]."<br>";
+        echo $post[3][$i]."<br>";
 		//echo "Tags : ".$post[5][$i]."<br>";
         echo "<small>Publie le ".$post[7][$i]."</small><br>";
         if (isChuckInThere($post[3][$i]))
@@ -105,7 +116,7 @@ function affAllPost($id) {
 		echo "<br>";
       }
       else if (getCategoryName($post[4][$i]) == "Text") {
-       echo "<b>".$post[1][$i]."</b><br>";
+       echo $post[1][$i]."</b><br>";
 		// echo "Catergorie ".getCategory($post[4][$i])."<br>";
        echo "| ".$post[3][$i]."<br>";
 		//echo "Tags : ".$post[5][$i]."<br>";
