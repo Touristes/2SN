@@ -200,7 +200,7 @@ function showPostByUser($id)
     }
   else
     {
-      $query = "SELECT * FROM post WHERE id_user = \"".$id."\" order by created desc, id_post desc;";
+      $query = "SELECT * FROM post WHERE id_user = \"".$id."\" order by created, id_post desc;";
       $result = dbSelectToArray($query);
       if ($result == 0)
         {
@@ -247,43 +247,44 @@ function showTrollPost($troll)
     return($result);
 }
 
-//si la variable troll est à un il l'affiche si c'est à 0 non.
+//Affiche les posts par utilisateur en fonction de s'ils sont troll ou actu : 1 pour troll et 0 pour actu
 function showTrollPostByUser($troll, $id_user)
 {
-	$query = "SELECT * FROM post WHERE troll=".$troll." AND id_user=".$id_user." order by created, id_post desc;";
+	$query = "SELECT * FROM post WHERE troll=".$troll." AND id_user=".$id_user." order by created desc, id_post desc;";
     $result = dbSelectToArray($query);
     if ($result == 0)
       return("[ERR DBQUERY]");
     return($result);
 }
 
-//Funtion de news du jour
+//Fonction de news du jour
 function dailyNews()
 {
   $db = dbConnect();
   $query = "SELECT MAX(vote) as maxi FROM vote;";
   $result = $db->query($query);
   dbClose($db);
-  return(result);
+  return($result);
 }
 
-//Function de verification de vote
-function verpost($post)
+//Fonction de verification de vote
+function verPost($id_user, $id_post)
 {
   $db = dbConnect();
-  $id_user = getUserID($post[0]);
-  $query = "SELECT id_user FROM vote WHERE id_post = '".$post[0]."' and id_user = '".$id_user."';";
+  $query = "SELECT id_user FROM vote WHERE id_post = '".$id_post."' and id_user = '".$id_user."';";
   $result = $db->query($query);
-  if ($result != 0)
+  $i = 0;
+  for ($i = 0 ; $row = $result->fetchArray(); $i++);
+  if ($i > 0)
 	{
 	  dbClose($db);
-	  return(1);
+	  return(false);
 	}
   dbClose($db);
-  return(0);
+  return(true);
 }
 
-//Function de vote
+//Fonction de vote
 function vote($post)
 {
   $db = dbConnect();
