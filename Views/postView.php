@@ -2,8 +2,10 @@
 //Affichage du formulaire de votes
 function affVoteForm($id_post, $id_user) {
   if (verPost($id_post, $id_user) == true)
-  echo "<form id=\"formVotes\" name=\"formVotes\" method=\"POST\" action=\"\">
+  echo "<form id=\"formVotes\" name=\"formVotes\" method=\"POST\" action=\"../Controllers/voteController.php\">
 	<button type=\"submit\" name=\"good\">+</button>
+<input type=\"hidden\" name=post value=\"".$id_post."\">
+<input type=\"hidden\" name=user value=\"".$id_user."\”>
     	<button type=\"submit\" name=\"bad\">-</button></form>";
   else
     echo "<form id=\"formVotes\" name=\"formVotes\" method=\"POST\" action=\"\">

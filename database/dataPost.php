@@ -285,30 +285,17 @@ function verPost($id_user, $id_post)
 }
 
 //Fonction de vote
-function vote($post)
+function vote($vote, $id_user, $id_post)
 {
   $db = dbConnect();
-  $id_user = getUserID($post[0]);
-  $query = "SELECT vote FROM post WHERE id_post='".$post[0]."';";
-  $vote = dbQuery($query);
-  if ($post[1] == "great")
-	{
-	  $vote++;
-	}
-  else
-	{
-	  $vote--;
-	}
-  $query2 = "UPDATE post SET vote='".$vote."' WHERE id_post='".$post[0]."';";
+  $query = "SELECT vote FROM post WHERE id_post='".$id_post."';";
+  $old_vote = dbQuery($query);
+  $vote += $old_vote;
+  $query2 = "UPDATE post SET vote='".$vote."' WHERE id_post='".$id_post."';";
   dbQuery($query2);
-  $query3 = "INSERT INTO vote('".$post[0]."', '".$id_user."', '".$vote."');";
+  $query3 = "INSERT INTO vote('".$id_user."', '".$id_post."');";
   $result = dbQuery($query3);
-  if ($result == 0)
-	{
-	  dbClose($db);
-	  return ("An error occured[ERR DBQUERY]");
-	}
-  return (0);
+  return ($result);
 }
 
 ?>
