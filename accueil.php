@@ -26,13 +26,18 @@ else if ($_SESSION['check'] != "1")
 	<title>[Why] - Accueil</title>
 	<style>
 .posts {
-width: 88%;
+width: 80%;
 text-align: center;
+background-color: rgba(255,255,255,0.5);
 }
 
-.posts .voteForm button{
+#formVotes button{
 position: relative;
-right: -60%;
+right: -65%;
+}
+
+.posts .content {
+  margin-top: -10%;
 }
 
 img.postImage {
@@ -40,11 +45,13 @@ position: relative;
 margin-top: -10%;
 max-width: 100%;
 height: auto;
-}
+}                                                                                                                                                                                          
 
 img.chuck {
-max-width: 12%;
+max-width: 30%;
 height: auto;
+margin-left: 90%;
+margin-top: -20%;
 }
 	</style>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
