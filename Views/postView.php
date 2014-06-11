@@ -1,10 +1,14 @@
 <?php
 //Affichage du formulaire de votes
 function affVoteForm($id_post, $id_user) {
-  if (verPost($id_post, $id_user) == false)
+  if (verPost($id_post, $id_user) == true)
   echo "<form id=\"formVotes\" name=\"formVotes\" method=\"POST\" action=\"\">
 	<button type=\"submit\" name=\"good\">+</button>
     	<button type=\"submit\" name=\"bad\">-</button></form>";
+  else
+    echo "<form id=\"formVotes\" name=\"formVotes\" method=\"POST\" action=\"\">
+        <button type=\"submit\" name=\"good\" disabled=\"true\" >+</button>
+        <button type=\"submit\" name=\"bad\" disabled=\"true\" >-</button></form>";
 }
 
 //Affichage des Posts images
