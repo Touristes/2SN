@@ -71,7 +71,7 @@
 	</div>
 		<div id="footer">
 			<a href='contactForm.php'><span id="b-left">Contact</span></a>
-			<a href='faq.php'><span id="b-middle">Faq</span></a>
+			<center><a href='faq.php'><span id="b-middle">Faq</span></a></center>
 			<a href='cgu.php'><span id="b-right">CGU</span></a>
 		</div>
 
