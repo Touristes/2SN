@@ -61,9 +61,6 @@ if ($login == $_SESSION['login']) {
 		</ul>
 	</div>
 
-
-
-
 	<div id="sidebarl">
 		<?php
 	//Traitement formulaire abonnement
@@ -79,7 +76,7 @@ if ($login == $_SESSION['login']) {
 		else if (isset($_POST['delAccount']) && (isUserAdmin(getUserID($_SESSION['login'])) == true)) {
 			if (md5($_POST['rootPassword']) == getUserInfo("password", getUserID($_SESSION['login']))) {
 				delUser(getUserID($login));
-				echo "<script type=\"text/javascript\">alert(\"Le compte a ete suprime !\");document.location.href=\"accueil.php\"</script>";
+				echo "<script type=\"text/javascript\">alert(\"Le compte a été supprimé !\");document.location.href=\"accueil.php\"</script>";
 			}
 			else {
 				echo "<script type=\"text/javascript\">alert(\"Mauvais mot de passe !\");\"</script>";
@@ -114,7 +111,7 @@ if ($login == $_SESSION['login']) {
 			."<input type=\"hidden\" name=\"loginProfilView\" value=\"".$login."\">"
 			."<button id=\"deletingAccount\" type=\"submit\""
 			."value=\"delAccount\" name=\"delAccount\">Supprimer le compte</button>"
-			."<p id=\"passwordConfirm\"> Confirmez par mot de passe : "
+			."<p id=\"passwordConfirm\"> Confirmer par mot de passe : "
 			."<input type=\"password\" name=\"rootPassword\" required /></p>"
 			."<br><br><br></form>";
 		}
@@ -133,19 +130,19 @@ if ($login == $_SESSION['login']) {
 			$sharedFiles = getUserTotalSharedFiles($id);
 			$sentPrivateMsg = getUserTotalPrivateMessageSends($id);
 			$receivedPrivateMsg = getUserTotalPrivateMessageReceives($id);
-			echo "<div class=\"theribbon1\">Voici la liste de tes stats :</div><br>";
+			echo "<div class=\"theribbon1\">Tes stats de publication :</div><br>";
 			?>
 			<div id="statInfo">
 				<p>Compte créé le <?php echo getUserCreationDate($id); ?></p>
 				<p>Depuis la création du compte, tu as :</p>
 				<ul>
-					<li><?php echo $dailyNews; ?> posts élus Actu du jour.</li>
-					<li><?php echo $trollPosts; ?> posts <a id="green">Troll</a> vs <?php echo $newsPosts; ?> posts <a id="blue">Actus</a> :</li>
+					<li><?php echo $dailyNews; ?> post(s) élus Actu du jour.</li>
+					<li><?php echo $trollPosts; ?> post(s) <a id="green">Troll</a> vs <?php echo $newsPosts; ?> post(s) <a id="blue">Actus</a> :</li>
 					<canvas id="pNbr1" width="300" height="200"></canvas>
-					<li><?php echo $textPosts; ?> posts <a id="orange">Texte</a>, <?php echo $picturePosts; ?> posts <a id="white">Image</a> et <?php echo $videoPosts; ?> posts <a id="purple">Vidéo</a></li>
+					<li><?php echo $textPosts; ?> post(s) <a id="orange">Texte</a>, <?php echo $picturePosts; ?> post(s) <a id="white">Image</a> et <?php echo $videoPosts; ?> post(s) <a id="purple">Vidéo</a></li>
 					<canvas id="pNbr2" width="300" height="200"></canvas>
-					<li>partagé <?php echo $sharedFiles; ?> fichiers</li>
-					<li>envoyé <?php echo $sentPrivateMsg; ?> et reçu <?php echo $receivedPrivateMsg; ?> messages persos</li>
+					<li>partagé <?php echo $sharedFiles; ?> fichier(s)</li>
+					<li>envoyé <?php echo $sentPrivateMsg; ?> et reçu <?php echo $receivedPrivateMsg; ?> message(s) perso(s)</li>
 				</ul>
 
 				<script>       
@@ -196,12 +193,7 @@ if ($login == $_SESSION['login']) {
 			</div>
 		</div>
 	</div>
-	<div id="sidebarr">
-		<?php
-      //Affichage des Posts
-		affAllPost($id);
-		?>
-	</div>
+
 
 	<div id="cadrage-f">
 		<div id="footer">
