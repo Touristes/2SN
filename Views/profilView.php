@@ -1,3 +1,6 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /></head>
 <?php
 
 function affPersonnalInformations($id, $login) {
@@ -6,12 +9,12 @@ function affPersonnalInformations($id, $login) {
       Voici le compte-rendu de tes informations personnelles : </div>
       <div class=\"ribbon-background\"></div>
     </div>
-    </br>Nombre d'abonnés : ".getSubscriberNumber($id).
+    </br>Nombre d'abonnÃ©s : ".getSubscriberNumber($id).
     "<form id=\"formUserMod\" method=\"POST\" action=\"profil.php\"></br>
     Nom d'utilisateur : </br><input type=text name=login  value=\"".$login."\" <br>
     </br>E-Mail : </br><input type=text name=email  value=\"".getUserInfo("email",$id)."\" />
     </br>Nom : </br><input type=text name=name  value=\"".getUserInfo("name",$id)."\" />
-    </br>Prénom : </br><input type=text name=firstname  value=\"".getUserInfo("firstname",$id)."\" />
+    </br>PrÃ©nom : </br><input type=text name=firstname  value=\"".getUserInfo("firstname",$id)."\" />
     </br>Code postal : </br><input type=text name=postalcode value=\"".getUserInfo("postalcode",$id)."\" /><br>
     <button id=\"but1\"type=submit value=\"Modifier les infos personnelles\"/>Modifier les infos personnelles</button>
     </form>
@@ -35,3 +38,4 @@ function affPasswordChange() {
        <br><input type=submit value=\"Valider\"></form>";
 }
 ?>
+</html>

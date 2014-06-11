@@ -1,3 +1,7 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /></head>
+
 <?php
 require_once "./Views/profilView.php";
 
@@ -38,7 +42,7 @@ function profilController() {
      if (isset($_POST['passwd'])) {
        if (userConnect($id,$login) == true) {
          delUser($id);
-         echo "Votre compte a été supprimé avec succès !";
+         echo "Votre compte a Ã©tÃ© supprimÃ© avec succÃ¨s !";
          include "deconnect.php";
        }
        else
@@ -52,7 +56,7 @@ function profilController() {
       if (isset($_POST['passwd']) || isset($_POST['newpasswd'])) {
         if (userConnect($id,$login) == true) {
           setUserField($id,"password",md5($_POST['newpasswd']));
-          echo "Votre mot de passe a été modifié.";
+          echo "Votre mot de passe a Ã©tÃ© modifiÃ©.";
         }
         else
           echo "Erreur de mot de passe.";
@@ -70,3 +74,4 @@ function profilController() {
     header('Location: index.php');
 }
 ?>
+</html>
