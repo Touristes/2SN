@@ -140,9 +140,9 @@ if ($login == $_SESSION['login']) {
 				<p>Depuis la création du compte, tu as :</p>
 				<ul>
 					<li><?php echo $dailyNews; ?> posts élus Actu du jour.</li>
-					<li>XX posts <a id="green">Troll</a> vs XX posts <a id="blue">Actus</a> :</li>
+					<li><?php echo $trollPosts; ?> posts <a id="green">Troll</a> vs <?php echo $newsPosts; ?> posts <a id="blue">Actus</a> :</li>
 					<canvas id="pNbr1" width="300" height="200"></canvas>
-					<li>XX posts <a id="orange">Texte</a>, XX posts <a id="white">Image</a> et XX posts <a id="purple">Vidéo</a></li>
+					<li><?php echo $textPosts; ?> posts <a id="orange">Texte</a>, <?php echo $picturePosts; ?> posts <a id="white">Image</a> et <?php echo $videoPosts; ?> posts <a id="purple">Vidéo</a></li>
 					<canvas id="pNbr2" width="300" height="200"></canvas>
 					<li>partagé <?php echo $sharedFiles; ?> fichiers</li>
 					<li>envoyé <?php echo $sentPrivateMsg; ?> et reçu <?php echo $receivedPrivateMsg; ?> messages persos</li>
