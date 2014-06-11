@@ -23,16 +23,16 @@ else if ($_SESSION['check'] != "1")
 
 	<meta charset="UTF-8">
 	<title>[Why] - Accueil</title>
-<style>
-  img.postImage {
-  max-width: 100%;
-hight: auto;
-}
-img.chuck {
-  max-width: 12%;
-hight: auto;
-}
-</style>
+	<style>
+	img.postImage {
+		max-width: 100%;
+		hight: auto;
+	}
+	img.chuck {
+		max-width: 12%;
+		hight: auto;
+	}
+	</style>
 </head>
 
 <body>
@@ -52,12 +52,12 @@ hight: auto;
 
 		<div id='cssmenu'>
 			<ul>
-            <li ><a href='accueil.php'><img src="Views/Images/logo.png" width="50px;"></a></li> 
-				<li class='active'><a href='accueil.php'><span>Home</span></a></li>
-				<li ><a href='messages.php'><span>Messages</span></a></li> 
-				<li><a href='profil.php'><span>Mon Profil</span></a></li>
-				<li><a href='abo.php'><span>Abonnements</span></a></li>
-				<li><a href='fileman/index.php'><span>Fileman</span></a></li>    
+				<li><a href='accueil.php'><img src="Views/Images/logo.png" width="50px;"></a></li> 
+				<li class='active'><a href='accueil.php'><span>Home Sweet Home</span></a></li>
+				<li><a href='abo.php'><span>Mes Abonnements</span></a></li>
+				<li><a href='fileman/index.php'><span>Mon Partage</span></a></li> 
+				<li><a href='messages.php'><span>Mes Messages Privés</span></a></li> 
+				<li><a href='profil.php'><span>Mon Profil</span></a></li> 
 				<li class='last'><a href='./Resources/deconnect.php'><span>Déconnexion</span></a></li>
 			</ul>
 		</div>
@@ -83,22 +83,22 @@ hight: auto;
 </div>
 
 <div id="sidebarl">
-  <?php
+	<?php
 //Affichage des Posts images
-affPostImages();
-  ?>
+	affPostImages();
+	?>
 </div>
 <div id="gen">
-  <?php
+	<?php
     //Affichage des Posts Texte
-affPostText();
-?>
+	affPostText();
+	?>
 </div>
 <div id="sidebarr">
-<?php
+	<?php
   //Affichage des Posts Video
-affPostVideo();
-?>
+	affPostVideo();
+	?>
 </div>
 </div>
 
