@@ -130,7 +130,7 @@ function getPostsByCategory($name) {
     }
   else
     {
-      $query = "SELECT * FROM post WHERE id_category = \"".$id_category."\" order by created, id_post desc;";
+      $query = "SELECT * FROM post WHERE id_category = \"".$id_category."\" order by created desc, id_post desc;";
       $result = dbSelectToArray($query);
       if ($result == false)
         {
@@ -200,7 +200,7 @@ function showPostByUser($id)
     }
   else
     {
-      $query = "SELECT * FROM post WHERE id_user = \"".$id."\" order by created, id_post desc;";
+      $query = "SELECT * FROM post WHERE id_user = \"".$id."\" order by created desc, id_post desc;";
       $result = dbSelectToArray($query);
       if ($result == 0)
         {
