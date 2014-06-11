@@ -56,7 +56,7 @@ if(isset($_POST['requete']) && $_POST['requete'] != NULL) // on vérifie d'abord
 	$result = SearchUser($requete);
 	if($result != FALSE) // si le nombre de résultats est supérieur à 0, on continue
 	{
-		echo "<h3>Resultat de votre recherche :</h3></br>";
+		echo "<h3>Résultat de ta recherche :</h3></br>";
 		?>
 		<form name="abo" action="" method="POST">
 			<?
@@ -67,7 +67,7 @@ if(isset($_POST['requete']) && $_POST['requete'] != NULL) // on vérifie d'abord
 				<input type="checkbox" name="choice[]" value="<? echo $result; ?>"> <? echo $result; ?><br>
 				<?
 			}
-			echo "</br><button type=submit value=\"Ajouter a mes abonnements !\"/>Ajouter a mes abonnements !</button>";
+			echo "</br><button type=submit value=\"Ajouter à mes abonnements !\"/>Ajouter à mes abonnements !</button>";
 			?>
 		</form>
 		<br/>
@@ -80,11 +80,11 @@ else
 	?>
 	<div class="ribbon">
 		<div class="theribbon1">
-			Pas de résultats
+			Pas de résultat
 		</div>
 		<div class="ribbon-background"></div>
 	</div>
-	<p>Nous n'avons trouvé aucun résultat pour votre requête "<? echo $_POST['requete']; ?>". <a href="abo.php">Réessayez</a> avec autre chose.</p>
+	<p>Nous n'avons trouvé aucun résultat pour ta requête "<? echo $_POST['requete']; ?>". <a href="abo.php">Réessaies</a> avec autre chose.</p>
 	<?
 }// Fini d'afficher l'erreur ^^
 }
@@ -92,7 +92,7 @@ else
 { // et voilà le formulaire, en HTML de nouveau !
 	?>
 	<div class="ribbon">
-		<div class="theribbon">Vous pouvez rechercher un User particulier :</div>
+		<div class="theribbon">Tu peux rechercher un utilisateur particulier :</div>
 		<div class="ribbon-background"></div>
 	</div>
 	<form action="abo.php" method="Post">
@@ -106,7 +106,7 @@ else
 </br>
 <div class="ribbon">
 	<div class="theribbon1">
-		Liste de tous les Users :</div>
+		Liste de tous les utilisateurs :</div>
 		<div class="ribbon-background"></div>
 	</div>
 	<?
@@ -125,10 +125,10 @@ else
 					<?
 				}
 			}
-			echo "</br><button type=submit value=\"Ajouter a mes abonnements !\"/>Ajouter a mes abonnements !</button>";
+			echo "</br><button type=submit value=\"Ajouter à mes abonnements !\"/>Ajouter à mes abonnements !</button>";
 		}
 		else
-			echo "Surprise, suite a une epidemie de gastro en tere cuite, le monde a succombe, vous etes seul sur internet.."
+			echo "Surprise, suite à une épidemie de gastro en terre cuite, le monde à succombé, tu es seul sur Internet.."
 		?>
 	</form>
 	<?
