@@ -15,8 +15,8 @@ apt-get install $pkgs -y
 
 mkdir /home/backup
 mkdri /home/why
-chown -R www-data /home/why
-chown -R www-data /home/backup
+chown -R www-data:www-data /home/why
+chown -R www-data:www-data /home/backup
 
 cat <<EOF > /etc/apache2/sites-avaible
 <VirtualHost *:80>
