@@ -20,6 +20,7 @@ else if ($_SESSION['check'] != "1")
 <head>
 	<link rel="stylesheet" type="text/css" href="./Views/Styles/style1.css" />
 	<link rel="stylesheet" type="text/css" href="./Views/Styles/styleFooter.css"/>
+	<link rel="stylesheet" type="text/css" href="./Views/Styles/styleFoldingPanel.css"/>
 
 	<meta charset="UTF-8">
 	<title>[Why] - Accueil</title>
@@ -46,6 +47,14 @@ max-width: 12%;
 height: auto;
 }
 	</style>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script> 
+	$(document).ready(function(){
+		$("#flip").click(function(){
+			$("#post").slideDown("slow");
+		});
+	});
+	</script>
 </head>
 
 <body>
@@ -74,6 +83,8 @@ height: auto;
 				<li class='last'><a href='./Resources/deconnect.php'><span>Déconnexion</span></a></li>
 			</ul>
 		</div>
+
+<div id="flip">Créer un nouveau post</div>
 		<div id="post">
 			<form id="signup" name="monform" method="post" action="Controllers/send_post.php"  enctype="multipart/form-data">
 				<textarea cols="60" rows="1" name="title" placeholder="Titre" required></textarea>
