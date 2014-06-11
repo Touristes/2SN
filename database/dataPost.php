@@ -17,18 +17,18 @@ function addPost($post)
 	incrementUserTotalPostActu($id_user);
   }
   if (isPostContainVideoLinkViaContent($content) != false) {
-	$query = 'INSERT INTO post (title, id_user, text, id_category, id_type, troll, created ) VALUES ("'
-		.$title.'",'.$id_user.',"'.$content.'",'.getCategoryID("Video").','.'3,'.$troll.','.'datetime(\'now\')'.');';
+	$query = 'INSERT INTO post (title, id_user, text, id_category, id_type, troll, created, points ) VALUES ("'
+		.$title.'",'.$id_user.',"'.$content.'",'.getCategoryID("Video").','.'3,'.$troll.','.'datetime(\'now\')'.','.'0'.');';
 	incrementUserTotalPostVideo($id_user);
   }
   else if ($post[3] == getCategoryID("Picture")) {
-        $query = 'INSERT INTO post (title, id_user, text, id_category, id_type, troll, created ) VALUES ("'
-	  .$title.'",'.$id_user.',"'.$content.'",'.getCategoryID("Picture").','.'3,'.$troll.','.'datetime(\'now\')'.');';
+        $query = 'INSERT INTO post (title, id_user, text, id_category, id_type, troll, created, points ) VALUES ("'
+	  .$title.'",'.$id_user.',"'.$content.'",'.getCategoryID("Picture").','.'3,'.$troll.','.'datetime(\'now\')'.','.'0'.');';
 	incrementUserTotalPostImage($id_user);
   }
   else {
-	$query = 'INSERT INTO post (title, id_user, text, id_category, id_type, troll, created ) VALUES ("'
-	  .$title.'",'.$id_user.',"'.$content.'",'.getCategoryID("Text").','.'3,'.$troll.','.'datetime(\'now\')'.');';
+	$query = 'INSERT INTO post (title, id_user, text, id_category, id_type, troll, created, points ) VALUES ("'
+	  .$title.'",'.$id_user.',"'.$content.'",'.getCategoryID("Text").','.'3,'.$troll.','.'datetime(\'now\')'.','.'0'.');';
 	incrementUserTotalPostText($id_user);
   }
   $result = dbQuery($query);
@@ -271,15 +271,10 @@ function dailyNews()
 function verPost($id_user, $id_post)
 {
   $db = dbConnect();
-  $query = "SELECT id_user FROM vote WHERE id_post = '".$id_post."' and id_user = '".$id_user."';";
+  $query = "SELECT id_user FROM vote WHERE id_post = '".$id_post."';";
   $result = $db->query($query);
-  $i = 0;
-  for ($i = 0 ; $row = $result->fetchArray(); $i++);
-  if ($i > 0)
-	{
-	  dbClose($db);
-	  return(false);
-	}
+  while($row = $result->fetchArray())
+	var_dump($row);
   dbClose($db);
   return(true);
 }
@@ -287,14 +282,22 @@ function verPost($id_user, $id_post)
 //Fonction de vote
 function vote($vote, $id_user, $id_post)
 {
+  echo "je suis arrive";
   $db = dbConnect();
   $query = "SELECT vote FROM post WHERE id_post='".$id_post."';";
   $old_vote = dbQuery($query);
+  var_dump($old_vote);
+  echo "\n";
   $vote += $old_vote;
   $query2 = "UPDATE post SET vote='".$vote."' WHERE id_post='".$id_post."';";
-  dbQuery($query2);
-  $query3 = "INSERT INTO vote('".$id_user."', '".$id_post."');";
+  $test = dbQuery($query2);
+  echo "et encore la";
+  var_dump($test);
+  echo $id_user;
+  echo $id_post;
+  $query3 = "INSERT INTO vote (id_user,id_post) VALUES ('".$id_user."', '".$id_post."');";
   $result = dbQuery($query3);
+  var_dump($result);
   return ($result);
 }
 
