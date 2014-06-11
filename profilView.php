@@ -92,7 +92,7 @@ if ($login == $_SESSION['login']) {
     //Informations utilisateur
 		$id = getUserID($login);
 		echo "Profil de l'utilisateur ".$login."<br>"
-		."Nombre d'abonnes : ".getSubscriberNumber($id)."<br>"
+		."Nombre d'abonnés : ".getSubscriberNumber($id)."<br>"
 		."Nombre d'abonnements : ".getSubscriptionNumber($id)."<br>";
 	//Formulaire d'envoi de message, renvoie vers message.php
 		echo "<form id=\"formNewMessage\" method=\"POST\" action=\"messages.php\"><button type=\"submit\" value=\""
@@ -133,7 +133,7 @@ if ($login == $_SESSION['login']) {
 			$sharedFiles = getUserTotalSharedFiles($id);
 			$sentPrivateMsg = getUserTotalPrivateMessageSends($id);
 			$receivedPrivateMsg = getUserTotalPrivateMessageReceives($id);
-			echo "<div class=\"theribbon1\">Voici la liste de ses stats :</div><br>";
+			echo "<div class=\"theribbon1\">Voici la liste de tes stats :</div><br>";
 			?>
 			<div id="statInfo">
 				<p>Compte créé le <?php echo getUserCreationDate($id); ?></p>
