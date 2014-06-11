@@ -58,5 +58,5 @@ EOF
 
 git clone https://github.com/Touristes/2SN.git /home/why/
 
-chown -R www-data /home/why
+chown -R www-data:www-data /home/why
 chmod -R 400 /home/why
