@@ -5,7 +5,7 @@ function affVoteForm($id_post, $id_user) {
   echo "<form id=\"formVotes\" name=\"formVotes\" method=\"POST\" action=\"../Controllers/voteController.php\">
 	<button type=\"submit\" name=\"good\">+</button>
 <input type=\"hidden\" name=post value=\"".$id_post."\">
-<input type=\"hidden\" name=user value=\"".$id_user."\”>
+<input type=\"hidden\" name=user value=\"".$id_user."\">
     	<button type=\"submit\" name=\"bad\">-</button></form>";
   else
     echo "<form id=\"formVotes\" name=\"formVotes\" method=\"POST\" action=\"\">
@@ -19,7 +19,7 @@ $post = getPostsByCategory("Picture");
 if ($post != false)
 for ($i = 0; isset($post[1][$i]); $i++)
   {
-      echo "<b>".$post[1][$i]."</b><br>";
+      echo "<div class=\"posts\"><b>".$post[1][$i]."</b><br>";
       controlerPictureDisplay($post[0][$i]);
       echo "<br>";
       echo $post[3][$i]."<br>";
@@ -33,7 +33,7 @@ for ($i = 0; isset($post[1][$i]); $i++)
 	  else if ($post[6][$i] == 0)
 	addActuPic();
       affVoteForm($id_post, $id_user);
-      echo "<br>";
+      echo "<br></div>";
     }
 }
 
@@ -43,7 +43,7 @@ function affPostVideo() {
 if ($post != false)
   for ($i = 0; isset($post[1][$i]); $i++)
     {
-	echo "<b>".$post[1][$i]."</b><br>";
+	echo "<div class=\"posts\"><b>".$post[1][$i]."</b><br>";
 	affVideo($post[0][$i]);
 	echo "<br>";
 	echo $post[3][$i]."<br>";
@@ -57,7 +57,7 @@ if ($post != false)
 	else if ($post[6][$i] == 0)
 		addActuPic();
       affVoteForm($id_post, $id_user);
-	echo "<br>";
+	echo "<br></div>";
       }
 }
 
@@ -67,7 +67,7 @@ function affPostText() {
 if ($post != false)
 for ($i = 0; isset($post[1][$i]); $i++)
   {
-    echo "<b>".$post[1][$i]."</b><br>";
+    echo "<div class=\"posts\"><b>".$post[1][$i]."</b><br>";
     echo $post[3][$i]."<br>";
     //echo "Tags : ".$post[5][$i]."<br>";
     echo "<small>Publie le ".$post[7][$i]."</small><br>";
@@ -79,7 +79,7 @@ for ($i = 0; isset($post[1][$i]); $i++)
 	else if ($post[6][$i] == 0)
 	  addActuPic();
     affVoteForm($id_post, $id_user);
-    echo "<br>";
+    echo "<br></div>";
   }
 }
 
