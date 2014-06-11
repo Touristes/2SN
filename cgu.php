@@ -69,11 +69,11 @@
 		Ces Conditions peuvent faire l'objet de modifications à tout moment. Si nous jugeons que ces modifications sont substantielles, nous les porterons à votre connaissance via une mise à jour. En continuant d'accéder ou d'utiliser les Services après l'entrée en vigueur de ces modifications, vous acceptez d'être contractuellement liés par ces nouvelles Conditions d'utilisations.
 		Ces services sont gérés et fournis par [Why].
 	</div>
-		<div id="footer">
-			<a href='contactForm.php'><span id="b-left">Contact</span></a>
-			<center><a href='faq.php'><span id="b-middle">Faq</span></a></center>
-			<a href='cgu.php'><span id="b-right">CGU</span></a>
-		</div>
+	<div id="footer">
+		<a href='contactForm.php'><span id="b-left">Contact</span></a>
+		<center><a href='faq.php'><span id="b-middle">Faq</span></a></center>
+		<a href='accueil.php'><span id="b-right">Accueil</span></a>
+	</div>
 
 </body>
 </html>

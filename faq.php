@@ -27,7 +27,7 @@ require_once "./Models/chuck.php";
 		}
 	});
 	</script>
-	
+
 	<div id='cssmenu'>
 		<ul>
 			<li><a href='accueil.php'><img src="Views/Images/logo.png" width="50px;"></a></li> 
@@ -81,7 +81,7 @@ require_once "./Models/chuck.php";
 
 		<div id="footer">
 			<a href='contactForm.php'><span id="b-left">Contact</span></a>
-			<a href='faq.php'><span id="b-middle">Faq</span></a>
+			<a href='accueil.php'><span id="b-middle">Accueil</span></a>
 			<a href='cgu.php'><span id="b-right">CGU</span></a>
 
 		</div>
