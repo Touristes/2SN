@@ -24,10 +24,10 @@ function getSharedRepertories($id_user) {
   $query = "select id_repository from share where id_user = \"".$id_user."\";";
   $result = $db->query($query);
   for ($i = 0 ;$row = $result->fetchArray(); $i++)
-    {
-        $array[0][$i] = getRepositoryInfo($row[0]);
-		$array[1][$i] = getFileList($row[0]);
-    }
+  {
+    $array[0][$i] = getRepositoryInfo($row[0]);
+    $array[1][$i] = getFileList($row[0]);
+  }
   dbClose($db);
   return ($array);
 }
@@ -40,9 +40,9 @@ function getFileList($id_repository) {
   $query = "select id_file from contain where id_repository = \"".$id_repository."\";";
   $result = $db->query($query);
   for ($i = 0 ;$row = $result->fetchArray(); $i++)
-    {
-        $array[$i] = getFileInfo($row[0]);
-    }
+  {
+    $array[$i] = getFileInfo($row[0]);
+  }
   dbClose($db);
   return ($array);
 }
@@ -55,9 +55,9 @@ function getFileInfo($id_file) {
   $query = "select * from file where id_file = \"".$id_file."\";";
   $result = $db->query($query);
   for ($i = 0 ;$row = $result->fetchArray(); $i++)
-    {
-        $array[$i] = $row[0];
-    }
+  {
+    $array[$i] = $row[0];
+  }
   dbClose($db);
   return ($array);
 }
@@ -70,9 +70,9 @@ function getRepositoryInfo ($id_repository) {
   $query = "select * from file where id_file = \"".$id_file."\";";
   $result = $db->query($query);
   for ($i = 0 ;$row = $result->fetchArray(); $i++)
-    {
-        $array[$i] = $row[0];
-    }
+  {
+    $array[$i] = $row[0];
+  }
   dbClose($db);
   return ($array);
 }

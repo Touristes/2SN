@@ -2,23 +2,23 @@
 /* CSS Document */
 
 @font-face {
-    font-family: 'MaSuperPolice';
-    src:url('MyriadPro-Light.otf');
+  font-family: 'MaSuperPolice';
+  src:url('MyriadPro-Light.otf');
 }
 
 
 body {
-background-image: url(../Images/background.bmp); 
-	margin: auto;
-	-webkit-background-size: cover; /* pour Chrome et Safari */
-	-moz-background-size: cover; /* pour Firefox */
-	-o-background-size: cover; /* pour Opera */
-	background-size: cover; /* version standardisée */
-	;
-	font-family: "MaSuperPolice";
-	/* [disabled]padding-left: 30px; */
-	/* [disabled]padding-right: 30px; */
-	display:block;
+  background-image: url(../Images/background.bmp); 
+  margin: auto;
+  -webkit-background-size: cover; /* pour Chrome et Safari */
+  -moz-background-size: cover; /* pour Firefox */
+  -o-background-size: cover; /* pour Opera */
+  background-size: cover; /* version standardisée */
+  ;
+  font-family: "MaSuperPolice";
+  /* [disabled]padding-left: 30px; */
+  /* [disabled]padding-right: 30px; */
+  display:block;
 }
 
 
@@ -51,45 +51,45 @@ background-image: url(../Images/background.bmp);
 	margin-right:10px;
 	position:fixed;
 	width: 1200px;
-  	padding: 0;
-  	line-height: 1;
-  	font-family: "MaSuperPolice";
+ padding: 0;
+ line-height: 1;
+ font-family: "MaSuperPolice";
 }
 
 ::-webkit-input-placeholder {
-   color: #bbb;
+ color: #bbb;
 }
 
 :-moz-placeholder {
-   color: #bbb;
+ color: #bbb;
 }                       
 
 .placeholder{
-    color: #bbb; /* polyfill */
+  color: #bbb; /* polyfill */
 }       
 
 #signup input{
-    margin: 5px 0;
-    padding: 10px;
-    width: 85%;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 3px; 
+  margin: 5px 0;
+  padding: 10px;
+  width: 85%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 3px; 
 }
 
 #signup textarea{
-    margin: 5px 0;
-    padding: 10px;
-    width: 85%;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 3px; 
+  margin: 5px 0;
+  padding: 10px;
+  width: 85%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 3px; 
 }
 
 #signup textarea:focus{
-        outline: 0;
-        border-color: #aaa;
-    box-shadow: 0 2px 1px rgba(0, 0, 0, .3) inset;
+  outline: 0;
+  border-color: #aaa;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, .3) inset;
 }       
 
 #post1 {
@@ -104,40 +104,40 @@ background-image: url(../Images/background.bmp);
 
 
 #signup input:focus{
-        outline: 0;
-        border-color: #aaa;
-    box-shadow: 0 2px 1px rgba(0, 0, 0, .3) inset;
+  outline: 0;
+  border-color: #aaa;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, .3) inset;
 }       
 
 #signup button{
 	position:absolute;
-    margin: 20px 0 0 0;
-    padding: 15px 8px;
-	margin-left:30px;        
-    width: 30%;
-    cursor: pointer;
-    border: 1px solid #2493FF;
-    overflow: visible;
-    color: #fff;
-    font: bold 1.4em arial, helvetica;
-    text-shadow: 0 -1px 0 rgba(0,0,0,.4);         
-    background-color: #2493ff;
-    background-image: linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,0)); 
-    transition: background-color .2s ease-out;
-    border-radius: 3px;
-    box-shadow: 0 2px 1px rgba(0, 0, 0, .3),
-                0 1px 0 rgba(255, 255, 255, .5) inset;                               
+  margin: 20px 0 0 0;
+  padding: 15px 8px;
+  margin-left:30px;        
+  width: 30%;
+  cursor: pointer;
+  border: 1px solid #2493FF;
+  overflow: visible;
+  color: #fff;
+  font: bold 1.4em arial, helvetica;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.4);         
+  background-color: #2493ff;
+  background-image: linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,0)); 
+  transition: background-color .2s ease-out;
+  border-radius: 3px;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, .3),
+  0 1px 0 rgba(255, 255, 255, .5) inset;                               
 }
 
 #signup button:hover{
-    background-color: #7cbfff;
-        border-color: #7cbfff;
+  background-color: #7cbfff;
+  border-color: #7cbfff;
 }
 
 #signup button:active{
-    position: absolute;
-    text-shadow: none;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, .3) inset;
+  position: absolute;
+  text-shadow: none;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .3) inset;
 }
 
 #cssmenu ul {

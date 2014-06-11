@@ -16,20 +16,20 @@ function renewPassword($id) {
   }
   setUserField($id, "password", md5($password));
   if (!sendPasswordMail($mail, $password, $login)) {
-    echo "\nErreur technique le mail n'a pas pu être envoyé.\n";
+    echo "\nErreur technique, le mail n'a pas pu être envoyé.\n";
     return (false);
   }
-  echo "<br>Vous allez recevoir votre nouveau mot de passe par e-mail.<br>";
+  echo "<br>Tu vas recevoir ton nouveau mot de passe par e-mail.<br>";
   return (true);
 }
 //Definition du contenu du mail de renouvellement de mot de passe avant envoi
 function sendPasswordMail($mail, $password, $login) {
   $passage_ligne = "\n";
-  $sujet = "Your new password for why";
+  $sujet = "Ton nouveau mot de passe [Why]";
 
   $message_txt = "Bonjour ".$login.",".$passage_ligne;
-  $message_txt .= "Un renouvellement de mot de passe a ete demande pour votre compte.".$passage_ligne;
-  $message_txt .= "Voici votre nouveau mot de passe : ".$password.$passage_ligne;
+  $message_txt .= "Un renouvellement de mot de passe a été demandé pour ton compte.".$passage_ligne;
+  $message_txt .= "Voici ton nouveau mot de passe : ".$password.$passage_ligne;
 
   if (sendMail($mail, $message_txt, $sujet, $passage_ligne) == false)
     return (false);
@@ -39,10 +39,10 @@ function sendPasswordMail($mail, $password, $login) {
 //Definition du contenu du mail de suppression de compte avant envoi
 function sendDeletingAccountMail($mail, $login) {
   $passage_ligne = "\n";
-  $sujet = "Good bye from why";
+  $sujet = "[Why] te salue bien bas...";
 
   $message_txt = "Bonjour ".$login.",".$passage_ligne;
-  $message_txt .= "Nous vous confirmons l'effacement de votre comtpe.".$passage_ligne;
+  $message_txt .= "Nous te confirmons la suppression de ton compte.".$passage_ligne;
   $message_txt .= "Au revoir !".$passage_ligne;
 
   if (sendMail($mail, $message_txt, $sujet, $passage_ligne) == false)
@@ -56,7 +56,7 @@ function sendCreatingAccountMail($mail, $login) {
   $sujet = "Welcome in why";
 
   $message_txt = "Bonjour ".$login.",".$passage_ligne;
-  $message_txt .= "Nous vous confirmons la creation de votre comtpe.".$passage_ligne;
+  $message_txt .= "Nous te confirmons la création de ton compte.".$passage_ligne;
 
   if (sendMail($mail, $message_txt, $sujet, $passage_ligne) == false)
     return (false);
@@ -66,10 +66,10 @@ function sendCreatingAccountMail($mail, $login) {
 //Definition du contenu du mail de creation notification de message prive avant envoi
 function sendMPNotificationMail($mail, $login, $login_sender) {
   $passage_ligne = "\n";
-  $sujet = "Why : vous avez recu un nouveau message";
+  $sujet = "[Why] : tu as un nouveau message";
 
   $message_txt = "Bonjour ".$login.",".$passage_ligne;
-  $message_txt .= "Vous avez recu un nouveau message de ".$login_sender." .".$passage_ligne;
+  $message_txt .= "Vous as reçu un nouveau message de ".$login_sender." .".$passage_ligne;
 
   if (sendMail($mail, $message_txt, $sujet, $passage_ligne) == false)
     return (false);
@@ -80,11 +80,11 @@ function sendMPNotificationMail($mail, $login, $login_sender) {
 function sendContactMail($login, $message) {
   $mail = "whyproject.2sn@gmail.com";
   $passage_ligne = "\n";
-  $sujet = "New message from ".$login;
+  $sujet = "Nouveau message de ".$login;
 
   $message_txt = "Bonjour dieu,".$passage_ligne;
   $message_txt .= "L'utilisateur répondant au nom de ".$login.$passage_ligne;
-  $message_txt .= "vous a laissé un message :".$passage_ligne;
+  $message_txt .= "t'a laissé un message :".$passage_ligne;
   $message_txt .= textToMail($message, $passage_ligne);
   $message_txt .= $passage_ligne;
   

@@ -75,7 +75,7 @@ require_once "./Controllers/profilController.php";
     $sharedFiles = getUserTotalSharedFiles($id);
     $sentPrivateMsg = getUserTotalPrivateMessageSends($id);
     $receivedPrivateMsg = getUserTotalPrivateMessageReceives($id);
-    echo "<div class=\"theribbon1\">Tes stats de publication:</div><br>";
+    echo "<div class=\"theribbon1\">Tes stats de publication :</div><br>";
     ?>
     <div id="statInfo">
       <p>Ton compte a été créé le <?php echo getUserCreationDate($id); ?></p>

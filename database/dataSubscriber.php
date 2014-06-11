@@ -36,10 +36,10 @@ function getSubscriberNumber($id_user){
   $query = "select id_user from subscriber where id_user = \"".$id_user."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-        $ID = $row[$i];
-    }
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+      $ID = $row[$i];
+  }
   dbClose($db);
   return ($i);
 }
@@ -51,10 +51,10 @@ function getSubscriptionNumber($id_user){
   $query = "select id_user from subscriber where id_subscriber = \"".$id_user."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-        $ID = $row[$i];
-    }
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+      $ID = $row[$i];
+  }
   dbClose($db);
   return ($i);
 }
@@ -65,9 +65,9 @@ function getSubscriberList($id_user) {
   $query = "select id_subscriber from subscriber where id_user = \"".$id_user."\";";
   $result = $db->query($query);
   for ($i = 0 ;$row = $result->fetchArray(); $i++)
-    {
-      $array[$i] = getUserInfo("login",$row[0]);
-    }
+  {
+    $array[$i] = getUserInfo("login",$row[0]);
+  }
   dbClose($db);
   return ($array);
 }
@@ -78,9 +78,9 @@ function getSubscriptionList($id_user) {
   $query = "select id_user from subscriber where id_subscriber = \"".$id_user."\";";
   $result = $db->query($query);
   for ($i = 0 ;$row = $result->fetchArray(); $i++)
-    {
-      $array[$i] = getUserInfo("login",$row[0]);
-    }
+  {
+    $array[$i] = getUserInfo("login",$row[0]);
+  }
   dbClose($db);
   return ($array);
 }
@@ -92,13 +92,13 @@ function isSubrscriberOf($id_subscriber, $id_user) {
   $query = "select id_user from subscriber where id_subscriber = \"".$id_subscriber."\" and id_user = \"".$id_user."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-	$ID = $row[$i];
-    }
-  dbClose($db);
-  if ($i > 0)
-    return ("true");
-  return ("false");
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+     $ID = $row[$i];
+ }
+ dbClose($db);
+ if ($i > 0)
+  return ("true");
+return ("false");
 }
 ?>

@@ -5,10 +5,10 @@ require_once "./Controllers/frontControler.php";
 //Traitement du formulaire de renouvellement de mot de passe
 if (isset($_POST['reinitPassword'])) {
   if ($_POST['mail'] == "") {
-    echo "<b>Veuillez renseigner une adresse mail.</b>";
+    echo "<b>Merci de renseigner une adresse mail.</b>";
   }
   else if (isEmailExist($_POST['mail']) == false) {
-    echo "<b>Veuillez renseigner une adresse mail valide.</b>";
+    echo "<b>Merci de renseigner une adresse mail valide.</b>";
   }
   else if (isEmailExist($_POST['mail']) == true) {
     $id = getUserIDWithMail($_POST['mail']);

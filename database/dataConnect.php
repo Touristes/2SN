@@ -5,10 +5,10 @@ function dbConnect() {
   if (isset($db))
     return ($db);
   else
-    {
-      echo "SQL error";
-      return (FALSE);
-    }
+  {
+    echo "SQL error";
+    return (FALSE);
+  }
 }
 function dbClose($db) {
   $db->close();
@@ -27,13 +27,13 @@ function dbSelectDisplay($query) {
     return (0);
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-	echo $row[$i] . " ";
-      echo "<br>";
-    }
-  dbClose($db);
-  return (0);
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+     echo $row[$i] . " ";
+   echo "<br>";
+ }
+ dbClose($db);
+ return (0);
 }
 
 function getDBDateTime() {
@@ -43,9 +43,9 @@ function getDBDateTime() {
   $query = "select datetime('now');";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-        $time = $row[0];
-    }
+  {
+    $time = $row[0];
+  }
   dbClose($db);
   return ($time);
 }
@@ -58,10 +58,10 @@ function dbSelectToArray($query) {
   if ($result == false)
     return (false);
   for ($j = 0 ;$row = $result->fetchArray(); $j++)
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-        $array[$i][$j] = $row[$i];
-    }
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+      $array[$i][$j] = $row[$i];
+  }
   dbClose($db);
   return ($array);
 }
@@ -70,14 +70,14 @@ function dbSearchDisplay($field_searched, $content, $table, $field_wanted) {
   if ($db == FALSE)
     return (0);
   $query = "select \"".$field_wanted."\" from \"".$table."\" where \"".$field_searched
-    ."\" like \"".$content."\";";
+  ."\" like \"".$content."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-        echo $row[$i] . " ";
-      echo "<br>";
-    }
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+      echo $row[$i] . " ";
+    echo "<br>";
+  }
   dbClose($db);
   return (0);
 }
@@ -86,13 +86,13 @@ function dbSearchToArray($field_searched, $content, $table, $field_wanted) {
   if ($db == FALSE)
     return (0);
   $query = "select \"".$field_wanted."\" from \"".$table."\" where \"".$field_searched
-    ."\" like \"".$content."\";";
+  ."\" like \"".$content."\";";
   $result = $db->query($query);
   for ($j = 0; $row = $result->fetchArray(); $j++)
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-        $array[$i][$j] = $row[$i];
-    }
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+      $array[$i][$j] = $row[$i];
+  }
   dbClose($db);
   return ($array);
 }
@@ -101,19 +101,19 @@ function queryQuotes($string)
 {
   $string2 = " ";
   for ($i = 0, $j = 0 ; isset($string[$i]) ; $i++, $j++)
+  {
+    $string2[$j] = $string[$i];
+    if ($string[$i] == "'")
     {
-      $string2[$j] = $string[$i];
-      if ($string[$i] == "'")
-	{
-	  $j++;
-	  $string2[$j] = "'";
-	}
-      else if ($string[$i] == '"')
-        {
-          $j++;
-          $string2[$j] = '"';
-        }
-    }
-  return($string2);
+     $j++;
+     $string2[$j] = "'";
+   }
+   else if ($string[$i] == '"')
+   {
+    $j++;
+    $string2[$j] = '"';
+  }
+}
+return($string2);
 }
 ?>

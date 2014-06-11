@@ -10,10 +10,10 @@ function addVideo($id_user, $id_post, $url) {
   ." values (\"".$id_user."\",\"".$id_post."\",\"".$url."\",datetime('now'));";
   $result = $db->query($query);
   if ($result == FALSE)
-    {
-      dbClose($db);
-      return (FALSE);
-    }
+  {
+    dbClose($db);
+    return (FALSE);
+  }
   dbClose($db);
   return (TRUE);
 }
@@ -26,10 +26,10 @@ function delVideo($id_video) {
   $query = "delete from video where id_video = \"".$id_video."\";";
   $result = $db->query($query);
   if ($result == FALSE)
-    {
-      dbClose($db);
-      return (FALSE);
-    }
+  {
+    dbClose($db);
+    return (FALSE);
+  }
   dbClose($db);
   return (TRUE);
 }
@@ -42,10 +42,10 @@ function getVideoUrl($id_video) {
   $query = "select url from video where id_video = \"".$id_video."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-		$url = $row[$i];
-    }
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+      $url = $row[$i];
+  }
   dbClose($db);
   if ($i > 1)
     return (FALSE);
@@ -60,10 +60,10 @@ function getVideoPosted($id_video) {
   $query = "select posted from video where id_video = \"".$id_video."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-		$posted = $row[$i];
-    }
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+      $posted = $row[$i];
+  }
   dbClose($db);
   if ($i > 1)
     return (FALSE);
@@ -78,10 +78,10 @@ function getVideoID($id_post) {
   $query = "select id_video from video where id_post = \"".$id_post."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-		$id_video= $row[$i];
-    }
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+      $id_video= $row[$i];
+  }
   dbClose($db);
   if ($i > 1)
     return (FALSE);
@@ -96,10 +96,10 @@ function getVideoIDWithUrl($url) {
   $query = "select id_video from video where url = \"".$url."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-		$id_video = $row[$i];
-    }
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+      $id_video = $row[$i];
+  }
   dbClose($db);
   if ($i > 1)
     return (FALSE);
@@ -114,10 +114,10 @@ function  getVideoPostID($id_video) {
   $query = "select id_post from video where id_video = \"".$id_video."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-		$id_post = $row[$i];
-    }
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+      $id_post = $row[$i];
+  }
   dbClose($db);
   if ($i > 1)
     return (FALSE);
@@ -132,10 +132,10 @@ function getVideoUserID($id_video) {
   $query = "select id_user from video where id_video = \"".$id_video."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-		$id_video = $row[$i];
-    }
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+      $id_video = $row[$i];
+  }
   dbClose($db);
   if ($i > 1)
     return (FALSE);

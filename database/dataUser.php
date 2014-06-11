@@ -12,10 +12,10 @@ function SearchUser($search) {
   $query = "select login from user where login like \"".$search."\" limit 1;";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-        $login = $row[$i];
-    }
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+      $login = $row[$i];
+  }
   dbClose($db);
   if ($i == 0)
     return (FALSE);
@@ -32,19 +32,19 @@ function addUser($login, $email, $password) {
   $query = "INSERT INTO user (login, email, password, created, modified, last_connection) values (\"".$login."\",\"".$email."\",\"".md5($password)."\",date('now'),date('now'),date('now'));";
   $result = $db->query($query);
   if ($result == FALSE)
-    {
-      dbClose($db);
-      return (FALSE);
-    }
+  {
+    dbClose($db);
+    return (FALSE);
+  }
   $ID = getUserID($login);
   $ID_groups = getGroupID("user");
   $query = "INSERT INTO belong (id_groups, id_user) values (\"".$ID_groups."\",\"".$ID."\");";
   $result = $db->query($query);
   if ($result == FALSE)
-    {
-      dbClose($db);
-      return (FALSE);
-    }
+  {
+    dbClose($db);
+    return (FALSE);
+  }
   dbClose($db);
   addUserStats(getUserID($login));
   return (TRUE);
@@ -58,19 +58,19 @@ function addAdmin($login, $email, $password) {
   $query = "INSERT INTO user (login, email, password, created, modified, last_connection) values (\"".$login."\",\"".$email."\",\"".md5($password)."\",date('now'),date('now'),date('now'));";
   $result = $db->query($query);
   if ($result == FALSE)
-    {
-      dbClose($db);
-      return (FALSE);
-    }
+  {
+    dbClose($db);
+    return (FALSE);
+  }
   $ID = getUserID($login);
   $ID_groups = getGroupID("admin");
   $query = "INSERT INTO belong (id_groups, id_user) values (\"".$ID_groups."\",\"".$ID."\");";
   $result = $db->query($query);
   if ($result == FALSE)
-    {
-      dbClose($db);
-      return (FALSE);
-    }
+  {
+    dbClose($db);
+    return (FALSE);
+  }
   dbClose($db);
   addUserStats(getUserID($login));
   return (TRUE);
@@ -83,14 +83,14 @@ function getUserID($login) {
   $query = "select id_user from user where login like \"".$login."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-       $ID = $row[$i];
-    }
-  dbClose($db);
-  if ($i > 1)
-    return (FALSE);
-  return ($ID);
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+     $ID = $row[$i];
+ }
+ dbClose($db);
+ if ($i > 1)
+  return (FALSE);
+return ($ID);
 }
 //Recupère un ID d'un utliisateur à partir de son ID, wait what ? Cette fonction n'est pas de moi.
 function getIDuser($id_user) {
@@ -100,14 +100,14 @@ function getIDuser($id_user) {
   $query = "select login from user where id_user like \"".$id_user."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-       $ID = $row[$i];
-    }
-  dbClose($db);
-  if ($i > 1)
-    return (FALSE);
-  return ($ID);
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+     $ID = $row[$i];
+ }
+ dbClose($db);
+ if ($i > 1)
+  return (FALSE);
+return ($ID);
 }
 
 //Récupère l'ID d'un utilisateur à partir de son email
@@ -118,14 +118,14 @@ function getUserIDWithMail($email) {
   $query = "select id_user from user where email like \"".$email."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-	$ID = $row[$i];
-    }
-  dbClose($db);
-  if ($i > 1)
-    return (FALSE);
-  return ($ID);
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+     $ID = $row[$i];
+ }
+ dbClose($db);
+ if ($i > 1)
+  return (FALSE);
+return ($ID);
 }
 //Recupère n'importe quel info de l'utilisateur à partir de son ID
 function getUserInfo($field, $ID) {
@@ -135,14 +135,14 @@ function getUserInfo($field, $ID) {
   $query = "select \"".$field."\" from user where id_user like \"".$ID."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-	$info = $row[$i];
-    }
-  dbClose($db);
-  if ($i > 1)
-    return (FALSE);
-  return ($info);
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+     $info = $row[$i];
+ }
+ dbClose($db);
+ if ($i > 1)
+  return (FALSE);
+return ($info);
 }
 //Renvoie un tableau contenant la liste des utilisateurs
 function getUserList() {
@@ -152,9 +152,9 @@ function getUserList() {
   $query = "select login from user;";
   $result = $db->query($query);
   for ($i = 0 ;$row = $result->fetchArray(); $i++)
-    {
-        $array[$i] = $row[0];
-    }
+  {
+    $array[$i] = $row[0];
+  }
   dbClose($db);
   return ($array);
 }
@@ -166,31 +166,31 @@ function delUser($id) {
   $query = "delete from user where id_user = \"".$id."\";";
   $result = $db->query($query);
   if ($result == FALSE)
-    {
-      dbClose($db);
-      return (FALSE);
-    }
+  {
+    dbClose($db);
+    return (FALSE);
+  }
   $query = "delete from groups where id_user = \"".$id."\";";
   $result = $db->query($query);
   if ($result == FALSE)
-    {
-      dbClose($db);
-      return (FALSE);
-    }
+  {
+    dbClose($db);
+    return (FALSE);
+  }
   $query = "delete from belong where id_user = \"".$id."\";";
   $result = $db->query($query);
   if ($result == FALSE)
-    {
-      dbClose($db);
-      return (FALSE);
-    }
+  {
+    dbClose($db);
+    return (FALSE);
+  }
   $query = "delete from subscriber where id_user = \"".$id."\" or id_subscriber = \"".$id."\";";
   $result = $db->query($query);
   if ($result == FALSE)
-    {
-      dbClose($db);
-      return (FALSE);
-    }
+  {
+    dbClose($db);
+    return (FALSE);
+  }
   dbClose($db);
   return (TRUE);
 }
@@ -203,14 +203,14 @@ function isUsernameExist($login){
   $query = "select id_user from user where login like \"".$login."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-	$ID = $row[$i];
-    }
-  dbClose($db);
-  if ($i > 0)
-    return (TRUE);
-  return (FALSE);
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+     $ID = $row[$i];
+ }
+ dbClose($db);
+ if ($i > 0)
+  return (TRUE);
+return (FALSE);
 }
 //Teste si un email est dans la base
 function isEmailExist($email){
@@ -221,10 +221,10 @@ function isEmailExist($email){
   $query = "select id_user from user where email like \"".$email."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-        $ID = $row[$i];
-    }
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+      $ID = $row[$i];
+  }
   dbClose($db);
   if ($i > 0)
     return (TRUE);
@@ -239,17 +239,17 @@ function userConnect($login, $password){
   $query = "select id_user from user where id_user = \"".$id."\" and password = \"".md5($password)."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-        $ID = $row[$i];
-    }
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+      $ID = $row[$i];
+  }
   if ($i > 0)
-    {
-      $query = "update user set last_connection = date('now') where id_user = \"".$id."\";";
-      $result = $db->query($query);
-      dbClose($db);
-      return (TRUE);
-    }
+  {
+    $query = "update user set last_connection = date('now') where id_user = \"".$id."\";";
+    $result = $db->query($query);
+    dbClose($db);
+    return (TRUE);
+  }
   dbClose($db);
   return (FALSE);
 }
@@ -261,10 +261,10 @@ function setUserField($id, $field, $newContent){
   $query = "update user set \"".$field."\"=\"".$newContent."\" where id_user = \"".$id."\";";
   $result = $db->query($query);
   if ($result == FALSE)
-    {
-      dbClose($db);
-      return (FALSE);
-    }
+  {
+    dbClose($db);
+    return (FALSE);
+  }
   $query = "update user set modified = date('now') where id_user = \"".$id."\";";
   $result = $db->query($query);
   dbClose($db);
@@ -280,10 +280,10 @@ function isUserAdmin($id){
   $query = "select id_user from belong where id_groups = \"".$id_groups."\" and id_user = \"".$id."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-        $ID = $row[$i];
-    }
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+      $ID = $row[$i];
+  }
   dbClose($db);
   if ($i > 0)
     return (TRUE);

@@ -9,10 +9,10 @@ function addPicture($id_user, $id_post, $path) {
   ." values (\"".$id_user."\",\"".$id_post."\",\"".$path."\",date('now'));";
   $result = $db->query($query);
   if ($result == FALSE)
-    {
-      dbClose($db);
-      return (FALSE);
-    }
+  {
+    dbClose($db);
+    return (FALSE);
+  }
   dbClose($db);
   return (TRUE);
 }
@@ -25,10 +25,10 @@ function delPicture($id_picture) {
   $query = "delete from picture where id_picture = \"".$id_picture."\";";
   $result = $db->query($query);
   if ($result == FALSE)
-    {
-      dbClose($db);
-      return (FALSE);
-    }
+  {
+    dbClose($db);
+    return (FALSE);
+  }
   dbClose($db);
   return (TRUE);
 }
@@ -41,10 +41,10 @@ function getPicturePath($id_picture) {
   $query = "select path from picture where id_picture = \"".$id_picture."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-		$path = $row[$i];
-    }
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+      $path = $row[$i];
+  }
   dbClose($db);
   if ($i > 1)
     return (FALSE);
@@ -59,10 +59,10 @@ function getPicturePosted($id_picture) {
   $query = "select posted from picture where id_picture = \"".$id_picture."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-		$posted = $row[$i];
-    }
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+      $posted = $row[$i];
+  }
   dbClose($db);
   if ($i > 1)
     return (FALSE);
@@ -77,10 +77,10 @@ function getPictureIDWithPath($path) {
   $query = "select id_picture from picture where path = \"".$path."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-		$id_picture = $row[$i];
-    }
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+      $id_picture = $row[$i];
+  }
   dbClose($db);
   if ($i > 1)
     return (FALSE);
@@ -95,10 +95,10 @@ function getPictureID($id_post) {
   $query = "select id_picture from picture where id_post = \"".$id_post."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-		$id_picture = $row[$i];
-    }
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+      $id_picture = $row[$i];
+  }
   dbClose($db);
   if ($i > 1)
     return (FALSE);
@@ -113,10 +113,10 @@ function getPicturePostID($id_picture) {
   $query = "select id_post from picture where id_picture = \"".$id_picture."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-		$id_post = $row[$i];
-    }
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+      $id_post = $row[$i];
+  }
   dbClose($db);
   if ($i > 1)
     return (FALSE);
@@ -131,10 +131,10 @@ function getPictureUserID($id_picture) {
   $query = "select id_user from picture where id_picture = \"".$id_picture."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-		$id_user = $row[$i];
-    }
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+      $id_user = $row[$i];
+  }
   dbClose($db);
   if ($i > 1)
     return (FALSE);

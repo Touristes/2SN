@@ -7,18 +7,18 @@
 }
 
 body {
-background-image: url(../Images/background.bmp); 
-	margin: auto;
-	text-align: center;
-	-webkit-background-size: cover; /* pour Chrome et Safari */
-	-moz-background-size: cover; /* pour Firefox */
-	-o-background-size: cover; /* pour Opera */
-	background-size: cover; /* version standardisée */
-	;
-	font-family: "MaSuperPolice";
-	/* [disabled]padding-left: 30px; */
-	/* [disabled]padding-right: 30px; */
-	display:block;
+  background-image: url(../Images/background.bmp); 
+  margin: auto;
+  text-align: center;
+  -webkit-background-size: cover; /* pour Chrome et Safari */
+  -moz-background-size: cover; /* pour Firefox */
+  -o-background-size: cover; /* pour Opera */
+  background-size: cover; /* version standardisée */
+  ;
+  font-family: "MaSuperPolice";
+  /* [disabled]padding-left: 30px; */
+  /* [disabled]padding-right: 30px; */
+  display:block;
 }
 
 #cadrage {

@@ -23,14 +23,14 @@ function getRepoID($name){
   $query = "select id_repository from repository where name like \"".$name."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-       $ID = $row[$i];
-    }
-  dbClose($db);
-  if ($i > 1)
-    return (FALSE);
-  return ($ID);
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+     $ID = $row[$i];
+ }
+ dbClose($db);
+ if ($i > 1)
+  return (FALSE);
+return ($ID);
 }
 
 function ListRepo($iduser){
@@ -40,14 +40,14 @@ function ListRepo($iduser){
   $query = "select name from repository where id_user like \"".$iduser."\";";
   $result = $db->query($query);
   while ($row = $result->fetchArray())
-    {
-      for ($i = 0; isset($row[$i]); $i++)
-       $ID = $row[$i];
-    }
-  dbClose($db);
-  if ($i > 1)
-    return (FALSE);
-  return ($ID);
+  {
+    for ($i = 0; isset($row[$i]); $i++)
+     $ID = $row[$i];
+ }
+ dbClose($db);
+ if ($i > 1)
+  return (FALSE);
+return ($ID);
 }
 
 ?>

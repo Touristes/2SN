@@ -2,26 +2,26 @@
 /* CSS Document */
 
 @font-face {
-    font-family: 'MaSuperPolice';
-    src:url('MyriadPro-Light.otf');
+	font-family: 'MaSuperPolice';
+	src:url('MyriadPro-Light.otf');
 }
 
 #green {
-  color:#84dc84;
+	color:#84dc84;
 }
 
 #blue {
-  color:#69D2E7;
+	color:#69D2E7;
 }
 
 #orange {
-  color:#F38630;
+	color:#F38630;
 }
 
 #white {
-  color:#E0E4CC;
+	color:#E0E4CC;
 }
 
 #purple {
-  color:#bf7fbf;
+	color:#bf7fbf;
 }

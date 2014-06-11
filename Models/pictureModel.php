@@ -14,7 +14,7 @@ function addFileToServeur() {
 			return(false);
 		}
 	}
-       	return (true);
+	return (true);
 }
 
 //efface le fichier du serveur

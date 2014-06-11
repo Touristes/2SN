@@ -75,5 +75,6 @@
 		<a href='accueil.php'><span id="b-right">Accueil</span></a>
 	</div>
 
+
 </body>
 </html>

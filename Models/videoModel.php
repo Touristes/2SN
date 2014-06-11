@@ -4,7 +4,7 @@ require_once "Controllers/frontControler.php";
 function isPostContainVideoLink($id_post) {
 	if (($links = getLinks($id_post)) == false)
 		return (false);
-	  if (($links = videoSupportedSites($links)) == false)
+	if (($links = videoSupportedSites($links)) == false)
 		return (false);
 	return ($links);
 }
@@ -15,13 +15,13 @@ function isPostContainVideoLinkViaContent($content) {
 		return (false);
 	$links = videoSupportedSites($links);
 	if ($links == false)
-	  	return (false);;
+		return (false);;
 	return ($links);
 }
 
 //Récupères tous les liens d'un post
 function getLinks($id_post) {
-  $tab = showPost($id_post);
+	$tab = showPost($id_post);
 	$content = $tab[3][0];
 	if (preg_match_all("|(http.*)|u", $content, $links)) {
 		return ($links[0]);
@@ -32,7 +32,7 @@ function getLinks($id_post) {
 
 //Récupères tous les liens d'un post
 function getLinksViaContent($content) {
-  if (preg_match_all("|(http.*)|u", $content, $links)) {
+	if (preg_match_all("|(http.*)|u", $content, $links)) {
 		return ($links[0]);
 	}
 	else
