@@ -21,7 +21,7 @@ if (isset($_POST['login']))
  {
   echo '<script language="Javascript">
   alert ("Login ou mot de passe inconnus !" )
-  window.location.replace("http://localhost:8888/reinitPassword.php")
+  window.location.replace("./reinitPassword.php")
   </script>';
   $_SESSION['fail'] = 1;
 }
