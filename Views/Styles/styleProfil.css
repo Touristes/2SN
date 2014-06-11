@@ -23,23 +23,24 @@
     font-size:large;
   }
   #formUserMod button {
-   width : 100px;
-   height : 50px;
-   position : absolute;
-   left: 105px;
-   top: 232px;
- }
- #formUserMod input {
-  width : 300px;
-  margin-left:+2%;
-}
-#formUserMod #but1 {}
-#formUserMod #but2{
-  top: 288px;
-}
-#formUserMod #but3{
-  top: 344px;
-}
-#hide {
-  display:block;
-}
+    background-color: #84dc84;
+    width : 100px;
+    height : 50px;
+    position : absolute;
+    left: 105px;
+    top: 232px;
+  }
+  #formUserMod input {
+    width : 300px;
+    margin-left:+2%;
+  }
+  #formUserMod #but1 {}
+  #formUserMod #but2{
+    top: 288px;
+  }
+  #formUserMod #but3{
+    top: 344px;
+  }
+  #hide {
+    display:block;
+  }
