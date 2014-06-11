@@ -7,7 +7,7 @@ if (isset($_POST['newMessage'])) {
   }
   else
     echo "<input id=\"receiver\"type=text placeholder=\"login du destinataire\" name=messageReceiverLogin  required />";
-  echo "<br><textarea id=\"content\"placeholder=\"Contenu de votre message\" name=messageContent cols=\"40\" rows=\"5\" required></textarea>"
+  echo "<br><textarea id=\"content\"placeholder=\"Contenu de ton message\" name=messageContent cols=\"40\" rows=\"5\" required></textarea>"
     . "<br><button type=\"submit\" value =\"newMessageSend\" name=\"newMessageSend\">Envoyer</button>"
     . "</form>";
 }
@@ -15,7 +15,7 @@ if (isset($_POST['newMessage'])) {
 else if (isset($_POST['receptionBox'])) {
   $messageList = getMessageReceptionList($id);
   if ($messageList[0] == "")
-    echo "<br>Votre boîte de reception est vide";
+    echo "<br>Ta boîte de réception est vide !";
   echo "<ul id=\"messageList\">";
   for ($i = 0; isset($messageList[$i]); $i++)
     {
@@ -30,7 +30,7 @@ else if (isset($_POST['receptionBox'])) {
 else if (isset($_POST['sendBox'])) {
   $messageList = getMessageSendList($id);
   if ($messageList[0] == "")
-    echo "<br>Votre boîte d'envoi est vide";
+    echo "<br>Ta boîte d'envoi est vide !";
   echo "<ul id=\"messageList\">";
   for ($i = 0; isset($messageList[$i]); $i++)
     {
@@ -49,7 +49,7 @@ else if (isset($_POST['newMessageSend']))
     }
     else {
       addMessage($_POST['messageContent'], $id, getUserID($_POST['messageReceiverLogin']));
-      echo "<br> Votre message a bien été envoyé.";
+      echo "<br> Ton message a bien été envoyé.";
     }
   }
 //Contenu du message
@@ -64,11 +64,11 @@ else if (isset($_POST['Message']))
     if ($id == $id_sender)
       echo "<button id=\"response\" type=\"submit\" value =\"".getUserInfo("login",$id_receiver)."\" name=\"newMessage\">Relancer</button>";
     else if ($id == $id_receiver)
-      echo "<button id=\"response\" type=\"submit\" value =\"".getUserInfo("login",$id_sender)."\" name=\"newMessage\">Repondre</button>";
+      echo "<button id=\"response\" type=\"submit\" value =\"".getUserInfo("login",$id_sender)."\" name=\"newMessage\">Répondre</button>";
     echo "</form>";
     echo "<div id=\"messageContent\">";
     if ($id == $id_sender)
-      echo "<br><small>Message envoyé a ".profilLinkForm(getUserInfo("login", $id_receiver))."</small>";
+      echo "<br><small>Message envoyé à ".profilLinkForm(getUserInfo("login", $id_receiver))."</small>";
     else if ($id == $id_receiver)
       echo "<br><small>Message reçu par ".profilLinkForm(getUserInfo("login", $id_receiver))."</small>";
     echo "<br><div id=\"messageText\">" . getMessageContent($id_message) ."</div>";
@@ -80,15 +80,15 @@ else if (isset($_POST['delMessage']))
   {
     $id_message = $_POST['delMessage'];
     if (delMessage($id_message))
-      echo "<br>Votre message a bien été effacé.";
+      echo "<br>Ton message a bien été effacé !";
     else
-      echo "<br>Le message que vous tentez d'effacer n'existe pas.";
+      echo "<br>Le message que tu tentes d'effacer n'existe pas.";
   }
 //Affichage de la boite de reception par défaut
 else {
   $messageList = getMessageReceptionList($id);
   if ($messageList[0] == "")
-    echo "<br>Votre boîte de réception est vide";
+    echo "<br>Ta boîte de réception est vide !";
   echo "<ul id=\"messageList\">";
   for ($i = 0; isset($messageList[$i]); $i++)
     {
