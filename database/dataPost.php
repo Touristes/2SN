@@ -155,7 +155,7 @@ function getPostsByCategoryAndUser($name, $id_user) {
   }
   else
   {
-    $query = "SELECT * FROM post WHERE id_user = \"".$id_user."\" and id_category = \"".$id_category."\" order by created desc, id_post desc;";
+    $query = "SELECT * FROM post WHERE id_user = \"".$id_user."\" and id_category = \"".$id_category."\" order by created, id_post desc;";
     $result = dbSelectToArray($query);
     if ($result == false)
     {
@@ -169,34 +169,6 @@ function getPostsByCategoryAndUser($name, $id_user) {
     }
   }
 }
-
-//affiche les posts par catégorie et par dont l'utilisateur s'est abonné
-function getPostsByCategoryAndSubscriptions($name, $id_user) {
-  $id_category = getCategoryID($name);
-  $db = dbConnect();
-  if ($db == 0)
-  {
-    dbClose($db);
-    return("[ERR DBCONECT]");
-  }
-  else
-  {
-    $query = "SELECT a.*, b.id_user from subscriber b, posts a where b.id_subscriber = \"".$id_user
-		."\" and b.id_subscriber = a.id_user and a.id_category = \"".$id_category."\" order by a.created desc, a.id_post desc;";
-    $result = dbSelectToArray($query);
-    if ($result == false)
-    {
-      dbClose($db);
-      return("[ERR DBQUERY]");
-    }
-    else
-    {
-      dbClose($db);
-      return($result);
-    }
-  }
-}
-
 //renvoie true ou si le post appartient à la catégorie name
 function isPostByCategory($name, $id_post) {
   $id_category = getCategoryID($name);
@@ -228,7 +200,7 @@ function showPostByUser($id)
   }
   else
   {
-    $query = "SELECT * FROM post WHERE id_user = \"".$id."\" order by created desc, id_post desc;";
+    $query = "SELECT * FROM post WHERE id_user = \"".$id."\" order by created, id_post desc;";
     $result = dbSelectToArray($query);
     if ($result == 0)
     {
@@ -296,36 +268,31 @@ function dailyNews()
 }
 
 //Fonction de verification de vote
-function verPost($id_user, $id_post)
+function verPost($id_post, $id_user)
 {
   $db = dbConnect();
-  $query = "SELECT id_user FROM vote WHERE id_post = '".$id_post."';";
-  $result = $db->query($query);
-  while($row = $result->fetchArray())
-   var_dump($row);
- dbClose($db);
- return(true);
+  $query = "SELECT * FROM vote WHERE id_post = '".$id_post."' AND id_user = '".$id_user."';";
+  $result = $db->query($query)->fetchArray();;
+  if($result == false)
+	{
+	  dbClose($db);
+	  return(true);
+	}
+  dbClose($db);
+  return(false);
 }
 
 //Fonction de vote
 function vote($vote, $id_user, $id_post)
 {
-  echo "je suis arrive";
   $db = dbConnect();
-  $query = "SELECT vote FROM post WHERE id_post='".$id_post."';";
-  $old_vote = dbQuery($query);
-  var_dump($old_vote);
-  echo "\n";
-  $vote += $old_vote;
-  $query2 = "UPDATE post SET vote='".$vote."' WHERE id_post='".$id_post."';";
-  $test = dbQuery($query2);
-  echo "et encore la";
-  var_dump($test);
-  echo $id_user;
-  echo $id_post;
+  $query = "SELECT points FROM post WHERE id_post=".$id_post.";";
+  $old_vote = $db->query($query)->fetchArray();
+  $vote += $old_vote["points"];
+  $query2 = "UPDATE post SET points='".$vote."' WHERE id_post='".$id_post."';";
+  $test = $db->query($query2)->fetchArray();
   $query3 = "INSERT INTO vote (id_user,id_post) VALUES ('".$id_user."', '".$id_post."');";
-  $result = dbQuery($query3);
-  var_dump($result);
+  $result = $db->query($query3)->fetcArray();
   return ($result);
 }
 
