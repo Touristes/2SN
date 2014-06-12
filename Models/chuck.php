@@ -25,7 +25,7 @@ isItCharlieSheen($id_user);
 function isItChuckAccount($id_user) {
 	$name = strtolower(getUserInfo("name", $id_user));
 	$firstName = strtolower(getUserInfo("firstname", $id_user));
-	if ($name == "norris" && $firstname == "chuck")
+	if ($name == "norris" && $firstName == "chuck")
 		changeBackgroundToChuck();
 	else
 		return (false);
