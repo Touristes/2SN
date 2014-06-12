@@ -169,6 +169,35 @@ function getPostsByCategoryAndUser($name, $id_user) {
     }
   }
 }
+
+//affiche les posts par catégorie et par dont l'utilisateur s'est abonné
+
+function getPostsByCategoryAndSubscriptions($name, $id_user) {
+  $id_category = getCategoryID($name);
+  $db = dbConnect();
+  if ($db == 0)
+  {
+    dbClose($db);
+    return("[ERR DBCONECT]");
+  }
+  else
+  {
+    $query = "SELECT a.*, b.id_user from subscriber b, post a where b.id_subscriber = \"".$id_user
+		."\" and b.id_subscriber = a.id_user and a.id_category = \"".$id_category."\" order by a.created desc, a.id_post desc;";
+    $result = dbSelectToArray($query);
+    if ($result == false)
+    {
+      dbClose($db);
+      return("[ERR DBQUERY]");
+    }
+    else
+    {
+      dbClose($db);
+      return($result);
+    }
+  }
+}
+
 //renvoie true ou si le post appartient à la catégorie name
 function isPostByCategory($name, $id_post) {
   $id_category = getCategoryID($name);
