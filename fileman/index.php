@@ -12,7 +12,7 @@ $login = $_SESSION['login'];
 <html>
 <head>
 	<meta charset="utf-8"/>
-	<title>Why - fileman</title>
+	<title>[Why] - Partage de fichiers</title>
 	<!-- Bootstrap -->
 	<link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet" />
 	<script src="assets/bootstrap/js/bootstrap.js"></script>
@@ -52,7 +52,7 @@ $login = $_SESSION['login'];
 					<label class="sr-only" for="">Répertoire</label>
 					<input id="rep_name" type="text" class="form-control" placeholder="Default">
 					<a id="btn-create-rep">Création de répertoire</a>
-					
+
 				</div>
 				<div class="form-group col-md-2" id="select-rep"></div>
 				<div class="col-md-3">
@@ -90,7 +90,7 @@ $login = $_SESSION['login'];
 						<a href='../cgu.php'><span id="b-right">CGU</span></a>
 					</div>
 				</div>
-				
+
 				<!-- JavaScript Includes -->
 				<script src="assets/js/jquery.1.9.1.min.js"></script> 
 				<script src="assets/js/jquery.knob.js"></script>
@@ -99,7 +99,7 @@ $login = $_SESSION['login'];
 				<script src="assets/js/jquery.ui.widget.js"></script>
 				<script src="assets/js/jquery.iframe-transport.js"></script>
 				<script src="assets/js/jquery.fileupload.js"></script>
-				
+
 				<!-- Our main JS file -->
 				<script src="assets/js/my_script.js"></script>
 				<script src="assets/js/script.js"></script>
