@@ -13,7 +13,6 @@ function affVoteForm($id_post, $id_user) {
   <br><button type=\"submit\" name=\"bad\" disabled=\"true\" ><img src=\"./Views/Images/Icons/badArrow.png\"></button></form>";
 }
 
-
 //Affichage des Posts images
 function affPostImages($all) {
 if ($all == 0)
@@ -31,6 +30,7 @@ for ($i = 0; isset($post[1][$i]); $i++)
       //echo "Tags : ".$post[5][$i]."<br>";
       echo "<small>Publie le ".$post[7][$i]."</small><br>";
       echo profilLinkForm(getUserInfo("login", $post[2][$i]))."<br>";
+	  affPostPoints($post[0][$i]);
       if (isChuckInThere($post[3][$i]))
         affChuck();
       else if ($post[6][$i] == 1)
@@ -59,6 +59,7 @@ if ($post != false)
         //echo "Tags : ".$post[5][$i]."<br>";                                                                                                                                                         
         echo "<small>Publie le ".$post[7][$i]."</small><br>";
         echo profilLinkForm(getUserInfo("login", $post[2][$i]))."<br>";                                                                                                                               
+		affPostPoints($post[0][$i]);
         if (isChuckInThere($post[3][$i]))
           affChuck();
         else if ($post[6][$i] == 1)
@@ -84,6 +85,7 @@ for ($i = 0; isset($post[1][$i]); $i++)
     //echo "Tags : ".$post[5][$i]."<br>";                                                                                                                                                             
     echo "<small>Publie le ".$post[7][$i]."</small><br>";
     echo profilLinkForm(getUserInfo("login", $post[2][$i]))."<br>";
+	affPostPoints($post[0][$i]);
     if (isChuckInThere($post[3][$i]))
       affChuck();
     else if ($post[6][$i] == 1)

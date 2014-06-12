@@ -325,4 +325,14 @@ function vote($vote, $id_user, $id_post)
   return ($result);
 }
 
+//Fonction affichage des points
+function affPostPoints($id_post)
+{
+  $db = dbConnect();
+  $query = "SELECT points FROM post WHERE id_post=".$id_post.";";
+  $result = $db->query($query)->fetchArray();
+  echo "Nombre de points: ";
+  echo $result["points"];
+}
 ?>
+
