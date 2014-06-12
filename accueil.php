@@ -13,7 +13,10 @@ else if ($_SESSION['check'] != "1")
 {
 	echo "<script type=\"text/javascript\">alert(\"Acces interdit !!\");location =\"co.php\"</script>";
 }
-
+else if (isUsernameExist($_SESSION['login']) == false)
+  {
+    echo "<script type=\"text/javascript\">alert(\"Acces interdit !!\");location =\"co.php\"</script>";
+  }
 ?>
 <!doctype html>
 <html>
@@ -45,7 +48,7 @@ position: relative;
 margin-top: -10%;
 max-width: 100%;
 height: auto;
-}                                                                                                                                                                                          
+}
 
 img.chuck {
 max-width: 30%;
@@ -115,25 +118,25 @@ margin-top: -20%;
 <div id="sidebarl">
 <?php 
 	if (isset($_POST['all']))
-		$all = 1;
-	else
 		$all = 0;
+	else
+		$all = 1;
 ?>
-<form method="POST" action="acceuil.php"><input type="checkbox" name="all" onClik="this.form.submit();" />Afficher tous les posts</form>
+<form method="POST" action="accueil.php"><input type="checkbox" name="all" onClick="this.form.submit();" />Afficher tous les posts</form>
 	<?php
 //Affichage des Posts images
 	affPostImages($all);
 	?>
 </div>
 <div id="gen">
-<form method="POST" action="acceuil.php"><input type="checkbox" name="all" onClik="this.form.submit();" />Afficher tous les posts</form>
+<form method="POST" action="accueil.php"><input type="checkbox" name="all" onClick="this.form.submit();" />Afficher tous les posts</form>
 	<?php
     //Affichage des Posts Texte
 	affPostText($all);
 	?>
 </div>
 <div id="sidebarr">
-<form method="POST" action="acceuil.php"><input type="checkbox" name="all" onClik="this.form.submit();" />Afficher tous les posts</form>
+<form method="POST" action="accueil.php"><input type="checkbox" name="all" onClick="this.form.submit();" />Afficher tous les posts</form>
 	<?php
   //Affichage des Posts Video
 	affPostVideo($all);
