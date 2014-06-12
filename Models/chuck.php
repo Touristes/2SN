@@ -12,6 +12,16 @@ function affChuck() {
 	echo "<img class=\"chuck\" src=\"Views/Images/Others/chuck_no.png\" />";
 }
 
+
+function isIt($id_user) {
+isItChuckAccount($id_user);
+isItSparta($id_user);
+isItSouthPark($id_user);
+isItStarWars($id_user);
+isItSimpsons($id_user);
+isItCharlieSheen($id_user);
+}
+
 function isItChuckAccount($id_user) {
 	$name = strtolower(getUserInfo("name", $id_user));
 	$firstName = strtolower(getUserInfo("firstname", $id_user));
