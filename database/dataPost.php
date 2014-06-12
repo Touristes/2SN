@@ -182,7 +182,7 @@ function getPostsByCategoryAndSubscriptions($name, $id_user) {
   }
   else
   {
-    $query = "SELECT disctinct post.* from subscriber, post where subscriber.id_subscriber = \"".$id_user
+    $query = "SELECT distinct post.* from subscriber, post where subscriber.id_subscriber = \"".$id_user
 		."\" and subscriber.id_user = post.id_user and post.id_category = \"".$id_category."\" order by post.created desc, post.id_post desc;";
     $result = dbSelectToArray($query);
     if ($result == false)
