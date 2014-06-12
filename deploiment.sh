@@ -14,11 +14,11 @@ apt-get upgrade
 apt-get install $pkgs -y
 
 mkdir /home/backup
-mkdri /home/why
+mkdir /home/why
 chown -R www-data:www-data /home/why
 chown -R www-data:www-data /home/backup
 
-cat <<EOF > /etc/apache2/sites-avaible
+cat <<EOF > /etc/apache2/sites-available/default
 <VirtualHost *:80>
 ServerAdmin webmaster@localhost
 
@@ -59,4 +59,6 @@ EOF
 git clone https://github.com/Touristes/2SN.git /home/why/
 
 chown -R www-data:www-data /home/why
-chmod -R 400 /home/why
+chmod -R 754 /home/why
+
+/etc/init.d/apache2 restart
