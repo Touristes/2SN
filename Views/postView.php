@@ -3,7 +3,7 @@
 function affVoteForm($id_post, $id_user) {
   if (verPost($id_post, $id_user) == true)
     echo "<form id=\"formVotes\" name=\"formVotes\" method=\"POST\" action=\"../Controllers/voteController.php\">
-  <button type=\"submit\" name=\"good\"><img src=\"./Views/Images/Icons/goodArrow.png\"></button>
+  <button type=\"submit\" name=\"good\" value=1><img src=\"./Views/Images/Icons/goodArrow.png\"></button>
   <input type=\"hidden\" name=post value=\"".$id_post."\">
   <input type=\"hidden\" name=user value=\"".$id_user."\">
   <br><button type=\"submit\" name=\"bad\"><img src=\"./Views/Images/Icons/badArrow.png\"></button></form>";
@@ -24,7 +24,7 @@ if ($post != false)
 for ($i = 0; isset($post[1][$i]); $i++)
   {
       echo "<div class=\"posts\"><b>".$post[1][$i]."</b><br>";
-      affVoteForm($id_post, $id_user);
+      affVoteForm($post[0][$i], $_SESSION["login"]);
       controlerPictureDisplay($post[0][$i]);
       echo "<br>";
       echo "<br><br><div class=\"content\">".$post[3][$i]."</div><br>";
@@ -52,7 +52,7 @@ if ($post != false)
   for ($i = 0; isset($post[1][$i]); $i++)
     {
         echo "<div class=\"posts\"><b>".$post[1][$i]."</b><br>";
-        affVoteForm($id_post, $id_user);
+        affVoteForm($post[0][$i], $_SESSION["login"]);
         affVideo($post[0][$i]);
         echo "<br>";
         echo "<br><br><div class=\"content\">".$post[3][$i]."</div><br>";
@@ -79,7 +79,7 @@ if ($post != false)
 for ($i = 0; isset($post[1][$i]); $i++)
   {
     echo "<div class=\"posts\"><b>".$post[1][$i]."</b><br>";
-    affVoteForm($id_post, $id_user);
+    affVoteForm($post[0][$i], $_SESSION["login"]);
     echo "<div class=\"content\">".$post[3][$i]."</div><br>";
     //echo "Tags : ".$post[5][$i]."<br>";                                                                                                                                                             
     echo "<small>Publie le ".$post[7][$i]."</small><br>";
