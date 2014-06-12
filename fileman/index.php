@@ -40,7 +40,7 @@ include "../Resources/sessionInit.php";
 				<li><a href='../../messages.php'><span>Messages</span></a></li> 
 				<li><a href='../../profil.php'><span>Mon Profil</span></a></li>
 				<li><a href='../../abo.php'><span>Abonnements</span></a></li>
-				<li><a class='active' href='index.php'><span>Fileman</span></a></li>
+				<li><a class='active' href='index.php'><span>Mon Partage</span></a></li>
 				<li class='last'><a href='../Resources/deconnect.php'><span>Déconnexion</span></a></li>
 				<li><span id="login"><?php echo $login;?></span></li>
 			</ul>
@@ -52,14 +52,14 @@ include "../Resources/sessionInit.php";
 			<input id="login-name" type="hidden" class="hidden" value="<?php echo $login;?>"></input>
   			<label class="sr-only" for="">Repertoire</label>
     		<input id="rep_name" type="text" class="form-control" placeholder="Default">
-    		<a id="btn-create-rep">Creation repertoire</a>
+    		<a id="btn-create-rep">Création de répertoire</a>
     		
   		</div>
   		<div class="form-group col-md-2" id="select-rep"></div>
   		<div class="col-md-3">
 			<form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
 					<div id="drop">
-						Glisse tes fichiers
+						Glisses tes fichiers
 						<a id="btn-browse" >Parcourir</a>
 						<input type="file" name="upl" id="upl" multiple />
 					</div>
@@ -73,14 +73,14 @@ include "../Resources/sessionInit.php";
 	</div>
 	<div class="row">
 			<div class="col-md-3">
-				<h4>Mes fichiers uploadé</h4>
+				<h4>Mes fichiers uploadés</h4>
 				<div class="row" id="allfile"></div>
 			</div>
 			<div class="col-md-4">
-				<h4>Tes repertoire partagé avec tes amis</h4>
-				<div class="row" id="sharedfile">jjdjdhjg</div>
+				<h4>Mes répertoires en partage</h4>
+				<div class="row" id="sharedfile">test</div>
 			</div>
-			<div id="downloadedfile" class="col-md-3">fichier partagé par tes amis</div>
+			<div id="downloadedfile" class="col-md-3">Répertoires en partage avec moi</div>
 	</div>
 	<div class="row" id="cadrage-f">
 		<div id="footer">
