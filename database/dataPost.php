@@ -321,8 +321,7 @@ function vote($vote, $id_user, $id_post)
   $query2 = "UPDATE post SET points='".$vote."' WHERE id_post='".$id_post."';";
   $test = $db->query($query2)->fetchArray();
   $query3 = "INSERT INTO vote (id_user,id_post) VALUES ('".$id_user."', '".$id_post."');";
-  $result = $db->query($query3)->fetcArray();
-  return ($result);
+  $db->query($query3);
 }
 
 //Fonction affichage des points
