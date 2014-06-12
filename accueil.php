@@ -112,23 +112,31 @@ margin-top: -20%;
 	<button type="submit">Post !</button>
 </form>
 </div>
-
 <div id="sidebarl">
+<?php 
+	if (isset($_POST['all']))
+		$all = 1;
+	else
+		$all = 0;
+?>
+<form method="POST" id="form" action="acceuil.php"><input type="checkbox" id="all" name="all" onClik="this.form.submit();" />Afficher tous les posts</form>
 	<?php
 //Affichage des Posts images
-	affPostImages();
+	affPostImages($all);
 	?>
 </div>
 <div id="gen">
+<form method="POST" id="form" action="acceuil.php"><input type="checkbox" id="all" name="all" onClik="this.form.submit();" />Afficher tous les posts</form>
 	<?php
     //Affichage des Posts Texte
-	affPostText();
+	affPostText($all);
 	?>
 </div>
 <div id="sidebarr">
+<form method="POST" id="form" action="acceuil.php"><input type="checkbox" id="all" name="all" onClik="this.form.submit();" />Afficher tous les posts</form>
 	<?php
   //Affichage des Posts Video
-	affPostVideo();
+	affPostVideo($all);
 	?>
 </div>
 </div>

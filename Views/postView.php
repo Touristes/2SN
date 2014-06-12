@@ -15,8 +15,11 @@ function affVoteForm($id_post, $id_user) {
 
 
 //Affichage des Posts images
-function affPostImages() {
-$post = getPostsByCategory("Picture");
+function affPostImages($all) {
+if ($all == 1)
+	$post = getPostsByCategory("Picture");
+else
+	$post = getPostsByCategoryAndSubscriptions("Picture", getUserID($_SESSION['login']));
 if ($post != false)
 for ($i = 0; isset($post[1][$i]); $i++)
   {
@@ -40,8 +43,11 @@ for ($i = 0; isset($post[1][$i]); $i++)
 
 //Affichage des Posts Video
 
-function affPostVideo() {
+function affPostVideo($all) {
+if ($all == 1)
   $post = getPostsByCategory("Video");
+else
+  $post = getPostsByCategoryAndSubscriptions("Video", getUserID($_SESSION['login']));
 if ($post != false)
   for ($i = 0; isset($post[1][$i]); $i++)
     {
@@ -64,8 +70,11 @@ if ($post != false)
 }
 
 //Affichage des Posts Texte                                                                                                                                                                           
-function affPostText() {
+function affPostText($all) {
+if ($all == 1)
     $post = getPostsByCategory("Text");
+else
+	$post = getPostsByCategoryAndSubscriptions("Text", getUserID($_SESSION['login']));
 if ($post != false)
 for ($i = 0; isset($post[1][$i]); $i++)
   {
