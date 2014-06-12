@@ -42,7 +42,6 @@ include "../Resources/sessionInit.php";
 				<li><a href='../../abo.php'><span>Abonnements</span></a></li>
 				<li><a class='active' href='index.php'><span>Mon Partage</span></a></li>
 				<li class='last'><a href='../Resources/deconnect.php'><span>Déconnexion</span></a></li>
-				<li><span id="login"><?php echo $login;?></span></li>
 			</ul>
 		</div>
 	<div>
@@ -50,7 +49,7 @@ include "../Resources/sessionInit.php";
 		<div id="info"></div>
 		<div class="form-group col-md-2" id="rep">
 			<input id="login-name" type="hidden" class="hidden" value="<?php echo $login;?>"></input>
-  			<label class="sr-only" for="">Repertoire</label>
+  			<label class="sr-only" for="">Répertoire</label>
     		<input id="rep_name" type="text" class="form-control" placeholder="Default">
     		<a id="btn-create-rep">Création de répertoire</a>
     		
