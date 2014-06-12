@@ -178,17 +178,17 @@ function getPostsByCategoryAndSubscriptions($name, $id_user) {
   if ($db == 0)
   {
     dbClose($db);
-    return("[ERR DBCONECT]");
+    return(false);
   }
   else
   {
-    $query = "SELECT a.*, b.id_user from subscriber b, post a where b.id_subscriber = \"".$id_user
-		."\" and b.id_subscriber = a.id_user and a.id_category = \"".$id_category."\" order by a.created desc, a.id_post desc;";
+    $query = "SELECT * from subscriber, post where subscriber.id_subscriber = \"".$id_user
+		."\" and subscriber.id_subscriber = post.id_user and post.id_category = \"".$id_category."\" order by post.created desc, post.id_post desc;";
     $result = dbSelectToArray($query);
     if ($result == false)
     {
       dbClose($db);
-      return("[ERR DBQUERY]");
+      return(false);
     }
     else
     {
