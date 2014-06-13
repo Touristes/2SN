@@ -9,7 +9,6 @@
 //
 chdir("../");
 require_once("./Controllers/frontControler.php");
-
 $vote["good"] = $_POST["good"];
 $vote["bad"] = $_POST["bad"];
 $vote["id_user"] = $_POST["user"];
@@ -19,5 +18,5 @@ if ($vote["good"] == NULL)
 else
   $res = 1;
 $resultat = vote($res, $vote["id_user"], $vote["id_post"]);
-echo "ha y est";
 ?>
+<META http-EQUIV="Refresh" CONTENT="0; url=../accueil.php">
