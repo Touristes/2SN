@@ -1,5 +1,9 @@
 <?php
 include "./Resources/sessionInit.php";
+require_once "./Models/chuck.php";
+require_once "Controllers/frontControler.php";
+require_once "Views/postView.php";
+require_once "./Controllers/profilController.php";
 
 if (!isset($_SESSION['check']))
 {
@@ -9,13 +13,6 @@ else if ($_SESSION['check'] != "1")
 {
   echo "<script type=\"text/javascript\">alert(\"Accès interdit !!\");location =\"co.php\"</script>";
 }
-
-?>
-<?php
-require_once "./Models/chuck.php";
-require_once "Controllers/frontControler.php";
-require_once "Views/postView.php";
-require_once "./Controllers/profilController.php";
 ?>
 <!doctype html>
 <html>
@@ -24,7 +21,7 @@ require_once "./Controllers/profilController.php";
   <link rel="stylesheet" type="text/css" href="./Views/Styles/styleFooter.css"/>
   <link rel="stylesheet" type="text/css" href="./Views/Styles/styleChart.css"/>
   <link rel="stylesheet" type="text/css" href="./Views/Styles/styleProfil.css"/>
-
+  <?php isIt(getUserID($_SESSION['login'])); ?>
   <meta charset="UTF-8">
   <title>[Why] - Profil</title>
 </head>
@@ -145,5 +142,4 @@ require_once "./Controllers/profilController.php";
   </div>
 </div>
 </body>
-<?php nyanCat(); ?>
 </html>
